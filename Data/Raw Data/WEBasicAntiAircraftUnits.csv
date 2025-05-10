@@ -1,0 +1,19 @@
+Unit ,Nationality,Cost,Anti-Aircraft Dice,Damage Capacity,Type,Special
+HF-DF,UK,5,0,1,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat."
+Freya,Germany,5,0,1,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat."
+Otsu,Japan,5,0,1,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat."
+AN/TPS-3,USA,5,0,1,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat."
+Type 96 25mm,Japan,4,2,1,Land,
+2 cm FlAK 30,Germany,2,1,1,Land,
+3.7 cm FlAK 28,Germany,4,2,1,Land,
+Bofors 40mm,USA,4,2,1,Land,
+Type 98 20mm,Japan,2,1,1,Land,
+ZU-57,Soviet,4,2,1,Land,
+ZU-76,Soviet,6,3,1,Land,
+20mm Oerlikon,UK,2,1,1,Land,
+QF 40mm Mk III,UK,4,2,1,Land,
+90mm M2,USA,6,3,1,Land,
+M2 .50 Quad,USA,2,1,1,Land,
+8.8 cm FlAK 18,Germany,6,3,1,Land,
+Type 10 120mm,Japan,6,3,1,Land,
+QF 3in 20CWT,UK,6,3,1,Land,

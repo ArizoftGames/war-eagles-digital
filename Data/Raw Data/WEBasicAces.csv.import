@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ccpjoslwbcsp"
+
+[deps]
+
+files=["res://Data/Raw Data/WEBasicAces.Nationality.translation", "res://Data/Raw Data/WEBasicAces.Cost.translation", "res://Data/Raw Data/WEBasicAces.Bonus.translation"]
+
+source_file="res://Data/Raw Data/WEBasicAces.csv"
+dest_files=["res://Data/Raw Data/WEBasicAces.Nationality.translation", "res://Data/Raw Data/WEBasicAces.Cost.translation", "res://Data/Raw Data/WEBasicAces.Bonus.translation"]
+
+[params]
+
+compress=true
+delimiter=0

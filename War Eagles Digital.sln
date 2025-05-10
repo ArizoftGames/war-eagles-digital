@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "War Eagles Digital", "War Eagles Digital.csproj", "{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

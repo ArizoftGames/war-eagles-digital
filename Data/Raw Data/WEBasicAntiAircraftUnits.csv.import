@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dxfb8f8rn6p8n"
+
+[deps]
+
+files=["res://Data/Raw Data/WEBasicAntiAircraftUnits.Nationality.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Cost.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Anti.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Damage Capacity.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Type.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Special.translation"]
+
+source_file="res://Data/Raw Data/WEBasicAntiAircraftUnits.csv"
+dest_files=["res://Data/Raw Data/WEBasicAntiAircraftUnits.Nationality.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Cost.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Anti.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Damage Capacity.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Type.translation", "res://Data/Raw Data/WEBasicAntiAircraftUnits.Special.translation"]
+
+[params]
+
+compress=true
+delimiter=0
