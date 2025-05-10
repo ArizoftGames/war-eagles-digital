@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using CsvHelper;
+using System.IO;
+using System.Linq;
 
 public partial class UnitDatabase : Node
 {
@@ -44,15 +46,15 @@ public partial class UnitDatabase : Node
 	private List<AirUnit> LoadAirUnits(string path)
 	{
 		var units = new List<AirUnit>();
-		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+		using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
 		if (file == null)
 		{
 			GD.PrintErr($"Failed to open {path}");
 			return units;
 		}
 
-		// Skip header
-		file.GetLine();
+        // Skip header
+        file.GetLine();
 
 		while (!file.EofReached())
 		{
@@ -84,7 +86,7 @@ public partial class UnitDatabase : Node
 					{ "Special 2", values[11].Trim() }
 				};
 
-				var unit = new AirUnit();
+                var unit = new AirUnit();
 				unit.LoadFromCsv(dict);
 				units.Add(unit);
 			}
@@ -100,7 +102,7 @@ public partial class UnitDatabase : Node
 	private List<AntiAircraftUnit> LoadAntiAircraftUnits(string path)
 	{
 		var units = new List<AntiAircraftUnit>();
-		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+		using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
 		if (file == null)
 		{
 			GD.PrintErr($"Failed to open {path}");
@@ -151,7 +153,7 @@ public partial class UnitDatabase : Node
 	private List<Zone> LoadZones(string path)
 	{
 		var zones = new List<Zone>();
-		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+		using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
 		if (file == null)
 		{
 			GD.PrintErr($"Failed to open {path}");
@@ -206,7 +208,7 @@ public partial class UnitDatabase : Node
 	private List<Aces> LoadAces(string path)
 	{
 		var aces = new List<Aces>();
-		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+		using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
 		if (file == null)
 		{
 			GD.PrintErr($"Failed to open {path}");
