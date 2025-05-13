@@ -1,0 +1,27 @@
+using Godot;
+
+public partial class TestUnitDatabase : Node
+{
+    public override void _Ready()
+    {
+        GD.Print("TestUnitDatabase _Ready called");
+        var db = GetNode<UnitDatabase>("/root/UnitDatabase");
+        if (db == null)
+        {
+            GD.PrintErr("UnitDatabase autoload not found!");
+            return;
+        }
+
+        var airUnit = db.GetAirUnitByName("Ki-43 Hayabusa");
+        if (airUnit != null)
+            GD.Print($"Found unit: {airUnit.Unit}, Type: {airUnit.Type}, Cost: {airUnit.Cost}");
+        else
+            GD.Print("Ki-43 Hayabusa not found");
+
+        var zone = db.GetZoneByTargetName("Berlin");
+        if (zone != null)
+            GD.Print($"Found zone: {zone.TargetName}, Production: {zone.TargetProduction}");
+        else
+            GD.Print("Berlin not found");
+    }
+}

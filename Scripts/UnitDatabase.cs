@@ -30,7 +30,8 @@ public partial class UnitDatabase : Node
 	// Load all CSV data
 	private void LoadAllData()
 	{
-		airUnits = LoadAirUnits("res://Data/Raw Data/WEBasicAirUnits.csv");
+        GD.Print($"LoadAllData called at {Time.GetTicksMsec()}ms\nStack Trace: {new System.Diagnostics.StackTrace().ToString()}");
+        airUnits = LoadAirUnits("res://Data/Raw Data/WEBasicAirUnits.csv");
 		antiAircraftUnits = LoadAntiAircraftUnits("res://Data/Raw Data/WEBasicAntiAircraftUnits.csv");
 		zones = LoadZones("res://Data/Raw Data/WEBasicZones.csv");
 		aces = LoadAces("res://Data/Raw Data/WEBasicAces.csv");
