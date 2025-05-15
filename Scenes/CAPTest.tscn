@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsxkb2ww27wmo"]
+
+[ext_resource type="Script" uid="uid://bicpswglgh7m2" path="res://Scripts/Zone.cs" id="1_m6u48"]
+[ext_resource type="Script" uid="uid://c6f1f5cnrmih7" path="res://Scenes/CAPTest.cs" id="1_r82re"]
+[ext_resource type="Script" uid="uid://dlgwtejd6q7nm" path="res://Scripts/AirUnit.cs" id="2_p3ql4"]
+[ext_resource type="PackedScene" uid="uid://ci7bp3bdudx1t" path="res://Assets/Models/Zones/Berlin.glb" id="2_ufjui"]
+[ext_resource type="PackedScene" uid="uid://gmwyhjhlpqyu" path="res://Assets/Models/Aircraft/Ta152LOD1.glb" id="4_r82re"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r82re"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_r82re")
+
+[node name="ZoneBerlin" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_m6u48")
+TargetName = "Berlin"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ZoneBerlin"]
+
+[node name="BerlinModel" type="Node3D" parent="ZoneBerlin"]
+
+[node name="Berlin" parent="ZoneBerlin/BerlinModel" instance=ExtResource("2_ufjui")]
+visible = false
+
+[node name="Ta152Unit" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_p3ql4")
+Unit = "Ta152"
+
+[node name="Ta152Model" type="Node3D" parent="Ta152Unit"]
+
+[node name="Ta152LOD1" parent="Ta152Unit/Ta152Model" instance=ExtResource("4_r82re")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ta152Unit/Ta152Model/Ta152LOD1"]
+transform = Transform3D(20, 0, 0, 0, 5, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("BoxShape3D_r82re")
+
+[node name="CAPLabel" type="Label3D" parent="Ta152Unit/Ta152Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+top_level = true
+visible = false
+pixel_size = 0.05
+text = "CAP Active"
+font_size = 50
+metadata/_edit_group_ = true
+
+[node name="Tooltip Layer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Tooltip" type="Panel" parent="Tooltip Layer"]

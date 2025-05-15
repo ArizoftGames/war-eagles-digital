@@ -4,6 +4,8 @@ using System;
 public partial class AirUnit : Node
 {
 	// Properties matching WEBasicAirUnits.csv columns
+
+	[Export]
 	public string Unit { get; set; } // e.g., "Ki-43 Hayabusa"
 	public string Nationality { get; set; } // e.g., "Japan"
 	public string Type { get; set; } // e.g., "Fighter", "Bomber"

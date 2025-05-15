@@ -285,5 +285,45 @@ public partial class UnitDatabase : Node
 		return aces.Find(ace => ace.Pilot == pilot);
     }
 
-  
+    public Godot.Collections.Dictionary<string, Variant> GetZoneAsDictionary(string targetName)
+    {
+        var zone = GetZoneByTargetName(targetName);
+        if (zone == null) return new Godot.Collections.Dictionary<string, Variant>();
+        return new Godot.Collections.Dictionary<string, Variant>
+    {
+        { "Target Name", zone.TargetName },
+        { "Nationality", zone.TargetNationality },
+        { "Type", zone.TargetType },
+        { "AA Dice", zone.TargetAADice },
+        { "Damage Capacity", zone.TargetDamageCapacity },
+        { "Production", zone.TargetProduction },
+        { "VP Value", zone.TargetVPValue },
+        { "Base Unit Name", zone.BaseName },
+        { "Base Type", zone.BaseType },
+        { "Base AA", zone.BaseAADice },
+        { "Base Damage Cap", zone.BaseDamageCapacity }
+    };
+    }
+
+    public Godot.Collections.Dictionary<string, Variant> GetAirUnitAsDictionary(string unitName)
+    {
+        var unit = GetAirUnitByName(unitName);
+        if (unit == null) return new Godot.Collections.Dictionary<string, Variant>();
+        return new Godot.Collections.Dictionary<string, Variant>
+    {
+        { "Unit", unit.Unit },
+        { "Nationality", unit.Nationality },
+        { "Type", unit.Type },
+        { "Silhouette", unit.Silhouette },
+        { "Cost", unit.Cost },
+        { "Air Attack Dice", unit.AirAttackDice },
+        { "Bombing Dice", unit.BombingDice },
+        { "Damage Capacity", unit.DamageCapacity },
+        { "Range", unit.Range },
+        { "Year", unit.Year },
+        { "Special 1", unit.Special1 },
+        { "Special 2", unit.Special2 }
+    };
+    }
+
 }

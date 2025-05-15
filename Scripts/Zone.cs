@@ -4,6 +4,8 @@ using System;
 public partial class Zone : Node
 {
 	// Target Unit properties (from WEBasicZones.csv)
+
+	[Export]
 	public string TargetName { get; set; } // e.g., "Berlin"
 	public string TargetNationality { get; set; } // e.g., "Germany"
 	public string TargetType { get; set; } // e.g., "Land"

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="War Eagles Digital"
-run/main_scene="uid://clu70ybhrla35"
+run/main_scene="uid://bsxkb2ww27wmo"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,10 +22,6 @@ UnitDatabase="*res://Scripts/UnitDatabase.cs"
 [dotnet]
 
 project/assembly_name="War Eagles Digital"
-
-[global]
-
-Autoload=true
 
 [rendering]
 
