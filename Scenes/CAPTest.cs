@@ -15,7 +15,6 @@ public partial class CAPTest : Node3D
         _zone = GetNode<Zone>("ZoneBerlin");
         _airUnit = GetNode<AirUnit>("Ta152Unit");
         _tooltip = GetNode<Control>("Tooltip Layer/Tooltip");
-        GD.Print("Tooltip node: ", _tooltip?.ToString() ?? "null");
         _statsLabel = _tooltip.GetNode<Label>("StatsLabel");
         _ta152Model = GetNode<Node3D>("Ta152Unit/Ta152Model");
         _colliderBody = GetNode<StaticBody3D>("Ta152Unit/Ta152Model/Ta152LOD1/ColliderBody");
@@ -27,21 +26,14 @@ public partial class CAPTest : Node3D
         }
 
         _zone.LoadFromCsv(unitDatabase.GetZoneAsDictionary("Berlin"));
-        GD.Print("Loading air unit with name: Ta-152");
         _airUnit.LoadFromCsv(unitDatabase.GetAirUnitAsDictionary("Ta-152"));
-        GD.Print("Zone loaded: ", _zone.TargetName);
-        GD.Print("AirUnit loaded: ", _airUnit.Unit);
 
         _tooltip.Visible = false;
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventKey keyEvent && keyEvent.Pressed && keyEvent.Keycode == Key.Space)
-        {
-            GD.Print($"Moving {_airUnit.Unit} to CAP area of {_zone.TargetName}");
-            GD.Print($"Range: {_airUnit.Range}, Can move: true");
-        }
+
 
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
         {
@@ -52,7 +44,6 @@ public partial class CAPTest : Node3D
             var query = PhysicsRayQueryParameters3D.Create(from, to);
             var result = spaceState.IntersectRay(query);
 
-            GD.Print("Raycast result: Count=", result.Count, ", Collider=", result.ContainsKey("collider") ? result["collider"].ToString() : "none");
 
             if (result.Count > 0 && result["collider"].AsGodotObject() == _colliderBody)
             {
@@ -73,12 +64,12 @@ public partial class CAPTest : Node3D
                 _tooltip.Position = screenPos + new Vector2(20, -_tooltip.Size.Y / 2);
 
                 _tooltip.Visible = true;
-                GD.Print("Tooltip shown for ", _airUnit.Unit);
+
             }
             else
             {
                 _tooltip.Visible = false;
-                GD.Print("Click missed Ta152Model");
+
             }
         }
     }

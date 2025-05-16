@@ -26,7 +26,6 @@ public partial class UnitDatabase : Node
     // Load all CSV data
     private void LoadAllData()
     {
-        GD.Print($"LoadAllData called at {Time.GetTicksMsec()}ms\nStack Trace: {new System.Diagnostics.StackTrace().ToString()}");
         airUnits = LoadAirUnits("res://Data/Raw Data/WEBasicAirUnits.csv");
         antiAircraftUnits = LoadAntiAircraftUnits("res://Data/Raw Data/WEBasicAntiAircraftUnits.csv");
         zones = LoadZones("res://Data/Raw Data/WEBasicZones.csv");
@@ -85,7 +84,6 @@ public partial class UnitDatabase : Node
 
                 var unit = new AirUnit();
                 unit.LoadFromCsv(dict);
-                GD.Print("Loaded air unit: ", unit.Unit); // Debug log
                 units.Add(unit);
             }
             catch (Exception e)
@@ -261,8 +259,7 @@ public partial class UnitDatabase : Node
     // Utility method: Get air unit by name
     public AirUnit GetAirUnitByName(string unit)
     {
-        GD.Print("GetAirUnitByName called for: ", $"\"{unit}\"");
-        GD.Print("Available air unit names: ", string.Join(", ", airUnits.Select(u => $"\"{u.Unit}\"")));
+
         var foundUnit = airUnits.Find(u => u.Unit.Equals(unit, StringComparison.OrdinalIgnoreCase));
         if (foundUnit == null)
         {
@@ -270,7 +267,6 @@ public partial class UnitDatabase : Node
         }
         else
         {
-            GD.Print("Found unit: ", $"\"{foundUnit.Unit}\"");
         }
         return foundUnit;
     }

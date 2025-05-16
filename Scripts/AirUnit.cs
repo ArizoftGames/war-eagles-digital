@@ -25,7 +25,6 @@ public partial class AirUnit : Node
     // Load data from a CSV row (assuming CSV parsed into a Dictionary)
     public void LoadFromCsv(Godot.Collections.Dictionary<string, Variant> csvRow)
     {
-        GD.Print("AirUnit dictionary keys: ", string.Join(", ", csvRow.Keys));
 
         Unit = csvRow["Unit"].AsString();
         Nationality = csvRow["Nationality"].AsString();

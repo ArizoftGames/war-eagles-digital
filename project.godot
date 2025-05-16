@@ -21,8 +21,8 @@ UnitDatabase="*res://Scripts/UnitDatabase.cs"
 
 [display]
 
-window/size/viewport_width=2304
-window/size/viewport_height=1296
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 
 [dotnet]
 
