@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\War Eagles Digital\\war-eagles-digital\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scenes\\captest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scenes\\captest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\War Eagles Digital\\war-eagles-digital\\Docs\\user_guide.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Docs\\user_guide.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\unitdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\airunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\airunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\testunitdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\testunitdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\War Eagles Digital\\war-eagles-digital\\Docs\\user_guide.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Docs\\user_guide.md||{24510B54-A648-4D69-A6C5-F68CBDF07546}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\aces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,31 +47,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CAPTest.cs",
-              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scenes\\CAPTest.cs",
-              "RelativeDocumentMoniker": "Scenes\\CAPTest.cs",
-              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scenes\\CAPTest.cs",
-              "RelativeToolTip": "Scenes\\CAPTest.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAowCMAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T19:01:05.665Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TestUnitDatabase.cs",
-              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\TestUnitDatabase.cs",
-              "RelativeDocumentMoniker": "Scripts\\TestUnitDatabase.cs",
-              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\TestUnitDatabase.cs",
-              "RelativeToolTip": "Scripts\\TestUnitDatabase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:31:55.566Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "user_guide.md",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Docs\\user_guide.md",
               "RelativeDocumentMoniker": "Docs\\user_guide.md",
@@ -87,7 +54,8 @@
               "RelativeToolTip": "Docs\\user_guide.md",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-05-13T01:37:29.721Z"
+              "WhenOpened": "2025-05-13T01:37:29.721Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -127,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Aces.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Aces.cs",
               "RelativeDocumentMoniker": "Scripts\\Aces.cs",

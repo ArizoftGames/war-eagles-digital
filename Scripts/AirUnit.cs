@@ -22,25 +22,27 @@ public partial class AirUnit : Node
 	// Constructor
 	public AirUnit() { }
 
-	// Load data from a CSV row (assuming CSV parsed into a Dictionary)
-	public void LoadFromCsv(Godot.Collections.Dictionary<string, Variant> csvRow)
-	{
-		Unit = csvRow["Unit"].AsString();
-		Nationality = csvRow["Nationality"].AsString();
-		Type = csvRow["Type"].AsString();
-		Silhouette = csvRow["Silhouette"].AsString();
-		Cost = csvRow["Cost"].AsInt32();
-		AirAttackDice = csvRow["Air Attack Dice"].AsInt32();
-		BombingDice = csvRow["Bombing Dice"].AsInt32();
-		DamageCapacity = csvRow["Damage Capacity"].AsInt32();
-		Range = csvRow["Range"].AsInt32();
-		Year = csvRow["Year"].AsInt32();
-		Special1 = csvRow["Special 1"].AsString();
-		Special2 = csvRow["Special 2"].AsString();
-	}
+    // Load data from a CSV row (assuming CSV parsed into a Dictionary)
+    public void LoadFromCsv(Godot.Collections.Dictionary<string, Variant> csvRow)
+    {
+        GD.Print("AirUnit dictionary keys: ", string.Join(", ", csvRow.Keys));
 
-	// Example method: Roll air attack dice (hits on 6)
-	public int RollAirAttackDice()
+        Unit = csvRow["Unit"].AsString();
+        Nationality = csvRow["Nationality"].AsString();
+        Type = csvRow["Type"].AsString();
+        Silhouette = csvRow["Silhouette"].AsString();
+        Cost = csvRow["Cost"].AsInt32();
+        AirAttackDice = csvRow["Air Attack Dice"].AsInt32();
+        BombingDice = csvRow["Bombing Dice"].AsInt32();
+        DamageCapacity = csvRow["Damage Capacity"].AsInt32();
+        Range = csvRow["Range"].AsInt32();
+        Year = csvRow["Year"].AsInt32();
+        Special1 = csvRow["Special 1"].AsString();
+        Special2 = csvRow["Special 2"].AsString();
+    }
+
+    // Example method: Roll air attack dice (hits on 6)
+    public int RollAirAttackDice()
 	{
 		int hits = 0;
 		Random rand = new Random();

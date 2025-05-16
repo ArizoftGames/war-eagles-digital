@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 UnitDatabase="*res://Scripts/UnitDatabase.cs"
 
+[display]
+
+window/size/viewport_width=2304
+window/size/viewport_height=1296
+
 [dotnet]
 
 project/assembly_name="War Eagles Digital"

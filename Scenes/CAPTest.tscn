@@ -11,6 +11,11 @@
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_r82re")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 1.9
+shadow_enabled = true
+
 [node name="ZoneBerlin" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_m6u48")
@@ -21,7 +26,6 @@ TargetName = "Berlin"
 [node name="BerlinModel" type="Node3D" parent="ZoneBerlin"]
 
 [node name="Berlin" parent="ZoneBerlin/BerlinModel" instance=ExtResource("2_ufjui")]
-visible = false
 
 [node name="Ta152Unit" type="Node" parent="."]
 unique_name_in_owner = true
@@ -32,8 +36,10 @@ Unit = "Ta152"
 
 [node name="Ta152LOD1" parent="Ta152Unit/Ta152Model" instance=ExtResource("4_r82re")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ta152Unit/Ta152Model/Ta152LOD1"]
-transform = Transform3D(20, 0, 0, 0, 5, 0, 0, 0, 15, 0, 0, 0)
+[node name="ColliderBody" type="StaticBody3D" parent="Ta152Unit/Ta152Model/Ta152LOD1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ta152Unit/Ta152Model/Ta152LOD1/ColliderBody"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 shape = SubResource("BoxShape3D_r82re")
 
 [node name="CAPLabel" type="Label3D" parent="Ta152Unit/Ta152Model"]
@@ -49,3 +55,21 @@ metadata/_edit_group_ = true
 layer = 0
 
 [node name="Tooltip" type="Panel" parent="Tooltip Layer"]
+visible = false
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 500.0
+
+[node name="StatsLabel" type="Label" parent="Tooltip Layer/Tooltip"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 690.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 30
+text = "Test Tooltip"
+autowrap_mode = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 3, 29, 37)
