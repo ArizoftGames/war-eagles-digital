@@ -1,9 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://clu70ybhrla35"]
-+[ext_resource type="Script" path="res://Scripts/TestUnitDatabase.cs" id="1_test"]
--[ext_resource type="Script" uid="uid://col2nadyhonwk" path="res://Scripts/UnitDatabase.cs" id="1_lkys8"]
+[gd_scene format=3 uid="uid://ddhvpj7wg3k2p"]
 
-[ext_resource type="Script" uid="uid://col2nadyhonwk" path="res://Scripts/UnitDatabase.cs" id="1_lkys8"]
-
-[node name="Node2D" type="Node2D"]
--script = ExtResource("1_lkys8")
-+script = ExtResource("1_test")
+[node name="Node3D" type="Node3D"]

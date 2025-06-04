@@ -1,0 +1,57 @@
+Unit,Nationality,Role,Weight,Cost,Air Attack Strength,Bombing Strength,Damage Capacity,Fuel,Year,Special 1,Special 2,Model LOD0,Model LOD1,Motor,Gun
+A6M5 Zero,Japan,Fighter,Light,7,4,0,1,2,1942,,,A6M5LOD0.glb,A6M5LOD1.glb,radial,twenty
+AR-234 Blitz,Germany,Bomber,Medium,7,1,2,1,2,1944,Dive Bomber: Each hit vs Antiaircraft Units counts as 2 hits.,Fast: May not be attacked in the first round of air combat.,Ar234LOD0.glb,Ar234.LOD1.glb,jet,none
+B-17 Flying Fortress,USA,Bomber,Heavy,18,2,12,4,3,1941,Heavy Bomber,,b17LOD0.glb,b17LOD1.glb,multi,fifty
+B-24 Liberator,USA,Bomber,Heavy,14,1,10,3,4,1943,Heavy Bomber,,B24LOD0.glb,B24LOD1,multi,fifty
+B-25 Mitchell,USA,Bomber,Medium,6,0,3,2,3,1941,,,B25LOD0.glb,B25LOD1.glb,multi,fifty
+B-26 Marauder,USA,Bomber,Medium,8,1,4,2,2,1942,,,B26LOD0.glb,B26LOD1.glb,multi,fifty
+Bf-109D,Germany,Fighter,Light,4,3,0,1,1,1939,,,bf109dLOD0.glb,bf109dLOD1.glb,inline,twenty
+Bf-109E,Germany,Fighter/Bomber,Light,5,3,1,1,1,1940,,,bf109eLOD0.glb,bf109eLOD1.glb,inline,twenty
+Bf-110C,Germany,Fighter/Bomber,Light,8,2,1,2,3,1940,AA Rockets: +3 Air Attack vs Heavy Bombers in the second round of air combat ,,Bf110cLOD0.glb,Bf110cLOD1.glb,inline,twenty
+Blenheim Mk IV,UK,Bomber,Light,5,0,2,1,3,1937,,,BlenheimLOD0.glb,BlenheimLOD1.glb,multi,thirty
+Boston,UK,Bomber,Medium,7,1,3,2,2,1940,,,BostonLOD0,BostonLOD1,multi,thirty
+Do-17Z,Germany,Bomber,Medium,5,0,4,1,3,1939,,,Do17LOD0.glb,Do17LOD1.glb,multi,thirty
+Do-335 Pfeil,Germany,Fighter/Bomber,Light,11,5,1,2,3,1944,Rugged: May roll an extra saving die,,Do335LOD0.glb,Do335LOD1.glb,inline,twenty
+F4U1  Corsair,USA,Fighter/Bomber,Light,9,4,1,2,2,1943,Rugged: May roll an extra saving die,,F4U1LOD0.glb,F4U1LOD1.glb,radial,fifty
+FW-190A,Germany,Fighter,Light,6,5,0,1,1,1941,,,fw190aLOD0.glb,fw190aLOD1.glb,radial,twenty
+G4M,Japan,Bomber,Medium,6,1,2,1,4,1941,Vulnerable: Does not make saving rolls.,,G4MLOD0.glb,G4MLOD1.glb,multi,thirty
+Gladiator,UK,Fighter,Light,3,2,0,1,1,1937,,,GladiatorLOD0.glb,GladiatorLOD1.glb,radial,thirty
+He-111,Germany,Bomber,Medium,6,0,4,2,3,1939,,,he111LOD0glb,he111LOD1glb,multi,thirty
+Hurricane I,UK,Fighter,Light,4,3,0,1,1,1939,,,hurri1LOD0.glb,hurri1LOD1.glb,multi,thirty
+Hurricane II,UK,Fighter/Bomber,Light,4,2,1,1,1,1940,,,hurri2LOD0.glb,hurri2LOD1.glb,multi,twenty
+I-16 Iskra,Soviet,Fighter,Light,3,2,0,1,1,1937,,,I16LOD0.glb,I16LOD1.glb,radial,thirty
+IL-2,Soviet,Bomber,Light,5,1,1,2,1,1942,Rugged: May roll an extra saving die,,il2LOD0.glb,il2LOD1.glb,inline,fifty
+IL-4,Soviet,Bomber,Medium,9,1,5,2,4,1940,,,il4LOD0.glb,il4LOD1.glb,inline,thirty
+J2M3 Raiden,Japan,Fighter,Light,5,4,0,1,1,1943,Interceptor: Air Attack Strength vs Heavy Bombers is +1 if there is a Radar unit in the same zone.,,J2M3LOD0.glb,J2M3LOD1.glb,radial,twenty
+Ju-87D Stuka,Germany,Bomber,Light,4,0,2,1,1,1939,Dive Bomber: Each hit vs Antiaircraft Units counts as 2 hits.,,ju87dLOD0glb,ju87dLOD1glb,inline,thirty
+Ju-88A,Germany,Bomber,Light,8,1,5,2,2,1939,Dive Bomber: Each hit vs Antiaircraft Units counts as 2 hits.,,ju88aLOD0.glb,ju88aLOD1.glb,multi,thirty
+Ki-21-II,Japan,Bomber,Medium,5,0,2,1,3,1941,,,ki21LOD0.glb,ki21LOD1.glb,multi,thirty
+Ki-27,Japan,Fighter,Light,3,2,0,1,1,1939,,,ki27LOD0.glb,ki27LOD1.glb,radial,thirty
+Ki-43 Hayabusa,Japan,Fighter,Light,5,3,0,1,2,1941,,,Ki43LOD0.glb,Ki43LOD1.glb,radial,fifty
+Ki-48,Japan,Bomber,Medium,5,1,1,1,3,1941,Vulnerable: Does not make saving rolls.,,ki48LOD0.glb,ki48LOD1.glb,multi,thirty
+Ki-51,Japan,Bomber,Light,2,0,1,1,1,1938,,,Ki51LOD0.glb,Ki51LOD1.glb,inline,thirty
+Ki-61 Hien,Japan,Fighter,Light,6,4,0,1,2,1943,,,Ki61LOD0.glb,Ki61LOD1.glb,inline,twenty
+Ki-84 Hayate,Japan,Fighter,Light,9,6,0,2,2,1943,Parachute: Any ace assigned to this aircraft is not killed if this unit is destroyed but may be reassigned to another aircraft during the Landing Phase.,,ki84LOD0.glb,ki84LOD1.glb,radial,twenty
+La-7,Soviet,Fighter,Light,6,5,0,1,1,1944,,,La7LOD0.glb,La7LOD1.glb,radial,twenty
+LaGG-3,Soviet,Fighter,Light,4,3,0,1,1,1941,,,lagg3LOD0.glb,lagg3LOD1.glb,inline,twenty
+Lancaster,UK,Bomber,Heavy,15,1,12,3,3,1941,Heavy Bomber,,lancLOD0.glb,lancLOD1.glb,multi,thirty
+Me-163 Komet,Germany,Fighter,Light,5,4,0,1,0,1944,Diving Attack: May not be attacked in the first round of air combat and may choose to escape after the first round,,Me163LOD0.glb,Me163LOD1.glb,jet,twenty
+Me-262A Schwalbe,Germany,Fighter,Light,7,7,0,1,0,1944,,,me262LOD0.glb,me262LOD1.glb,jet,twenty
+Meteor,UK,Fighter,Light,7,6,0,1,1,1944,,,meteorLOD0.glb,meteorLOD1.glb,jet,twenty
+Mosquito IV,UK,Fighter/Bomber,Light,7,3,2,1,3,1942,,,mosquitoIVLOD0.glb,mosquitoIVLOD1.glb,multi,twenty
+P-38J,USA,Fighter,Light,8,3,0,2,3,1942,Diving Attack: May not be attacked in the first round of air combat and may choose to escape after the first round,,P38JLOD0.glb,P38JLOD1.glb,inline,twenty
+P-39 Airacobra,USA,Fighter/Bomber,Light,5,2,1,1,2,1940,,,p39LOD0.glb,p39LOD1.glb,inline,twenty
+P-40 Warhawk,USA,Fighter,Light,5,3,0,1,2,1941,,,p40LOD0.glb,p40LOD1.glb,inline,fifty
+P-47C Thunderbolt,USA,Fighter/Bomber,Light,7,3,1,2,1,1943,Drop Tanks: Counts as a Fighter when owner plays Drop Tanks event.,,p47cLOD0.glb,p47cLOD1.glb,radial,fifty
+P-51D Mustang,USA,Fighter,Light,8,5,0,1,3,1944,,,p51dLOD0.glb,p51dLOD1.glb,inline,fifty
+Pe-2,Soviet,Bomber,Light,7,2,2,2,2,1940,,,pe2LOD0.glb,pe2LOD1.glb,multi,thirty
+SB-2,Soviet,Bomber,Medium,4,1,1,1,2,1937,,,sb2LOD0.glb,sb2LOD1.glb,multi,thirty
+Spitfire II,UK,Fighter,Light,5,3,0,1,1,1940,Parachute: Any ace assigned to this aircraft is not killed if this unit is destroyed but may be reassigned to another aircraft during the Landing Phase.,,spitIILOD0.glb,spitIILOD1.glb,inline,thirty
+Spitfire IX,UK,Fighter,Light,6,5,0,1,1,1943,,,spitIXLOD0.glb,spitIXLOD1.glb,inline,twenty
+Ta-152,Germany,Fighter,Light,8,6,0,1,1,1944,Interceptor: Air Attack Strength vs Heavy Bombers is +1 if there is a Radar unit in the same zone.,,Ta152LOD0.glb,Ta152LOD1.glb,inline,twenty
+TB-3,Soviet,Bomber,Heavy,8,0,4,1,3,1937,Heavy Bomber,,TB3LOD0.glb,TB3LOD1.glb,multi,thirty
+Tu-2,Soviet,Bomber,Medium,9,1,5,2,3,1943,,,tu2LOD0.glb,tu2LOD1.glb,multi,thirty
+Typhoon,UK,Fighter/Bomber,Light,7,3,1,2,1,1943,,,TyphoonLOD0.glb,TyphoonLOD1.glb,inline,twenty
+Whitley,UK,Bomber,Heavy,9,0,7,2,2,1939,Heavy Bomber,,WhitlleyLOD0.glb,WhitlleyLOD1.glb,multi,thirty
+Yak-3,Soviet,Fighter,Light,7,6,0,1,1,1944,,,Yak3LOD0.glb,Yak3LOD1.glb,inline,twenty
+Yak-9,Soviet,Fighter/Bomber,Light,7,4,1,1,2,1943,,,Yak9LOD0.glb,Yak9LOD1.glb,inline,twenty

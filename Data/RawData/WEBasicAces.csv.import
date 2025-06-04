@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ccpjoslwbcsp"
+
+[deps]
+
+files=["res://Data/RawData/WEBasicAces.Nationality.translation", "res://Data/RawData/WEBasicAces.Cost.translation", "res://Data/RawData/WEBasicAces.Bonus.translation", "res://Data/RawData/WEBasicAces.Model.translation", "res://Data/RawData/WEBasicAces.FlavorText.translation"]
+
+source_file="res://Data/RawData/WEBasicAces.csv"
+dest_files=["res://Data/RawData/WEBasicAces.Nationality.translation", "res://Data/RawData/WEBasicAces.Cost.translation", "res://Data/RawData/WEBasicAces.Bonus.translation", "res://Data/RawData/WEBasicAces.Model.translation", "res://Data/RawData/WEBasicAces.FlavorText.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2snm3omhi3w6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ghhm"]
+sky_top_color = Color(0.564064, 0.839566, 0.976816, 1)
+sky_horizon_color = Color(1.57256, 1.79975, 1.66685, 1)
+ground_bottom_color = Color(0.36677, 1, 0.331145, 1)
+ground_horizon_color = Color(1.57256, 1.79975, 1.66685, 1)
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_04rgg"]
+sky_material = SubResource("ProceduralSkyMaterial_0ghhm")
+
+[sub_resource type="Environment" id="Environment_whms8"]
+background_mode = 2
+sky = SubResource("Sky_04rgg")
+tonemap_mode = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_whms8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 69.1967, 200, 0)
+light_color = Color(1, 1, 0.901961, 1)
+light_energy = 0.3
+shadow_enabled = true
+
+[node name="PZone3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.992)
+
+[node name="PZone2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0, 80)
+
+[node name="PZone1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 0, 80)
+
+[node name="PZone4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 80)
+
+[node name="PZone5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 80)
+
+[node name="OZone1" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -228, 0, -80)
+
+[node name="OZone2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -114, 0, -80)
+
+[node name="OZone3" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -80)
+
+[node name="OZone4" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114, 0, -80)
+
+[node name="OZone5" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 228, 0, -80)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.866768, -0.390704, 0.309943, 0.0815112, 0.724115, 0.684846, -0.492006, -0.568339, 0.659486, 68.2208, 68.2675, 132.044)

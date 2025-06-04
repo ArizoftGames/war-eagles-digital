@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="War Eagles Digital"
-run/main_scene="uid://bsxkb2ww27wmo"
+run/main_scene="uid://ddhvpj7wg3k2p"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

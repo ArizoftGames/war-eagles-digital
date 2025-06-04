@@ -10,12 +10,14 @@ public partial class UnitDatabase : Node
     private List<AntiAircraftUnit> antiAircraftUnits = new List<AntiAircraftUnit>();
     private List<Zone> zones = new List<Zone>();
     private List<Aces> aces = new List<Aces>();
+    private List<Event> events = new List<Event>();
 
     // Public access to loaded data
     public List<AirUnit> AirUnits => airUnits;
     public List<AntiAircraftUnit> AntiAircraftUnits => antiAircraftUnits;
     public List<Zone> Zones => zones;
     public List<Aces> Aces => aces;
+    public List<Event> Events => events;
 
     // Called when the node enters the scene tree
     public override void _Ready()
@@ -26,17 +28,26 @@ public partial class UnitDatabase : Node
     // Load all CSV data
     private void LoadAllData()
     {
-        GD.Print($"LoadAllData called at {Time.GetTicksMsec()}ms\nStack Trace: {new System.Diagnostics.StackTrace().ToString()}");
-        airUnits = LoadAirUnits("res://Data/Raw Data/WEBasicAirUnits.csv");
-        antiAircraftUnits = LoadAntiAircraftUnits("res://Data/Raw Data/WEBasicAntiAircraftUnits.csv");
-        zones = LoadZones("res://Data/Raw Data/WEBasicZones.csv");
-        aces = LoadAces("res://Data/Raw Data/WEBasicAces.csv");
+        try
+        {
+            GD.Print($"LoadAllData called at {Time.GetTicksMsec()}ms\nStack Trace: {new System.Diagnostics.StackTrace().ToString()}");
+            airUnits = LoadAirUnits("res://Data/RawData/WEBasicAirUnits.csv");
+            antiAircraftUnits = LoadAntiAircraftUnits("res://Data/RawData/WEBasicAntiAircraftUnits.csv");
+            zones = LoadZones("res://Data/RawData/WEBasicZones.csv");
+            aces = LoadAces("res://Data/RawData/WEBasicAces.csv");
+            events = LoadEvents("res://Data/RawData/WEBasicEvents.csv");
 
-        // Log counts to verify loading
-        GD.Print($"Loaded {airUnits.Count} air units.");
-        GD.Print($"Loaded {antiAircraftUnits.Count} anti-aircraft units.");
-        GD.Print($"Loaded {zones.Count} zones.");
-        GD.Print($"Loaded {aces.Count} aces.");
+            // Log counts to verify loading
+            GD.Print($"Loaded {airUnits.Count} air units.");
+            GD.Print($"Loaded {antiAircraftUnits.Count} anti-aircraft units.");
+            GD.Print($"Loaded {zones.Count} zones.");
+            GD.Print($"Loaded {aces.Count} aces.");
+            GD.Print($"Loaded {events.Count} events.");
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr($"Error in LoadAllData: {e.Message}");
+        }
     }
 
     // Load air units from CSV
@@ -61,7 +72,7 @@ public partial class UnitDatabase : Node
             try
             {
                 var values = line.Split(",");
-                if (values.Length < 12) // Expect 12 columns
+                if (values.Length < 16) // Expect 16 columns
                 {
                     GD.PrintErr($"Invalid air unit row: {line}");
                     continue;
@@ -71,21 +82,25 @@ public partial class UnitDatabase : Node
                 {
                     { "Unit", values[0].Trim() },
                     { "Nationality", values[1].Trim() },
-                    { "Type", values[2].Trim() },
-                    { "Silhouette", values[3].Trim() },
+                    { "Role", values[2].Trim() },
+                    { "Weight", values[3].Trim() },
                     { "Cost", ParseInt(values[4].Trim(), "Cost", line) },
-                    { "Air Attack Dice", ParseInt(values[5].Trim(), "Air Attack Dice", line) },
-                    { "Bombing Dice", ParseInt(values[6].Trim(), "Bombing Dice", line) },
+                    { "Air Attack Strength", ParseInt(values[5].Trim(), "Air Attack Strength", line) },
+                    { "Bombing Strength", ParseInt(values[6].Trim(), "Bombing Strength", line) },
                     { "Damage Capacity", ParseInt(values[7].Trim(), "Damage Capacity", line) },
-                    { "Range", ParseInt(values[8].Trim(), "Range", line) },
+                    { "Fuel", ParseInt(values[8].Trim(), "Fuel", line) },
                     { "Year", ParseInt(values[9].Trim(), "Year", line) },
                     { "Special 1", values[10].Trim() },
-                    { "Special 2", values[11].Trim() }
+                    { "Special 2", values[11].Trim() },
+                    { "Model LOD0", values[12].Trim() },
+                    { "Model LOD1", values[13].Trim() },
+                    { "Motor", values[14].Trim() },
+                    { "Gun", values[15].Trim() }
                 };
 
                 var unit = new AirUnit();
                 unit.LoadFromCsv(dict);
-                GD.Print("Loaded air unit: ", unit.Unit); // Debug log
+                GD.Print($"Loaded air unit: {unit.Unit}");
                 units.Add(unit);
             }
             catch (Exception e)
@@ -118,7 +133,7 @@ public partial class UnitDatabase : Node
             try
             {
                 var values = line.Split(",");
-                if (values.Length < 7) // Expect 7 columns
+                if (values.Length < 9) // Expect 9 columns
                 {
                     GD.PrintErr($"Invalid anti-aircraft unit row: {line}");
                     continue;
@@ -129,14 +144,17 @@ public partial class UnitDatabase : Node
                     { "Unit", values[0].Trim() },
                     { "Nationality", values[1].Trim() },
                     { "Cost", ParseInt(values[2].Trim(), "Cost", line) },
-                    { "Anti-Aircraft Dice", ParseInt(values[3].Trim(), "Anti-Aircraft Dice", line) },
+                    { "AntiAircraft Strength", ParseInt(values[3].Trim(), "AntiAircraft Strength", line) },
                     { "Damage Capacity", ParseInt(values[4].Trim(), "Damage Capacity", line) },
-                    { "Type", values[5].Trim() },
-                    { "Special", values[6].Trim() }
+                    { "Domain", values[5].Trim() },
+                    { "Special", values[6].Trim() },
+                    { "Model", values[7].Trim() },
+                    { "Gun", values[8].Trim() }
                 };
 
                 var unit = new AntiAircraftUnit();
                 unit.LoadFromCsv(dict);
+                GD.Print($"Loaded anti-aircraft unit: {unit.Unit}");
                 units.Add(unit);
             }
             catch (Exception e)
@@ -169,7 +187,7 @@ public partial class UnitDatabase : Node
             try
             {
                 var values = line.Split(",");
-                if (values.Length < 11) // Expect 11 columns
+                if (values.Length < 12) // Expect 12 columns
                 {
                     GD.PrintErr($"Invalid zone row: {line}");
                     continue;
@@ -179,19 +197,21 @@ public partial class UnitDatabase : Node
                 {
                     { "Target Name", values[0].Trim() },
                     { "Nationality", values[1].Trim() },
-                    { "Type", values[2].Trim() },
-                    { "AA Dice", ParseInt(values[3].Trim(), "AA Dice", line) },
+                    { "Domain", values[2].Trim() },
+                    { "AA Strength", ParseInt(values[3].Trim(), "AA Strength", line) },
                     { "Damage Capacity", ParseInt(values[4].Trim(), "Damage Capacity", line) },
                     { "Production", ParseInt(values[5].Trim(), "Production", line) },
                     { "VP Value", ParseInt(values[6].Trim(), "VP Value", line) },
-                    { "Base Unit Name", values[7].Trim() },
-                    { "Base Type", values[8].Trim() },
-                    { "Base AA", ParseInt(values[9].Trim(), "Base AA", line) },
-                    { "Base Damage Cap", ParseInt(values[10].Trim(), "Base Damage Cap", line) }
+                    { "Facility", values[7].Trim() },
+                    { "Category", values[8].Trim() },
+                    { "Facility AA", ParseInt(values[9].Trim(), "Facility AA", line) },
+                    { "Facility Damage Cap", ParseInt(values[10].Trim(), "Facility Damage Cap", line) },
+                    { "Model", values[11].Trim() }
                 };
 
                 var zone = new Zone();
                 zone.LoadFromCsv(dict);
+                GD.Print($"Loaded zone: {zone.TargetName}");
                 zones.Add(zone);
             }
             catch (Exception e)
@@ -224,7 +244,7 @@ public partial class UnitDatabase : Node
             try
             {
                 var values = line.Split(",");
-                if (values.Length < 4) // Expect 4 columns
+                if (values.Length < 6) // Expect 6 columns
                 {
                     GD.PrintErr($"Invalid ace row: {line}");
                     continue;
@@ -235,11 +255,14 @@ public partial class UnitDatabase : Node
                     { "Pilot", values[0].Trim() },
                     { "Nationality", values[1].Trim() },
                     { "Cost", ParseInt(values[2].Trim(), "Cost", line) },
-                    { "Bonus", ParseInt(values[3].Trim(), "Bonus", line) }
+                    { "Bonus", ParseInt(values[3].Trim(), "Bonus", line) },
+                    { "Model", values[4].Trim() },
+                    { "FlavorText", values[5].Trim() }
                 };
 
                 var ace = new Aces();
                 ace.LoadFromCsv(dict);
+                GD.Print($"Loaded ace: {ace.Pilot}");
                 aces.Add(ace);
             }
             catch (Exception e)
@@ -248,6 +271,60 @@ public partial class UnitDatabase : Node
             }
         }
         return aces;
+    }
+
+    // Load events from CSV
+    private List<Event> LoadEvents(string path)
+    {
+        var events = new List<Event>();
+        using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
+        if (file == null)
+        {
+            GD.PrintErr($"Failed to open {path}");
+            return events;
+        }
+
+        // Skip header
+        file.GetLine();
+
+        while (!file.EofReached())
+        {
+            string line = file.GetLine();
+            if (string.IsNullOrEmpty(line)) continue;
+
+            try
+            {
+                var values = line.Split(",");
+                if (values.Length < 9) // Expect 9 columns
+                {
+                    GD.PrintErr($"Invalid event row: {line}");
+                    continue;
+                }
+
+                var dict = new Godot.Collections.Dictionary<string, Variant>
+                {
+                    { "Name", values[0].Trim() },
+                    { "Nationality", values[1].Trim() },
+                    { "Cost", ParseInt(values[2].Trim(), "Cost", line) },
+                    { "Effect", values[3].Trim() },
+                    { "Area of Effect", values[4].Trim() },
+                    { "Duration", values[5].Trim() },
+                    { "Maximum Quantity", ParseInt(values[6].Trim(), "Maximum Quantity", line) },
+                    { "Model", values[7].Trim() },
+                    { "Sound", values[8].Trim() }
+                };
+
+                var evt = new Event();
+                evt.LoadFromCsv(dict);
+                GD.Print($"Loaded event: {evt.Name}");
+                events.Add(evt);
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr($"Error parsing event row: {line}. Error: {e.Message}");
+            }
+        }
+        return events;
     }
 
     // Helper method to parse integers with error handling
@@ -261,16 +338,16 @@ public partial class UnitDatabase : Node
     // Utility method: Get air unit by name
     public AirUnit GetAirUnitByName(string unit)
     {
-        GD.Print("GetAirUnitByName called for: ", $"\"{unit}\"");
+        GD.Print($"GetAirUnitByName called for: \"{unit}\"");
         GD.Print("Available air unit names: ", string.Join(", ", airUnits.Select(u => $"\"{u.Unit}\"")));
         var foundUnit = airUnits.Find(u => u.Unit.Equals(unit, StringComparison.OrdinalIgnoreCase));
         if (foundUnit == null)
         {
-            GD.PrintErr("Unit not found: ", $"\"{unit}\"");
+            GD.PrintErr($"Unit not found: \"{unit}\"");
         }
         else
         {
-            GD.Print("Found unit: ", $"\"{foundUnit.Unit}\"");
+            GD.Print($"Found unit: \"{foundUnit.Unit}\"");
         }
         return foundUnit;
     }
@@ -278,21 +355,66 @@ public partial class UnitDatabase : Node
     // Utility method: Get antiaircraft unit by name
     public AntiAircraftUnit GetAntiAircraftUnitByName(string unit)
     {
-        return antiAircraftUnits.Find(u => u.Unit == unit);
+        var foundUnit = antiAircraftUnits.Find(u => u.Unit.Equals(unit, StringComparison.OrdinalIgnoreCase));
+        if (foundUnit == null)
+        {
+            GD.PrintErr($"Anti-aircraft unit not found: \"{unit}\"");
+        }
+        else
+        {
+            GD.Print($"Found anti-aircraft unit: \"{foundUnit.Unit}\"");
+        }
+        return foundUnit;
     }
 
     // Utility method: Get zone by target name
     public Zone GetZoneByTargetName(string targetName)
     {
-        return zones.Find(zone => zone.TargetName == targetName);
+        var foundZone = zones.Find(z => z.TargetName.Equals(targetName, StringComparison.OrdinalIgnoreCase));
+        if (foundZone == null)
+        {
+            GD.PrintErr($"Zone not found: \"{targetName}\"");
+        }
+        else
+        {
+            GD.Print($"Found zone: \"{foundZone.TargetName}\"");
+        }
+        return foundZone;
     }
 
     // Utility method: Get ace by pilot name
     public Aces GetAceByPilot(string pilot)
     {
-        return aces.Find(ace => ace.Pilot == pilot);
+        var foundAce = aces.Find(a => a.Pilot.Equals(pilot, StringComparison.OrdinalIgnoreCase));
+        if (foundAce == null)
+        {
+            GD.PrintErr($"Ace not found: \"{pilot}\"");
+        }
+        else
+        {
+            GD.Print($"Found ace: \"{foundAce.Pilot}\"");
+        }
+        return foundAce;
     }
 
+    // Utility method: Get event by name
+    public Event GetEventByName(string name)
+    {
+        GD.Print($"GetEventByName called for: \"{name}\"");
+        GD.Print("Available event names: ", string.Join(", ", events.Select(e => $"\"{e.Name}\"")));
+        var foundEvent = events.Find(e => e.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (foundEvent == null)
+        {
+            GD.PrintErr($"Event not found: \"{name}\"");
+        }
+        else
+        {
+            GD.Print($"Found event: \"{foundEvent.Name}\"");
+        }
+        return foundEvent;
+    }
+
+    // Utility method: Get zone as dictionary
     public Godot.Collections.Dictionary<string, Variant> GetZoneAsDictionary(string targetName)
     {
         var zone = GetZoneByTargetName(targetName);
@@ -301,18 +423,20 @@ public partial class UnitDatabase : Node
         {
             { "Target Name", zone.TargetName },
             { "Nationality", zone.TargetNationality },
-            { "Type", zone.TargetType },
-            { "AA Dice", zone.TargetAADice },
+            { "Domain", zone.TargetDomain },
+            { "AA Strength", zone.TargetAAStrength },
             { "Damage Capacity", zone.TargetDamageCapacity },
             { "Production", zone.TargetProduction },
             { "VP Value", zone.TargetVPValue },
-            { "Base Unit Name", zone.BaseName },
-            { "Base Type", zone.BaseType },
-            { "Base AA", zone.BaseAADice },
-            { "Base Damage Cap", zone.BaseDamageCapacity }
+            { "Facility", zone.FacilityName },
+            { "Category", zone.FacilityCategory },
+            { "Facility AA", zone.FacilityAAStrength },
+            { "Facility Damage Cap", zone.FacilityDamageCapacity },
+            { "Model", zone.Model }
         };
     }
 
+    // Utility method: Get air unit as dictionary
     public Godot.Collections.Dictionary<string, Variant> GetAirUnitAsDictionary(string unitName)
     {
         var unit = GetAirUnitByName(unitName);
@@ -321,16 +445,39 @@ public partial class UnitDatabase : Node
         {
             { "Unit", unit.Unit },
             { "Nationality", unit.Nationality },
-            { "Type", unit.Type },
-            { "Silhouette", unit.Silhouette },
+            { "Role", unit.Role },
+            { "Weight", unit.Weight },
             { "Cost", unit.Cost },
-            { "Air Attack Dice", unit.AirAttackDice },
-            { "Bombing Dice", unit.BombingDice },
+            { "Air Attack Strength", unit.AirAttackStrength },
+            { "Bombing Strength", unit.BombingStrength },
             { "Damage Capacity", unit.DamageCapacity },
-            { "Range", unit.Range },
+            { "Fuel", unit.Fuel },
             { "Year", unit.Year },
             { "Special 1", unit.Special1 },
-            { "Special 2", unit.Special2 }
+            { "Special 2", unit.Special2 },
+            { "Model LOD0", unit.ModelLOD0 },
+            { "Model LOD1", unit.ModelLOD1 },
+            { "Motor", unit.Motor },
+            { "Gun", unit.Gun }
+        };
+    }
+
+    // Utility method: Get event as dictionary
+    public Godot.Collections.Dictionary<string, Variant> GetEventAsDictionary(string name)
+    {
+        var evt = GetEventByName(name);
+        if (evt == null) return new Godot.Collections.Dictionary<string, Variant>();
+        return new Godot.Collections.Dictionary<string, Variant>
+        {
+            { "Name", evt.Name },
+            { "Nationality", evt.Nationality },
+            { "Cost", evt.Cost },
+            { "Effect", evt.Effect },
+            { "Area of Effect", evt.AreaOfEffect },
+            { "Duration", evt.Duration },
+            { "Maximum Quantity", evt.MaximumQuantity },
+            { "Model", evt.Model },
+            { "Sound", evt.Sound }
         };
     }
 }
