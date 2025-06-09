@@ -1,4 +1,4 @@
-Name,Nationality,Cost,Effect,Area of Effect,Duration,Maximum Quantity,Model,Sound
+Title,Nationality,Cost,Effect,Area of Effect,Duration,Maximum Quantity,Model,Sound
 Ballistic Missiles,Germany,25,If the Peenemünde target is in play and not destroyed the German player selects one Land target or AntiAircraft unit. 0 to 2 hits are immediately applied.,1 Zone,Immediate,2,missile.png,missile
 Russian Winter,Soviet,10,No German or Japanese Air Units may enter your zones this turn.,All player zones,1 turn,1,winter.png,wind
 Special Missions Squadron,UK,10,Remove one of your Bomber or Fighter/Bomber units from play.  Return the unit on the landing phase of the next turn.  After it returns it adds +1 to all its bombing attack attempts.  The player who destroys this unit gains 3 VP.,1 player Bomber or Fighter/Bomber unit,Game,1,specUK.png,bounce

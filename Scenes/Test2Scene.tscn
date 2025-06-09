@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2snm3omhi3w6"]
+[gd_scene load_steps=5 format=3 uid="uid://c2snm3omhi3w6"]
+
+[ext_resource type="AudioStream" uid="uid://s0a4pwt7p2r7" path="res://Assets/Audio/Music/IntroTheme.ogg" id="1_2ybma"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ghhm"]
 sky_top_color = Color(0.564064, 0.839566, 0.976816, 1)
@@ -58,3 +60,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 228, 0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.866768, -0.390704, 0.309943, 0.0815112, 0.724115, 0.684846, -0.492006, -0.568339, 0.659486, 68.2208, 68.2675, 132.044)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_2ybma")
+volume_db = -13.358
+parameters/looping = false
