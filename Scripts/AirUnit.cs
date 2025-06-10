@@ -32,7 +32,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                GD.Print("AirUnit dictionary keys: ", string.Join(", ", csvRow.Keys));
                 Unit = csvRow["Unit"].AsString();
                 Nationality = csvRow["Nationality"].AsString();
                 Role = csvRow["Role"].AsString();

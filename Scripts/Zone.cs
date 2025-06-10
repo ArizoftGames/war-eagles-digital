@@ -30,7 +30,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                GD.Print("Zone dictionary keys: ", string.Join(", ", csvRow.Keys));
                 TargetName = csvRow["Target Name"].AsString();
                 TargetNationality = csvRow["Nationality"].AsString();
                 TargetDomain = csvRow["Domain"].AsString();

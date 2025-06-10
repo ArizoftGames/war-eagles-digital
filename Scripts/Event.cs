@@ -26,7 +26,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                Name = csvRow["Title"].AsString();
+                Title = csvRow["Title"].AsString();
                 Nationality = csvRow["Nationality"].AsString();
                 Cost = csvRow["Cost"].AsInt32();
                 Effect = csvRow["Effect"].AsString();

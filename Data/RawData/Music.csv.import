@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://w4bffosep7bf"
+
+[deps]
+
+files=["res://Data/RawData/Music.Mood.translation", "res://Data/RawData/Music.Use Case.translation", "res://Data/RawData/Music.Title.translation", "res://Data/RawData/Music.Filename.translation"]
+
+source_file="res://Data/RawData/Music.csv"
+dest_files=["res://Data/RawData/Music.Mood.translation", "res://Data/RawData/Music.Use Case.translation", "res://Data/RawData/Music.Title.translation", "res://Data/RawData/Music.Filename.translation"]
+
+[params]
+
+compress=true
+delimiter=0

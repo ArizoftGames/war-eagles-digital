@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "D:\\War Eagles Digital\\war-eagles-digital\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\zone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\zone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\test2scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\test2scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\antiaircraftunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\antiaircraftunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\airunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\airunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\zone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\zone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\antiaircraftunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\antiaircraftunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|solutionrelative:scripts\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF8121B1-6F54-42D2-9F3E-1A8B5E66E5EA}|War Eagles Digital.csproj|d:\\war eagles digital\\war-eagles-digital\\scripts\\aces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,8 +46,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Zone.cs",
+              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Zone.cs",
+              "RelativeDocumentMoniker": "Scripts\\Zone.cs",
+              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Zone.cs",
+              "RelativeToolTip": "Scripts\\Zone.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAiwCAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:39:04.058Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Test2Scene.cs",
+              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Test2Scene.cs",
+              "RelativeDocumentMoniker": "Scripts\\Test2Scene.cs",
+              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Test2Scene.cs",
+              "RelativeToolTip": "Scripts\\Test2Scene.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T14:44:20.104Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -50,85 +85,84 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "AudioManager.cs",
+              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AudioManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\AudioManager.cs",
+              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AudioManager.cs",
+              "RelativeToolTip": "Scripts\\AudioManager.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAowBoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T23:41:22.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Event.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Event.cs",
               "RelativeDocumentMoniker": "Scripts\\Event.cs",
               "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Event.cs",
               "RelativeToolTip": "Scripts\\Event.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAA5wC0AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T20:18:57.117Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Zone.cs",
-              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Zone.cs",
-              "RelativeDocumentMoniker": "Scripts\\Zone.cs",
-              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Zone.cs",
-              "RelativeToolTip": "Scripts\\Zone.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAuwEMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T12:39:04.058Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "UnitDatabase.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\UnitDatabase.cs",
               "RelativeDocumentMoniker": "Scripts\\UnitDatabase.cs",
               "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\UnitDatabase.cs",
               "RelativeToolTip": "Scripts\\UnitDatabase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALwBAAAAAAAAAAAnwJABAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T12:38:48.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T12:38:48.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AirUnit.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AirUnit.cs",
               "RelativeDocumentMoniker": "Scripts\\AirUnit.cs",
               "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AirUnit.cs",
               "RelativeToolTip": "Scripts\\AirUnit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAiwCIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T12:38:38.753Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Aces.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Aces.cs",
               "RelativeDocumentMoniker": "Scripts\\Aces.cs",
               "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Aces.cs",
               "RelativeToolTip": "Scripts\\Aces.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAmwBgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T12:38:32.22Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AntiAircraftUnit.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AntiAircraftUnit.cs",
               "RelativeDocumentMoniker": "Scripts\\AntiAircraftUnit.cs",
               "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AntiAircraftUnit.cs",
               "RelativeToolTip": "Scripts\\AntiAircraftUnit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAowBsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T12:36:51.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "user_guide.md",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Docs\\user_guide.md",
               "RelativeDocumentMoniker": "Docs\\user_guide.md",

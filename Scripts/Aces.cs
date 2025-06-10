@@ -22,7 +22,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                GD.Print("Aces dictionary keys: ", string.Join(", ", csvRow.Keys));
                 Pilot = csvRow["Pilot"].AsString();
                 Nationality = csvRow["Nationality"].AsString();
                 Cost = csvRow["Cost"].AsInt32();

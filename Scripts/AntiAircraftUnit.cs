@@ -25,7 +25,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                GD.Print("AntiAircraftUnit dictionary keys: ", string.Join(", ", csvRow.Keys));
                 Unit = csvRow["Unit"].AsString();
                 Nationality = csvRow["Nationality"].AsString();
                 Cost = csvRow["Cost"].AsInt32();

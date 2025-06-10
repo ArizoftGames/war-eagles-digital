@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d37hbd4rp7lr6"
+
+[deps]
+
+files=["res://Data/RawData/SoundEffects.Status.translation", "res://Data/RawData/SoundEffects.Gun.translation", "res://Data/RawData/SoundEffects.Sound.translation", "res://Data/RawData/SoundEffects.Filename.translation"]
+
+source_file="res://Data/RawData/SoundEffects.csv"
+dest_files=["res://Data/RawData/SoundEffects.Status.translation", "res://Data/RawData/SoundEffects.Gun.translation", "res://Data/RawData/SoundEffects.Sound.translation", "res://Data/RawData/SoundEffects.Filename.translation"]
+
+[params]
+
+compress=true
+delimiter=0

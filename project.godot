@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="War Eagles Digital"
-run/main_scene="uid://ddhvpj7wg3k2p"
+run/main_scene="uid://c2snm3omhi3w6"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 UnitDatabase="*res://Scripts/UnitDatabase.cs"
+AudioManager="*res://Scripts/AudioManager.cs"
 
 [display]
 

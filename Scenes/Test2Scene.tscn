@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2snm3omhi3w6"]
 
-[ext_resource type="AudioStream" uid="uid://s0a4pwt7p2r7" path="res://Assets/Audio/Music/IntroTheme.ogg" id="1_2ybma"]
+[ext_resource type="Script" uid="uid://h55b6tj2xnuo" path="res://Scripts/Test2Scene.cs" id="1_2ybma"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ghhm"]
 sky_top_color = Color(0.564064, 0.839566, 0.976816, 1)
@@ -18,6 +18,7 @@ sky = SubResource("Sky_04rgg")
 tonemap_mode = 2
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_2ybma")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_whms8")
@@ -30,38 +31,102 @@ shadow_enabled = true
 
 [node name="PZone3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.992)
+visible = false
 
 [node name="PZone2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0, 80)
+visible = false
 
 [node name="PZone1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 0, 80)
+visible = false
 
 [node name="PZone4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 80)
+visible = false
 
 [node name="PZone5" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 80)
+visible = false
 
 [node name="OZone1" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -228, 0, -80)
+visible = false
 
 [node name="OZone2" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -114, 0, -80)
+visible = false
 
 [node name="OZone3" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -80)
+visible = false
 
 [node name="OZone4" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114, 0, -80)
+visible = false
 
 [node name="OZone5" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 228, 0, -80)
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.866768, -0.390704, 0.309943, 0.0815112, 0.724115, 0.684846, -0.492006, -0.568339, 0.659486, 68.2208, 68.2675, 132.044)
+transform = Transform3D(-0.00462014, 0.934923, -0.354822, -0.132104, -0.352287, -0.926522, -0.991225, 0.0425926, 0.125134, -166.508, 1283.36, -551.941)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_2ybma")
-volume_db = -13.358
-parameters/looping = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayUSConfident" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_right = 90.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Play US Confident"
+
+[node name="PlayOpenBattleBoard" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 34.0
+offset_right = 190.0
+offset_bottom = 65.0
+text = "Play Battle"
+
+[node name="PlayRadialDive" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 68.0
+offset_right = 190.0
+offset_bottom = 99.0
+text = "Play Radial DIve"
+
+[node name="PlayAuto" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 102.0
+offset_right = 190.0
+offset_bottom = 133.0
+text = "Play Auto"
+
+[node name="PlayTypewriter" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 136.0
+offset_right = 190.0
+offset_bottom = 167.0
+text = "Play Typewriter"

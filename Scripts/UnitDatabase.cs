@@ -32,7 +32,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                GD.Print($"LoadAllData called at {Time.GetTicksMsec()}ms\nStack Trace: {new System.Diagnostics.StackTrace()}");
                 airUnits = LoadAirUnits("res://Data/RawData/WEBasicAirUnits.csv");
                 antiAircraftUnits = LoadAntiAircraftUnits("res://Data/RawData/WEBasicAntiAircraftUnits.csv");
                 zones = LoadZones("res://Data/RawData/WEBasicZones.csv");
@@ -102,7 +101,6 @@ namespace WarEaglesDigital.Scripts
 
                     var unit = new AirUnit();
                     unit.LoadFromCsv(dict);
-                    GD.Print($"Loaded air unit: {unit.Unit}");
                     units.Add(unit);
                 }
                 catch (Exception e)
@@ -156,7 +154,6 @@ namespace WarEaglesDigital.Scripts
 
                     var unit = new AntiAircraftUnit();
                     unit.LoadFromCsv(dict);
-                    GD.Print($"Loaded anti-aircraft unit: {unit.Unit}");
                     units.Add(unit);
                 }
                 catch (Exception e)
@@ -264,7 +261,6 @@ namespace WarEaglesDigital.Scripts
 
                     var ace = new Aces();
                     ace.LoadFromCsv(dict);
-                    GD.Print($"Loaded ace: {ace.Pilot}");
                     aces.Add(ace);
                 }
                 catch (Exception e)
@@ -305,7 +301,7 @@ namespace WarEaglesDigital.Scripts
 
                     var dict = new Godot.Collections.Dictionary<string, Variant>
                     {
-                        { "Name", values[0].Trim() },
+                        { "Title", values[0].Trim() },
                         { "Nationality", values[1].Trim() },
                         { "Cost", ParseInt(values[2].Trim(), "Cost", line) },
                         { "Effect", values[3].Trim() },
@@ -318,7 +314,6 @@ namespace WarEaglesDigital.Scripts
 
                     var evt = new Event();
                     evt.LoadFromCsv(dict);
-                    GD.Print($"Loaded event: {evt.Name}");
                     events.Add(evt);
                 }
                 catch (Exception e)
@@ -340,8 +335,6 @@ namespace WarEaglesDigital.Scripts
         // Utility method: Get air unit by name
         public AirUnit GetAirUnitByName(string unit)
         {
-            GD.Print($"GetAirUnitByName called for: \"{unit}\"");
-            GD.Print($"Available air unit names: {string.Join(", ", airUnits.Select(u => $"\"{u.Unit}\""))}");
             var foundAirUnit = airUnits.Find(u => u.Unit.Equals(unit, StringComparison.OrdinalIgnoreCase));
             if (foundAirUnit == null)
             {
@@ -402,9 +395,7 @@ namespace WarEaglesDigital.Scripts
         // Utility method: Get event by name
         public Event GetEventByName(string name)
         {
-            GD.Print($"GetEventByName called for: \"{name}\"");
-            GD.Print($"Available event names: {string.Join(", ", events.Select(e => $"\"{e.Name}\""))}");
-            var foundEvent = events.Find(e => e.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var foundEvent = events.Find(e => e.Title.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (foundEvent == null)
             {
                 GD.PrintErr($"Event not found: \"{name}\"");
@@ -474,7 +465,7 @@ namespace WarEaglesDigital.Scripts
             if (evt == null) return [];
             return new Godot.Collections.Dictionary<string, Variant>
             {
-                { "Name", evt.Name },
+                { "Title", evt.Title },
                 { "Nationality", evt.Nationality },
                 { "Cost", evt.Cost },
                 { "Effect", evt.Effect },
