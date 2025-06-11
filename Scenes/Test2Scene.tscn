@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2snm3omhi3w6"]
+[gd_scene load_steps=8 format=3 uid="uid://c2snm3omhi3w6"]
 
 [ext_resource type="Script" uid="uid://h55b6tj2xnuo" path="res://Scripts/Test2Scene.cs" id="1_2ybma"]
+[ext_resource type="PackedScene" uid="uid://0i5g5pmyt5oj" path="res://Assets/Models/Zones/Augsburg.glb" id="2_rfgjg"]
+[ext_resource type="PackedScene" uid="uid://jim70oxdrqjs" path="res://Assets/Models/Aircraft/BostonLOD0.glb" id="3_rfgjg"]
+[ext_resource type="PackedScene" uid="uid://ce1pfg37bd4g" path="res://Assets/Models/Aircraft/Ar234LOD0.glb" id="4_03d0y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ghhm"]
 sky_top_color = Color(0.564064, 0.839566, 0.976816, 1)
@@ -31,7 +34,8 @@ shadow_enabled = true
 
 [node name="PZone3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.992)
-visible = false
+
+[node name="Augsburg" parent="PZone3" instance=ExtResource("2_rfgjg")]
 
 [node name="PZone2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0, 80)
@@ -70,11 +74,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 228, 0
 visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.00462014, 0.934923, -0.354822, -0.132104, -0.352287, -0.926522, -0.991225, 0.0425926, 0.125134, -166.508, 1283.36, -551.941)
+transform = Transform3D(1, 0, 0, 0, 0.24243, 0.970169, 0, -0.970169, 0.24243, -4.91719, 37.205, 110.765)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -130,3 +135,13 @@ offset_top = 136.0
 offset_right = 190.0
 offset_bottom = 167.0
 text = "Play Typewriter"
+
+[node name="Plane0" type="MeshInstance3D" parent="."]
+
+[node name="BostonLOD0" parent="Plane0" instance=ExtResource("3_rfgjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3098, 0, 93.9038)
+
+[node name="Plane1" type="MeshInstance3D" parent="."]
+
+[node name="Ar234LOD0" parent="Plane1" instance=ExtResource("4_03d0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90.8741)

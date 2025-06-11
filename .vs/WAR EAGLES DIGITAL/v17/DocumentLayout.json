@@ -59,21 +59,7 @@
               "ViewState": "AgIAABgAAAAAAAAAAAAiwCAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T12:39:04.058Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Test2Scene.cs",
-              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Test2Scene.cs",
-              "RelativeDocumentMoniker": "Scripts\\Test2Scene.cs",
-              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Test2Scene.cs",
-              "RelativeToolTip": "Scripts\\Test2Scene.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAkwAQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T14:44:20.104Z",
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -85,13 +71,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Test2Scene.cs",
+              "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Test2Scene.cs",
+              "RelativeDocumentMoniker": "Scripts\\Test2Scene.cs",
+              "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\Test2Scene.cs",
+              "RelativeToolTip": "Scripts\\Test2Scene.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T14:44:20.104Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AudioManager.cs",
               "DocumentMoniker": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AudioManager.cs",
               "RelativeDocumentMoniker": "Scripts\\AudioManager.cs",
               "ToolTip": "D:\\War Eagles Digital\\war-eagles-digital\\Scripts\\AudioManager.cs",
               "RelativeToolTip": "Scripts\\AudioManager.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAowBoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwBoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T23:41:22.513Z",
               "EditorCaption": ""
@@ -106,8 +104,7 @@
               "RelativeToolTip": "Scripts\\Event.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAA5wC0AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T20:18:57.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T20:18:57.117Z"
             },
             {
               "$type": "Document",
@@ -131,8 +128,7 @@
               "RelativeToolTip": "Scripts\\AirUnit.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAiwCIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T12:38:38.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T12:38:38.753Z"
             },
             {
               "$type": "Document",
@@ -144,8 +140,7 @@
               "RelativeToolTip": "Scripts\\Aces.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAmwBgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T12:38:32.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T12:38:32.22Z"
             },
             {
               "$type": "Document",
@@ -157,8 +152,7 @@
               "RelativeToolTip": "Scripts\\AntiAircraftUnit.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAowBsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T12:36:51.513Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T12:36:51.513Z"
             },
             {
               "$type": "Document",
