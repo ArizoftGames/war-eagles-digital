@@ -69,7 +69,7 @@ public partial class Test2Scene : Node3D
     {
         try
         {
-            _audioManager.PlaySoundEffect("typewriter");
+            _audioManager.PlaySoundEffect("DiveBomb");
         }
         catch (Exception ex)
         {

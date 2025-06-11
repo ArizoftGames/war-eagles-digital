@@ -20,7 +20,7 @@ namespace WarEaglesDigital.Scripts
         public string Special1 { get; set; } // e.g., "Dive Bomber: Each hit vs Antiaircraft Units counts as 2 hits."
         public string Special2 { get; set; } // Second special ability, if any
         public string ModelLOD0 { get; set; } // e.g., "A6M5LOD0.glb"
-        public string ModelLOD1 { get; set; } // e.g., "A6M5LOD1.glb"
+        public string Bomb { get; set; } // e.g., "None"
         public string Motor { get; set; } // e.g., "radial"
         public string Gun { get; set; } // e.g., "twenty"
 
@@ -45,7 +45,7 @@ namespace WarEaglesDigital.Scripts
                 Special1 = csvRow["Special 1"].AsString();
                 Special2 = csvRow["Special 2"].AsString();
                 ModelLOD0 = csvRow["Model LOD0"].AsString();
-                ModelLOD1 = csvRow["Model LOD1"].AsString();
+                Bomb = csvRow["Bomb"].AsString();
                 Motor = csvRow["Motor"].AsString();
                 Gun = csvRow["Gun"].AsString();
                 GD.Print($"Loaded AirUnit: {Unit}");

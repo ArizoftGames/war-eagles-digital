@@ -109,7 +109,7 @@ namespace WarEaglesDigital.Scripts
                 try
                 {
                     var values = line.Split(",");
-                    if (values.Length < 5)
+                    if (values.Length < 6)
                     {
                         GD.PrintErr($"Invalid sound effect row: {line}");
                         continue;
@@ -121,18 +121,20 @@ namespace WarEaglesDigital.Scripts
                         { "Status", values[1].Trim() },
                         { "Gun", values[2].Trim() },
                         { "Sound", values[3].Trim() },
-                        { "Filename", values[4].Trim() }
+                        { "Bomb", values[4].Trim() },
+                        { "Filename", values[5].Trim() }
                     };
 
                     string motor = dict["Motor"];
                     string status = dict["Status"];
                     string gun = dict["Gun"];
                     string sound = dict["Sound"];
+                    string bomb = dict["Bomb"];
                     string filename = dict["Filename"];
 
                     if (string.IsNullOrEmpty(filename)) continue;
 
-                    string key = string.IsNullOrEmpty(motor) ? (string.IsNullOrEmpty(gun) ? (string.IsNullOrEmpty(sound) ? filename : sound) : gun) : $"{motor}{status}";
+                    string key = string.IsNullOrEmpty(motor) ? (string.IsNullOrEmpty(gun) ? (string.IsNullOrEmpty(sound) ? (string.IsNullOrEmpty(bomb) ? filename : bomb) : sound) : gun) : $"{motor}{status}";
                     var player = new AudioStreamPlayer();
                     player.Stream = GD.Load<AudioStream>($"res://audio/effects/{filename}");
                     player.Name = key;

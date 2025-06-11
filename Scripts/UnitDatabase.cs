@@ -94,7 +94,7 @@ namespace WarEaglesDigital.Scripts
                         { "Special 1", values[10].Trim() },
                         { "Special 2", values[11].Trim() },
                         { "Model LOD0", values[12].Trim() },
-                        { "Model LOD1", values[13].Trim() },
+                        { "Bomb", values[13].Trim() },
                         { "Motor", values[14].Trim() },
                         { "Gun", values[15].Trim() }
                     };
@@ -451,7 +451,7 @@ namespace WarEaglesDigital.Scripts
                 { "Special 1", unit.Special1 },
                 { "Special 2", unit.Special2 },
                 { "Model LOD0", unit.ModelLOD0 },
-                { "Model LOD1", unit.ModelLOD1 },
+                { "Bomb", unit.Bomb },
                 { "Motor", unit.Motor },
                 { "Gun", unit.Gun }
             };
