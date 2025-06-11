@@ -27,3 +27,5 @@ mono_crash.*.json
 D:/War Eagles Digital/war-eagles-digital/.vs
 D:/War Eagles Digital/war-eagles-digital/.vs/
 D:/War Eagles Digital/war-eagles-digital/.vs/*
+\.vs\
+.vs\
