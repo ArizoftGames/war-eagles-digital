@@ -21,16 +21,21 @@ mono_crash.*.json
 
 .vs/WAR EAGLES DIGITAL/FileContentIndex/
 .vs/WAR EAGLES DIGITAL/CopilotIndices/
-/.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/CodeChunks.db
-/.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/CodeChunks.db-shm
-/.vs/ProjectEvaluation/war eagles digital.metadata.v9.bin
-/.vs/ProjectEvaluation/war eagles digital.projects.v9.bin
-/.vs/ProjectEvaluation/war eagles digital.strings.v9.bin
+/.vs
+.vs
+.vs/
+D:/War Eagles Digital/war-eagles-digital/.vs
+D:/War Eagles Digital/war-eagles-digital/.vs/
+D:/War Eagles Digital/war-eagles-digital/.vs/*
+\.vs\
+.vs\
+/.vs/WAR EAGLES DIGITAL/v17/.futdcache.v2
+/.vs/WAR EAGLES DIGITAL/v17/.suo
+/.vs/WAR EAGLES DIGITAL/v17/DocumentLayout.backup.json
+/.vs/WAR EAGLES DIGITAL/v17/DocumentLayout.json
 /.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/CodeChunks.db
 /.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/CodeChunks.db-shm
 /.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/CodeChunks.db-wal
 /.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/SemanticSymbols.db
 /.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/SemanticSymbols.db-shm
 /.vs/WAR EAGLES DIGITAL/CopilotIndices/17.14.734.62261/SemanticSymbols.db-wal
-/.vs/WAR EAGLES DIGITAL/v17/DocumentLayout.backup.json
-/.vs/WAR EAGLES DIGITAL/v17/DocumentLayout.json
