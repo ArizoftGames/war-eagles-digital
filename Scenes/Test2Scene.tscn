@@ -1,0 +1,146 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2snm3omhi3w6"]
+
+[ext_resource type="Script" uid="uid://h55b6tj2xnuo" path="res://Scripts/Test2Scene.cs" id="1_2ybma"]
+[ext_resource type="PackedScene" uid="uid://0i5g5pmyt5oj" path="res://Assets/Models/Zones/Augsburg.glb" id="2_rfgjg"]
+[ext_resource type="PackedScene" uid="uid://jim70oxdrqjs" path="res://Assets/Models/Aircraft/BostonLOD0.glb" id="3_rfgjg"]
+[ext_resource type="PackedScene" uid="uid://ce1pfg37bd4g" path="res://Assets/Models/Aircraft/Ar234LOD0.glb" id="4_03d0y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ghhm"]
+sky_top_color = Color(0.564064, 0.839566, 0.976816, 1)
+sky_horizon_color = Color(1.57256, 1.79975, 1.66685, 1)
+ground_bottom_color = Color(0.36677, 1, 0.331145, 1)
+ground_horizon_color = Color(1.57256, 1.79975, 1.66685, 1)
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_04rgg"]
+sky_material = SubResource("ProceduralSkyMaterial_0ghhm")
+
+[sub_resource type="Environment" id="Environment_whms8"]
+background_mode = 2
+sky = SubResource("Sky_04rgg")
+tonemap_mode = 2
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_2ybma")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_whms8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 69.1967, 200, 0)
+light_color = Color(1, 1, 0.901961, 1)
+light_energy = 0.3
+shadow_enabled = true
+
+[node name="PZone3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.992)
+
+[node name="Augsburg" parent="PZone3" instance=ExtResource("2_rfgjg")]
+
+[node name="PZone2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0, 80)
+visible = false
+
+[node name="PZone1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228, 0, 80)
+visible = false
+
+[node name="PZone4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 80)
+visible = false
+
+[node name="PZone5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 80)
+visible = false
+
+[node name="OZone1" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -228, 0, -80)
+visible = false
+
+[node name="OZone2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -114, 0, -80)
+visible = false
+
+[node name="OZone3" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -80)
+visible = false
+
+[node name="OZone4" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114, 0, -80)
+visible = false
+
+[node name="OZone5" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 228, 0, -80)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.24243, 0.970169, 0, -0.970169, 0.24243, -4.91719, 37.205, 110.765)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayUSConfident" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_right = 90.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Play US Confident"
+
+[node name="PlayOpenBattleBoard" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 34.0
+offset_right = 190.0
+offset_bottom = 65.0
+text = "Play Battle"
+
+[node name="PlayRadialDive" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 68.0
+offset_right = 190.0
+offset_bottom = 99.0
+text = "Play Radial DIve"
+
+[node name="PlayAuto" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 102.0
+offset_right = 190.0
+offset_bottom = 133.0
+text = "Play Auto"
+
+[node name="PlayTypewriter" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 136.0
+offset_right = 190.0
+offset_bottom = 167.0
+text = "Play Typewriter"
+
+[node name="Plane0" type="MeshInstance3D" parent="."]
+
+[node name="BostonLOD0" parent="Plane0" instance=ExtResource("3_rfgjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3098, 0, 93.9038)
+
+[node name="Plane1" type="MeshInstance3D" parent="."]
+
+[node name="Ar234LOD0" parent="Plane1" instance=ExtResource("4_03d0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90.8741)

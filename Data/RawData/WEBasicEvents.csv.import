@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dwv3v878ooiw8"
+
+[deps]
+
+files=["res://Data/RawData/WEBasicEvents.Nationality.translation", "res://Data/RawData/WEBasicEvents.Cost.translation", "res://Data/RawData/WEBasicEvents.Effect.translation", "res://Data/RawData/WEBasicEvents.Area of Effect.translation", "res://Data/RawData/WEBasicEvents.Duration.translation", "res://Data/RawData/WEBasicEvents.Maximum Quantity.translation", "res://Data/RawData/WEBasicEvents.Model.translation", "res://Data/RawData/WEBasicEvents.Sound.translation"]
+
+source_file="res://Data/RawData/WEBasicEvents.csv"
+dest_files=["res://Data/RawData/WEBasicEvents.Nationality.translation", "res://Data/RawData/WEBasicEvents.Cost.translation", "res://Data/RawData/WEBasicEvents.Effect.translation", "res://Data/RawData/WEBasicEvents.Area of Effect.translation", "res://Data/RawData/WEBasicEvents.Duration.translation", "res://Data/RawData/WEBasicEvents.Maximum Quantity.translation", "res://Data/RawData/WEBasicEvents.Model.translation", "res://Data/RawData/WEBasicEvents.Sound.translation"]
+
+[params]
+
+compress=true
+delimiter=0

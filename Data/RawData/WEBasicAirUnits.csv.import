@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d26uxtk6qfilx"
+
+[deps]
+
+files=["res://Data/RawData/WEBasicAirUnits.Nationality.translation", "res://Data/RawData/WEBasicAirUnits.Role.translation", "res://Data/RawData/WEBasicAirUnits.Weight.translation", "res://Data/RawData/WEBasicAirUnits.Cost.translation", "res://Data/RawData/WEBasicAirUnits.Air Attack Strength.translation", "res://Data/RawData/WEBasicAirUnits.Bombing Strength.translation", "res://Data/RawData/WEBasicAirUnits.Damage Capacity.translation", "res://Data/RawData/WEBasicAirUnits.Fuel.translation", "res://Data/RawData/WEBasicAirUnits.Year.translation", "res://Data/RawData/WEBasicAirUnits.Special 1.translation", "res://Data/RawData/WEBasicAirUnits.Special 2.translation", "res://Data/RawData/WEBasicAirUnits.Model LOD0.translation", "res://Data/RawData/WEBasicAirUnits.Bomb.translation", "res://Data/RawData/WEBasicAirUnits.Motor.translation", "res://Data/RawData/WEBasicAirUnits.Gun.translation"]
+
+source_file="res://Data/RawData/WEBasicAirUnits.csv"
+dest_files=["res://Data/RawData/WEBasicAirUnits.Nationality.translation", "res://Data/RawData/WEBasicAirUnits.Role.translation", "res://Data/RawData/WEBasicAirUnits.Weight.translation", "res://Data/RawData/WEBasicAirUnits.Cost.translation", "res://Data/RawData/WEBasicAirUnits.Air Attack Strength.translation", "res://Data/RawData/WEBasicAirUnits.Bombing Strength.translation", "res://Data/RawData/WEBasicAirUnits.Damage Capacity.translation", "res://Data/RawData/WEBasicAirUnits.Fuel.translation", "res://Data/RawData/WEBasicAirUnits.Year.translation", "res://Data/RawData/WEBasicAirUnits.Special 1.translation", "res://Data/RawData/WEBasicAirUnits.Special 2.translation", "res://Data/RawData/WEBasicAirUnits.Model LOD0.translation", "res://Data/RawData/WEBasicAirUnits.Bomb.translation", "res://Data/RawData/WEBasicAirUnits.Motor.translation", "res://Data/RawData/WEBasicAirUnits.Gun.translation"]
+
+[params]
+
+compress=true
+delimiter=0

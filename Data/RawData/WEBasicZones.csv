@@ -1,0 +1,36 @@
+Target Name,Nationality,Domain,AA Strength,Damage Capacity,Production,VP Value,Facility,Category,Facility AA,Facility Damage Cap,Model
+Ploesti Oilfields,Germany,Land,3,10,25,6,St. Omer,Airstrip,1,5,Ploesti.glb
+Augsburg,Germany,Land,1,15,6,6,Döberitz,Airbase,2,15,Augsburg.glb
+The Möhne Dam,Germany,Land,0,10,26,8,Abbeville,Airstrip,1,5,MöhneDam.glb
+Berlin,Germany,Land,4,25,16,1,Oberdorf,Airstrip,1,5,Berlin.glb
+Hamburg Railyard,Germany,Land,5,15,14,3,Montrieul,Airfield,1,10,HamburgRailYard.glb
+Schweinfurt,Germany,Land,4,15,15,5,St. Pol,Airfield,1,10,Schweinfurt.glb
+Peenemünde,Germany,Land,0,5,24,9,Städe,Airfield,1,10,Peenemünde.glb
+Formosa,Japan,Land,1,5,16,7,Taihoku,Airbase,2,15,Formosa.glb
+Sasebo Naval Arsenal,Japan,Land,3,15,10,3,Omura,Airfield,1,10,Sasebo.glb
+Betio,Japan,Land,1,20,3,6,Makin,Airstrip,1,5,Betio.glb
+Truk,Japan,Land,4,10,39,1,Rabaul,Airfield,1,10,Truk.glb
+Yokohama,Japan,Land,2,10,19,8,Chofu,Airstrip,1,5,Yokohama.glb
+Tokyo,Japan,Land,2,25,6,2,Narimasu,Airbase,2,15,Tokyo.glb
+Osaka,Japan,Land,4,25,13,1,Kavieng,Airstrip,1,5,Osaka.glb
+The Kremlin,Soviet,Land,4,10,17,5,Poltava,Airbase,2,15,Kremlin.glb
+Third Shock Army,Soviet,Land,4,20,26,1,Serafimovitch,Airstrip,1,5,ThirdShockArmy.glb
+Stalingrad,Soviet,Land,4,15,1,8,Maikop,Airfield,1,10,Stalingrad.glb
+Tractor Factory,Soviet,Land,0,5,39,9,Yezovka,Airstrip,1,5,TractorFactory.glb
+Kronstadt,Soviet,Land,4,25,5,2,Stavropol,Airfield,1,10,Kronstadt.glb
+Leningrad,Soviet,Land,0,15,25,7,Abgerovo,Airstrip,1,5,Leningrad.glb
+Voronezh,Soviet,Land,3,10,35,5,Betekovka,Airstrip,1,5,Voronezh.glb
+Southampton,UK,Land,1,10,4,9,Eastleigh,Airbase,2,15,Southampton.glb
+Birmingham,UK,Land,1,10,32,3,Manston,Airbase,2,15,Birmingham.glb
+Singapore,UK,Land,1,15,34,4,Kuala Lumpur,Airstrip,1,5,Singapore.glb
+Malta,UK,Land,0,25,5,7,Valetta,Airstrip,1,5,Malta.glb
+London,UK,Land,4,15,4,3,Hornchurch,Airbase,2,15,London.glb
+Portsmouth,UK,Land,2,15,28,5,Debden,Airstrip,1,5,Portsmouth.glb
+Coventry,UK,Land,2,10,26,6,Biggin Hill,Airfield,1,10,Coventry.glb
+Tank Farm,USA,Land,0,5,21,6,Wheeler Field,Airstrip,1,5,TankFarm.glb
+Port Moresby,USA,Land,2,15,17,8,Kila Kila,Airstrip,1,5,PortMoresby.glb
+Cavite Bay,USA,Land,2,10,26,4,Clark Field,Airbase,2,15,CaviteBay.glb
+Utah Beach,USA,Land,4,10,13,2,Boxted,Airbase,2,15,UtahBeach.glb
+Grimbergen,USA,Land,1,25,5,7,Frescaty,Airstrip,1,5,Grimbergen.glb
+Guadalcanal,USA,Land,3,15,8,3,Henderson,Airfield,1,10,Guadalcanal.glb
+Midway Islands,USA,Land,1,5,26,9,Eastern Is.,Airfield,1,10,Midway.glb

@@ -1,0 +1,19 @@
+Unit ,Nationality,Cost,AntiAircraft Strength,Damage Capacity,Domain,Special,Model,Gun
+HF-DF,UK,8,0,2,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat.",HFDFLOD0.glb,
+Freya,Germany,8,0,2,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat.",FreyaLOD0.glb,
+Otsu,Japan,8,0,2,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat.",TaChi6LOD0.glb,
+AN/TPS-3,USA,8,0,2,Land,"Radar: When present in a zone, owner is always the initiative player for all rounds of air combat.",AN_TPS3LOD0.glb,
+Type 96 25mm,Japan,4,2,1,Land,,Type9625mmLOD0.glb,Auto
+2CMFlAK38LOD0.glb,Germany,2,1,1,Land,,2CMFlAK38LOD0.glb,Auto
+3.7 cm FlAK 28,Germany,4,2,1,Land,,37mmFlAK28LOD0.glb,Medium
+Bofors 40mm,USA,4,2,1,Land,,40mmBoforsLOD0.glb,Medium
+Type 98 20mm,Japan,2,1,1,Land,,Type9820mmLOD0.glb,Auto
+ZU-57,Soviet,4,2,1,Land,,Zu57LOD0.glb,Medium
+ZU-76,Soviet,6,3,2,Land,,ZU76LOD0.glb,Heavy
+20mm Oerlikon,UK,2,1,1,Land,,20MMOerlikonLOD0.glb,Auto
+QF 40mm Mk III,UK,4,2,1,Land,,QF40mmLOD0.glb,Medium
+90mm M2,USA,6,3,2,Land,,90mmM2LOD0.glb,Heavy
+M2 .50 Quad,USA,2,1,1,Land,,M2FiftyQuadLOD0.glb,fifty
+8.8 cm FlAK 18,Germany,6,3,2,Land,,88FlAK18LOD0.glb,Heavy
+Type 10 120mm,Japan,6,3,2,Land,,Type10120mmLOD0.glb,Heavy
+QF 3in 20CWT,UK,6,3,2,Land,,QF3inLOD0.glb,Heavy

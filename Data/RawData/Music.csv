@@ -1,0 +1,27 @@
+Nationality,Mood,Use Case,Title,Filename
+Germany,Confident,,MainGermanyConfident,MainGermanyConfident.ogg
+Germany,Cautious,,MainGermanyCautious,MainGermanyCautious.ogg
+Germany,Pugnacious,,MainGermanyPugnacious,MainGermanyPugnacious.ogg
+Germany,Apprehensive,,MainGermanyApprehensive,MainGermanyApprehensive.ogg
+Japan,Confident,,MainJapanConfident,MainJapanConfident.ogg
+Japan,Cautious,,MainJapanCautious,MainJapanCautious.ogg
+Japan,Pugnacious,,MainJapanPugnacious,MainJapanPugnacious.ogg
+Japan,Apprehensive,,MainJapanApprehensive,MainJapanApprehensive.ogg
+Soviet,Confident,,MainSovietConfident,MainSovietConfident.ogg
+Soviet,Cautious,,MainSovietCautious,MainSovietCautious.ogg
+Soviet,Pugnacious,,MainSovietPugnacious,MainSovietPugnacious.ogg
+Soviet,Apprehensive,,MainSovietApprehensive,MainSovietApprehensive.ogg
+UK,Confident,,MainUKConfident,MainUKConfident.ogg
+UK,Cautious,,MainUKCautious,MainUKCautious.ogg
+UK,Pugnacious,,MainUKPugnacious,MainUKPugnacious.ogg
+UK,Apprehensive,,MainUKApprehensive,MainUKApprehensive.ogg
+USA,Confident,,MainUSConfident,MainUSConfident.ogg
+USA,Cautious,,MainUSCautious,MainUSCautious.ogg
+USA,Pugnacious,,MainUSPugnacious,MainUSPugnacious.ogg
+USA,Apprehensive,,MainUSApprehensive,MainUSApprehensive.ogg
+,,Open Battle Board,Battle Theme,BattleTheme.ogg
+,,Open Credits Animation,Fatigue,CreditRoll.ogg
+,,Player Loses,Think About It,DefeatTheme.ogg
+,,Start Game,Honor Bound,IntroTheme.ogg
+,,Open Extras ,All At Sea,ModelsFolderTheme.ogg
+,,Player Wins,VictoryTheme,VictoryTheme.ogg

@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b4twi3ehm2rlw"
+path.s3tc="res://.godot/imported/Yak3LOD0_Image_10.jpg-abd7bb541b92c8e2972fbf227be1cdd9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e211483fea0676d20f98f4a223e633ef"
+}
+
+[deps]
+
+source_file="res://Assets/Models/Aircraft/Yak3LOD0_Image_10.jpg"
+dest_files=["res://.godot/imported/Yak3LOD0_Image_10.jpg-abd7bb541b92c8e2972fbf227be1cdd9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
