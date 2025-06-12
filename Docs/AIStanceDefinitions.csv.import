@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c0f4u1pffou31"
+
+[deps]
+
+files=["res://Docs/AIStanceDefinitions.Strategy Low.translation", "res://Docs/AIStanceDefinitions.Strategy High.translation", "res://Docs/AIStanceDefinitions.Aggression Low.translation", "res://Docs/AIStanceDefinitions.Aggression High.translation"]
+
+source_file="res://Docs/AIStanceDefinitions.csv"
+dest_files=["res://Docs/AIStanceDefinitions.Strategy Low.translation", "res://Docs/AIStanceDefinitions.Strategy High.translation", "res://Docs/AIStanceDefinitions.Aggression Low.translation", "res://Docs/AIStanceDefinitions.Aggression High.translation"]
+
+[params]
+
+compress=true
+delimiter=0

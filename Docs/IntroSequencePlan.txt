@@ -1,0 +1,78 @@
+# Intro Sequence Plan for War Eagles Digital
+## Overview
+- **Purpose**: Create a 50-second intro cinematic for War Eagles Digital, based on IntroAnimStory.txt, using Godot 4.4 real-time rendering.
+- **Target Platform**: Godot 4.4 .NET, C# scripts in WarEaglesDigital.Scripts namespace.
+- **Key Features**:
+  - Real-time 3D scene with aircraft, backgrounds, and effects.
+  - Skippable via keypress (e.g., Space or Enter) to transition to MainMenu.tscn.
+  - Synchronized with IntroTheme.ogg (50 seconds).
+- **Output**: IntroSequence.tscn, played before MainMenu.tscn.
+
+## Assets
+- **Models** (in Assets/Models/):
+  - Aircraft (10K polys, .glb): I-16, Ki-51, Bf-109d, He-111, Hurricane, Zero, P-39, B-25, G4M, P-38J, FW-190A, IL-2, Me-262, B-17, B-24 (in Assets/Models/Aircraft).
+  - Anti-Aircraft (10K polys, .glb): AA guns (in Assets/Models/AntiAircraft).
+  - Backgrounds (to be created, .glb): Airstrip (Manchuria), city (Tokyo), Luftwaffe field, generic terrain (Spain, Britain, Malaya, Philippines).
+- **Audio**:
+  - IntroTheme.ogg (res://Audio/Music, confirmed loaded by AudioManager.cs).
+- **Textures/Materials**:
+  - Colormatched textures for focal points (airstrip, city, field).
+  - Skybox for WorldEnvironment (e.g., open sky, clouds).
+- **Effects**:
+  - ParticleSystem nodes for flak bursts, explosions, smoke trails.
+
+## Scenes
+- **Main Scene**: IntroSequence.tscn (Node3D root).
+  - Sub-scenes (Node3D) for each segment (e.g., Manchuria, Spain), swapped during off-camera moments.
+  - Camera3D node for dynamic pans and tracking.
+  - WorldEnvironment for sky and lighting (adjusted per segment, e.g., Manchuria dawn, Britain overcast).
+- **UI**:
+  - Skip prompt (Control node, e.g., “Press Space to Skip”) in bottom-right corner.
+
+## Scripts (in WarEaglesDigital.Scripts, C#)
+- **IntroSequenceController.cs**:
+  - Manages segment transitions (e.g., load/unload sub-scenes).
+  - Handles skip input (e.g., Input.IsActionJustPressed("ui_accept")) to change to MainMenu.tscn.
+  - Synchronizes with IntroTheme.ogg via AudioManager.cs.
+- **AircraftController.cs**:
+  - Controls aircraft movement (e.g., I-16 takeoff, Ki-51 swoop).
+  - Triggers animations (e.g., bomb drops, wing waggles).
+- **CameraController.cs**:
+  - Manages Camera3D paths (e.g., pan down, follow I-16 climb).
+  - Interpolates for smooth transitions (e.g., lerp for banking shots).
+- **EffectController.cs**:
+  - Triggers ParticleSystem effects (e.g., flak bursts, explosion at He-111 destruction).
+  - Manages smoke trails (e.g., FW-190A hit).
+- **SceneManager.cs**:
+  - Transitions to MainMenu.tscn after 50 seconds or skip.
+
+## Timeline (50 seconds, ~5 seconds per segment)
+- **0–5s (Manchuria)**: Open sky pans to airstrip; 3 I-16s, 2 AA guns. 3 Ki-51s bomb, destroy 2 I-16s; third I-16 takes off.
+- **5–10s (Manchuria)**: I-16 pursues, destroys tailing Ki-51 (spins down); camera follows I-16 climb.
+- **10–15s (Spain)**: Bf-109d dives, shoots down I-16; Bf-109d recovers, meets He-111, waggles wings.
+- **15–20s (Britain)**: He-111 flies into flak; Hurricane dives, destroys He-111; Hurricane banks left.
+- **20–25s (Malaya)**: Zero shoots down Hurricane, dives on P-39/B-25 airfield; B-25 launches.
+- **25–30s (Tokyo)**: B-25 bombs city; camera pans to airbase, G4M takes off.
+- **30–35s (Yamamoto)**: P-38J shoots down G4M; P-38J climbs, evades FW-190A attack.
+- **35–40s (Eastern Front)**: FW-190A dives on IL-2, hit by rear gunner, trails smoke; IL-2 attacks Luftwaffe field.
+- **40–45s (Germany)**: Me-262 takes off, climbs steeply; camera pans up.
+- **45–50s (Allied Bombing)**: Sky fills with B-17s/B-24s; splashscreen fades in, MainMenu buttons (New Game, Load Game, Options, Credits, Extras, Quit) fade in.
+
+## Background Plan
+- **WorldEnvironment**: Use Godot’s skybox (ProceduralSkyMaterial) for open sky, clouds, adjusted per segment (e.g., dawn for Manchuria, overcast for Britain).
+- **Focal Points** (.glb, to be created):
+  - Airstrip (Manchuria): Runway, hangar, debris post-bombing.
+  - City (Tokyo): Low-poly buildings, smoke effects.
+  - Luftwaffe field: Runway, parked planes, flak guns.
+  - Generic terrain: Hills, fields for Spain, Malaya, Philippines.
+- **Swap Strategy**: Unload/load focal point .glb models during off-camera moments (e.g., during I-16 climb, switch from airstrip to Spain terrain).
+
+## Optimization
+- **Models**: Test 10K-poly aircraft for close-ups; if insufficient, create 20K-poly variants for intro only.
+- **Performance**: Target 60 FPS on mid-range hardware (Godot 4.4 optimizations, e.g., occlusion culling, LOD for distant planes).
+- **File Size**: Reuse gameplay .glb models and textures; new backgrounds <10 MB total.
+
+## Next Steps
+- Create IntroSequence.tscn with root Node3D and Camera3D.
+- Import existing .glb models and IntroTheme.ogg.
+- Develop IntroSequenceController.cs to manage segment timing and skip input.

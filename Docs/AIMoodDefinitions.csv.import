@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://basepkgxdhjui"
+
+[deps]
+
+files=["res://Docs/AIMoodDefinitions.Strategy Low.translation", "res://Docs/AIMoodDefinitions.Strategy High.translation", "res://Docs/AIMoodDefinitions.Aggression Low.translation", "res://Docs/AIMoodDefinitions.Aggression High.translation"]
+
+source_file="res://Docs/AIMoodDefinitions.csv"
+dest_files=["res://Docs/AIMoodDefinitions.Strategy Low.translation", "res://Docs/AIMoodDefinitions.Strategy High.translation", "res://Docs/AIMoodDefinitions.Aggression Low.translation", "res://Docs/AIMoodDefinitions.Aggression High.translation"]
+
+[params]
+
+compress=true
+delimiter=0

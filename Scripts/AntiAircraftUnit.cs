@@ -34,7 +34,7 @@ namespace WarEaglesDigital.Scripts
                 Special = csvRow["Special"].AsString();
                 Model = csvRow["Model"].AsString();
                 Gun = csvRow["Gun"].AsString();
-                GD.Print($"Loaded AntiAircraftUnit: {Unit}");
+                
             }
             catch (Exception e)
             {

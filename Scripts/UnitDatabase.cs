@@ -210,7 +210,6 @@ namespace WarEaglesDigital.Scripts
 
                     var zone = new Zone();
                     zone.LoadFromCsv(dict);
-                    GD.Print($"Loaded zone: {zone.TargetName}");
                     zones.Add(zone);
                 }
                 catch (Exception e)

@@ -81,7 +81,7 @@ namespace WarEaglesDigital.Scripts
                     player.Name = key;
                     AddChild(player);
                     _musicPlayers[key] = player;
-                    GD.Print($"Loaded music: {filename}");
+
                 }
                 catch (Exception ex)
                 {
@@ -141,7 +141,7 @@ namespace WarEaglesDigital.Scripts
                     player.VolumeDb = Mathf.LinearToDb(EffectVolume);
                     AddChild(player);
                     _effectPlayers[key] = player;
-                    GD.Print($"Loaded effect: {filename}");
+
                 }
                 catch (Exception ex)
                 {

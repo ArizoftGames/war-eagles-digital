@@ -28,7 +28,7 @@ namespace WarEaglesDigital.Scripts
                 Bonus = csvRow["Bonus"].AsInt32();
                 Model = csvRow["Model"].AsString();
                 FlavorText = csvRow["FlavorText"].AsString();
-                GD.Print($"Loaded Ace: {Pilot}");
+
             }
             catch (Exception e)
             {

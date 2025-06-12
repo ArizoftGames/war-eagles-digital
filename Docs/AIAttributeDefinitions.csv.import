@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bbublhia8uuw1"
+
+[deps]
+
+files=["res://Docs/AIAttributeDefinitions.Level.translation", "res://Docs/AIAttributeDefinitions.Low Limit.translation", "res://Docs/AIAttributeDefinitions.High Limit.translation", "res://Docs/AIAttributeDefinitions.Behavior.translation"]
+
+source_file="res://Docs/AIAttributeDefinitions.csv"
+dest_files=["res://Docs/AIAttributeDefinitions.Level.translation", "res://Docs/AIAttributeDefinitions.Low Limit.translation", "res://Docs/AIAttributeDefinitions.High Limit.translation", "res://Docs/AIAttributeDefinitions.Behavior.translation"]
+
+[params]
+
+compress=true
+delimiter=0

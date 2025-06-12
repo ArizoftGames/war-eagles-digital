@@ -48,7 +48,7 @@ namespace WarEaglesDigital.Scripts
                 Bomb = csvRow["Bomb"].AsString();
                 Motor = csvRow["Motor"].AsString();
                 Gun = csvRow["Gun"].AsString();
-                GD.Print($"Loaded AirUnit: {Unit}");
+
             }
             catch (Exception e)
             {

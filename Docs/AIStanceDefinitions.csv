@@ -1,0 +1,10 @@
+Stance,Strategy Low,Strategy High,Aggression Low,Aggression High
+Daring,11,30,11,30
+Enterprising,-10,10,11,30
+Combative,-30,-11,11,30
+Determined,11,30,-10,10
+Diligent,-10,10,-10,10
+Defensive,-30,-11,-10,10
+Protective,11,30,-30,-11
+Prudent,-10,10,-30,-11
+Timid,-30,-11,-30,-11

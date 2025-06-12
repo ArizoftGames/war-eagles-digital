@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c8vpbvxovmma7"
+
+[deps]
+
+files=["res://Data/RawData/Designations.Nationality.translation", "res://Data/RawData/Designations.Type.translation", "res://Data/RawData/Designations.Special.translation"]
+
+source_file="res://Data/RawData/Designations.csv"
+dest_files=["res://Data/RawData/Designations.Nationality.translation", "res://Data/RawData/Designations.Type.translation", "res://Data/RawData/Designations.Special.translation"]
+
+[params]
+
+compress=true
+delimiter=0

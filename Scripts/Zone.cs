@@ -42,7 +42,7 @@ namespace WarEaglesDigital.Scripts
                 FacilityAAStrength = csvRow["Facility AA"].AsInt32();
                 FacilityDamageCapacity = csvRow["Facility Damage Cap"].AsInt32();
                 Model = csvRow["Model"].AsString();
-                GD.Print($"Loaded Zone: {TargetName}");
+
             }
             catch (Exception e)
             {

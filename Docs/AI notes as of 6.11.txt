@@ -1,0 +1,57 @@
+ *******************************************************************
+AI ATTRIBUTE SPECTRUM NOTES 5/17
+********************************************************************
+
+At the time the game is set up, the player will select his own nation, the opponent nation (or 
+randomized), the play year (or random) and the difficulty level.  These decisions, with some 
+randomness thrown in, will then  determine three attributes of the AI: 
+Aggression: General balance of offense vs defense emphasis in play.  Affects willingness to  attack, 
+reactions to losses, acceptable risk of attacks made, balance of fighters placed on CAP and raids, 
+choices for repair, and fighter to bomber to AA ratio during air force setup.
+ Strategy: The general strategic direction taken during this game; seeking victory through elimination 
+of enemy air force first, then accumulating VP,  or attacking enemy targets with defenses being an 
+incident in the way, or primarily defending own Zones while destroying enemy fighters until fighter 
+superiority reached then attacking).   Will inform zone selection (production vs VP vs damage 
+capacity), air force purchase, repair selection, and target selection during play (Note: Strategy and 
+Aggression measure different qualities, an example of an Aggressive but Strategically defensive player 
+might be England during the Battle of Britain.  Another example: The US  during most Pacific 
+campaigns would be best simulated by an AI with moderate Aggression but a largely offensive  
+Strategy.)
+ Thrift: The tendency of the AI to select and use fewer, more expensive units, or more, less expensive 
+units.  This will inform zone selection (both production vs vp, and base types; cheaper planes tend to 
+have light and medium silhouettes, which can operate from airstrips and airfields; many more 
+expensive types are heavy silhouette, which require airbases).  It will of course inform air force setup, 
+both in general unit costs sought and the fighter to fighter-bomber to bomber ratio and the aircraft to 
+AA to aces/event ratio.  It will also cross-index with Aggression and Strategy to determine target 
+selection and combat conduct. In general, thriftier nations will spam fighters, fighter-bombers, chaep 
+AA, and inexpensive infrequent events in an attempt to overwhelm the player; less thrifty AI’s will 
+focus on using events and aces to enhance their already powerful units, select targets carefully, and 
+repair their typically higher Damage Cap units more often.
+ Note that these are spectra, not points;  based on player nation, AI nation, year, difficulty level, and 
+RAND, the AI for that game will be more-or-less Aggressive, more-or less Strategically offensive, 
+defensive, or deep, and more-or-less Thrifty; not (Aggressive) or (Timid), etc.  We may also have to 
+develop a mechanism to change them slightly to account for previous results in previous turns.  We’ll 
+see.)
+
+REFINEMENTS AS OF 6/5:  The three attributes will be represented by integers from -30 to 30 and may be represented as such on a line or graphic axis.  The definitions of the attributes and the interactivity that creates moods(mostly for musical ambience, but may affect gameplay) and stance (which will inform the decision trees for the AI) are defined in AIAttributeDefinitions.csv, AIMoodDefinitions.csv, and AIStanceDefinitions.csv.  The initial Stance and Mood of the AI will be determined during game setup, during which numeric values can be assigned to each Attribute based upon player selection of nation, AI nation, year, and difficulty;  occurences during play (such as losses, victories, damage to Targets, events, etc) can be assigned numeric values to modify the Attributes, potentially changing the AI's Mood or Stance.
+
+ AI refinement session notes 6/5
+
+ - **Granularity**: The -30 to 30 attribute range (Strategy, Aggression, Thrift) ensures nuanced AI behavior, aligning with spectra-based approach (`AIandAudioNotes.txt`).
+- **Attribute Definitions**: Strategy (Industrial, Opportunistic, Supremacy), Aggression (Passive to Belligerent), and Thrift (Shortsighted to Extravagant) tie logically to gameplay mechanics (`Standardrules.txt`), with clear purchase ratios and target priorities.
+- **Mood and Stance**: Moods (Confident, Pugnacious, etc.) and Stances (Daring, Timid, etc.) from `AIMoodDefinitions.csv` and `AIStanceDefinitions.csv` enhance immersion and decision tree structure.
+- **Dynamic Adjustments**: Event-driven attribute changes (e.g., losses, victories) ensure adaptive AI, mimicking human responsiveness.
+
+## Potential Issues
+1. **Attribute Overlap**: Strategy and Aggression may overlap (e.g., Belligerent/Supremacy redundancy). **Solution**: Clarify decision priorities (e.g., Belligerent/Supremacy prioritizes fighters over facilities).
+2. **Thrift and Zone Selection**: Extravagant AI may select zones lacking Airbases, limiting heavy bomber use. **Solution**: Ensure AI selects at least one compatible base via weighted logic.
+3. **Mood/Stance Transitions**: Undefined triggers for attribute shifts risk erratic AI behavior. **Solution**: Define event triggers in `AIEventModifiers.csv` (e.g., â€œTarget Destroyed: Strategy +5â€).
+4. **Randomness Balance**: Random setup could unbalance difficulty. **Solution**: Cap attribute ranges by difficulty (e.g., -10 to 10 for Easy).
+
+## Missed Opportunities and Best Practices
+1. **Historical Flavor**: Add â€œpersonaâ€ field to AI setup (e.g., â€œGallandâ€ for Supremacy) for thematic tooltips.
+2. **Player-Driven Adaptation**: Adjust AI attributes based on player actions (e.g., +2 Thrift if player targets AA units).
+3. **Mood-Driven Audio**: Map Moods to sound effect profiles (e.g., Pugnacious uses louder flak bursts) in `audio_moods.csv`.
+4. **AI Testing Scenarios**: Create a test matrix in LibreOffice Calc for Stance/Mood combos (e.g., Timid/Shortsighted: 80% CAP deployment).
+5. **Performance**: Cache AI attributes and use Godot signals to avoid FPS drops with frequent recalculations.
+

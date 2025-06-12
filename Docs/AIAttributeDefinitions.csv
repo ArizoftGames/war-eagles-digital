@@ -1,0 +1,10 @@
+Attribute,Level,Low Limit,High Limit,Behavior
+Strategy,Industrial,11,30,Seeks to reduce player VP gain and maximize own; attacks Targets considering VP value in preference to Facilities or Units (Douhet). Purchases Bomber vs Fighter vs AA 60_30_10.
+Strategy,Opportunistic,-10,10,Seeks best chance of causing any hits or damage without regard for target type (Mitchell).  Purchases Bomber vs Fighter vs AA 50_35_15.
+Strategy,Supremacy,-30,-11,Prioritize destruction of Air Units and Facilities.  Attempts to destroy most dangerous first.  May switch to attacking Targets once Fighter force correlation is positive or overwhelming. (Fullerton/Galland).  Purchases Bomber vs Fighter vs AA 45_45_10.
+Aggression,Belligerent,11,30,Attacks with all available bombers and fighter bombers and fighters with fuel >2 every turn.  All other air units on CAP. Attacks as many targets as possible.
+Aggression,Balanced,-10,10,Repairs bombers and fighters if force correlation is positive else attacks.  Seeks fewer attacks with positive force correlation over more weaker attacks.
+Aggression,Passive,-30,-11,Always repairs damaged air units.  Bombers and Fighter Bombers attack only with positive local force correlation.  Fighters prioritize CAP.
+Thrift,Extravagant,11,30,Selects Zones with highest Production. Mix of Air vs Event vs AA spending 75_15_10.  Purchases most expensive available units.
+Thrift,Proportional,-10,10,Selects Zones with best Facilities. Mix of Air vs Event vs AA spending 65_20_15.  Balances unit cost vs quantity.
+Thrift,Shortsighted,-30,-11,Selects Zones with highest VP. Mix of Air vs Event vs AA spending 55_25_20.  Purchases maximum number of units.
