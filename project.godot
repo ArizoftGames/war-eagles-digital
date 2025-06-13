@@ -29,6 +29,10 @@ window/size/viewport_height=1296
 
 project/assembly_name="War Eagles Digital"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -12,7 +12,8 @@ namespace WarEaglesDigital.Scripts
         private List<AntiAircraftUnit> antiAircraftUnits = [];
         private List<Zone> zones = [];
         private List<Aces> aces = [];
-        private List<Event> events =[];
+        private List<Event> events = [];
+        private List<Designation> designations = [];
 
         // Public access to loaded data
         public List<AirUnit> AirUnits => airUnits;
@@ -20,6 +21,7 @@ namespace WarEaglesDigital.Scripts
         public List<Zone> Zones => zones;
         public List<Aces> Aces => aces;
         public List<Event> Events => events;
+        public List<Designation> Designations => designations;
 
         // Called when the node enters the scene tree
         public override void _Ready()
@@ -37,6 +39,7 @@ namespace WarEaglesDigital.Scripts
                 zones = LoadZones("res://Data/RawData/WEBasicZones.csv");
                 aces = LoadAces("res://Data/RawData/WEBasicAces.csv");
                 events = LoadEvents("res://Data/RawData/WEBasicEvents.csv");
+                designations = Designation.LoadDesignations("res://Data/RawData/Designations.csv");
 
                 // Log counts to verify loading
                 GD.Print($"Loaded {airUnits.Count} air units.");
@@ -44,6 +47,7 @@ namespace WarEaglesDigital.Scripts
                 GD.Print($"Loaded {zones.Count} zones.");
                 GD.Print($"Loaded {aces.Count} aces.");
                 GD.Print($"Loaded {events.Count} events.");
+                GD.Print($"Loaded {designations.Count} designations.");
             }
             catch (Exception e)
             {
@@ -401,7 +405,7 @@ namespace WarEaglesDigital.Scripts
             }
             else
             {
-                GD.Print($"Found event: \"{foundEvent.Name}\"");
+                GD.Print($"Found event: \"{foundEvent.Title}\"");
             }
             return foundEvent;
         }
@@ -475,7 +479,5 @@ namespace WarEaglesDigital.Scripts
                 { "Sound", evt.Sound }
             };
         }
-
-        
     }
 }

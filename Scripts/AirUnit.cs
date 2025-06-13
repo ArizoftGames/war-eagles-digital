@@ -8,6 +8,7 @@ namespace WarEaglesDigital.Scripts
         // Properties matching WEBasicAirUnits.csv columns
         [Export]
         public string Unit { get; set; } // e.g., "A6M5 Zero"
+        public string Designation { get; set; } // e.g., "1-11th Sentai"
         public string Nationality { get; set; } // e.g., "Japan"
         public string Role { get; set; } // e.g., "Fighter", "Bomber"
         public string Weight { get; set; } // e.g., "Light", "Medium", "Heavy"
@@ -33,6 +34,7 @@ namespace WarEaglesDigital.Scripts
             try
             {
                 Unit = csvRow["Unit"].AsString();
+                Designation = csvRow.TryGetValue("Designation", out Variant value) ? value.AsString() : "";
                 Nationality = csvRow["Nationality"].AsString();
                 Role = csvRow["Role"].AsString();
                 Weight = csvRow["Weight"].AsString();
@@ -48,7 +50,6 @@ namespace WarEaglesDigital.Scripts
                 Bomb = csvRow["Bomb"].AsString();
                 Motor = csvRow["Motor"].AsString();
                 Gun = csvRow["Gun"].AsString();
-
             }
             catch (Exception e)
             {
@@ -66,7 +67,7 @@ namespace WarEaglesDigital.Scripts
                 if (rand.Next(1, 7) == 6) // Per rules, air attack hits on 6
                     hits++;
             }
-            GD.Print($"Rolling air attack for {Unit}: {hits} hits");
+            GD.Print($"Rolling air attack for {Unit} ({Designation}): {hits} hits");
             return hits;
         }
     }

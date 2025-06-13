@@ -15,6 +15,7 @@ namespace WarEaglesDigital.Scripts
 
         // List to store loaded designations
         private static readonly List<Designation> designations = [];
+        private static readonly List<string> assignedDesignations = []; // Track assigned designations
 
         // Constructor
         public Designation() { }
@@ -39,6 +40,7 @@ namespace WarEaglesDigital.Scripts
         public static List<Designation> LoadDesignations(string path)
         {
             designations.Clear();
+            assignedDesignations.Clear();
             using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
             if (file == null)
             {
@@ -85,23 +87,47 @@ namespace WarEaglesDigital.Scripts
             return designations;
         }
 
+        // Reset assigned designations (e.g., for new game)
+        public static void ResetAssignedDesignations()
+        {
+            assignedDesignations.Clear();
+            GD.Print("Assigned designations reset.");
+        }
+
         // Get a random designation by nationality and type
         public static Designation GetRandomDesignation(string nationality, string type)
         {
             try
             {
+                // Map roles to designation types
+                string designationType = type switch
+                {
+                    "Fighter/Bomber" => "Fighter",
+                    "Fighter" => "Fighter",
+                    "Bomber" => "Bomber",
+                    _ => null
+                };
+
+                if (designationType == null)
+                {
+                    GD.PrintErr($"Unsupported role: {type} for Nationality: {nationality}");
+                    return null;
+                }
+
                 var matchingDesignations = designations.FindAll(d =>
                     d.Nationality.Equals(nationality, StringComparison.OrdinalIgnoreCase) &&
-                    d.Type.Equals(type, StringComparison.OrdinalIgnoreCase));
+                    d.Type.Equals(designationType, StringComparison.OrdinalIgnoreCase) &&
+                    !assignedDesignations.Contains(d.SquadronName));
 
                 if (matchingDesignations.Count == 0)
                 {
-                    GD.PrintErr($"No designations found for Nationality: {nationality}, Type: {type}");
+                    GD.PrintErr($"No available designations found for Nationality: {nationality}, Type: {designationType} (Original: {type})");
                     return null;
                 }
 
                 Random rand = new();
                 var selected = matchingDesignations[rand.Next(matchingDesignations.Count)];
+                assignedDesignations.Add(selected.SquadronName);
                 GD.Print($"Assigned designation: {selected.SquadronName} ({nationality}, {type})");
                 return selected;
             }
