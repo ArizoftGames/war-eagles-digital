@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cii85jvagju6x"
+uid="uid://xmksbu62i8lv"
 path.s3tc="res://.godot/imported/Midway_Image_0_4.png-0c1864508b803ddc59c22a2896a79b85.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "06d3ebff4807e0279882c7565321cd3d"
+"md5": "95149234f44ce976e591a27524b76c6e"
 }
 
 [deps]

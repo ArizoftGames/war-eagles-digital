@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d27jd5fm7dwne"
+uid="uid://djyhd1tm6bg0h"
 path.s3tc="res://.godot/imported/Portsmouth_Image_0_3.png-e8af33d00520f440080f5f428912e1ae.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dc0e9e6d5ad1ffff35f32a329e5facf4"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

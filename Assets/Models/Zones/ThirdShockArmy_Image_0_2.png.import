@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpvm4jan87leo"
+uid="uid://1014ssquym5t"
 path.s3tc="res://.godot/imported/ThirdShockArmy_Image_0_2.png-58a04dd30370fa34a11ef3b872518f23.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dc0e9e6d5ad1ffff35f32a329e5facf4"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

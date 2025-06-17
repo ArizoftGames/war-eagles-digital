@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfxqorryeejhs"
+uid="uid://cunq4paf3i0i7"
 path.s3tc="res://.godot/imported/Portsmouth_DevonportTexture.png-361fcca4a4a6a81ba9ce3f27c3ca7e45.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "40a63ecac58b6bc67a26989d3db4a65a"
+"md5": "bec08cb6dcbe4686460372f0a03ae966"
 }
 
 [deps]

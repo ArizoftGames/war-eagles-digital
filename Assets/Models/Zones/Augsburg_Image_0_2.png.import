@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwtg8fkuvewka"
+uid="uid://dscw2fsopxjof"
 path.s3tc="res://.godot/imported/Augsburg_Image_0_2.png-ddb581881173edfdeef0a28e627b1dbf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9e9fd8976d4b608fd41832d8f51998c4"
+"md5": "a310f64c7761e83cf4fdc86e5a4a5fe2"
 }
 
 [deps]

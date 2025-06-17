@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c61yjbk4qalyc"
+uid="uid://bxot7w0fj8r8c"
 path.s3tc="res://.godot/imported/Truk_Image_0.png-8c28e2230719feb3870143788d550103.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f7375f9dc62b1ff3ffaeec046e29b827"
+"md5": "4a1a7d7f6f4dccbd8dab0f69bf486f6f"
 }
 
 [deps]

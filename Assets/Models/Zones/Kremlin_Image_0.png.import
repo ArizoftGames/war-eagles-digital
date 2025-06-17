@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b27vsit85lgb4"
+uid="uid://xicrlukp6sri"
 path.s3tc="res://.godot/imported/Kremlin_Image_0.png-a089de11b5df1ea34912de735fec1ea6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "522f3fca981f9747023d1cc4f5ab1de9"
+"md5": "9e9fd8976d4b608fd41832d8f51998c4"
 }
 
 [deps]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8bn6tyr1rtad"
+uid="uid://dkhbiq4y02ncj"
 path.s3tc="res://.godot/imported/PortMoresby_Image_0_2.png-ea93cd1c70aa551935d345f25f893010.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d5e0c2dbeb5e1df1a14c87cfb2776447"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

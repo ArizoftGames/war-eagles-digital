@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pog3wjm3ar7r"
+uid="uid://cgm1ajn227u1x"
 path.s3tc="res://.godot/imported/Grimbergen_Image_0.png-f5a1e85751a1fe6c56e28389241471c8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d5e0c2dbeb5e1df1a14c87cfb2776447"
+"md5": "eb648fdb66fa9edc12c4f9cf2a636a3b"
 }
 
 [deps]

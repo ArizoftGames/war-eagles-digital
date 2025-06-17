@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wlj5w3rlr6q0"
+uid="uid://c6y5iasr0p1s2"
 path.s3tc="res://.godot/imported/Voronezh_Image_0_2.png-675879dcf3da7b840c6d34e6b0e02e7b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d5e0c2dbeb5e1df1a14c87cfb2776447"
+"md5": "eb648fdb66fa9edc12c4f9cf2a636a3b"
 }
 
 [deps]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qgmmbfnu7615"
+uid="uid://m6mtiqamsdnn"
 path.s3tc="res://.godot/imported/Formosa_Image_0.png-69064bbd6cdad4079c95f6acd650d0dd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a310f64c7761e83cf4fdc86e5a4a5fe2"
+"md5": "9e9fd8976d4b608fd41832d8f51998c4"
 }
 
 [deps]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bauus3u3hv6bi"
+uid="uid://bw5a37ufj4wki"
 path.s3tc="res://.godot/imported/Betio_Image_0_3.png-c07488c761df47d7e3bb6f25e75f792a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dc0e9e6d5ad1ffff35f32a329e5facf4"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

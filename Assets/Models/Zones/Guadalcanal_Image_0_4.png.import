@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5cpuguacsxp1"
+uid="uid://dutk5wsg2p6no"
 path.s3tc="res://.godot/imported/Guadalcanal_Image_0_4.png-4a272fd3a08ec7089057ca16f6e3750a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "06d3ebff4807e0279882c7565321cd3d"
+"md5": "95149234f44ce976e591a27524b76c6e"
 }
 
 [deps]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dig1524ckw5je"
+uid="uid://bj6buwuf2iua8"
 path.s3tc="res://.godot/imported/Sasebo_DevonportTexture.png-90201a10cf7ad6ff9c96c59590ed0f02.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "40a63ecac58b6bc67a26989d3db4a65a"
+"md5": "bec08cb6dcbe4686460372f0a03ae966"
 }
 
 [deps]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://icms2hlpffdj"
+uid="uid://6v21fcfw231t"
 path.s3tc="res://.godot/imported/HamburgRailYard_Image_0.png-00765ed3cc66b03d8c7b0f91675d203b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4a1a7d7f6f4dccbd8dab0f69bf486f6f"
+"md5": "3753e5acb7dcd226656a7342c715abbb"
 }
 
 [deps]

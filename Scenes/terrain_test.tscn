@@ -1,12 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgm4uevrwfjvs"]
+[gd_scene load_steps=14 format=3 uid="uid://dgm4uevrwfjvs"]
 
-[ext_resource type="PackedScene" uid="uid://yyj0s3ejn7aj" path="res://Assets/Models/Zones/Betio.glb" id="1_msr0h"]
+[ext_resource type="Texture2D" uid="uid://vjon2xt7u08j" path="res://Data/Terrain3DData2/Grass2_2K_alb_2.dds" id="1_pms2q"]
+[ext_resource type="Texture2D" uid="uid://cqk8q1n2q4g01" path="res://Data/Terrain3DData2/Grass2_2K_norm.dds" id="2_f01qo"]
 
-[sub_resource type="Gradient" id="Gradient_w1fjp"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_f01qo"]
+
+[sub_resource type="Sky" id="Sky_3s6lk"]
+sky_material = SubResource("PhysicalSkyMaterial_f01qo")
+
+[sub_resource type="Environment" id="Environment_m68pd"]
+background_mode = 2
+background_color = Color(0.526659, 0.846575, 0.985238, 1)
+background_energy_multiplier = 3.0
+sky = SubResource("Sky_3s6lk")
+ambient_light_source = 3
+ambient_light_color = Color(0.786104, 0.917918, 0.997999, 1)
+ambient_light_sky_contribution = 0.74
+ambient_light_energy = 4.0
+reflected_light_source = 2
+sdfgi_enabled = true
+sdfgi_energy = 0.5
+glow_intensity = 1.27
+glow_bloom = 0.12
+glow_hdr_scale = 2.11
+adjustment_enabled = true
+adjustment_brightness = 0.94
+adjustment_contrast = 1.26
+
+[sub_resource type="Gradient" id="Gradient_i5dvc"]
 offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_msr0h"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jl2p6"]
 noise_type = 2
 frequency = 0.03
 cellular_jitter = 3.0
@@ -18,12 +43,12 @@ domain_warp_fractal_type = 2
 domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pms2q"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n52oy"]
 seamless = true
-color_ramp = SubResource("Gradient_w1fjp")
-noise = SubResource("FastNoiseLite_msr0h")
+color_ramp = SubResource("Gradient_i5dvc")
+noise = SubResource("FastNoiseLite_jl2p6")
 
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_f01qo"]
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_vrcqt"]
 _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.87,
@@ -40,14 +65,13 @@ _shader_parameters = {
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
 &"noise3_scale": 0.225,
-&"noise_texture": SubResource("NoiseTexture2D_pms2q"),
+&"noise_texture": SubResource("NoiseTexture2D_n52oy"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.8,
 &"world_space_normal_blend": true
 }
-show_checkered = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5dvc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s6lk"]
 transparency = 4
 cull_mode = 2
 vertex_color_use_as_albedo = true
@@ -57,27 +81,62 @@ distance_fade_mode = 1
 distance_fade_min_distance = 128.0
 distance_fade_max_distance = 96.0
 
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_jl2p6"]
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_m68pd"]
 generated_type = 1
 height_offset = 0.5
-material_override = SubResource("StandardMaterial3D_i5dvc")
+material_override = SubResource("StandardMaterial3D_3s6lk")
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
-[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_n52oy"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_jl2p6")])
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uj40h"]
+name = "Grass2_2K_alb_1"
+albedo_color = Color(0.92518, 0.913858, 0.9126, 1)
+albedo_texture = ExtResource("1_pms2q")
+normal_texture = ExtResource("2_f01qo")
+roughness = 0.56
+uv_scale = 0.03
+detiling_rotation = 0.4
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_u5uaq"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_m68pd")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_uj40h")])
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Terrain3D" type="Terrain3D" parent="."]
-data_directory = "res://Data/DataTerrain3D"
-material = SubResource("Terrain3DMaterial_f01qo")
-assets = SubResource("Terrain3DAssets_n52oy")
-show_checkered = true
-top_level = true
-metadata/_edit_lock_ = true
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m68pd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.725099, -0.347222, 0.5947, 0.516839, 0.296307, 0.803168, -0.455092, 0.889741, -0.035394, 425.363, 459.704, -242.44)
+light_color = Color(0.953626, 0.968154, 0.844609, 1)
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 0.1
+light_angular_distance = 0.5
+light_bake_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.85
+directional_shadow_max_distance = 423.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
-[node name="Betio" parent="MeshInstance3D" instance=ExtResource("1_msr0h")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.99921, -0.0361426, 0.0165143, 0.00456003, 0.517141, 0.855888, -0.0394742, -0.855137, 0.516898, 31.698, 50, -135.14)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.4894, 58.6168)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Data/Terrain3DData2"
+material = SubResource("Terrain3DMaterial_vrcqt")
+assets = SubResource("Terrain3DAssets_u5uaq")
+mesh_lods = 3
+vertex_spacing = 5.0
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Node3D" type="Node3D" parent="."]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd51wx2vo0qjk"
+uid="uid://ru8mpa503hv4"
 path.s3tc="res://.godot/imported/TractorFactory_Image_0_6.png-82c36ac01991f4fa7bf8f179a9d56685.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d5e0c2dbeb5e1df1a14c87cfb2776447"
+"md5": "eb648fdb66fa9edc12c4f9cf2a636a3b"
 }
 
 [deps]

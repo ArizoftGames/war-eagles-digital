@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccvmgmaeb5jl4"
+uid="uid://vlo4ucednbj7"
 path.s3tc="res://.godot/imported/Osaka_Image_0_2.png-93b29d55883c9cba9784392e2fdf916a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d5e0c2dbeb5e1df1a14c87cfb2776447"
+"md5": "eb648fdb66fa9edc12c4f9cf2a636a3b"
 }
 
 [deps]

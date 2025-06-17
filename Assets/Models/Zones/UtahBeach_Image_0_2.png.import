@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhkewcch35byc"
+uid="uid://dall3dtvrakx2"
 path.s3tc="res://.godot/imported/UtahBeach_Image_0_2.png-5953c4f125a517965a514a9f0618a0da.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9e9fd8976d4b608fd41832d8f51998c4"
+"md5": "63a2a93c6ffa2c0b9ede7b4fb05abada"
 }
 
 [deps]

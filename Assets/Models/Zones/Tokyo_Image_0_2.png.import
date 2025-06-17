@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jpflkois7553"
+uid="uid://bjna2e12wmv0u"
 path.s3tc="res://.godot/imported/Tokyo_Image_0_2.png-ef4fdb1933c5a9735f15f672de0842e9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9e9fd8976d4b608fd41832d8f51998c4"
+"md5": "a310f64c7761e83cf4fdc86e5a4a5fe2"
 }
 
 [deps]

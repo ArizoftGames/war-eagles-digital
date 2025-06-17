@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8a85f10d8ah0"
+uid="uid://2hmturqdfaxp"
 path.s3tc="res://.godot/imported/TankFarm_Image_0_2.png-f9ffef4109bfeb86cd86e54b032ac061.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dc0e9e6d5ad1ffff35f32a329e5facf4"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

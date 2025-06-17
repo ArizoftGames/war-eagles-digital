@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmvxpl1ntsqxo"
+uid="uid://1r8r58c4fntf"
 path.s3tc="res://.godot/imported/Singapore_Image_0.png-df1929a3709024c88a536ab630ba1c56.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f7375f9dc62b1ff3ffaeec046e29b827"
+"md5": "eb648fdb66fa9edc12c4f9cf2a636a3b"
 }
 
 [deps]

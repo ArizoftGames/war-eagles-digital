@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0qn77x6h6dfu"
+uid="uid://bqon8bcrrb8wa"
 path.s3tc="res://.godot/imported/MöhneDam_Image_0_3.png-44adaabca3e4421519fae09c7d4d6478.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dc0e9e6d5ad1ffff35f32a329e5facf4"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

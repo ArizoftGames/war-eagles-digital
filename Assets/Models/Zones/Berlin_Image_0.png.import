@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhmatnnvb7o3y"
+uid="uid://btqvehacgipix"
 path.s3tc="res://.godot/imported/Berlin_Image_0.png-c09a5e22c831f8d17cb97b7ada558177.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8fc6e35b96389083e9acd5811ad827a3"
+"md5": "d1a5d270ae8073745dd46b274495275c"
 }
 
 [deps]

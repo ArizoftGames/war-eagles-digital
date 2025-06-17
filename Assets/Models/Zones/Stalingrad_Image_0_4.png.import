@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca7ckveqcvb4s"
+uid="uid://02ytywte5ejn"
 path.s3tc="res://.godot/imported/Stalingrad_Image_0_4.png-6975a0a905a6a8e1de3f05ba604989fb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "06d3ebff4807e0279882c7565321cd3d"
+"md5": "95149234f44ce976e591a27524b76c6e"
 }
 
 [deps]

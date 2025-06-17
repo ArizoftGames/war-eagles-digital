@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfiicnkcxc2l3"
+uid="uid://f5oxkxew8hq0"
 path.s3tc="res://.godot/imported/Malta_Image_0_4.png-e9f551a142adde565f7f728338d81f58.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dc0e9e6d5ad1ffff35f32a329e5facf4"
+"md5": "c66f82f351cdb48d560edb736b1c310c"
 }
 
 [deps]

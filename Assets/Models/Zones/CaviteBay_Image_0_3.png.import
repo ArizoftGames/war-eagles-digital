@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c51va6g2ris6k"
+uid="uid://w5x2k573a5b8"
 path.s3tc="res://.godot/imported/CaviteBay_Image_0_3.png-9a24cf128c7f5d0ce913e95c6974091c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "06d3ebff4807e0279882c7565321cd3d"
+"md5": "9e9fd8976d4b608fd41832d8f51998c4"
 }
 
 [deps]

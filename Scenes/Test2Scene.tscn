@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2snm3omhi3w6"]
+[gd_scene load_steps=7 format=3 uid="uid://c2snm3omhi3w6"]
 
 [ext_resource type="Script" uid="uid://h55b6tj2xnuo" path="res://Scripts/Test2Scene.cs" id="1_2ybma"]
-[ext_resource type="PackedScene" uid="uid://0i5g5pmyt5oj" path="res://Assets/Models/Zones/Augsburg.glb" id="2_rfgjg"]
 [ext_resource type="PackedScene" uid="uid://jim70oxdrqjs" path="res://Assets/Models/Aircraft/BostonLOD0.glb" id="3_rfgjg"]
 [ext_resource type="PackedScene" uid="uid://ce1pfg37bd4g" path="res://Assets/Models/Aircraft/Ar234LOD0.glb" id="4_03d0y"]
 
@@ -34,8 +33,6 @@ shadow_enabled = true
 
 [node name="PZone3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.992)
-
-[node name="Augsburg" parent="PZone3" instance=ExtResource("2_rfgjg")]
 
 [node name="PZone2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0, 80)

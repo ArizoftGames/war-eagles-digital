@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0n6hxelkw71k"
+uid="uid://bp0vp4yuobx6w"
 path.s3tc="res://.godot/imported/Ploesti_Image_0_8.png-8dd9d44df6d1b5cd5f7e259f5b1b2855.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f7375f9dc62b1ff3ffaeec046e29b827"
+"md5": "d5e0c2dbeb5e1df1a14c87cfb2776447"
 }
 
 [deps]
