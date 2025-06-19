@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="War Eagles Digital"
-run/main_scene="uid://c2snm3omhi3w6"
+run/main_scene="uid://dgm4uevrwfjvs"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+run/max_fps=60
+run/delta_smoothing=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +26,7 @@ AudioManager="*res://Scripts/AudioManager.cs"
 
 window/size/viewport_width=2304
 window/size/viewport_height=1296
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -33,7 +36,29 @@ project/assembly_name="War Eagles Digital"
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
+[physics]
+
+2d/run_on_separate_thread=true
+3d/run_on_separate_thread=true
+common/max_physics_steps_per_frame=2
+2d/physics_engine="Dummy"
+jolt_physics_3d/simulation/velocity_steps=2
+jolt_physics_3d/simulation/use_enhanced_internal_edge_removal=false
+jolt_physics_3d/motion_queries/use_enhanced_internal_edge_removal=false
+jolt_physics_3d/limits/world_boundary_shape_size=600.0
+common/physics_interpolation=true
+
 [rendering]
 
+occlusion_culling/bvh_build_quality=0
+occlusion_culling/jitter_projection=false
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 lights_and_shadows/directional_shadow/size=1024
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=1
+camera/depth_of_field/depth_of_field_bokeh_shape=0
+environment/ssao/quality=1
+environment/ssil/quality=1
+occlusion_culling/occlusion_rays_per_thread=128
+environment/screen_space_reflection/roughness_quality=0
+environment/defaults/default_clear_color=Color(0.720467, 0.720468, 0.720467, 1)

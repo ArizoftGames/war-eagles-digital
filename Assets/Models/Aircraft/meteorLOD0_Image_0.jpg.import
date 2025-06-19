@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cviwnat3nph7f"
+uid="uid://c3quppgxbispn"
 path.s3tc="res://.godot/imported/meteorLOD0_Image_0.jpg-c9bceb0f09d967ef7ee5b44954066599.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c243d9d28762b9567166ede1a6cd87db"
+"md5": "ee1e1fed4f51cf8111d88c0762a4ae50"
 }
 
 [deps]

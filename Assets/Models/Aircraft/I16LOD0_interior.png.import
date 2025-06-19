@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6004cx5v1a7i"
+uid="uid://buwndsa62dwdi"
 path.s3tc="res://.godot/imported/I16LOD0_interior.png-774633b130a38d3755e25082f8166187.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "35f29de39f6c1dc7d31fc0241061d512"
+"md5": "5550c2901071f27e98b8a98ff5b64066"
 }
 
 [deps]
