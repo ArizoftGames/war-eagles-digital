@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cvv3hw8i277bn"
+uid="uid://gdirfb48b8wa"
 path="res://.godot/imported/Ploesti.glb-7af6f237f4f8bd3f760c2ee867c5c387.scn"
 
 [deps]
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true

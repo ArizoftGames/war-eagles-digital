@@ -2,14 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://c1udlwur8cfep"
+uid="uid://d05b4faggxeym"
 
 [deps]
 
-files=["res://Data/RawData/WEBasicZones.Nationality.translation", "res://Data/RawData/WEBasicZones.Domain.translation", "res://Data/RawData/WEBasicZones.AA Strength.translation", "res://Data/RawData/WEBasicZones.Damage Capacity.translation", "res://Data/RawData/WEBasicZones.Production.translation", "res://Data/RawData/WEBasicZones.VP Value.translation", "res://Data/RawData/WEBasicZones.Facility.translation", "res://Data/RawData/WEBasicZones.Category.translation", "res://Data/RawData/WEBasicZones.Facility AA.translation", "res://Data/RawData/WEBasicZones.Facility Damage Cap.translation", "res://Data/RawData/WEBasicZones.Model.translation"]
+files=["res://Data/RawData/WEBasicZones.Nationality.translation", "res://Data/RawData/WEBasicZones.Domain.translation", "res://Data/RawData/WEBasicZones.AA Strength.translation", "res://Data/RawData/WEBasicZones.Damage Capacity.translation", "res://Data/RawData/WEBasicZones.Production.translation", "res://Data/RawData/WEBasicZones.VP Value.translation", "res://Data/RawData/WEBasicZones.Facility.translation", "res://Data/RawData/WEBasicZones.Category.translation", "res://Data/RawData/WEBasicZones.Facility AA.translation", "res://Data/RawData/WEBasicZones.Facility Damage Cap.translation", "res://Data/RawData/WEBasicZones.Model.translation", "res://Data/RawData/WEBasicZones.Sprite.translation"]
 
 source_file="res://Data/RawData/WEBasicZones.csv"
-dest_files=["res://Data/RawData/WEBasicZones.Nationality.translation", "res://Data/RawData/WEBasicZones.Domain.translation", "res://Data/RawData/WEBasicZones.AA Strength.translation", "res://Data/RawData/WEBasicZones.Damage Capacity.translation", "res://Data/RawData/WEBasicZones.Production.translation", "res://Data/RawData/WEBasicZones.VP Value.translation", "res://Data/RawData/WEBasicZones.Facility.translation", "res://Data/RawData/WEBasicZones.Category.translation", "res://Data/RawData/WEBasicZones.Facility AA.translation", "res://Data/RawData/WEBasicZones.Facility Damage Cap.translation", "res://Data/RawData/WEBasicZones.Model.translation"]
+dest_files=["res://Data/RawData/WEBasicZones.Nationality.translation", "res://Data/RawData/WEBasicZones.Domain.translation", "res://Data/RawData/WEBasicZones.AA Strength.translation", "res://Data/RawData/WEBasicZones.Damage Capacity.translation", "res://Data/RawData/WEBasicZones.Production.translation", "res://Data/RawData/WEBasicZones.VP Value.translation", "res://Data/RawData/WEBasicZones.Facility.translation", "res://Data/RawData/WEBasicZones.Category.translation", "res://Data/RawData/WEBasicZones.Facility AA.translation", "res://Data/RawData/WEBasicZones.Facility Damage Cap.translation", "res://Data/RawData/WEBasicZones.Model.translation", "res://Data/RawData/WEBasicZones.Sprite.translation"]
 
 [params]
 

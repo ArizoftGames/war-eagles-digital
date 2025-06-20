@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bq447tfq4gp3s"
+uid="uid://ddlu8o4auydys"
 path="res://.godot/imported/Kronstadt.glb-35c12cba561caf5c6926241d68c9a659.scn"
 
 [deps]
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true

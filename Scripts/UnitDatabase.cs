@@ -209,7 +209,9 @@ namespace WarEaglesDigital.Scripts
                         { "Category", values[8].Trim() },
                         { "Facility AA", ParseInt(values[9].Trim(), "Facility AA", line) },
                         { "Facility Damage Cap", ParseInt(values[10].Trim(), "Facility Damage Cap", line) },
-                        { "Model", values[11].Trim() }
+                        { "Model", values[11].Trim() },
+                        { "Sprite", values[12].Trim() }
+
                     };
 
                     var zone = new Zone();
@@ -429,7 +431,8 @@ namespace WarEaglesDigital.Scripts
                 { "Category", zone.FacilityCategory },
                 { "Facility AA", zone.FacilityAAStrength },
                 { "Facility Damage Cap", zone.FacilityDamageCapacity },
-                { "Model", zone.Model }
+                { "Model", zone.Model },
+                { "Sprite", zone.Sprite }
             };
         }
 

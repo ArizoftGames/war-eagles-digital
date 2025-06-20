@@ -20,8 +20,8 @@ namespace WarEaglesDigital.Scripts
         public string FacilityCategory { get; set; } // e.g., "Airstrip", "Airfield", "Airbase"
         public int FacilityAAStrength { get; set; } // Anti-aircraft dice
         public int FacilityDamageCapacity { get; set; } // Hits to destroy
-        public string Model { get; set; } // e.g., "Berlin.glb"
-
+        public string Model { get; set; }// e.g., "Berlin.glb"
+        public string Sprite { get; set; } // e.g., "BaseBasic_1K.png"
         // Constructor
         public Zone() { }
 
@@ -42,6 +42,7 @@ namespace WarEaglesDigital.Scripts
                 FacilityAAStrength = csvRow["Facility AA"].AsInt32();
                 FacilityDamageCapacity = csvRow["Facility Damage Cap"].AsInt32();
                 Model = csvRow["Model"].AsString();
+                Sprite = csvRow["Sprite"].AsString();
 
             }
             catch (Exception e)

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b8sj0oogxkn4n"
+uid="uid://budoiyvngihyw"
 path="res://.godot/imported/Kremlin.glb-af1f76e28f5adeea06c821dc6750400b.scn"
 
 [deps]
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true

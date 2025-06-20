@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://qx1f5le1nopo"
+uid="uid://dco8iqow81ivm"
 path="res://.godot/imported/PortMoresby.glb-a523306aade91b5c0c5c5f457ef05c8b.scn"
 
 [deps]
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true

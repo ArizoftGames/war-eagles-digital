@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2snm3omhi3w6"]
+[gd_scene load_steps=5 format=3 uid="uid://c2snm3omhi3w6"]
 
 [ext_resource type="Script" uid="uid://h55b6tj2xnuo" path="res://Scripts/Test2Scene.cs" id="1_2ybma"]
-[ext_resource type="PackedScene" uid="uid://jim70oxdrqjs" path="res://Assets/Models/Aircraft/BostonLOD0.glb" id="3_rfgjg"]
-[ext_resource type="PackedScene" uid="uid://ce1pfg37bd4g" path="res://Assets/Models/Aircraft/Ar234LOD0.glb" id="4_03d0y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ghhm"]
 sky_top_color = Color(0.564064, 0.839566, 0.976816, 1)
@@ -134,10 +132,4 @@ text = "Play Typewriter"
 
 [node name="Plane0" type="MeshInstance3D" parent="."]
 
-[node name="BostonLOD0" parent="Plane0" instance=ExtResource("3_rfgjg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3098, 0, 93.9038)
-
 [node name="Plane1" type="MeshInstance3D" parent="."]
-
-[node name="Ar234LOD0" parent="Plane1" instance=ExtResource("4_03d0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90.8741)

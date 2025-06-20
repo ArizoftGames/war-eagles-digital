@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bci1yewxhqgwo"
+uid="uid://bkyfhl7ynq0h6"
 path="res://.godot/imported/Leningrad.glb-1e01b6efa9fab7326d68b8d0624568df.scn"
 
 [deps]
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true

@@ -1,36 +1,36 @@
-Target Name,Nationality,Domain,AA Strength,Damage Capacity,Production,VP Value,Facility,Category,Facility AA,Facility Damage Cap,Model
-Ploesti Oilfields,Germany,Land,3,10,25,6,St. Omer,Airstrip,1,5,Ploesti.glb
-Augsburg,Germany,Land,1,15,6,6,Döberitz,Airbase,2,15,Augsburg.glb
-The Möhne Dam,Germany,Land,0,10,26,8,Abbeville,Airstrip,1,5,MöhneDam.glb
-Berlin,Germany,Land,4,25,16,1,Oberdorf,Airstrip,1,5,Berlin.glb
-Hamburg Railyard,Germany,Land,5,15,14,3,Montrieul,Airfield,1,10,HamburgRailYard.glb
-Schweinfurt,Germany,Land,4,15,15,5,St. Pol,Airfield,1,10,Schweinfurt.glb
-Peenemünde,Germany,Land,0,5,24,9,Städe,Airstrip,1,10,Peenemünde.glb
-Formosa,Japan,Land,1,5,16,7,Taihoku,Airbase,2,15,Formosa.glb
-Sasebo Naval Arsenal,Japan,Land,3,15,10,3,Omura,Airfield,1,10,Sasebo.glb
-Betio,Japan,Land,1,20,3,6,Makin,Airstrip,1,5,Betio.glb
-Truk,Japan,Land,4,10,39,1,Rabaul,Airfield,1,10,Truk.glb
-Yokohama,Japan,Land,2,10,19,8,Chofu,Airstrip,1,5,Yokohama.glb
-Tokyo,Japan,Land,2,25,6,2,Narimasu,Airbase,2,15,Tokyo.glb
-Osaka,Japan,Land,4,25,13,1,Kavieng,Airstrip,1,5,Osaka.glb
-The Kremlin,Soviet,Land,4,10,17,5,Poltava,Airbase,2,15,Kremlin.glb
-Third Shock Army,Soviet,Land,4,20,26,1,Serafimovitch,Airstrip,1,5,ThirdShockArmy.glb
-Stalingrad,Soviet,Land,4,15,1,8,Maikop,Airfield,1,10,Stalingrad.glb
-Tractor Factory,Soviet,Land,0,5,39,9,Yezovka,Airstrip,1,5,TractorFactory.glb
-Kronstadt,Soviet,Land,4,25,5,2,Stavropol,Airfield,1,10,Kronstadt.glb
-Leningrad,Soviet,Land,0,15,25,7,Abgerovo,Airstrip,1,5,Leningrad.glb
-Voronezh,Soviet,Land,3,10,35,5,Betekovka,Airstrip,1,5,Voronezh.glb
-Southampton,UK,Land,1,10,4,9,Eastleigh,Airbase,2,15,Southampton.glb
-Birmingham,UK,Land,1,10,32,3,Manston,Airbase,2,15,Birmingham.glb
-Singapore,UK,Land,1,15,34,4,Kuala Lumpur,Airstrip,1,5,Singapore.glb
-Malta,UK,Land,0,25,5,7,Valetta,Airstrip,1,5,Malta.glb
-London,UK,Land,4,15,4,3,Hornchurch,Airbase,2,15,London.glb
-Portsmouth,UK,Land,2,15,28,5,Debden,Airstrip,1,5,Portsmouth.glb
-Coventry,UK,Land,2,10,26,6,Biggin Hill,Airfield,1,10,Coventry.glb
-Tank Farm,USA,Land,0,5,21,6,Wheeler Field,Airstrip,1,5,TankFarm.glb
-Port Moresby,USA,Land,2,15,17,8,Kila Kila,Airstrip,1,5,PortMoresby.glb
-Cavite Bay,USA,Land,2,10,26,4,Clark Field,Airbase,2,15,CaviteBay.glb
-Utah Beach,USA,Land,4,10,13,2,Boxted,Airbase,2,15,UtahBeach.glb
-Grimbergen,USA,Land,1,25,5,7,Frescaty,Airstrip,1,5,Grimbergen.glb
-Guadalcanal,USA,Land,3,15,8,3,Henderson,Airfield,1,10,Guadalcanal.glb
-Midway Islands,USA,Land,1,5,26,9,Eastern Is.,Airfield,1,10,Midway.glb
+Target Name,Nationality,Domain,AA Strength,Damage Capacity,Production,VP Value,Facility,Category,Facility AA,Facility Damage Cap,Model,Sprite
+Ploesti Oilfields,Germany,Land,3,10,25,6,St. Omer,Airstrip,1,5,Ploesti.glb,StripBasic_1K.png
+Augsburg,Germany,Land,1,15,6,6,Döberitz,Airbase,2,15,Augsburg.glb,BaseBasic_1K.png
+The Möhne Dam,Germany,Land,0,10,26,8,Abbeville,Airstrip,1,5,MöhneDam.glb,StripBasic_1K.png
+Berlin,Germany,Land,4,25,16,1,Oberdorf,Airstrip,1,5,Berlin.glb,StripBasic_1K.png
+Hamburg Railyard,Germany,Land,5,15,14,3,Montrieul,Airfield,1,10,HamburgRailYard.glb,FieldBasic_1K.png
+Schweinfurt,Germany,Land,4,15,15,5,St. Pol,Airfield,1,10,Schweinfurt.glb,FieldBasic_1K.png
+Peenemünde,Germany,Land,0,5,24,9,Städe,Airstrip,1,10,Peenemünde.glb,StripBasic_1K.png
+Formosa,Japan,Land,1,5,16,7,Taihoku,Airbase,2,15,Formosa.glb,TextureFormosa_1K.png
+Sasebo Naval Arsenal,Japan,Land,3,15,10,3,Omura,Airfield,1,10,Sasebo.glb,TextureSasebo_1K.png
+Betio,Japan,Land,1,20,3,6,Makin,Airstrip,1,5,Betio.glb,TextureBetio_1K.png
+Truk,Japan,Land,4,10,39,1,Rabaul,Airfield,1,10,Truk.glb,TextureTruk_1K.png
+Yokohama,Japan,Land,2,10,19,8,Chofu,Airstrip,1,5,Yokohama.glb,StripBasic_1K.png
+Tokyo,Japan,Land,2,25,6,2,Narimasu,Airbase,2,15,Tokyo.glb,BaseBasic_1K.png
+Osaka,Japan,Land,4,25,13,1,Kavieng,Airstrip,1,5,Osaka.glb,StripBasic_1K.png
+The Kremlin,Soviet,Land,4,10,17,5,Poltava,Airbase,2,15,Kremlin.glb,BaseBasic_1K.png
+Third Shock Army,Soviet,Land,4,20,26,1,Serafimovitch,Airstrip,1,5,ThirdShockArmy.glb,StripBasic_1K.png
+Stalingrad,Soviet,Land,4,15,1,8,Maikop,Airfield,1,10,Stalingrad.glb,FieldBasic_1K.png
+Tractor Factory,Soviet,Land,0,5,39,9,Yezovka,Airstrip,1,5,TractorFactory.glb,StripBasic_1K.png
+Kronstadt,Soviet,Land,4,25,5,2,Stavropol,Airfield,1,10,Kronstadt.glb,TextureKronstadt_1K.png
+Leningrad,Soviet,Land,0,15,25,7,Abgerovo,Airstrip,1,5,Leningrad.glb,StripBasic_1K.png
+Voronezh,Soviet,Land,3,10,35,5,Betekovka,Airstrip,1,5,Voronezh.glb,StripBasic_1K.png
+Southampton,UK,Land,1,10,4,9,Eastleigh,Airbase,2,15,Southampton.glb,TextureSouthampton_1K.png
+Birmingham,UK,Land,1,10,32,3,Manston,Airbase,2,15,Birmingham.glb,BaseBasic_1K.png
+Singapore,UK,Land,1,15,34,4,Kuala Lumpur,Airstrip,1,5,Singapore.glb,TextureSingapore_1K.png
+Malta,UK,Land,0,25,5,7,Valetta,Airstrip,1,5,Malta.glb,TextureMalta_1K.png
+London,UK,Land,4,15,4,3,Hornchurch,Airbase,2,15,London.glb,BaseBasic_1K.png
+Portsmouth,UK,Land,2,15,28,5,Debden,Airstrip,1,5,Portsmouth.glb,TexturePortsmouth_1K.png
+Coventry,UK,Land,2,10,26,6,Biggin Hill,Airfield,1,10,Coventry.glb,FieldBasic_1K.png
+Tank Farm,USA,Land,0,5,21,6,Wheeler Field,Airstrip,1,5,TankFarm.glb,StripBasic_1K.png
+Port Moresby,USA,Land,2,15,17,8,Kila Kila,Airstrip,1,5,PortMoresby.glb,StripBasic_1K.png
+Cavite Bay,USA,Land,2,10,26,4,Clark Field,Airbase,2,15,CaviteBay.glb,TextureCavite_1K.png
+Utah Beach,USA,Land,4,10,13,2,Boxted,Airbase,2,15,UtahBeach.glb,TextureUtahBeach_1K.png
+Grimbergen,USA,Land,1,25,5,7,Frescaty,Airstrip,1,5,Grimbergen.glb,StripBasic_1K.png
+Guadalcanal,USA,Land,3,15,8,3,Henderson,Airfield,1,10,Guadalcanal.glb,TextureGuadalcanal_1K.png
+Midway Islands,USA,Land,1,5,26,9,Eastern Is.,Airfield,1,10,Midway.glb,TextureMidway_1K.png
