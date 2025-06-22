@@ -1,11 +1,76 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgm4uevrwfjvs"]
+[gd_scene load_steps=81 format=3 uid="uid://dgm4uevrwfjvs"]
 
-[ext_resource type="Terrain3DMaterial" uid="uid://ckvjcibc8fe1i" path="res://Scenes/Terrain_1.tres" id="1_n52oy"]
-[ext_resource type="Texture2D" uid="uid://c1la43d5uyqqs" path="res://Data/Terrain3DData2/Grass2_2K_alb_1.dds" id="1_u5uaq"]
-[ext_resource type="Texture2D" uid="uid://cdc5fqpsxww4g" path="res://Data/Terrain3DData2/Grass2_2K_norm.dds" id="2_f01qo"]
+[ext_resource type="Terrain3DMaterial" uid="uid://ckvjcibc8fe1i" path="res://Data/Resources/Terrain_1.tres" id="1_n52oy"]
+[ext_resource type="Texture2D" uid="uid://b3s64se24joa7" path="res://Data/Resources/Grass008_1_alb_1K.dds" id="2_ricjs"]
 [ext_resource type="Texture2D" uid="uid://4veqs2q1otqw" path="res://Data/Terrain3DData2/Water002_alb.dds" id="3_37pv8"]
 [ext_resource type="Texture2D" uid="uid://bkhucf6lnw5bp" path="res://Data/Terrain3DData2/Water001_normal_R1_1K.dds" id="4_e8dkk"]
-[ext_resource type="Texture2D" uid="uid://cgf6bt5p47n8y" path="res://Scenes/DaySkyHDRI057B_2K-HDR.exr" id="5_dcgxo"]
+[ext_resource type="Texture2D" uid="uid://d332jgcky8iwr" path="res://Data/Resources/Grass008_dry_alb_1K.dds" id="6_anvj1"]
+[ext_resource type="Environment" uid="uid://dadgqdlk67v0q" path="res://Data/Resources/Environ_1.tres" id="6_n52oy"]
+[ext_resource type="Texture2D" uid="uid://bxbu7eql2usii" path="res://Data/Resources/Grass008_norm_1K.dds" id="7_e8dkk"]
+[ext_resource type="Texture2D" uid="uid://bcatwga1tgqvv" path="res://Data/Resources/jungle_albedo_1k.dds" id="8_dcgxo"]
+[ext_resource type="Texture2D" uid="uid://c5p73ymcxbkm0" path="res://Data/Resources/jungle_normal_1K.dds" id="9_37pv8"]
+[ext_resource type="Texture2D" uid="uid://b4gdfbyeflftl" path="res://Data/Resources/Rock061_alb_1K.dds" id="10_e0oh7"]
+[ext_resource type="Texture2D" uid="uid://cm27af8llpx1q" path="res://Data/Resources/Rock061_norm_1K.dds" id="11_1cq13"]
+[ext_resource type="Texture2D" uid="uid://3fkhw0n2brc8" path="res://Data/Resources/City3d_alb_1K.dds" id="12_dcgxo"]
+[ext_resource type="Texture2D" uid="uid://cmdsb0vkaj8s" path="res://Data/Resources/City3D_norm_1K.dds" id="13_37pv8"]
+[ext_resource type="PackedScene" uid="uid://gdirfb48b8wa" path="res://Assets/Models/Zones/Ploesti.glb" id="17_ppura"]
+[ext_resource type="Texture2D" uid="uid://b1cxnvx0e3g36" path="res://Assets/Sprites/StripBasic_1K.png" id="18_xno0d"]
+[ext_resource type="PackedScene" uid="uid://c5xmxwg3idbsd" path="res://Assets/Models/Zones/Truk.glb" id="19_aoy6h"]
+[ext_resource type="PackedScene" uid="uid://bcygfvgvc8q2f" path="res://Assets/Models/Aircraft/Ta152LOD0.glb" id="19_k8d18"]
+[ext_resource type="Texture2D" uid="uid://cda4taqd3gu5o" path="res://Assets/Sprites/TextureTruk_1K.png" id="20_ogyie"]
+[ext_resource type="PackedScene" uid="uid://cm1t4q1r3rksv" path="res://Assets/Models/Aircraft/Do335LOD0.glb" id="20_wusu0"]
+[ext_resource type="PackedScene" uid="uid://4maoqfa34o88" path="res://Assets/Models/Zones/HamburgRailYard.glb" id="21_c5m3v"]
+[ext_resource type="PackedScene" uid="uid://c2i2gpsy1cw0q" path="res://Assets/Models/Aircraft/Ar234LOD0.glb" id="21_xuks0"]
+[ext_resource type="Texture2D" uid="uid://btft3j3x0ir2i" path="res://Assets/Sprites/FieldBasic_1K.png" id="22_mlnou"]
+[ext_resource type="PackedScene" uid="uid://damxheahev6a4" path="res://Assets/Models/Zones/Peenemünde.glb" id="23_tfia8"]
+[ext_resource type="PackedScene" uid="uid://0uprv7thg8ac" path="res://Assets/Models/Aircraft/Ki51LOD0.glb" id="24_hcckp"]
+[ext_resource type="PackedScene" uid="uid://b57lykkhtncjj" path="res://Assets/Models/Zones/Osaka.glb" id="24_vqrv6"]
+[ext_resource type="PackedScene" uid="uid://ccl261nboiwqi" path="res://Assets/Models/Aircraft/KI84LOD0.glb" id="25_4f1pe"]
+[ext_resource type="PackedScene" uid="uid://dco8iqow81ivm" path="res://Assets/Models/Zones/PortMoresby.glb" id="25_siq7c"]
+[ext_resource type="PackedScene" uid="uid://20einqeme5c0" path="res://Assets/Models/Aircraft/me262LOD0.glb" id="26_fpxao"]
+[ext_resource type="Texture2D" uid="uid://bn6ebbl6q64n3" path="res://Assets/Sprites/TexturePortMoresby_1K.png" id="26_i1d86"]
+[ext_resource type="PackedScene" uid="uid://d3t3km13ju1ay" path="res://Assets/Models/Zones/ThirdShockArmy.glb" id="27_7701n"]
+[ext_resource type="PackedScene" uid="uid://bpys5yek3qdir" path="res://Assets/Models/Aircraft/J2M3LOD0.glb" id="27_c187i"]
+[ext_resource type="PackedScene" uid="uid://dj6w3cmjcrt08" path="res://Assets/Models/Zones/UtahBeach.glb" id="28_gb8y0"]
+[ext_resource type="Texture2D" uid="uid://cfg3g8bxiogtq" path="res://Assets/Sprites/TextureUtahBeach_1K.png" id="29_r5x3g"]
+[ext_resource type="PackedScene" uid="uid://bggt7bctrq8mi" path="res://Assets/Models/Aircraft/Do17LOD0.glb" id="30_rahv5"]
+[ext_resource type="PackedScene" uid="uid://bjpjay2c1obcq" path="res://Assets/Models/Zones/London.glb" id="30_ydojh"]
+[ext_resource type="PackedScene" uid="uid://bggaw3ivmhrvs" path="res://Assets/Models/Aircraft/he111LOD0.glb" id="31_3r4ey"]
+[ext_resource type="Texture2D" uid="uid://f7y7uo5eeho1" path="res://Assets/Sprites/BaseBasic_1K.png" id="31_rvhfl"]
+[ext_resource type="PackedScene" uid="uid://dmdlmq55nxmm8" path="res://Assets/Models/Zones/CaviteBay.glb" id="32_4ehs5"]
+[ext_resource type="PackedScene" uid="uid://biax0w8c7u6yy" path="res://Assets/Models/Aircraft/ju88aLOD0.glb" id="32_26lk6"]
+[ext_resource type="Texture2D" uid="uid://dw566jh7r8cdj" path="res://Assets/Sprites/TextureCavite_1K.png" id="33_aa8ew"]
+[ext_resource type="PackedScene" uid="uid://fi2g5tm2yf5d" path="res://Assets/Models/Aircraft/ki21LOD0.glb" id="33_dtw15"]
+[ext_resource type="PackedScene" uid="uid://6taqmjktt4pr" path="res://Assets/Models/Aircraft/Ki61LOD0.glb" id="35_216dd"]
+[ext_resource type="PackedScene" uid="uid://b63u6as6kaypu" path="res://Assets/Models/Aircraft/bf109dLOD0.glb" id="36_41f1h"]
+[ext_resource type="PackedScene" uid="uid://db00qp3by1cj2" path="res://Assets/Models/Aircraft/bf109eLOD0.glb" id="37_h0k4y"]
+[ext_resource type="PackedScene" uid="uid://bsl8fx26bw5dp" path="res://Assets/Models/Aircraft/Bf110cLOD0.glb" id="39_8df7l"]
+[ext_resource type="PackedScene" uid="uid://b6jtutowunyjk" path="res://Assets/Models/Aircraft/fw190aLOD0.glb" id="40_7tq7p"]
+[ext_resource type="PackedScene" uid="uid://dpnpt8rqh0o58" path="res://Assets/Models/Aircraft/Ju87dLOD0.glb" id="41_k0k2b"]
+[ext_resource type="PackedScene" uid="uid://ci3akd1itjgi4" path="res://Assets/Models/Aircraft/Ki43LOD0.glb" id="42_gc6vo"]
+[ext_resource type="PackedScene" uid="uid://cgw6f4ms41abs" path="res://Assets/Models/Aircraft/F4U1LOD0.glb" id="45_drith"]
+[ext_resource type="PackedScene" uid="uid://blboxfeqggiti" path="res://Assets/Models/Aircraft/GladiatorLOD0.glb" id="46_4lpar"]
+[ext_resource type="PackedScene" uid="uid://3teimgh5rvns" path="res://Assets/Models/Aircraft/hurri1LOD0.glb" id="47_pf3bl"]
+[ext_resource type="PackedScene" uid="uid://t7m88kme2lum" path="res://Assets/Models/Aircraft/hurri2LOD0.glb" id="48_lgms1"]
+[ext_resource type="PackedScene" uid="uid://dobgifqdvvr8r" path="res://Assets/Models/Aircraft/Yak9LOD0.glb" id="50_o4c08"]
+[ext_resource type="PackedScene" uid="uid://bqqx1n3j08a6l" path="res://Assets/Models/Aircraft/Yak3LOD0.glb" id="51_7aweo"]
+[ext_resource type="PackedScene" uid="uid://cwd832jphrgad" path="res://Assets/Models/Aircraft/pe2LOD0.glb" id="52_r67o6"]
+[ext_resource type="PackedScene" uid="uid://cnsyd4syg0d7d" path="res://Assets/Models/Aircraft/lagg3LOD0.glb" id="53_plge8"]
+[ext_resource type="PackedScene" uid="uid://btvkkmv62s412" path="res://Assets/Models/Aircraft/La7LOD0.glb" id="54_sgvp8"]
+[ext_resource type="PackedScene" uid="uid://bimmp2c3cxdtm" path="res://Assets/Models/Aircraft/B17LOD0.glb" id="57_2obsl"]
+[ext_resource type="PackedScene" uid="uid://bddg6k4kxihc2" path="res://Assets/Models/Aircraft/B24LOD0.glb" id="58_7lnkm"]
+[ext_resource type="PackedScene" uid="uid://bl761bs5cnftv" path="res://Assets/Models/Aircraft/meteorLOD0.glb" id="59_ly2ss"]
+[ext_resource type="PackedScene" uid="uid://cbkl84muo7j20" path="res://Assets/Models/Aircraft/mosquitoIVLOD0.glb" id="60_wyd1i"]
+[ext_resource type="PackedScene" uid="uid://xbsyyqomudi4" path="res://Assets/Models/Aircraft/spitIXLOD0.glb" id="63_n6yxu"]
+[ext_resource type="PackedScene" uid="uid://qngjfn7lgivo" path="res://Assets/Models/Aircraft/BostonLOD0.glb" id="64_i80c4"]
+[ext_resource type="PackedScene" uid="uid://dtv81ogky43jb" path="res://Assets/Models/Aircraft/WhitlleyLOD0.glb" id="65_ki175"]
+[ext_resource type="PackedScene" uid="uid://chn86axmhccy2" path="res://Assets/Models/Aircraft/TB3LOD0.glb" id="66_icwbu"]
+[ext_resource type="PackedScene" uid="uid://daaw54lhqqqhc" path="res://Assets/Models/Aircraft/lancLOD0.glb" id="67_kbgs3"]
+[ext_resource type="PackedScene" uid="uid://gjqjtnqi761d" path="res://Assets/Models/Aircraft/il4LOD0.glb" id="70_3vqsf"]
+[ext_resource type="PackedScene" uid="uid://bj1ng88m0g83n" path="res://Assets/Models/Aircraft/B25LOD0.glb" id="71_3m24c"]
+[ext_resource type="PackedScene" uid="uid://drcsaxxg7ylkl" path="res://Assets/Models/Aircraft/B26LOD0.glb" id="72_lk1vy"]
+[ext_resource type="PackedScene" uid="uid://cwpg2r7jj7vd4" path="res://Assets/Models/Aircraft/P38JLOD0.glb" id="73_uop74"]
+[ext_resource type="PackedScene" uid="uid://cfo6th2th7me2" path="res://Assets/Models/Aircraft/p51d.LOD0.glb" id="74_inylw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s6lk"]
 transparency = 4
@@ -27,9 +92,9 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uj40h"]
 name = "Grass2_2K_alb_1"
-albedo_color = Color(0.837296, 0.813844, 0.811251, 1)
-albedo_texture = ExtResource("1_u5uaq")
-normal_texture = ExtResource("2_f01qo")
+albedo_color = Color(0.597958, 0.647107, 0.281082, 1)
+albedo_texture = ExtResource("2_ricjs")
+normal_texture = ExtResource("7_e8dkk")
 ao_strength = 0.75
 roughness = 0.45
 uv_scale = 0.03
@@ -48,44 +113,60 @@ uv_scale = 0.075
 detiling_rotation = 0.25
 detiling_shift = 0.5
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_nplk7"]
+name = "Grass008_dry_alb_1K"
+id = 2
+albedo_color = Color(0.763681, 0.609287, 0.121036, 1)
+albedo_texture = ExtResource("6_anvj1")
+normal_texture = ExtResource("7_e8dkk")
+detiling_rotation = 0.508
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_ufggi"]
+name = "jungle_albedo_1k"
+id = 3
+albedo_color = Color(0.572988, 0.572988, 0.572988, 1)
+albedo_texture = ExtResource("8_dcgxo")
+normal_texture = ExtResource("9_37pv8")
+normal_depth = 2.0
+ao_strength = 1.023
+roughness = 0.797
+uv_scale = 0.05
+detiling_rotation = 0.247
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_buo5u"]
+name = "Rock061_alb_1K"
+id = 4
+albedo_color = Color(0.531051, 0.531051, 0.531051, 1)
+albedo_texture = ExtResource("10_e0oh7")
+normal_texture = ExtResource("11_1cq13")
+normal_depth = 1.0
+ao_strength = 0.977
+roughness = 0.884
+uv_scale = 0.05
+detiling_shift = 0.064
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_e0oh7"]
+name = "City3d_alb_1K"
+id = 5
+albedo_color = Color(0.905769, 0.905769, 0.905769, 1)
+albedo_texture = ExtResource("12_dcgxo")
+normal_texture = ExtResource("13_37pv8")
+normal_depth = 1.247
+roughness = 0.158
+uv_scale = 0.05
+detiling_rotation = 0.05
+detiling_shift = 0.075
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_u5uaq"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_m68pd")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_uj40h"), SubResource("Terrain3DTextureAsset_dcgxo")])
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37pv8"]
-sky_top_color = Color(0.512357, 0.709633, 0.841823, 1)
-sky_horizon_color = Color(0.430051, 0.545146, 0.703046, 1)
-sky_cover = ExtResource("5_dcgxo")
-sky_cover_modulate = Color(0.886999, 0.87962, 0.8906, 1)
-ground_bottom_color = Color(0.321569, 0.439216, 0.223529, 1)
-ground_horizon_color = Color(0.48211, 0.659707, 0.509737, 1)
-sun_curve = 0.117688
-
-[sub_resource type="Sky" id="Sky_3s6lk"]
-sky_material = SubResource("ProceduralSkyMaterial_37pv8")
-
-[sub_resource type="Environment" id="Environment_m68pd"]
-background_mode = 2
-background_color = Color(0.526659, 0.846575, 0.985238, 1)
-sky = SubResource("Sky_3s6lk")
-sky_rotation = Vector3(0, 1.54811, 0)
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.11
-reflected_light_source = 1
-tonemap_white = 2.0
-sdfgi_energy = 0.5
-glow_intensity = 1.27
-glow_bloom = 0.12
-glow_hdr_scale = 2.11
-adjustment_enabled = true
-adjustment_contrast = 1.5
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_uj40h"), SubResource("Terrain3DTextureAsset_dcgxo"), SubResource("Terrain3DTextureAsset_nplk7"), SubResource("Terrain3DTextureAsset_ufggi"), SubResource("Terrain3DTextureAsset_buo5u"), SubResource("Terrain3DTextureAsset_e0oh7")])
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0831419, 0.701309, -0.707992, 0.124299, 0.712202, 0.690883, 0.988755, -0.0305614, -0.146386, -600, 91.2367, 133.834)
+transform = Transform3D(-0.189095, -0.378944, 0.905894, 0, 0.922538, 0.385906, -0.981959, 0.0729731, -0.174448, 404, 200, -359)
 keep_aspect = 0
+fov = 24.3
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 data_directory = "res://Data/Terrain3DData2"
@@ -98,163 +179,391 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_m68pd")
+environment = ExtResource("6_n52oy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.725099, -0.347223, 0.5947, 0.516839, 0.296307, 0.803168, -0.455092, 0.889741, -0.035394, 426.533, 459.704, -242.455)
+transform = Transform3D(-0.725099, -0.347223, 0.5947, 0.516839, 0.296307, 0.803168, -0.455092, 0.889741, -0.0353935, 1705.45, 600, -242.455)
 light_color = Color(0.953626, 0.968154, 0.844609, 1)
-light_energy = 0.75
 light_angular_distance = 0.5
-light_bake_mode = 0
+light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.85
 directional_shadow_max_distance = 423.0
+sky_mode = 1
 
-[node name="P1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -512, -3, 192)
+[node name="PZone0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -511.964, 0.158859, 193.177)
 
-[node name="AC1" type="Node3D" parent="P1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="PZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC2" type="Node3D" parent="P1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="Ploesti" parent="PZone0/ZoneModel" instance=ExtResource("17_ppura")]
 
-[node name="AC3" type="Node3D" parent="P1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="PZone0/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("18_xno0d")
 
-[node name="P2" type="MeshInstance3D" parent="."]
+[node name="AC1" type="Node3D" parent="PZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Ta152LOD0" parent="PZone0/AC1" instance=ExtResource("19_k8d18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8639, 0, 170.589)
+
+[node name="AC2" type="Node3D" parent="PZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Do335LOD0" parent="PZone0/AC2" instance=ExtResource("20_wusu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7172, 0, 133.916)
+
+[node name="AC3" type="Node3D" parent="PZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Ar234LOD0" parent="PZone0/AC3" instance=ExtResource("21_xuks0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0594, 0, 78.0075)
+
+[node name="PZone1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="AC5" type="Node3D" parent="P2"]
+[node name="ZoneModel" type="Node3D" parent="PZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC6" type="Node3D" parent="P2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="Truk" parent="PZone1/ZoneModel" instance=ExtResource("19_aoy6h")]
 
-[node name="AC7" type="Node3D" parent="P2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="PZone1/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("20_ogyie")
 
-[node name="AC8" type="Node3D" parent="P2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC5" type="Node3D" parent="PZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="P3" type="MeshInstance3D" parent="."]
+[node name="Ki51LOD0" parent="PZone1/AC5" instance=ExtResource("24_hcckp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.4929, 0, 120.646)
+
+[node name="AC6" type="Node3D" parent="PZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="KI84LOD0" parent="PZone1/AC6" instance=ExtResource("25_4f1pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4552, 0, 93.8416)
+
+[node name="AC7" type="Node3D" parent="PZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 180.136)
+
+[node name="me262LOD0" parent="PZone1/AC7" instance=ExtResource("26_fpxao")]
+
+[node name="AC8" type="Node3D" parent="PZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="J2M3LOD0" parent="PZone1/AC8" instance=ExtResource("27_c187i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.4911, 0, 122.579)
+
+[node name="PZone2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="AC9" type="Node3D" parent="P3"]
+[node name="ZoneModel" type="Node3D" parent="PZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC10" type="Node3D" parent="P3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="HamburgRailYard" parent="PZone2/ZoneModel" instance=ExtResource("21_c5m3v")]
 
-[node name="AC11" type="Node3D" parent="P3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="PZone2/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("22_mlnou")
 
-[node name="AC12" type="Node3D" parent="P3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC9" type="Node3D" parent="PZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="P4" type="MeshInstance3D" parent="."]
+[node name="Do17LOD0" parent="PZone2/AC9" instance=ExtResource("30_rahv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.1579, 0, 163.566)
+
+[node name="AC10" type="Node3D" parent="PZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="he111LOD0" parent="PZone2/AC10" instance=ExtResource("31_3r4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8829, 0, 163.284)
+
+[node name="AC11" type="Node3D" parent="PZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="ju88aLOD0" parent="PZone2/AC11" instance=ExtResource("32_26lk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.0202, 0, 106.01)
+
+[node name="AC12" type="Node3D" parent="PZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="ki21LOD0" parent="PZone2/AC12" instance=ExtResource("33_dtw15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3065, 0, 105.108)
+
+[node name="PZone3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="AC13" type="Node3D" parent="P4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="PZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC14" type="Node3D" parent="P4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="Peenemünde" parent="PZone3/ZoneModel" instance=ExtResource("23_tfia8")]
 
-[node name="AC15" type="Node3D" parent="P4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="PZone3/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("18_xno0d")
 
-[node name="P5" type="MeshInstance3D" parent="."]
+[node name="AC13" type="Node3D" parent="PZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Ki61LOD0" parent="PZone3/AC13" instance=ExtResource("35_216dd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6083, 0, 46.9455)
+
+[node name="AC14" type="Node3D" parent="PZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="bf109dLOD0" parent="PZone3/AC14" instance=ExtResource("36_41f1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 140.877)
+
+[node name="AC15" type="Node3D" parent="PZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="bf109eLOD0" parent="PZone3/AC15" instance=ExtResource("37_h0k4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5594, 0, 78.3882)
+
+[node name="PZone4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, 0, 192)
-skeleton = NodePath("../P4")
+skeleton = NodePath("../PZone3")
 
-[node name="AC17" type="Node3D" parent="P5"]
+[node name="ZoneModel" type="Node3D" parent="PZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="Osaka" parent="PZone4/ZoneModel" instance=ExtResource("24_vqrv6")]
+
+[node name="FacilitySprite" type="Sprite3D" parent="PZone4/ZoneModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("18_xno0d")
 
-[node name="AC18" type="Node3D" parent="P5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+[node name="AC17" type="Node3D" parent="PZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="AC19" type="Node3D" parent="P5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+[node name="Bf110cLOD0" parent="PZone4/AC17" instance=ExtResource("39_8df7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7341, 0, 125.869)
 
-[node name="AC20" type="Node3D" parent="P5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC18" type="Node3D" parent="PZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="O1" type="MeshInstance3D" parent="."]
+[node name="fw190aLOD0" parent="PZone4/AC18" instance=ExtResource("40_7tq7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5211, 0, 28.7522)
+
+[node name="AC19" type="Node3D" parent="PZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Ju87dLOD0" parent="PZone4/AC19" instance=ExtResource("41_k0k2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.4886, 0, 99.7757)
+
+[node name="AC20" type="Node3D" parent="PZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Ki43LOD0" parent="PZone4/AC20" instance=ExtResource("42_gc6vo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 152.177)
+
+[node name="OZone0" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -512, 1, -192)
 
-[node name="AC21" type="Node3D" parent="O1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="OZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC22" type="Node3D" parent="O1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="PortMoresby" parent="OZone0/ZoneModel" instance=ExtResource("25_siq7c")]
 
-[node name="AC23" type="Node3D" parent="O1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="OZone0/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("26_i1d86")
 
-[node name="AC24" type="Node3D" parent="O1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC21" type="Node3D" parent="OZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="O2" type="MeshInstance3D" parent="."]
+[node name="F4U1LOD0" parent="OZone0/AC21" instance=ExtResource("45_drith")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.365, 0, 74.9089)
+
+[node name="AC22" type="Node3D" parent="OZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="GladiatorLOD0" parent="OZone0/AC22" instance=ExtResource("46_4lpar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7913, 0, 127.852)
+
+[node name="AC23" type="Node3D" parent="OZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="hurri1LOD0" parent="OZone0/AC23" instance=ExtResource("47_pf3bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0179, 0, 167.037)
+
+[node name="AC24" type="Node3D" parent="OZone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="hurri2LOD0" parent="OZone0/AC24" instance=ExtResource("48_lgms1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46.8205)
+
+[node name="OZone1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -256, 0, -192)
 
-[node name="AC25" type="Node3D" parent="O2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="OZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC26" type="Node3D" parent="O2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ThirdShockArmy" parent="OZone1/ZoneModel" instance=ExtResource("27_7701n")]
 
-[node name="AC27" type="Node3D" parent="O2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="OZone1/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("18_xno0d")
 
-[node name="AC28" type="Node3D" parent="O2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC16" type="Node3D" parent="OZone1"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -31.3397, -1, 78.7858)
 
-[node name="AC16" type="Node3D" parent="O2"]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -512, 5, -384)
+[node name="Yak9LOD0" parent="OZone1/AC16" instance=ExtResource("50_o4c08")]
 
-[node name="O3" type="MeshInstance3D" parent="."]
+[node name="AC25" type="Node3D" parent="OZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8771, -1, 93.4953)
+
+[node name="Yak3LOD0" parent="OZone1/AC25" instance=ExtResource("51_7aweo")]
+
+[node name="AC26" type="Node3D" parent="OZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="pe2LOD0" parent="OZone1/AC26" instance=ExtResource("52_r67o6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.9253, 0, 1.52588e-05)
+
+[node name="AC27" type="Node3D" parent="OZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="lagg3LOD0" parent="OZone1/AC27" instance=ExtResource("53_plge8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, 0, 146.663)
+
+[node name="AC28" type="Node3D" parent="OZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="La7LOD0" parent="OZone1/AC28" instance=ExtResource("54_sgvp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4715, 0, 36.4163)
+
+[node name="OZone2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -192)
 
-[node name="AC29" type="Node3D" parent="O3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="OZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC30" type="Node3D" parent="O3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="UtahBeach" parent="OZone2/ZoneModel" instance=ExtResource("28_gb8y0")]
 
-[node name="AC31" type="Node3D" parent="O3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="OZone2/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("29_r5x3g")
 
-[node name="AC32" type="Node3D" parent="O3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC29" type="Node3D" parent="OZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="O4" type="MeshInstance3D" parent="."]
+[node name="B17LOD0" parent="OZone2/AC29" instance=ExtResource("57_2obsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.6376, 0, 154.517)
+
+[node name="AC30" type="Node3D" parent="OZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="B24LOD0" parent="OZone2/AC30" instance=ExtResource("58_7lnkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6344, 0, 157.568)
+
+[node name="AC31" type="Node3D" parent="OZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="meteorLOD0" parent="OZone2/AC31" instance=ExtResource("59_ly2ss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.8165, 0, 96.627)
+
+[node name="AC32" type="Node3D" parent="OZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.7896, -1, 67.0935)
+
+[node name="mosquitoIVLOD0" parent="OZone2/AC32" instance=ExtResource("60_wyd1i")]
+
+[node name="OZone3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 256, 0, -192)
 
-[node name="AC33" type="Node3D" parent="O4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="OZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="AC34" type="Node3D" parent="O4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="London" parent="OZone3/ZoneModel" instance=ExtResource("30_ydojh")]
 
-[node name="AC35" type="Node3D" parent="O4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="OZone3/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("31_rvhfl")
 
-[node name="AC36" type="Node3D" parent="O4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC33" type="Node3D" parent="OZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6251, -1, 80.8746)
 
-[node name="AC5" type="Node3D" parent="O4"]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 768, 5, -384)
+[node name="spitIXLOD0" parent="OZone3/AC33" instance=ExtResource("63_n6yxu")]
 
-[node name="O5" type="MeshInstance3D" parent="."]
+[node name="AC34" type="Node3D" parent="OZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="BostonLOD0" parent="OZone3/AC34" instance=ExtResource("64_i80c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4792, 0, 113.378)
+
+[node name="AC35" type="Node3D" parent="OZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 176.153)
+
+[node name="WhitlleyLOD0" parent="OZone3/AC35" instance=ExtResource("65_ki175")]
+
+[node name="AC36" type="Node3D" parent="OZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="TB3LOD0" parent="OZone3" instance=ExtResource("66_icwbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8483, 0, 173.825)
+
+[node name="AC5" type="Node3D" parent="OZone3"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 28.9214, -1, 29.0974)
+
+[node name="lancLOD0" parent="OZone3/AC5" instance=ExtResource("67_kbgs3")]
+
+[node name="OZone4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 512, 0, -192)
 
-[node name="AC37" type="Node3D" parent="O5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="ZoneModel" type="Node3D" parent="OZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="AC38" type="Node3D" parent="O5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="CaviteBay" parent="OZone4/ZoneModel" instance=ExtResource("32_4ehs5")]
 
-[node name="AC39" type="Node3D" parent="O5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="FacilitySprite" type="Sprite3D" parent="OZone4/ZoneModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+pixel_size = 0.25
+axis = 1
+texture = ExtResource("33_aa8ew")
 
-[node name="AC40" type="Node3D" parent="O5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5, 0)
+[node name="AC37" type="Node3D" parent="OZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.7535, -1, 77.426)
+
+[node name="il4LOD0" parent="OZone4/AC37" instance=ExtResource("70_3vqsf")]
+
+[node name="AC38" type="Node3D" parent="OZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8849, -1, 169.588)
+
+[node name="B25LOD0" parent="OZone4/AC38" instance=ExtResource("71_3m24c")]
+
+[node name="AC39" type="Node3D" parent="OZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="B26LOD0" parent="OZone4/AC39" instance=ExtResource("72_lk1vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1861, 0, 173.12)
+
+[node name="AC40" type="Node3D" parent="OZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="P38JLOD0" parent="OZone4/AC40" instance=ExtResource("73_uop74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.1748, 0, 79.5519)
+
+[node name="AC41" type="Node3D" parent="OZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5442, -1, 31.0157)
+
+[node name="p51d_LOD0" parent="OZone4/AC41" instance=ExtResource("74_inylw")]

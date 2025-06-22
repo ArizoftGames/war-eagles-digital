@@ -15,7 +15,7 @@ run/main_scene="uid://dgm4uevrwfjvs"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 run/max_fps=60
 run/delta_smoothing=false
-config/icon="res://icon.svg"
+config/icon="uid://c3a8wgfq43mga"
 
 [autoload]
 

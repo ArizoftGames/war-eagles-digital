@@ -1,0 +1,21 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dadgqdlk67v0q"]
+
+[ext_resource type="Sky" uid="uid://cg01f30xtotrx" path="res://Data/Resources/new_sky_1.tres" id="1_bamkc"]
+
+[resource]
+background_mode = 2
+background_color = Color(0.526659, 0.846575, 0.985238, 1)
+sky = ExtResource("1_bamkc")
+sky_rotation = Vector3(0, 1.54811, 0)
+ambient_light_source = 3
+ambient_light_color = Color(0.785641, 0.785641, 0.785641, 1)
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 1
+tonemap_exposure = 0.75
+tonemap_white = 2.0
+sdfgi_energy = 0.5
+glow_intensity = 1.27
+glow_bloom = 0.12
+glow_hdr_scale = 2.11
+adjustment_enabled = true
+adjustment_contrast = 1.5
