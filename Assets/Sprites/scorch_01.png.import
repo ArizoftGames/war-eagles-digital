@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bad0rt6f7136m"
-path.s3tc="res://.godot/imported/Fuji_FujiTexture.png-b774fb1d0add35fd78ed2b75816f9488.s3tc.ctex"
+uid="uid://ddmvm1bjf83nd"
+path.s3tc="res://.godot/imported/scorch_01.png-7caaf5c5ecab55d1f819a9a5b6dc0953.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "20e8458b6439cf14e2a0e19a5d8883f2"
-}
 
 [deps]
 
-source_file="res://Assets/Models/Other/Fuji_FujiTexture.png"
-dest_files=["res://.godot/imported/Fuji_FujiTexture.png-b774fb1d0add35fd78ed2b75816f9488.s3tc.ctex"]
+source_file="res://Assets/Sprites/scorch_01.png"
+dest_files=["res://.godot/imported/scorch_01.png-7caaf5c5ecab55d1f819a9a5b6dc0953.s3tc.ctex"]
 
 [params]
 
