@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="War Eagles Digital"
-run/main_scene="uid://dgm4uevrwfjvs"
+run/main_scene="uid://c2kovfcv787jl"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 run/max_fps=60
 run/delta_smoothing=false
@@ -24,8 +24,8 @@ AudioManager="*res://Scripts/AudioManager.cs"
 
 [display]
 
-window/size/viewport_width=2304
-window/size/viewport_height=1296
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 window/vsync/vsync_mode=0
 
 [dotnet]
