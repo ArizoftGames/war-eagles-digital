@@ -57,6 +57,10 @@ jet,Crash,,,,JetCrash.ogg
 ,,,repair,,repair.ogg
 ,,,Flak,,FlakBurst.ogg
 ,,,Explosion,,Boom.ogg
+,,,Hammer,,Hammerstroke.ogg
+,,,Plink,,Plink.ogg
+,,,Keystroke,,Keystroke.ogg
+,,,CR,,CarriageReturn.ogg
 ,,,,SingleBomb,SingleBomb.ogg
 ,,,,MultiBomb,MultiBomb.ogg
 ,,,,DiveBomb,DiveBomb.ogg

@@ -24,7 +24,7 @@ namespace WarEaglesDigital.Scripts
                 LoadMusicTracks();
                 LoadSoundEffects();
                 UpdateVolumes();
-                PlayMusicByNationMood("USA", "Pugnacious"); // Default
+                PlayMusicByUseCase("Start Game"); // Default
                 GD.Print("AudioManager initialized successfully.");
             }
             catch (Exception ex)
