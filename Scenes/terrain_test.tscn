@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://dgm4uevrwfjvs"]
+[gd_scene load_steps=84 format=3 uid="uid://dgm4uevrwfjvs"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://ckvjcibc8fe1i" path="res://Data/Resources/Terrain_1.tres" id="1_n52oy"]
 [ext_resource type="Texture2D" uid="uid://b3s64se24joa7" path="res://Data/Resources/Grass008_1_alb_1K.dds" id="2_ricjs"]
@@ -68,8 +68,6 @@
 [ext_resource type="PackedScene" uid="uid://daaw54lhqqqhc" path="res://Assets/Models/Aircraft/lancLOD0.glb" id="67_kbgs3"]
 [ext_resource type="PackedScene" uid="uid://gjqjtnqi761d" path="res://Assets/Models/Aircraft/il4LOD0.glb" id="70_3vqsf"]
 [ext_resource type="PackedScene" uid="uid://bj1ng88m0g83n" path="res://Assets/Models/Aircraft/B25LOD0.glb" id="71_3m24c"]
-[ext_resource type="Texture2D" uid="uid://ddmvm1bjf83nd" path="res://Assets/Sprites/scorch_01.png" id="71_sgip1"]
-[ext_resource type="Texture2D" uid="uid://rvvrgpt0bnh" path="res://Assets/Sprites/smoke_01.png" id="72_g0f4n"]
 [ext_resource type="PackedScene" uid="uid://drcsaxxg7ylkl" path="res://Assets/Models/Aircraft/B26LOD0.glb" id="72_lk1vy"]
 [ext_resource type="PackedScene" uid="uid://cfo6th2th7me2" path="res://Assets/Models/Aircraft/p51d.LOD0.glb" id="74_inylw"]
 
@@ -164,54 +162,6 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [sub_resource type="Skin" id="Skin_t6pnr"]
 resource_local_to_scene = true
-
-[sub_resource type="Gradient" id="Gradient_k8d18"]
-offsets = PackedFloat32Array(0.212166, 0.833828)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wusu0"]
-gradient = SubResource("Gradient_k8d18")
-
-[sub_resource type="Curve" id="Curve_xuks0"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.80531, 0.0310155), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_hcckp"]
-curve = SubResource("Curve_xuks0")
-
-[sub_resource type="Curve" id="Curve_4f1pe"]
-_data = [Vector2(0.0353982, 0.564282), 0.0, 0.0, 0, 0, Vector2(0.361357, 0.302526), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_fpxao"]
-curve = SubResource("Curve_4f1pe")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c187i"]
-scale_max = 40.0
-scale_curve = SubResource("CurveTexture_fpxao")
-color = Color(1, 1, 0.192157, 1)
-color_ramp = SubResource("GradientTexture1D_wusu0")
-emission_curve = SubResource("CurveTexture_hcckp")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rahv5"]
-transparency = 1
-albedo_color = Color(0.972161, 0.955224, 0.512421, 1)
-albedo_texture = ExtResource("71_sgip1")
-emission_enabled = true
-emission = Color(0.308769, 0.308769, 0.308769, 1)
-emission_texture = ExtResource("71_sgip1")
-grow_amount = -2.252
-
-[sub_resource type="QuadMesh" id="QuadMesh_3r4ey"]
-material = SubResource("StandardMaterial3D_rahv5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26lk6"]
-transparency = 1
-albedo_color = Color(0.10748, 0.10748, 0.10748, 1)
-albedo_texture = ExtResource("72_g0f4n")
-
-[sub_resource type="QuadMesh" id="QuadMesh_dtw15"]
-material = SubResource("StandardMaterial3D_26lk6")
 
 [sub_resource type="Animation" id="Animation_ricjs"]
 resource_name = "CAP orbit"
@@ -764,15 +714,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5442, -1, 31.0157)
 
 [node name="p51d_LOD0" parent="OZone4/AC41" instance=ExtResource("74_inylw")]
 transform = Transform3D(1, 0, 0, 0, 0.91496, -0.403545, 0, 0.403545, 0.91496, 6.10352e-05, 40, -205)
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="OZone4"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 60, -150)
-emitting = false
-amount_ratio = 0.1076
-process_material = SubResource("ParticleProcessMaterial_c187i")
-draw_passes = 2
-draw_pass_1 = SubResource("QuadMesh_3r4ey")
-draw_pass_2 = SubResource("QuadMesh_dtw15")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
