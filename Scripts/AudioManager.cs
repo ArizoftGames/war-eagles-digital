@@ -24,7 +24,7 @@ namespace WarEaglesDigital.Scripts
                 LoadMusicTracks();
                 LoadSoundEffects();
                 UpdateVolumes();
-                PlayMusicByUseCase("Start Game"); // Default
+                //PlayMusicByUseCase("Start Game"); // Default
                 GD.Print("AudioManager initialized successfully.");
             }
             catch (Exception ex)
@@ -75,8 +75,10 @@ namespace WarEaglesDigital.Scripts
                     if (string.IsNullOrEmpty(filename)) continue;
 
                     string key = string.IsNullOrEmpty(useCase) ? $"{nationality}{mood}" : useCase.Replace(" ", "");
-                    var player = new AudioStreamPlayer();
-                    player.Stream = GD.Load<AudioStream>($"res://Audio/Music/{filename}");
+                    var player = new AudioStreamPlayer
+                    {
+                        Stream = GD.Load<AudioStream>($"res://Audio/Music/{filename}")
+                    };
                     player.Stream.Set("loop", true); // Ensure looping for music
                     player.Name = key;
                     AddChild(player);
@@ -135,10 +137,12 @@ namespace WarEaglesDigital.Scripts
                     if (string.IsNullOrEmpty(filename)) continue;
 
                     string key = string.IsNullOrEmpty(motor) ? (string.IsNullOrEmpty(gun) ? (string.IsNullOrEmpty(sound) ? (string.IsNullOrEmpty(bomb) ? filename : bomb) : sound) : gun) : $"{motor}{status}";
-                    var player = new AudioStreamPlayer();
-                    player.Stream = GD.Load<AudioStream>($"res://audio/effects/{filename}");
-                    player.Name = key;
-                    player.VolumeDb = Mathf.LinearToDb(EffectVolume);
+                    var player = new AudioStreamPlayer
+                    {
+                        Stream = GD.Load<AudioStream>($"res://audio/effects/{filename}"),
+                        Name = key,
+                        VolumeDb = Mathf.LinearToDb(EffectVolume)
+                    };
                     AddChild(player);
                     _effectPlayers[key] = player;
 

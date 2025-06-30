@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://c2kovfcv787jl"]
+[gd_scene load_steps=177 format=3 uid="uid://c2kovfcv787jl"]
 
 [ext_resource type="Script" uid="uid://cqpqvg6o7dsyb" path="res://Scripts/IntroAnim.cs" id="1_u436d"]
 [ext_resource type="Environment" uid="uid://dadgqdlk67v0q" path="res://Data/Resources/Environ_1.tres" id="1_ukawc"]
@@ -39,9 +39,14 @@
 [ext_resource type="PackedScene" uid="uid://b63u6as6kaypu" path="res://Assets/Models/Aircraft/bf109dLOD0.glb" id="32_6ga2h"]
 [ext_resource type="PackedScene" uid="uid://bggaw3ivmhrvs" path="res://Assets/Models/Aircraft/he111LOD0.glb" id="33_tx8x6"]
 [ext_resource type="PackedScene" uid="uid://3teimgh5rvns" path="res://Assets/Models/Aircraft/hurri1LOD0.glb" id="34_pie4w"]
+[ext_resource type="AudioStream" uid="uid://s0a4pwt7p2r7" path="res://Audio/Music/IntroTheme.ogg" id="35_2rt4o"]
 [ext_resource type="PackedScene" uid="uid://ci3akd1itjgi4" path="res://Assets/Models/Aircraft/Ki43LOD0.glb" id="35_vfsk0"]
 [ext_resource type="Texture2D" uid="uid://da2l86la4xe65" path="res://Assets/Sprites/kenney_particle_pack/smoke_04.png" id="35_wq68n"]
+[ext_resource type="AudioStream" uid="uid://d2rsqpymgp8gb" path="res://Audio/Effects/thirty.ogg" id="36_i0e84"]
 [ext_resource type="Texture2D" uid="uid://b8mnb2p7jyvtb" path="res://Assets/Sprites/kenney_particle_pack/smoke_08.png" id="37_qvyku"]
+[ext_resource type="AudioStream" uid="uid://cnn2nptay718q" path="res://Audio/Effects/SingleBomb.ogg" id="38_nc8nf"]
+[ext_resource type="AudioStream" uid="uid://cen7egsj51qft" path="res://Audio/Effects/Boom.ogg" id="39_cgk0g"]
+[ext_resource type="AudioStream" uid="uid://bokag0aibvr2l" path="res://Audio/Effects/RadialLevel.ogg" id="39_i0e84"]
 [ext_resource type="Texture2D" uid="uid://ctokbv7kqsg8a" path="res://Assets/Sprites/kenney_particle_pack/trace_06.png" id="39_t5hey"]
 [ext_resource type="PackedScene" uid="uid://20einqeme5c0" path="res://Assets/Models/Aircraft/me262LOD0.glb" id="40_b8i5w"]
 [ext_resource type="FontFile" uid="uid://s2i0qyq8iank" path="res://Assets/Fonts/DEUTSCH.TTF" id="41_5eo1i"]
@@ -51,16 +56,21 @@
 [ext_resource type="PackedScene" uid="uid://cfo6th2th7me2" path="res://Assets/Models/Aircraft/p51d.LOD0.glb" id="43_5xl4c"]
 [ext_resource type="FontFile" uid="uid://budr0qss5bqm1" path="res://Assets/Fonts/COURI.TTF" id="43_6ga2h"]
 [ext_resource type="Texture2D" uid="uid://c8dklortmvvlu" path="res://Assets/Sprites/kenney_particle_pack/trace_05.png" id="43_rhx4o"]
+[ext_resource type="AudioStream" uid="uid://cliy5btd460vl" path="res://Audio/Effects/InlineLevel.ogg" id="44_ofnlf"]
 [ext_resource type="FontFile" uid="uid://16exijtd5qax" path="res://Assets/Fonts/COURBI.TTF" id="44_tx8x6"]
+[ext_resource type="AudioStream" uid="uid://d2xgurs7mgsk7" path="res://Audio/Effects/twenty.ogg" id="45_7detu"]
 [ext_resource type="FontFile" uid="uid://cnf2kq6b2kvqy" path="res://Assets/Fonts/COURBD.TTF" id="45_pie4w"]
 [ext_resource type="FontFile" uid="uid://b78xn8f6l3bhs" path="res://Assets/Fonts/BOSTON.TTF" id="46_cbo0m"]
 [ext_resource type="Texture2D" uid="uid://dp1fngqk0dglh" path="res://Assets/Sprites/Hinomaru_1_64.png" id="47_u436d"]
 [ext_resource type="Texture2D" uid="uid://c173k5xjy4tem" path="res://Assets/Sprites/RAFRoundel_1_64.png" id="48_b8i5w"]
 [ext_resource type="Texture2D" uid="uid://jbpanaxenr32" path="res://Assets/Sprites/USRoundel_41_64.png" id="49_dd4tu"]
+[ext_resource type="AudioStream" uid="uid://b3js6j1ne43dc" path="res://Audio/Effects/Bulletstrike.ogg" id="49_eqq7h"]
 [ext_resource type="Texture2D" uid="uid://dj3wjf1m7oiu1" path="res://Assets/Sprites/RedStar_1_64.png" id="50_846qw"]
 [ext_resource type="Texture2D" uid="uid://cxwsru2f3f8et" path="res://Assets/Sprites/Balkenkruez_1_64.png" id="51_5xl4c"]
+[ext_resource type="AudioStream" uid="uid://cy5rlo5my7xsp" path="res://Audio/Effects/MultiLevel.ogg" id="52_r02sr"]
 [ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="53_b8i5w"]
 [ext_resource type="Texture2D" uid="uid://0vlslhjho8fi" path="res://Assets/Sprites/MenuBG_2K.png" id="54_dd4tu"]
+[ext_resource type="AudioStream" uid="uid://cw2ceumqs7q7o" path="res://Audio/Effects/JetLevel.ogg" id="55_qrfg1"]
 [ext_resource type="Texture2D" uid="uid://4letnqknvft4" path="res://Assets/Sprites/aglogo-rnd-tr-512.png" id="55_yn7hd"]
 [ext_resource type="Texture2D" uid="uid://dva4aelriwj26" path="res://Assets/Sprites/logo_small_monochrome_light.png" id="56_ahd7a"]
 [ext_resource type="Texture2D" uid="uid://di5kns4mnsps0" path="res://Assets/Sprites/T3DLogo_light.png" id="57_1o184"]
@@ -68,6 +78,10 @@
 [ext_resource type="FontFile" uid="uid://v8j0djlp211e" path="res://Assets/Fonts/DEJAVUSERIF-BOLD.TTF" id="59_odfua"]
 [ext_resource type="FontFile" uid="uid://853e4p4ructj" path="res://Assets/Fonts/TIMES.TTF" id="60_ic1ep"]
 [ext_resource type="FontFile" uid="uid://6a0d5taaioy6" path="res://Assets/Fonts/TIMESI.TTF" id="61_a51nk"]
+[ext_resource type="AudioStream" uid="uid://buom4mv35rucm" path="res://Audio/Effects/Hammerstroke.ogg" id="71_7dcw0"]
+[ext_resource type="AudioStream" uid="uid://4pv15qsa3bug" path="res://Audio/Effects/Plink.ogg" id="72_mwvy0"]
+[ext_resource type="AudioStream" uid="uid://qj5kcg6gb0q6" path="res://Audio/Effects/Keystroke.ogg" id="73_eqq7h"]
+[ext_resource type="AudioStream" uid="uid://cc8crq2ai48rh" path="res://Audio/Effects/CarriageReturn.ogg" id="74_mwvy0"]
 
 [sub_resource type="Gradient" id="Gradient_nsj1c"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -730,7 +744,7 @@ size = Vector2(3, 2)
 [sub_resource type="Animation" id="Animation_yn7hd"]
 resource_name = "Intro_Animation"
 length = 58.0
-step = 0.0097
+step = 0.0167
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -848,8 +862,8 @@ tracks/10/path = NodePath("AirshowBox/Camera3D:rotation:x")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
-"points": PackedFloat32Array(-0.614356, -0.25, 0, 0.25, 0, -0.174533, -1.24167, -0.0804386, 0.338888, 0.0219541, 0, -0.338888, -0.0219064, 0.336112, 0.0217269, 0.0872665, -0.336112, -0.00733288, 0.33055, 0.00721154, 0.0872665, -0.33055, -0.00842212, 0.327783, 0.00835163, 0.187909, -0.327783, -0.0165632, 0.336117, 0.0169843, 0.288551, -0.336117, -0.00812587, 0.217917, 0.0052683, 0.268274, -0.217917, 0.0385922, 0.1951, -0.0345514, -0.150311, -0.1951, 0.06669, 0.0416667, -0.0142427, -0.217322, -0.0416667, 0.00716661, 0.0833333, -0.0143332, -0.27931, -0.0833333, 0.0125117, 0.0416667, -0.00625583, -0.329927, -0.0416667, 0.00361867, 0.166667, -0.0144747, -0.38787, -0.166667, -0.00559979, 0.344433, 0.0115725, -0.226893, -0.344433, -0.0183701, 0.322233, 0.0171861, -0.174533, -0.322233, -0.0313238, 0.3361, 0.0326717, 0.15708, -0.3361, -0.0147266, 0.327784, 0.0143622, 0, -0.327784, 0.0460219, 0.16945, -0.0237913, -0.261799, -0.16945, 0.0234638, 0.166667, -0.0230784, -0.279253, -0.166667, 0, 0.333334, 0, -0.261799, -0.333334, -0.0101811, 0.333333, 0.0101811, -0.15708, -0.333333, -0.00384183, 0.333333, 0.00384183, -0.215697, -0.333333, -0.0271496, 0.166667, 0.0135748, 0.0872665, -0.166667, -0.0533096, 0.173083, 0.0553619, 0.436332, -0.173083, -0.0572568, 0.00278346, 0.000920783, 0.436332, -0.00278346, 0.00119456, 0.166667, -0.0715274, 0, -0.166667, 0.036361, 0.166667, -0.036361, 0, -0.166667, 0, 0.333333, 0, 0, -0.333333, 0.015514, 0.166667, -0.007757, -0.139626, -0.166667, 0, 0.166667, 0, 0, -0.166667, -0.007757, 0.333333, 0.015514, 0, -0.333333, 0, 0.333333, 0, 0, -0.333333, 0, 0.166667, 0, 0, -0.166667, 0, 0.166667, 0, 0, -0.166667, -0.0290888, 0.333333, 0.0581777, 0.523599, -0.333333, -0.0872665, 0, 0),
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(-0.614356, -0.25, 0, 0.25, 0, -0.174533, -1.24167, -0.0804386, 0.338888, 0.0219541, 0, -0.338888, -0.0219064, 0.336112, 0.0217269, 0.0872665, -0.336112, -0.00733288, 0.33055, 0.00721154, 0.0872665, -0.33055, -0.00842212, 0.327783, 0.00835163, 0.187909, -0.327783, -0.0165632, 0.336117, 0.0169843, 0.288551, -0.336117, -0.00812587, 0.217917, 0.0052683, 0.268274, -0.217917, 0.0385922, 0.1951, -0.0345514, -0.150311, -0.1951, 0.06669, 0.0416667, -0.0142427, -0.217322, -0.0416667, 0.00716661, 0.0833333, -0.0143332, -0.27931, -0.0833333, 0.0125117, 0.0416667, -0.00625583, -0.329927, -0.0416667, 0.00361867, 0.166667, -0.0144747, -0.38787, -0.166667, -0.00559979, 0.344433, 0.0115725, -0.226893, -0.344433, -0.0183701, 0.322233, 0.0171861, -0.174533, -0.322233, -0.0313238, 0.3361, 0.0326717, 0.15708, -0.3361, -0.0147266, 0.327784, 0.0143622, 0, -0.327784, 0.0460219, 0.16945, -0.0237913, -0.261799, -0.16945, 0.0234638, 0.166667, -0.0230784, -0.279253, -0.166667, 0, 0.333334, 0, -0.261799, -0.333334, -0.0101811, 0.333333, 0.0101811, -0.15708, -0.333333, -0.00384183, 0.333333, 0.00384183, -0.215697, -0.333333, -0.0271496, 0.166667, 0.0135748, 0.0872665, -0.166667, -0.0533096, 0.173083, 0.0553619, 0.349066, -0.173083, -0.0572568, 0.00278346, 0.000920783, 0.349066, -0.00278346, 0.00119456, 0.166667, -0.0715274, 0, -0.166667, 0.036361, 0.166667, -0.036361, 0, -0.166667, 0, 0.333333, 0, 0, -0.333333, 0.015514, 0.166667, -0.007757, -0.139626, -0.166667, 0, 0.166667, 0, 0, -0.166667, -0.007757, 0.333333, 0.015514, 0, -0.333333, 0, 0.333333, 0, 0, -0.333333, 0, 0.166667, 0, 0, -0.166667, 0, 0.166667, 0, 0, -0.166667, -0.0290888, 0.333333, 0.0581777, 0.523599, -0.333333, -0.0872665, 0, 0),
 "times": PackedFloat32Array(0, 7.45, 9.48333, 11.5, 13.4667, 15.45, 17.4667, 18.7742, 19.9448, 20.1948, 20.6948, 20.9448, 21.9448, 24.0114, 25.9448, 27.9614, 29.9281, 30.9448, 31.9448, 33.9448, 35.9448, 37.9448, 38.9448, 39.9833, 40, 41, 42, 44, 45, 46, 48, 50, 51, 52, 54)
 }
 tracks/11/type = "bezier"
@@ -859,8 +873,8 @@ tracks/11/path = NodePath("AirshowBox/Camera3D:rotation:y")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
-"points": PackedFloat32Array(-1.5708, -0.25, 0, 0.25, 0, 0.436332, -1.24167, -0.36563, 0.338888, 0.0997915, 1.22173, -0.338888, -0.102229, 0.336112, 0.101392, 1.65806, -0.336112, 0.0293314, 0.33055, -0.0288461, 1.39626, -0.33055, 0.0970973, 0.327783, -0.0962846, 0.497769, -0.327783, 0.0616983, 0.336117, -0.0632669, 0.122874, -0.336117, 0.127717, 0.217917, -0.0828039, -0.765359, -0.217917, 0.115985, 0.1951, -0.103841, -1.19608, -0.1951, 0.0596165, 0.0416667, -0.012732, -1.19945, -0.0416667, -0.000454995, 0.0833333, 0.000909991, -1.18789, -0.0833333, -0.000465552, 0.0416667, 0.000232776, -1.19526, -0.0416667, -0.00268967, 0.166667, 0.0107587, -1.1072, -0.166667, 0.00143861, 0.344433, -0.00297304, -1.22173, -0.344433, 0.00986199, 0.322233, -0.00922634, -1.22173, -0.322233, 0.00711932, 0.3361, -0.00742569, -1.309, -0.3361, 0.159048, 0.327784, -0.155112, -3.10669, -0.327784, 0.143818, 0.16945, -0.0743474, -2.61799, -0.16945, -0.0483941, 0.166667, 0.0475992, -2.53073, -0.166667, -0.0611833, 0.333334, 0.122367, -1.51669, -0.333334, -0.0845034, 0.333333, 0.0845033, -1.51669, -0.333333, -0.0969351, 0.333333, 0.0969351, -0.353469, -0.333333, -0.129154, 0.166667, 0.0645771, -0.354302, -0.166667, -0.0697109, 0.173083, 0.0723946, 0.499164, -0.173083, -0.139993, 0.00278346, 0.00225132, 0.499164, -0.00278346, -0.00293386, 0.166667, 0.175672, 1.5708, -0.166667, -0.118391, 0.166667, 0.118391, 1.91986, -0.166667, 0, 0.333333, 0, 1.5708, -0.333333, 0.184229, 0.166667, -0.0921145, 0.261799, -0.166667, 0.0661773, 0.166667, -0.0661773, 0.776672, -0.166667, -0.155141, 0.333333, 0.310281, 3.05433, -0.333333, -0.189805, 0.333333, 0.189805, 3.05433, -0.333333, -0.0833878, 0.166667, 0.0416939, 3.80482, -0.166667, -0.0625408, 0.166667, 0.0625408, 3.80482, -0.166667, 0.0465422, 0.333333, -0.0930844, 2.96706, -0.333333, 0.139627, 0, 0),
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(-1.5708, -0.25, 0, 0.25, 0, 0.436332, -1.24167, -0.36563, 0.338888, 0.0997915, 1.22173, -0.338888, -0.102229, 0.336112, 0.101392, 1.65806, -0.336112, 0.0293314, 0.33055, -0.0288461, 1.39626, -0.33055, 0.0970973, 0.327783, -0.0962846, 0.497769, -0.327783, 0.0616983, 0.336117, -0.0632669, 0.122874, -0.336117, 0.127717, 0.217917, -0.0828039, -0.765359, -0.217917, 0.115985, 0.1951, -0.103841, -1.19608, -0.1951, 0.0596165, 0.0416667, -0.012732, -1.19945, -0.0416667, -0.000454995, 0.0833333, 0.000909991, -1.18789, -0.0833333, -0.000465552, 0.0416667, 0.000232776, -1.19526, -0.0416667, -0.00268967, 0.166667, 0.0107587, -1.1072, -0.166667, 0.00143861, 0.344433, -0.00297304, -1.22173, -0.344433, 0.00986199, 0.322233, -0.00922634, -1.22173, -0.322233, 0.00711932, 0.3361, -0.00742569, -1.309, -0.3361, 0.159048, 0.327784, -0.155112, -3.10669, -0.327784, 0.143818, 0.16945, -0.0743474, -2.61799, -0.16945, -0.0483941, 0.166667, 0.0475992, -2.53073, -0.166667, -0.0611833, 0.333334, 0.122367, -1.51669, -0.333334, -0.0845034, 0.333333, 0.0845033, -1.51669, -0.333333, -0.0969351, 0.333333, 0.0969351, -0.353469, -0.333333, -0.129154, 0.166667, 0.0645771, -0.354302, -0.166667, -0.0697109, 0.173083, 0.0723946, 1.22173, -0.173083, -0.139993, 0.00278346, 0.00225132, 1.22173, -0.00278346, -0.00293386, 0.166667, 0.175672, 1.5708, -0.166667, -0.118391, 0.166667, 0.118391, 1.91986, -0.166667, 0, 0.333333, 0, 1.5708, -0.333333, 0.184229, 0.166667, -0.0921145, 0.261799, -0.166667, 0.0661773, 0.166667, -0.0661773, 0.776672, -0.166667, -0.155141, 0.333333, 0.310281, 3.05433, -0.333333, -0.189805, 0.333333, 0.189805, 3.05433, -0.333333, -0.0833878, 0.166667, 0.0416939, 3.80482, -0.166667, -0.0625408, 0.166667, 0.0625408, 3.80482, -0.166667, 0.0465422, 0.333333, -0.0930844, 2.96706, -0.333333, 0.139627, 0, 0),
 "times": PackedFloat32Array(0, 7.45, 9.48333, 11.5, 13.4667, 15.45, 17.4667, 18.7742, 19.9448, 20.1948, 20.6948, 20.9448, 21.9448, 24.0114, 25.9448, 27.9614, 29.9281, 30.9448, 31.9448, 33.9448, 35.9448, 37.9448, 38.9448, 39.9833, 40, 41, 42, 44, 45, 46, 48, 50, 51, 52, 54)
 }
 tracks/12/type = "bezier"
@@ -870,7 +884,7 @@ tracks/12/path = NodePath("AirshowBox/Camera3D:rotation:z")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -1.24167, 0, 0.338888, 0, 0, -0.338888, 0, 0.336112, 0, 0, -0.336112, 0, 0.33055, 0, 0, -0.33055, -0.000521818, 0.327783, 0.00051745, 0.00623561, -0.327783, -0.00102622, 0.336117, 0.00105231, 0.0124712, -0.336117, 0.00419037, 0.217917, -0.00271677, -0.0352072, -0.217917, -0.00146423, 0.1951, 0.00131092, 0.0291221, -0.1951, -0.0105786, 0.0416667, 0.00225922, 0.0418195, -0.0416667, 0.000245556, 0.0833333, -0.000491111, 0.0247021, -0.0833333, -0.00112456, 0.0416667, 0.000562278, 0.0519405, -0.0416667, -0.00039228, 0.166667, 0.00156912, 0.0364705, -0.166667, 0.00282291, 0.344433, -0.00583384, 0, -0.344433, 0.00314042, 0.322233, -0.002938, 0, -0.322233, 0, 0.3361, 0, 0, -0.3361, 0, 0.327784, 0, 0, -0.327784, 0, 0.16945, 0, 0, -0.16945, 0, 0.166667, 0, 0, -0.166667, 0, 0.333334, 0, 0, -0.333334, 0, 0.333333, 0, 0, -0.333333, -0.00182229, 0.333333, 0.00182229, 0.0218675, -0.333333, -0.00252103, 0.166667, 0.00126052, 0.0226893, -0.166667, -0.00277843, 0.173083, 0.0028854, 0.0558505, -0.173083, -0.00543939, 0.00278346, 8.74743e-05, 0.0558505, -0.00278346, 0.000152904, 0.166667, -0.00915551, 0, -0.166667, 0.00465421, 0.166667, -0.00465421, 0, -0.166667, 0, 0.333333, 0, 0, -0.333333, 0, 0.166667, 0, 0, -0.166667, 0, 0.166667, 0, 0, -0.166667, 0, 0.333333, 0, 0, -0.333333, 0, 0.333333, 0, 0, -0.333333, 0, 0.166667, 0, 0, -0.166667, 0, 0.166667, 0, 0, -0.166667, 0, 0.333333, 0, 0, -0.333333, 0, 0, 0),
 "times": PackedFloat32Array(0, 7.45, 9.48333, 11.5, 13.4667, 15.45, 17.4667, 18.7742, 19.9448, 20.1948, 20.6948, 20.9448, 21.9448, 24.0114, 25.9448, 27.9614, 29.9281, 30.9448, 31.9448, 33.9448, 35.9448, 37.9448, 38.9448, 39.9833, 40, 41, 42, 44, 45, 46, 48, 50, 51, 52, 54)
 }
@@ -1220,10 +1234,10 @@ tracks/43/path = NodePath("AirshowBox/B25LOD1:visible")
 tracks/43/interp = 1
 tracks/43/loop_wrap = true
 tracks/43/keys = {
-"times": PackedFloat32Array(0, 11.5, 27.9614, 27.9781, 46, 58),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 11.5, 27.9614, 27.9781, 39.5, 40.0333, 46, 58),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, false, false, true, false, false]
+"values": [false, false, false, true, false, true, false, false]
 }
 tracks/44/type = "value"
 tracks/44/imported = false
@@ -3427,6 +3441,409 @@ tracks/237/keys = {
 "update": 1,
 "values": [false, true, false, false]
 }
+tracks/238/type = "audio"
+tracks/238/imported = false
+tracks/238/enabled = true
+tracks/238/path = NodePath("AirshowBox/Ki51LOD2/Ki51LOD2Audio0")
+tracks/238/interp = 1
+tracks/238/loop_wrap = true
+tracks/238/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/238/use_blend = true
+tracks/239/type = "value"
+tracks/239/imported = false
+tracks/239/enabled = true
+tracks/239/path = NodePath("AirshowBox/Ki51LOD2/Ki51LOD2Audio0:playing")
+tracks/239/interp = 1
+tracks/239/loop_wrap = true
+tracks/239/keys = {
+"times": PackedFloat32Array(0, 0.1, 11.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/240/type = "value"
+tracks/240/imported = false
+tracks/240/enabled = true
+tracks/240/path = NodePath("AirshowBox/Ki51LOD2/Ki51LOD2Audio1:playing")
+tracks/240/interp = 1
+tracks/240/loop_wrap = true
+tracks/240/keys = {
+"times": PackedFloat32Array(11.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/241/type = "value"
+tracks/241/imported = false
+tracks/241/enabled = true
+tracks/241/path = NodePath("AirshowBox/Ki51LOD0/BombAudio0:playing")
+tracks/241/interp = 1
+tracks/241/loop_wrap = true
+tracks/241/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/242/type = "value"
+tracks/242/imported = false
+tracks/242/enabled = true
+tracks/242/path = NodePath("AirshowBox/Ki51LOD0/Ki51LOD1/Bomb/BombAudio2:playing")
+tracks/242/interp = 1
+tracks/242/loop_wrap = true
+tracks/242/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/243/type = "value"
+tracks/243/imported = false
+tracks/243/enabled = true
+tracks/243/path = NodePath("AirshowBox/Ki51LOD0/Ki51LOD1/Ki51LOD1Audio:playing")
+tracks/243/interp = 1
+tracks/243/loop_wrap = true
+tracks/243/keys = {
+"times": PackedFloat32Array(0, 0.1, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/244/type = "value"
+tracks/244/imported = false
+tracks/244/enabled = true
+tracks/244/path = NodePath("AirshowBox/Ki51LOD0/Ki51LOD0Audio:playing")
+tracks/244/interp = 1
+tracks/244/loop_wrap = true
+tracks/244/keys = {
+"times": PackedFloat32Array(0.2, 11.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/245/type = "value"
+tracks/245/imported = false
+tracks/245/enabled = true
+tracks/245/path = NodePath("AirshowBox/I16LOD0/I16LOD0Audio:playing")
+tracks/245/interp = 1
+tracks/245/loop_wrap = true
+tracks/245/keys = {
+"times": PackedFloat32Array(0, 17.2621),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/246/type = "value"
+tracks/246/imported = false
+tracks/246/enabled = true
+tracks/246/path = NodePath("AirshowBox/I16LOD0/I16LOD0Gun:playing")
+tracks/246/interp = 1
+tracks/246/loop_wrap = true
+tracks/246/keys = {
+"times": PackedFloat32Array(5.45631),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/247/type = "bezier"
+tracks/247/imported = false
+tracks/247/enabled = true
+tracks/247/path = NodePath("AirshowBox/Ki51LOD0/Ki51LOD0Audio:volume_db")
+tracks/247/interp = 1
+tracks/247/loop_wrap = true
+tracks/247/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.2816, 11.4951)
+}
+tracks/248/type = "bezier"
+tracks/248/imported = false
+tracks/248/enabled = true
+tracks/248/path = NodePath("AirshowBox/Ki51LOD0/Ki51LOD1/Ki51LOD1Audio:volume_db")
+tracks/248/interp = 1
+tracks/248/loop_wrap = true
+tracks/248/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.5437, 11.4951)
+}
+tracks/249/type = "bezier"
+tracks/249/imported = false
+tracks/249/enabled = true
+tracks/249/path = NodePath("AirshowBox/I16LOD0/I16LOD0Audio:volume_db")
+tracks/249/interp = 1
+tracks/249/loop_wrap = true
+tracks/249/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 13.9515, 17)
+}
+tracks/250/type = "value"
+tracks/250/imported = false
+tracks/250/enabled = true
+tracks/250/path = NodePath("AirshowBox/bf109dLOD0/Bf109Audio:volume_db")
+tracks/250/interp = 1
+tracks/250/loop_wrap = true
+tracks/250/keys = {
+"times": PackedFloat32Array(11.4951, 22.3023),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [24.0, 24.0]
+}
+tracks/251/type = "value"
+tracks/251/imported = false
+tracks/251/enabled = true
+tracks/251/path = NodePath("AirshowBox/bf109dLOD0/Bf109Audio:playing")
+tracks/251/interp = 1
+tracks/251/loop_wrap = true
+tracks/251/keys = {
+"times": PackedFloat32Array(11.4951, 26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/252/type = "value"
+tracks/252/imported = false
+tracks/252/enabled = true
+tracks/252/path = NodePath("AirshowBox/bf109dLOD0/Bf109Gun:playing")
+tracks/252/interp = 1
+tracks/252/loop_wrap = true
+tracks/252/keys = {
+"times": PackedFloat32Array(11.6019),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/253/type = "value"
+tracks/253/imported = false
+tracks/253/enabled = true
+tracks/253/path = NodePath("AirshowBox/hurri1LOD0/HurriAudio:playing")
+tracks/253/interp = 1
+tracks/253/loop_wrap = true
+tracks/253/keys = {
+"times": PackedFloat32Array(20, 34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/254/type = "value"
+tracks/254/imported = false
+tracks/254/enabled = true
+tracks/254/path = NodePath("AirshowBox/hurri1LOD0/HurriSmoke/HurriHits:playing")
+tracks/254/interp = 1
+tracks/254/loop_wrap = true
+tracks/254/keys = {
+"times": PackedFloat32Array(27.0333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/255/type = "value"
+tracks/255/imported = false
+tracks/255/enabled = true
+tracks/255/path = NodePath("AirshowBox/hurri1LOD0/HurriTrac0/HurriGun1:playing")
+tracks/255/interp = 1
+tracks/255/loop_wrap = true
+tracks/255/keys = {
+"times": PackedFloat32Array(21.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/256/type = "value"
+tracks/256/imported = false
+tracks/256/enabled = true
+tracks/256/path = NodePath("AirshowBox/hurri1LOD0/HurrirTrac2/HurriGun2:playing")
+tracks/256/interp = 1
+tracks/256/loop_wrap = true
+tracks/256/keys = {
+"times": PackedFloat32Array(21.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/257/type = "bezier"
+tracks/257/imported = false
+tracks/257/enabled = true
+tracks/257/path = NodePath("AirshowBox/hurri1LOD0/HurriAudio:volume_db")
+tracks/257/interp = 1
+tracks/257/loop_wrap = true
+tracks/257/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(48, -0.25, 0, 0.25, 0, 48, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(20, 32.0167, 34.0167)
+}
+tracks/258/type = "value"
+tracks/258/imported = false
+tracks/258/enabled = true
+tracks/258/path = NodePath("AirshowBox/Ki43LOD0/Ki43Audio:playing")
+tracks/258/interp = 1
+tracks/258/loop_wrap = true
+tracks/258/keys = {
+"times": PackedFloat32Array(25, 38.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/259/type = "value"
+tracks/259/imported = false
+tracks/259/enabled = true
+tracks/259/path = NodePath("AirshowBox/Ki43LOD0/Ki43Audio:volume_db")
+tracks/259/interp = 1
+tracks/259/loop_wrap = true
+tracks/259/keys = {
+"times": PackedFloat32Array(37.0333, 38.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [36.0, 0.0]
+}
+tracks/260/type = "value"
+tracks/260/imported = false
+tracks/260/enabled = true
+tracks/260/path = NodePath("AirshowBox/B25LOD1/B25Audio:playing")
+tracks/260/interp = 1
+tracks/260/loop_wrap = true
+tracks/260/keys = {
+"times": PackedFloat32Array(35.9833),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/261/type = "value"
+tracks/261/imported = false
+tracks/261/enabled = true
+tracks/261/path = NodePath("AirshowBox/B25LOD1/B25Audio:volume_db")
+tracks/261/interp = 1
+tracks/261/loop_wrap = true
+tracks/261/keys = {
+"times": PackedFloat32Array(35.9833, 37.9833, 38.9833, 39.9833, 41.0667, 44, 46),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 36.0, 6.0, 6.0, 36.0, 36.0, 0.0]
+}
+tracks/262/type = "value"
+tracks/262/imported = false
+tracks/262/enabled = true
+tracks/262/path = NodePath("AirshowBox/B17LOD0/B17Audio:playing")
+tracks/262/interp = 1
+tracks/262/loop_wrap = true
+tracks/262/keys = {
+"times": PackedFloat32Array(47.6167, 53.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/263/type = "value"
+tracks/263/imported = false
+tracks/263/enabled = true
+tracks/263/path = NodePath("AirshowBox/B24LOD0/B24Audio:playing")
+tracks/263/interp = 1
+tracks/263/loop_wrap = true
+tracks/263/keys = {
+"times": PackedFloat32Array(47.6167, 53.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/264/type = "value"
+tracks/264/imported = false
+tracks/264/enabled = true
+tracks/264/path = NodePath("AirshowBox/B17LOD0/B17Audio:volume_db")
+tracks/264/interp = 1
+tracks/264/loop_wrap = true
+tracks/264/keys = {
+"times": PackedFloat32Array(47.6, 49.3833, 52.9667, 53.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-10.0, 48.0, 48.0, 0.0]
+}
+tracks/265/type = "value"
+tracks/265/imported = false
+tracks/265/enabled = true
+tracks/265/path = NodePath("AirshowBox/B24LOD0/B24Audio:volume_db")
+tracks/265/interp = 1
+tracks/265/loop_wrap = true
+tracks/265/keys = {
+"times": PackedFloat32Array(47.6, 49.3833, 52.9667, 53.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-10.0, 48.0, 48.0, 0.0]
+}
+tracks/266/type = "value"
+tracks/266/imported = false
+tracks/266/enabled = true
+tracks/266/path = NodePath("AirshowBox/me262LOD0/Me262Audio:playing")
+tracks/266/interp = 1
+tracks/266/loop_wrap = true
+tracks/266/keys = {
+"times": PackedFloat32Array(44.4833, 53.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/267/type = "value"
+tracks/267/imported = false
+tracks/267/enabled = true
+tracks/267/path = NodePath("AirshowBox/p51d_LOD0/p51d_LOD0/P51Audio:playing")
+tracks/267/interp = 1
+tracks/267/loop_wrap = true
+tracks/267/keys = {
+"times": PackedFloat32Array(47.5333, 53.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/268/type = "value"
+tracks/268/imported = false
+tracks/268/enabled = true
+tracks/268/path = NodePath("AirshowBox/p51d_LOD0/p51d_LOD0/P51Audio:volume_db")
+tracks/268/interp = 1
+tracks/268/loop_wrap = true
+tracks/268/keys = {
+"times": PackedFloat32Array(47.5333, 48.4833, 53.5, 54.0167),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 48.0, 48.0, 0.0]
+}
+tracks/269/type = "value"
+tracks/269/imported = false
+tracks/269/enabled = true
+tracks/269/path = NodePath("AirshowBox/me262LOD0/Me262Audio:volume_db")
+tracks/269/interp = 1
+tracks/269/loop_wrap = true
+tracks/269/keys = {
+"times": PackedFloat32Array(44.4833, 45.3833, 52.9833, 54.0167),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 36.0, 36.0, -10.0]
+}
+tracks/270/type = "value"
+tracks/270/imported = false
+tracks/270/enabled = true
+tracks/270/path = NodePath("AirshowBox/Camera3D/MusicBox:playing")
+tracks/270/interp = 1
+tracks/270/loop_wrap = true
+tracks/270/keys = {
+"times": PackedFloat32Array(0, 58),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/271/type = "value"
+tracks/271/imported = false
+tracks/271/enabled = true
+tracks/271/path = NodePath("AirshowBox/Camera3D/MusicBox:volume_db")
+tracks/271/interp = 1
+tracks/271/loop_wrap = true
+tracks/271/keys = {
+"times": PackedFloat32Array(0, 44.7, 53, 55.93, 58),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 8.0, 8.0, 10.0, 2.0]
+}
 
 [sub_resource type="Animation" id="Animation_846qw"]
 resource_name = "PreIntro"
@@ -3619,10 +4036,10 @@ tracks/15/path = NodePath("PreIntro/DisclaimContainer/T3DLogo:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.55, 17, 20),
+"times": PackedFloat32Array(0.55, 0.7, 17, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -4031,6 +4448,54 @@ tracks/49/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("PreIntro/LogoContainer/GongPlayer:playing")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(12.45, 12.95, 13.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("PreIntro/LogoContainer/PlinkPlayer:playing")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(14.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("PreIntro/LogoContainer/KeystrokePlayer:playing")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(14.9, 15.1, 15.4, 15.6, 15.7, 15.9, 16.2, 16.7, 16.8, 16.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("PreIntro/LogoContainer/CRPlayer:playing")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(17.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ahd7a"]
@@ -7232,6 +7697,42 @@ tracks/279/keys = {
 "update": 0,
 "values": [Vector3(-3, 0, -100), Vector3(-3, 0, -100)]
 }
+tracks/280/type = "value"
+tracks/280/imported = false
+tracks/280/enabled = true
+tracks/280/path = NodePath("AirshowBox/Camera3D/MusicBox:stream")
+tracks/280/interp = 1
+tracks/280/loop_wrap = true
+tracks/280/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("35_2rt4o")]
+}
+tracks/281/type = "value"
+tracks/281/imported = false
+tracks/281/enabled = true
+tracks/281/path = NodePath("AirshowBox/Camera3D/MusicBox:volume_db")
+tracks/281/interp = 1
+tracks/281/loop_wrap = true
+tracks/281/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/282/type = "value"
+tracks/282/imported = false
+tracks/282/enabled = true
+tracks/282/path = NodePath("AirshowBox/Camera3D/MusicBox:playing")
+tracks/282/interp = 1
+tracks/282/loop_wrap = true
+tracks/282/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1o184"]
 _data = {
@@ -7292,7 +7793,6 @@ environment = ExtResource("1_ukawc")
 
 [node name="Manchuria" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
 
 [node name="T3D_Manch" type="Terrain3D" parent="Manchuria"]
 data_directory = "res://Data/T3D_Manch_Data"
@@ -7335,7 +7835,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 47)
 
 [node name="BombBlast1" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.848, 4.83232, 66.0875)
-emitting = false
 amount = 1
 lifetime = 0.5
 one_shot = true
@@ -7347,7 +7846,6 @@ draw_pass_1 = SubResource("QuadMesh_nc8nf")
 
 [node name="BombBlast1" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield/BombBlast1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257151, 0)
-emitting = false
 amount = 1
 lifetime = 0.5
 one_shot = true
@@ -7364,6 +7862,7 @@ draw_pass_1 = SubResource("QuadMesh_ent03")
 
 [node name="BombBlast2" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7065, 4.83232, 93.1681)
+visible = false
 emitting = false
 amount = 1
 lifetime = 0.5
@@ -7376,6 +7875,7 @@ draw_pass_1 = SubResource("QuadMesh_nc8nf")
 
 [node name="BombBlast1" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield/BombBlast2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257151, 0)
+visible = false
 emitting = false
 amount = 1
 lifetime = 0.5
@@ -7386,6 +7886,7 @@ process_material = SubResource("ParticleProcessMaterial_ofnlf")
 draw_pass_1 = SubResource("QuadMesh_676gw")
 
 [node name="BombSmoke" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield/BombBlast2"]
+visible = false
 amount = 32
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_qrfg1")
@@ -7393,6 +7894,7 @@ draw_pass_1 = SubResource("QuadMesh_ent03")
 
 [node name="BombBlast3" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62209, 4.83232, 128.633)
+visible = false
 emitting = false
 amount = 1
 lifetime = 0.5
@@ -7405,6 +7907,7 @@ draw_pass_1 = SubResource("QuadMesh_nc8nf")
 
 [node name="BombBlast1" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield/BombBlast3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257151, 0)
+visible = false
 emitting = false
 amount = 1
 lifetime = 0.5
@@ -7415,6 +7918,7 @@ process_material = SubResource("ParticleProcessMaterial_ofnlf")
 draw_pass_1 = SubResource("QuadMesh_676gw")
 
 [node name="BombSmoke" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield/BombBlast3"]
+visible = false
 amount = 32
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_qrfg1")
@@ -7466,6 +7970,7 @@ transform = Transform3D(0.630676, 0, -0.776046, 0, 1, 0, 0.776046, 0, 0.630676, 
 
 [node name="JPField" type="Node3D" parent="Europe/T3D_Eur"]
 transform = Transform3D(-0.888617, 0, -0.45865, 0, 1, 0, 0.45865, 0, -0.888617, -1803.53, 1, 572.947)
+visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Europe/T3D_Eur/JPField"]
 transform = Transform3D(0.205384, 0, 0.978681, 0, 1, 0, -0.978681, 0, 0.205384, 0, 0, 0)
@@ -7535,12 +8040,12 @@ transform = Transform3D(0.325568, 0, 0.945519, 0, 1, 0, -0.945519, 0, 0.325568, 
 transform = Transform3D(-0.721651, 0, -0.692257, 0, 1, 0, 0.692257, 0, -0.721651, 100, 0, -200)
 
 [node name="AirshowBox" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1800, 150, 1400)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
 
 [node name="Camera3D" type="Camera3D" parent="AirshowBox"]
-transform = Transform3D(-0.984808, 0.086824, 0.150383, 0, 0.866026, -0.5, -0.173648, -0.492404, -0.852868, 529.86, 10, -800)
+transform = Transform3D(0.391035, 0.462406, -0.795784, 0, 0.864629, 0.50241, 0.920375, -0.19646, 0.3381, -194.627, 1.34747, 113.441)
 doppler_tracking = 1
-fov = 45.0
+fov = 45.357
 size = 100.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="AirshowBox/Camera3D"]
@@ -7558,14 +8063,36 @@ sky_mode = 1
 
 [node name="Logo" type="Sprite3D" parent="AirshowBox/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -100)
+visible = false
 layers = 2
 modulate = Color(0.707967, 0.707967, 0.707967, 1)
-pixel_size = 0.033
+pixel_size = 0.001
 texture = ExtResource("30_rbivt")
 
+[node name="MusicBox" type="AudioStreamPlayer" parent="AirshowBox/Camera3D"]
+stream = ExtResource("35_2rt4o")
+volume_db = 3.18187
+bus = &"Music"
+playback_type = 1
+
 [node name="I16LOD0" parent="AirshowBox" instance=ExtResource("10_vfsk0")]
-transform = Transform3D(-0.0808823, 0.935266, -0.344579, -0.56603, 0.241456, 0.788231, 0.820406, 0.258796, 0.50986, -245.661, -140.396, 8.58771)
-visible = false
+transform = Transform3D(-3.6154e-06, 1.82107e-07, 1, 0.0503061, 0.998732, 0, -0.998733, 0.050306, -3.61999e-06, 93.5746, -150, 0)
+
+[node name="I16LOD0Audio" type="AudioStreamPlayer3D" parent="AirshowBox/I16LOD0"]
+transform = Transform3D(1, 1.49012e-08, 5.96046e-08, 1.49012e-08, 1, 4.47035e-08, -2.98023e-08, 0, 1, 0, 0, 0)
+stream = ExtResource("39_i0e84")
+volume_db = 12.0
+unit_size = 50.0
+pitch_scale = 2.0
+bus = &"Planes"
+doppler_tracking = 2
+
+[node name="I16LOD0Gun" type="AudioStreamPlayer3D" parent="AirshowBox/I16LOD0"]
+transform = Transform3D(1, 1.49012e-08, 5.96046e-08, 1.49012e-08, 1, 4.47035e-08, -2.98023e-08, 0, 1, 0, 0, 0)
+stream = ExtResource("36_i0e84")
+volume_db = 9.0
+unit_size = 25.0
+bus = &"Effects"
 
 [node name="I16Smoke" type="GPUParticles3D" parent="AirshowBox/I16LOD0"]
 transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 6.82121e-13, 0, 1, 0.436127, 4.98479, -3.92778)
@@ -7579,32 +8106,67 @@ process_material = SubResource("ParticleProcessMaterial_rhx4o")
 draw_pass_1 = SubResource("QuadMesh_fjqc7")
 
 [node name="Ki51LOD0" parent="AirshowBox" instance=ExtResource("30_17swa")]
-transform = Transform3D(-3.61857e-06, 0.178562, 0.983929, 7.80518e-09, 0.983929, -0.178562, -1, -6.38461e-07, -3.56181e-06, -500, -50, 90)
-visible = false
+transform = Transform3D(-3.50078e-06, 0, 1, 0, 1, 0, -1, 0, -3.50078e-06, 95.1715, -75, 90)
+
+[node name="Ki51LOD0Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0"]
+stream = ExtResource("39_i0e84")
+volume_db = 12.0
+bus = &"Planes"
+doppler_tracking = 2
 
 [node name="Bomb" parent="AirshowBox/Ki51LOD0" instance=ExtResource("31_rbivt")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -80, 0)
-visible = false
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5, 0)
+
+[node name="BombAudio0" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+stream = ExtResource("38_nc8nf")
+volume_db = 12.0
+unit_size = 25.0
+bus = &"Effects"
+doppler_tracking = 2
 
 [node name="Ki51LOD1" parent="AirshowBox/Ki51LOD0" instance=ExtResource("30_17swa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
-visible = false
+
+[node name="Ki51LOD1Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0/Ki51LOD1"]
+stream = ExtResource("39_i0e84")
+volume_db = 12.0
+unit_size = 25.0
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
 
 [node name="Bomb" parent="AirshowBox/Ki51LOD0/Ki51LOD1" instance=ExtResource("31_rbivt")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -80, 0)
 visible = false
 
+[node name="BombAudio2" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0/Ki51LOD1/Bomb"]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, -16.6667, 3.33333, 8.33331)
+stream = ExtResource("38_nc8nf")
+volume_db = 12.0
+unit_size = 25.0
+pitch_scale = 1.3
+bus = &"Effects"
+doppler_tracking = 2
+
 [node name="Ki51LOD2" parent="AirshowBox" instance=ExtResource("30_17swa")]
-transform = Transform3D(0.790369, -0.310618, 0.528047, -0.200072, 0.683802, 0.701702, -0.579041, -0.660251, 0.47831, -275, -134.286, 29.2126)
-visible = false
+transform = Transform3D(-3.50078e-06, 0, 1, 0, 1, 0, -1, 0, -3.50078e-06, 153.723, -69.1915, 120.138)
 
 [node name="Bomb" parent="AirshowBox/Ki51LOD2" instance=ExtResource("31_rbivt")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -80, 0)
-visible = false
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5, 0)
+
+[node name="BombAudio1" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2/Bomb"]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 16.6667, -3.33333, -8.33331)
+stream = ExtResource("38_nc8nf")
+volume_db = 12.0
+unit_size = 25.0
+bus = &"Effects"
+doppler_tracking = 2
 
 [node name="Ki51Smoke" type="GPUParticles3D" parent="AirshowBox/Ki51LOD2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 visible = false
+emitting = false
 amount = 64
 lifetime = 6.0
 fixed_fps = 60
@@ -7612,12 +8174,40 @@ trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_t5hey")
 draw_pass_1 = SubResource("QuadMesh_rhx4o")
 
+[node name="Ki51LOD2Audio0" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2"]
+stream = ExtResource("39_i0e84")
+volume_db = 18.0
+unit_size = 25.0
+max_db = 6.0
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
+
+[node name="Ki51LOD2Audio1" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2"]
+stream = ExtResource("39_cgk0g")
+bus = &"Effects"
+doppler_tracking = 2
+
 [node name="bf109dLOD0" parent="AirshowBox" instance=ExtResource("32_6ga2h")]
-transform = Transform3D(-0.498488, 0, -0.866897, 0, 1, 0, 0.866897, 0, -0.498488, 304, -25, 43)
+transform = Transform3D(0.985601, 0.0158831, 0.168343, -0.0574943, 0.967738, 0.245308, -0.159015, -0.251454, 0.954718, -405, 0, 375)
 visible = false
 
+[node name="Bf109Audio" type="AudioStreamPlayer3D" parent="AirshowBox/bf109dLOD0"]
+stream = ExtResource("44_ofnlf")
+volume_db = 24.0
+unit_size = 100.0
+pitch_scale = 0.7
+bus = &"Planes"
+doppler_tracking = 2
+
+[node name="Bf109Gun" type="AudioStreamPlayer3D" parent="AirshowBox/bf109dLOD0"]
+stream = ExtResource("45_7detu")
+volume_db = 18.0
+unit_size = 25.0
+bus = &"Effects"
+
 [node name="he111LOD0" parent="AirshowBox" instance=ExtResource("33_tx8x6")]
-transform = Transform3D(0.959196, -0.202196, -0.197628, 0.266164, 0.40996, 0.872403, -0.0953765, -0.88941, 0.447049, 315, -70, -150)
+transform = Transform3D(0.384038, 0, -0.923315, 0, 1, 0, 0.923316, 0, 0.384038, -160.754, -30, -2.10498)
 visible = false
 
 [node name="111Trac0" type="GPUParticles3D" parent="AirshowBox/he111LOD0"]
@@ -7642,8 +8232,17 @@ process_material = SubResource("ParticleProcessMaterial_7detu")
 draw_pass_1 = SubResource("QuadMesh_7dcw0")
 
 [node name="hurri1LOD0" parent="AirshowBox" instance=ExtResource("34_pie4w")]
-transform = Transform3D(-0.693567, -0.62643, 0.355741, -0.270975, 0.684406, 0.676876, -0.667486, 0.373062, -0.644428, 325, -100, 0)
+transform = Transform3D(0.366502, 0.302915, -0.879727, 0, 0.945519, 0.325569, 0.930417, -0.119322, 0.346534, -185, 42, 65)
 visible = false
+
+[node name="HurriAudio" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0"]
+transform = Transform3D(1, 0, 0, 1.49012e-08, 0.999999, 2.98023e-08, 0, -5.58794e-08, 1, 0, 0, 0)
+stream = ExtResource("44_ofnlf")
+volume_db = 48.0
+pitch_scale = 0.7
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
 
 [node name="HurriSmoke" type="GPUParticles3D" parent="AirshowBox/hurri1LOD0"]
 transform = Transform3D(1, -7.45058e-09, 2.68221e-07, 7.45058e-08, 0.999999, -4.91738e-07, -5.96046e-08, -7.82311e-08, 1, -1.13892, 8.14893, -6.22949)
@@ -7653,6 +8252,13 @@ amount = 128
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_676gw")
 draw_pass_1 = SubResource("QuadMesh_mwvy0")
+
+[node name="HurriHits" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurriSmoke"]
+transform = Transform3D(1, 2.23517e-08, -2.38419e-07, -7.45058e-08, 1, 4.80562e-07, 2.98023e-08, 7.45058e-08, 1, 1.13898, -8.14886, 6.22925)
+stream = ExtResource("49_eqq7h")
+volume_db = 36.0
+unit_size = 100.0
+bus = &"Effects"
 
 [node name="HurriTrac0" type="GPUParticles3D" parent="AirshowBox/hurri1LOD0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.266, 6.165, -3.042)
@@ -7664,6 +8270,14 @@ speed_scale = 16.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_fjqc7")
 draw_pass_1 = SubResource("QuadMesh_i0e84")
+
+[node name="HurriGun1" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurriTrac0"]
+transform = Transform3D(1, 0, 0, 1.49012e-08, 0.999999, 2.98023e-08, 0, -5.58794e-08, 1, -4.266, -6.165, 3.04201)
+stream = ExtResource("36_i0e84")
+volume_db = 24.0
+unit_size = 50.0
+panning_strength = 3.0
+bus = &"Effects"
 
 [node name="HurriTrac1" type="GPUParticles3D" parent="AirshowBox/hurri1LOD0"]
 transform = Transform3D(1, -2.98023e-08, 0, -1.3411e-07, 1, 1.49012e-08, 2.98023e-08, -3.72529e-08, 1, 6.25439, 6.81342, -3.77222)
@@ -7687,6 +8301,14 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_nc8nf")
 draw_pass_1 = SubResource("QuadMesh_2l8ww")
 
+[node name="HurriGun2" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurrirTrac2"]
+transform = Transform3D(1, 2.23517e-08, 0, 2.01166e-07, 1, 1.86265e-08, -5.96046e-08, 7.45058e-08, 1, 4.00171, -6.49573, 3.26486)
+stream = ExtResource("36_i0e84")
+volume_db = 24.0
+unit_size = 50.0
+panning_strength = 3.0
+bus = &"Effects"
+
 [node name="HurrirTrac3" type="GPUParticles3D" parent="AirshowBox/hurri1LOD0"]
 transform = Transform3D(1, -2.98023e-08, 0, -2.45869e-07, 0.999999, 1.49012e-08, 5.96046e-08, -1.41561e-07, 1, -6.07703, 6.36136, -2.7771)
 visible = false
@@ -7699,15 +8321,33 @@ process_material = SubResource("ParticleProcessMaterial_nc8nf")
 draw_pass_1 = SubResource("QuadMesh_2l8ww")
 
 [node name="Ki43LOD0" parent="AirshowBox" instance=ExtResource("35_vfsk0")]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999998, 285, -120, -1400)
+transform = Transform3D(0.216017, -0.394437, -0.89317, 0.24321, 0.907673, -0.34202, 0.945614, -0.143346, 0.292004, 168, 20, 100)
 visible = false
+
+[node name="Ki43Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki43LOD0"]
+stream = ExtResource("39_i0e84")
+volume_db = 36.0
+unit_size = 25.0
+pitch_scale = 1.25
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
 
 [node name="B25LOD1" parent="AirshowBox" instance=ExtResource("29_2g6jm")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -125, -75, -472)
+transform = Transform3D(0.996238, 0, -0.0866515, 0, 1, 0, 0.0866515, 0, 0.996238, -65, -150, -970)
 visible = false
 
+[node name="B25Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B25LOD1"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+stream = ExtResource("52_r02sr")
+unit_size = 50.0
+pitch_scale = 0.7
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
+
 [node name="B25LOD2" parent="AirshowBox/B25LOD1" instance=ExtResource("29_2g6jm")]
-transform = Transform3D(1, -5.09718e-25, -2.27374e-13, 0, 1, -2.24176e-12, 2.27374e-13, 2.24176e-12, 1, 30, -5, 10)
+transform = Transform3D(1, -5.09718e-25, -2.27374e-13, 0, 1, -2.24176e-12, 2.27374e-13, 2.24176e-12, 1, 40, -35, 50)
 visible = false
 
 [node name="B25LOD0" parent="AirshowBox/B25LOD1/B25LOD2" instance=ExtResource("29_2g6jm")]
@@ -7715,12 +8355,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -5, 10)
 visible = false
 
 [node name="me262LOD0" parent="AirshowBox" instance=ExtResource("40_b8i5w")]
-transform = Transform3D(0.500002, 0, -0.866024, 0, 1, 0, 0.866024, 0, 0.500002, 700, -25, -530)
+transform = Transform3D(-0.482963, 0, -0.129409, 0, 0.5, 0, 0.129409, 0, -0.482963, -102.393, -150, -942.859)
 visible = false
 
+[node name="Me262Audio" type="AudioStreamPlayer3D" parent="AirshowBox/me262LOD0"]
+stream = ExtResource("55_qrfg1")
+unit_size = 50.0
+pitch_scale = 1.2
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
+
 [node name="B17LOD0" parent="AirshowBox" instance=ExtResource("41_dd4tu")]
-transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 850, 25, -500)
+transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 1100, 25, -500)
 visible = false
+
+[node name="B17Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B17LOD0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+stream = ExtResource("52_r02sr")
+volume_db = -10.0
+unit_size = 100.0
+pitch_scale = 0.5
+bus = &"Planes"
 
 [node name="B17LOD1" parent="AirshowBox/B17LOD0" instance=ExtResource("41_dd4tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
@@ -7735,8 +8391,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 visible = false
 
 [node name="B24LOD0" parent="AirshowBox" instance=ExtResource("42_846qw")]
-transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 550, -50, -550)
+transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 750, -50, -550)
 visible = false
+
+[node name="B24Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B24LOD0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -25.0005, 37.5, 150)
+stream = ExtResource("52_r02sr")
+volume_db = -10.0
+unit_size = 100.0
+pitch_scale = 0.6
+bus = &"Planes"
 
 [node name="B24LOD1" parent="AirshowBox/B24LOD0" instance=ExtResource("42_846qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
@@ -7751,15 +8415,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
 visible = false
 
 [node name="p51d_LOD0" parent="AirshowBox" instance=ExtResource("43_5xl4c")]
-transform = Transform3D(6.82782e-07, -6.82782e-07, -1, 0.707107, 0.707107, 0, 0.707107, -0.707107, 9.65599e-07, 650, -15, -470)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 750, -15, -600)
 visible = false
 
 [node name="p51d_LOD0" parent="AirshowBox/p51d_LOD0" instance=ExtResource("43_5xl4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 5, 50)
 visible = false
 
+[node name="P51Audio" type="AudioStreamPlayer3D" parent="AirshowBox/p51d_LOD0/p51d_LOD0"]
+stream = ExtResource("44_ofnlf")
+unit_size = 75.0
+pitch_scale = 0.9
+panning_strength = 3.0
+bus = &"Planes"
+doppler_tracking = 2
+
 [node name="p51d_LOD1" parent="AirshowBox" instance=ExtResource("43_5xl4c")]
-transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 500, 30, -200)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 750, 30, -400)
 visible = false
 
 [node name="p51d_LOD0" parent="AirshowBox/p51d_LOD1" instance=ExtResource("43_5xl4c")]
@@ -7778,6 +8450,8 @@ playback_auto_capture = false
 follow_viewport_enabled = true
 
 [node name="Splashscreen" type="Control" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 2560.0
@@ -8036,8 +8710,6 @@ flat = true
 alignment = 0
 
 [node name="SkipButton" type="Button" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
 offset_left = 806.0
 offset_top = 1370.0
 offset_right = 1713.0
@@ -8050,8 +8722,7 @@ text = "Click here or press the Spacebar to skip
 flat = true
 
 [node name="PreIntro" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 texture = ExtResource("54_dd4tu")
 centered = false
 
@@ -8069,8 +8740,7 @@ grow_horizontal = 2
 vertical = true
 
 [node name="TitleLabel" type="Label" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.863479, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
@@ -8084,8 +8754,7 @@ text = "READ THIS NOTICE BEFORE PLAYING"
 horizontal_alignment = 1
 
 [node name="DisclaimLabel1" type="Label" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 custom_minimum_size = Vector2(2000, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
@@ -8097,8 +8766,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="DisclaimLabel2" type="Label" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 custom_minimum_size = Vector2(2000, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
@@ -8111,8 +8779,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="DisclaimLLabel3" type="Label" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 custom_minimum_size = Vector2(2000, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
@@ -8124,27 +8791,23 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="AZGLogo" type="Sprite2D" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 position = Vector2(1000, 1150)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("55_yn7hd")
 
 [node name="GodotLogo" type="Sprite2D" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 position = Vector2(300, 1100)
 texture = ExtResource("56_ahd7a")
 
 [node name="T3DLogo" type="Sprite2D" parent="PreIntro/DisclaimContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 position = Vector2(1700, 1100)
 texture = ExtResource("57_1o184")
 
 [node name="LogoContainer" type="Control" parent="PreIntro"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -8154,9 +8817,25 @@ offset_right = -780.0
 offset_bottom = 1440.0
 grow_horizontal = 2
 
+[node name="GongPlayer" type="AudioStreamPlayer" parent="PreIntro/LogoContainer"]
+stream = ExtResource("71_7dcw0")
+max_polyphony = 3
+bus = &"Effects"
+
+[node name="PlinkPlayer" type="AudioStreamPlayer" parent="PreIntro/LogoContainer"]
+stream = ExtResource("72_mwvy0")
+bus = &"Effects"
+
+[node name="KeystrokePlayer" type="AudioStreamPlayer" parent="PreIntro/LogoContainer"]
+stream = ExtResource("73_eqq7h")
+bus = &"Effects"
+
+[node name="CRPlayer" type="AudioStreamPlayer" parent="PreIntro/LogoContainer"]
+stream = ExtResource("74_mwvy0")
+bus = &"Effects"
+
 [node name="A" type="RichTextLabel" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 offset_right = 2560.0
@@ -8180,8 +8859,7 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="z" type="RichTextLabel" parent="PreIntro/LogoContainer/A"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 offset_left = -10.0
@@ -8223,8 +8901,7 @@ text = "[i]Arizoft Game [/i]"
 horizontal_alignment = 1
 
 [node name="s" type="RichTextLabel" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 2
 offset_left = 9.0
 offset_top = 936.0
@@ -8246,8 +8923,7 @@ text = "[i]Arizoft Games[/i]"
 horizontal_alignment = 1
 
 [node name="P" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8259,8 +8935,7 @@ theme_override_font_sizes/font_size = 150
 text = "P"
 
 [node name="r" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8272,8 +8947,7 @@ theme_override_font_sizes/font_size = 150
 text = "Pr"
 
 [node name="e" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8285,8 +8959,7 @@ theme_override_font_sizes/font_size = 150
 text = "Pre"
 
 [node name="s2" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8298,8 +8971,7 @@ theme_override_font_sizes/font_size = 150
 text = "Pres"
 
 [node name="e2" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8311,8 +8983,7 @@ theme_override_font_sizes/font_size = 150
 text = "Prese"
 
 [node name="n" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8324,8 +8995,7 @@ theme_override_font_sizes/font_size = 150
 text = "Presen"
 
 [node name="t" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8337,8 +9007,7 @@ theme_override_font_sizes/font_size = 150
 text = "Present"
 
 [node name="s3" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8350,8 +9019,7 @@ theme_override_font_sizes/font_size = 150
 text = "Presents."
 
 [node name="dot" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8362,8 +9030,7 @@ theme_override_fonts/font = ExtResource("45_pie4w")
 theme_override_font_sizes/font_size = 150
 
 [node name="dot2" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0
@@ -8375,8 +9042,7 @@ theme_override_font_sizes/font_size = 150
 text = "Presents.."
 
 [node name="dot3" type="Label" parent="PreIntro/LogoContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.451358)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 1200.0

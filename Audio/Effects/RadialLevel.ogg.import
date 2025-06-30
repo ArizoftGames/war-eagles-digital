@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/RadialLevel.ogg-91f736061a547a11059b2acc01036
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
