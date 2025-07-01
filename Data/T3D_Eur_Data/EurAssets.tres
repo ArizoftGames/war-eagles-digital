@@ -1,0 +1,50 @@
+[gd_resource type="Terrain3DAssets" load_steps=9 format=3 uid="uid://dxkba1mmnieqs"]
+
+[ext_resource type="Texture2D" uid="uid://b3s64se24joa7" path="res://Data/Resources/Grass008_1_alb_1K.dds" id="1_ilqt4"]
+[ext_resource type="Texture2D" uid="uid://bsrdd61gnm8da" path="res://Data/Resources/Ground037_norm_1K.dds" id="2_c0uke"]
+[ext_resource type="Texture2D" uid="uid://3fkhw0n2brc8" path="res://Data/Resources/City3d_alb_1K.dds" id="3_qq8e4"]
+[ext_resource type="Texture2D" uid="uid://cmdsb0vkaj8s" path="res://Data/Resources/City3D_norm_1K.dds" id="4_yde8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lad38"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_nsj1c"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_lad38")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_lad38"]
+name = "Grass008_1_alb_1K"
+albedo_color = Color(0.571932, 0.588401, 0.348779, 1)
+albedo_texture = ExtResource("1_ilqt4")
+normal_texture = ExtResource("2_c0uke")
+normal_depth = 1.569
+ao_strength = 1.429
+roughness = 0.606
+uv_scale = 0.02
+detiling_rotation = 0.05
+detiling_shift = 0.179
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_qmst3"]
+name = "Eur_City"
+id = 1
+albedo_texture = ExtResource("3_qq8e4")
+normal_texture = ExtResource("4_yde8u")
+normal_depth = 1.836
+ao_strength = 1.616
+roughness = 0.477
+uv_scale = 0.01
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_nsj1c")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_lad38"), SubResource("Terrain3DTextureAsset_qmst3")])

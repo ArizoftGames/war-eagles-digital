@@ -1,0 +1,51 @@
+[gd_resource type="Terrain3DAssets" load_steps=9 format=3 uid="uid://bka7h2icfe2aw"]
+
+[ext_resource type="Texture2D" uid="uid://bl4mfl4u3wihy" path="res://Data/Resources/Grass004_alb_1K.dds" id="1_etg2l"]
+[ext_resource type="Texture2D" uid="uid://b1i6uvrkhb6al" path="res://Data/Resources/Grass004_norm_1K.dds" id="2_evh2e"]
+[ext_resource type="Texture2D" uid="uid://b4gdfbyeflftl" path="res://Data/Resources/Rock061_alb_1K.dds" id="3_4rvbn"]
+[ext_resource type="Texture2D" uid="uid://cm27af8llpx1q" path="res://Data/Resources/Rock061_norm_1K.dds" id="4_54sx8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lw3e"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ayiwj"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_1lw3e")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_2t1us"]
+name = "Grass004_alb_1K"
+albedo_color = Color(0.843629, 0.72886, 0.458391, 1)
+albedo_texture = ExtResource("1_etg2l")
+normal_texture = ExtResource("2_evh2e")
+normal_depth = 1.262
+ao_strength = 0.531
+roughness = 0.733
+uv_scale = 0.02
+detiling_rotation = 0.16
+detiling_shift = 0.044
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_mx3x7"]
+name = "ManchRock"
+id = 1
+albedo_color = Color(0.819655, 0.819655, 0.819655, 1)
+albedo_texture = ExtResource("3_4rvbn")
+normal_texture = ExtResource("4_54sx8")
+normal_depth = 1.151
+roughness = 0.443
+uv_scale = 0.013
+detiling_shift = 0.035
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_ayiwj")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_2t1us"), SubResource("Terrain3DTextureAsset_mx3x7")])

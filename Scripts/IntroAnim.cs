@@ -8,19 +8,52 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
     {
         private AnimationTree animation_Tree;
         private AnimationNodeStateMachinePlayback state_machine;
+        private AudioManager MusicBox;
 
         public override void _Ready()
         {
             animation_Tree = GetNode<AnimationTree>("AnimationTree");
             state_machine = (AnimationNodeStateMachinePlayback)animation_Tree.Get("parameters/playback");
-            
+            MusicBox = GetNode<AudioManager>("/root/AudioManager");
+
             // Connect the SkipButton's pressed signal
             var skipButton = GetNode<Button>("SkipButton");
             skipButton.Pressed += OnSkipButtonPressed;
-            
 
-            GD.Print("IntroAnim initialized successfully");
+            //Connect Intro_Animation start signal
+            animation_Tree.AnimationStarted += OnIntro_AnimationStarted;
+
+            //Set MusicBox Volume
+            MusicBox.MusicVolume = 1;
+            //var vol = MusicBox.MusicVolume.ToString();
+            //GD.Print($"MusicBox Volume set to {vol}");
+
+            //Start AnimationTree
+            animation_Tree.Active = true;
+
+
+            GD.Print("IntroAnim initialized successfully.");
         }
+
+        private void OnIntro_AnimationStarted(StringName animName)
+        {
+            if (animName == "Intro_Animation")
+            {
+                try
+                { 
+                //GD.Print("MusicBox playing IntroTheme.");
+                MusicBox.PlayMusicByUseCase("Start Game"); // Play intro music
+                }
+                catch (Exception e)
+                {
+                    GD.PrintErr($"Error playing intro music: {e.Message}");
+                }
+            }
+            else
+                {
+                
+                }
+            }
 
         public override void _Input(InputEvent @event)
         {
@@ -30,17 +63,17 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             }
         }
 
-        private void OnSkipButtonPressed()
+       private void OnSkipButtonPressed()
         {
             SkipIntro();
         }
 
         private void SkipIntro()
         {
-            GD.Print("Skip Triggered");
+            //GD.Print("Skip Triggered");
             // Advance AnimationTree to RESET state via AtEnd transition
             state_machine.Start("RESET");
-                    }
+        }
 
         public void OnQuitButtonPressed() //Quits game from Main Menu
         {

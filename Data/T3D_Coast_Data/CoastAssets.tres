@@ -1,0 +1,75 @@
+[gd_resource type="Terrain3DAssets" load_steps=14 format=3 uid="uid://cp3evopm7qcd5"]
+
+[ext_resource type="Texture2D" uid="uid://bcatwga1tgqvv" path="res://Data/Resources/jungle_albedo_1k.dds" id="1_qxnwv"]
+[ext_resource type="Texture2D" uid="uid://c5p73ymcxbkm0" path="res://Data/Resources/jungle_normal_1K.dds" id="2_fdfvd"]
+[ext_resource type="Texture2D" uid="uid://4veqs2q1otqw" path="res://Data/Terrain3DData2/Water002_alb.dds" id="3_4cork"]
+[ext_resource type="Texture2D" uid="uid://cofckjjytsung" path="res://Data/Resources/Ground037_alb_1K.dds" id="4_t3n3d"]
+[ext_resource type="Texture2D" uid="uid://bsrdd61gnm8da" path="res://Data/Resources/Ground037_norm_1K.dds" id="5_ylubp"]
+[ext_resource type="Texture2D" uid="uid://b4gdfbyeflftl" path="res://Data/Resources/Rock061_alb_1K.dds" id="6_w7n00"]
+[ext_resource type="Texture2D" uid="uid://cm27af8llpx1q" path="res://Data/Resources/Rock061_norm_1K.dds" id="7_u1ggt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayiwj"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_2t1us"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_ayiwj")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_2g6jm"]
+name = "jungle_albedo_1k"
+albedo_color = Color(0.467653, 0.718148, 0.709807, 1)
+albedo_texture = ExtResource("1_qxnwv")
+normal_texture = ExtResource("2_fdfvd")
+normal_depth = 2.0
+ao_strength = 1.907
+roughness = 0.622
+uv_scale = 0.05
+detiling_rotation = 0.245
+detiling_shift = 0.05
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_sy1j7"]
+name = "Water001_albedo_1K"
+id = 1
+albedo_color = Color(0.639651, 0.866048, 0.998165, 1)
+albedo_texture = ExtResource("3_4cork")
+normal_texture = ExtResource("3_4cork")
+normal_depth = 0.0
+ao_strength = 0.141
+roughness = 0.468
+uv_scale = 0.02
+detiling_rotation = 0.239
+detiling_shift = 0.093
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_vt803"]
+name = "Ground037_alb_1K"
+id = 2
+albedo_color = Color(0.411246, 0.53444, 0.273237, 1)
+albedo_texture = ExtResource("4_t3n3d")
+normal_texture = ExtResource("5_ylubp")
+normal_depth = 0.668
+ao_strength = 0.965
+roughness = 0.7
+uv_scale = 0.01
+detiling_rotation = 0.174
+detiling_shift = 0.073
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_7da5v"]
+name = "Rock061_alb_1K"
+id = 3
+albedo_texture = ExtResource("6_w7n00")
+normal_texture = ExtResource("7_u1ggt")
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_2t1us")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_2g6jm"), SubResource("Terrain3DTextureAsset_sy1j7"), SubResource("Terrain3DTextureAsset_vt803"), SubResource("Terrain3DTextureAsset_7da5v")])
