@@ -16,17 +16,16 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             state_machine = (AnimationNodeStateMachinePlayback)animation_Tree.Get("parameters/playback");
             MusicBox = GetNode<AudioManager>("/root/AudioManager");
 
+            ///Set MusicBox volume
+            var MusicBus = AudioServer.GetBusIndex("Music");
+            AudioServer.SetBusVolumeDb(MusicBus, 8.0f); // Set volume to 12 dB
+
             // Connect the SkipButton's pressed signal
             var skipButton = GetNode<Button>("SkipButton");
             skipButton.Pressed += OnSkipButtonPressed;
 
             //Connect Intro_Animation start signal
             animation_Tree.AnimationStarted += OnIntro_AnimationStarted;
-
-            //Set MusicBox Volume
-            MusicBox.MusicVolume = 1;
-            //var vol = MusicBox.MusicVolume.ToString();
-            //GD.Print($"MusicBox Volume set to {vol}");
 
             //Start AnimationTree
             animation_Tree.Active = true;

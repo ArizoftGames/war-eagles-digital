@@ -11,25 +11,53 @@ namespace WarEaglesDigital.Scripts
         private string _currentMusicKey;
         private AudioStreamPlayer _currentMusicPlayer;
 
-        [Export(PropertyHint.None, "Tooltip: Adjust music volume (0.0 to 1.0).")]
-        public float MusicVolume { get; set; } = 0.7f;
-
-        [Export(PropertyHint.None, "Tooltip: Adjust sound effect volume (0.0 to 1.0).")]
-        public float EffectVolume { get; set; } = 1.0f;
+        private int _musicBusIndex = -1;
+        private int _planesBusIndex = -1;
+        private int _effectsBusIndex = -1;
 
         public override void _Ready()
         {
             try
             {
+                // Load custom bus layout
+                var busLayout = GD.Load<AudioBusLayout>("res://Audio/WE_Bus_layout.tres");
+                if (busLayout == null)
+                {
+                    GD.PrintErr("Failed to load bus layout: res://Audio/WE_Bus_layout.tres");
+                    return;
+                }
+                AudioServer.SetBusLayout(busLayout);
+
+                // Initialize bus indices
+                InitializeAudioBuses();
                 LoadMusicTracks();
                 LoadSoundEffects();
-                UpdateVolumes();
-                //PlayMusicByUseCase("Start Game"); // Default
                 GD.Print("AudioManager initialized successfully.");
             }
             catch (Exception ex)
             {
                 GD.PrintErr($"AudioManager initialization failed: {ex.Message}");
+            }
+        }
+
+        private void InitializeAudioBuses()
+        {
+            try
+            {
+                _musicBusIndex = AudioServer.GetBusIndex("Music");
+                _planesBusIndex = AudioServer.GetBusIndex("Planes");
+                _effectsBusIndex = AudioServer.GetBusIndex("Effects");
+
+                if (_musicBusIndex == -1)
+                    GD.PrintErr("Music bus not found in res://Audio/WE_Bus_layout.tres.");
+                if (_planesBusIndex == -1)
+                    GD.PrintErr("Planes bus not found in res://Audio/WE_Bus_layout.tres.");
+                if (_effectsBusIndex == -1)
+                    GD.PrintErr("Effects bus not found in res://Audio/WE_Bus_layout.tres.");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to initialize audio buses: {ex.Message}");
             }
         }
 
@@ -77,13 +105,13 @@ namespace WarEaglesDigital.Scripts
                     string key = string.IsNullOrEmpty(useCase) ? $"{nationality}{mood}" : useCase.Replace(" ", "");
                     var player = new AudioStreamPlayer
                     {
-                        Stream = GD.Load<AudioStream>($"res://Audio/Music/{filename}")
+                        Stream = GD.Load<AudioStream>($"res://Audio/Music/{filename}"),
+                        Bus = "Music"
                     };
-                    player.Stream.Set("loop", true); // Ensure looping for music
+                    player.Stream.Set("loop", true);
                     player.Name = key;
                     AddChild(player);
                     _musicPlayers[key] = player;
-
                 }
                 catch (Exception ex)
                 {
@@ -137,15 +165,15 @@ namespace WarEaglesDigital.Scripts
                     if (string.IsNullOrEmpty(filename)) continue;
 
                     string key = string.IsNullOrEmpty(motor) ? (string.IsNullOrEmpty(gun) ? (string.IsNullOrEmpty(sound) ? (string.IsNullOrEmpty(bomb) ? filename : bomb) : sound) : gun) : $"{motor}{status}";
+                    string bus = (!string.IsNullOrEmpty(motor) || !string.IsNullOrEmpty(gun)) ? "Planes" : "Effects";
                     var player = new AudioStreamPlayer
                     {
                         Stream = GD.Load<AudioStream>($"res://audio/effects/{filename}"),
                         Name = key,
-                        VolumeDb = Mathf.LinearToDb(EffectVolume)
+                        Bus = bus
                     };
                     AddChild(player);
                     _effectPlayers[key] = player;
-
                 }
                 catch (Exception ex)
                 {
@@ -154,7 +182,6 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        // Play music for a nation and mood (e.g., called by GameManager on AI mood change, per AIMoodDefinitions.csv)
         public void PlayMusicByNationMood(string nationality, string mood)
         {
             try
@@ -179,7 +206,6 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        // Play music for a use case (e.g., called by GameManager for "Open Credits Animation")
         public void PlayMusicByUseCase(string useCase)
         {
             try
@@ -204,8 +230,6 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        // Play sound effect (e.g., called by GameManager for AirUnit.Motor+Status like "radialDive",
-        // AntiAircraftUnit.Gun like "Auto", Event.Sound like "typewriter", or new effects like "flakBurst")
         public void PlaySoundEffect(string key)
         {
             try
@@ -213,7 +237,7 @@ namespace WarEaglesDigital.Scripts
                 if (_effectPlayers.TryGetValue(key, out var player))
                 {
                     player.Play();
-                    GD.Print($"Playing effect: {key}");
+                    GD.Print($"Playing effect: {key} on bus {player.Bus}");
                 }
                 else
                 {
@@ -226,7 +250,6 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        // Stop current music playback
         public void StopMusic()
         {
             if (_currentMusicPlayer != null)
@@ -238,22 +261,59 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        // Update volumes for all players (called dynamically for UI changes)
-        private void UpdateVolumes()
+        public void SetBusVolume(string busName, float linearVolume)
         {
-            foreach (var player in _musicPlayers.Values)
+            try
             {
-                player.VolumeDb = Mathf.LinearToDb(MusicVolume);
+                int busIndex = AudioServer.GetBusIndex(busName);
+                if (busIndex == -1)
+                {
+                    GD.PrintErr($"Bus {busName} not found.");
+                    return;
+                }
+                float dbVolume = linearVolume == 0 ? -80 : Mathf.LinearToDb(linearVolume);
+                AudioServer.SetBusVolumeDb(busIndex, dbVolume);
+                GD.Print($"Set {busName} bus volume to {linearVolume} ({dbVolume} dB)");
             }
-            foreach (var player in _effectPlayers.Values)
+            catch (Exception ex)
             {
-                player.VolumeDb = Mathf.LinearToDb(EffectVolume);
+                GD.PrintErr($"Failed to set volume for bus {busName}: {ex.Message}");
             }
         }
 
-        public override void _Process(double delta)
+        public float GetBusVolume(string busName)
         {
-            UpdateVolumes();
+            try
+            {
+                int busIndex = AudioServer.GetBusIndex(busName);
+                if (busIndex == -1)
+                {
+                    GD.PrintErr($"Bus {busName} not found.");
+                    return 0.0f;
+                }
+                float dbVolume = AudioServer.GetBusVolumeDb(busIndex);
+                return Mathf.DbToLinear(dbVolume);
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to get volume for bus {busName}: {ex.Message}");
+                return 0.0f;
+            }
+        }
+
+        // Set combined volume for Planes and Effects buses (for future UI)
+        public void SetEffectsVolume(float linearVolume)
+        {
+            try
+            {
+                SetBusVolume("Planes", linearVolume);
+                SetBusVolume("Effects", linearVolume);
+                GD.Print($"Set Planes and Effects bus volume to {linearVolume}");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to set Planes/Effects volume: {ex.Message}");
+            }
         }
     }
 }
