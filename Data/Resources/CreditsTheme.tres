@@ -1,0 +1,68 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d0w0rah24hrex"]
+
+[ext_resource type="FontFile" uid="uid://csimqowkltipl" path="res://Assets/Fonts/TIMESBD.TTF" id="1_3b6ap"]
+[ext_resource type="FontFile" uid="uid://bl6npww5p5jjb" path="res://Assets/Fonts/TIMESBI.TTF" id="2_5vxht"]
+[ext_resource type="FontFile" uid="uid://6a0d5taaioy6" path="res://Assets/Fonts/TIMESI.TTF" id="3_5qr2v"]
+[ext_resource type="FontFile" uid="uid://s2i0qyq8iank" path="res://Assets/Fonts/DEUTSCH.TTF" id="4_r24og"]
+[ext_resource type="FontFile" uid="uid://853e4p4ructj" path="res://Assets/Fonts/TIMES.TTF" id="5_jfa3n"]
+[ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="6_u8m7g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di1wn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3f7x"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[resource]
+default_font = ExtResource("6_u8m7g")
+default_font_size = 100
+RichTextLabel/colors/default_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0.533333, 0.533333, 0.533333, 1)
+RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/constants/table_h_separation = 3
+RichTextLabel/constants/table_v_separation = 3
+RichTextLabel/constants/text_highlight_h_padding = 3
+RichTextLabel/constants/text_highlight_v_padding = 3
+RichTextLabel/font_sizes/bold_font_size = 140
+RichTextLabel/font_sizes/bold_italics_font_size = 120
+RichTextLabel/font_sizes/italics_font_size = 80
+RichTextLabel/font_sizes/mono_font_size = 200
+RichTextLabel/font_sizes/normal_font_size = 80
+RichTextLabel/fonts/bold_font = ExtResource("1_3b6ap")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_5vxht")
+RichTextLabel/fonts/italics_font = ExtResource("3_5qr2v")
+RichTextLabel/fonts/mono_font = ExtResource("4_r24og")
+RichTextLabel/fonts/normal_font = ExtResource("5_jfa3n")
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_di1wn")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_d3f7x")

@@ -113,6 +113,40 @@ text = "Continue"
 flat = true
 alignment = 0
 
+[node name="SaveButton" type="Button" parent="Pause_Menu/MainMenu"]
+layout_mode = 2
+tooltip_text = "Play the tutorial scenario: \"The Nonstop Offensive\""
+theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
+theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
+theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
+theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
+theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_dhr51")
+theme_override_font_sizes/font_size = 70
+text = "Save"
+flat = true
+alignment = 0
+
+[node name="LoadButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
+layout_mode = 2
+tooltip_text = "Choose a saved game to open
+"
+theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
+theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
+theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
+theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
+theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_dhr51")
+theme_override_font_sizes/font_size = 70
+text = "LOAD"
+alignment = 0
+
 [node name="NewButton" type="OptionButton" parent="Pause_Menu/MainMenu"]
 layout_mode = 2
 tooltip_text = "Choose a nation to set up a new game"
@@ -157,40 +191,6 @@ popup/item_9/id = 10
 popup/item_10/text = "German Reich"
 popup/item_10/icon = ExtResource("11_8kogi")
 popup/item_10/id = 4
-
-[node name="LoadButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
-layout_mode = 2
-tooltip_text = "Choose a saved game to open
-"
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("6_dhr51")
-theme_override_font_sizes/font_size = 70
-text = "LOAD"
-alignment = 0
-
-[node name="TutorialButton" type="Button" parent="Pause_Menu/MainMenu"]
-layout_mode = 2
-tooltip_text = "Play the tutorial scenario: \"The Nonstop Offensive\""
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("6_dhr51")
-theme_override_font_sizes/font_size = 70
-text = "Tutorial"
-flat = true
-alignment = 0
 
 [node name="CreditsButton" type="Button" parent="Pause_Menu/MainMenu"]
 layout_mode = 2

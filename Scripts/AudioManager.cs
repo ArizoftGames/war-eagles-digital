@@ -261,7 +261,7 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        public void SetBusVolume(string busName, float linearVolume)
+        public static void SetBusVolume(string busName, float linearVolume)
         {
             try
             {
@@ -281,7 +281,7 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        public float GetBusVolume(string busName)
+        public static float GetBusVolume(string busName)
         {
             try
             {
@@ -302,7 +302,7 @@ namespace WarEaglesDigital.Scripts
         }
 
         // Set combined volume for Planes and Effects buses (for future UI)
-        public void SetEffectsVolume(float linearVolume)
+        public static void SetEffectsVolume(float linearVolume)
         {
             try
             {

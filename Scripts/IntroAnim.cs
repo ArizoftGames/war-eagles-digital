@@ -9,6 +9,7 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
         private AnimationTree animation_Tree;
         private AnimationNodeStateMachinePlayback state_machine;
         private AudioManager MusicBox;
+        private const string CreditsMenuScene = "res://Scenes/CreditRoll.tscn"; // Path to the Credits Menu scene
 
         public override void _Ready()
         {
@@ -23,6 +24,10 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             // Connect the SkipButton's pressed signal
             var skipButton = GetNode<Button>("SkipButton");
             skipButton.Pressed += OnSkipButtonPressed;
+
+            // Connect the CreditsButton's pressed signal
+            var creditsButton = GetNode<Button>("Splashscreen/MainMenu/CreditsButton");
+            creditsButton.Pressed += OnCreditsButtonPressed;
 
             //Connect Intro_Animation start signal
             animation_Tree.AnimationStarted += OnIntro_AnimationStarted;
@@ -78,6 +83,21 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
         {
             GD.Print("Closing game");
             GetTree().Quit();
+        }
+
+        private void OnCreditsButtonPressed()
+        {
+            try
+            {
+                GD.Print("Opening Credits Menu");
+                GetTree().ChangeSceneToFile(CreditsMenuScene);
+
+            }
+            catch (Exception)
+            {
+                GD.PrintErr("Failed to open Credits Menu.");
+            }
+
         }
     }
 }
