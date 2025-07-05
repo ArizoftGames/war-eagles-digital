@@ -1,7 +1,32 @@
-# War Eagles Digital Workflow v5
+# War Eagles Digital Workflow v6
 
-#PLANNING AND IMPLEMENTATION GUIDELINES:
-*These guidelines are global and intended to be applied to all steps of the War Eagles Digital Edition Creation Plan and Workflow, outlined below.
+# Planning and Implementation Guidelines
+
+## Coding Workflow
+- **Tasks**:
+  1. **Scene Planning**: Collaborate with Grok to define scene goals, objectives, and solutions. Specify required assets. Grok drafts a Scene Plan with high-level pseudocode, outlining key logic, `Node3D` nodes, signals, and error-handling within the `WarEaglesDigital.Scripts` namespace.
+  2. **Scene Creation**: Create scene(s) in Godot 4.4 .NET editor, populating scene tree(s) with PascalCasing for node names. Source assets and create `.tres` files. Attach C# scripts in `WarEaglesDigital.Scripts` namespace.
+  3. **Copilot Prompt Development**: Provide Grok with Scene Plan and raw `.tscn` text output from Godot. Upon consensus that the scene meets the Scene Plan, Grok generates a Copilot prompt in pseudocode, specifying `WarEaglesDigital.Scripts` namespace, node paths, signals, and error-handling.
+  4. **Prompt Review and Code Generation**: Review/edit Copilot prompt, verifying `WarEaglesDigital.Scripts` namespace, node paths, signal connections, and error-handling. Input prompt to Copilot, checking output for errors (e.g., truncation, missing functionality) using checklist:
+     - Confirm `WarEaglesDigital.Scripts` namespace usage.
+     - Validate node paths against scene tree.
+     - Ensure signal connections are defined.
+     - Add try-catch blocks if missing.
+  5. **Script Proofing and Feedback**: Upload Copilot-generated script to Grok for proofing. Grok reviews for form and functionality (e.g., namespace, signals, error-handling) using a template and provides structured feedback with suggested fixes, including NUnit test suggestions for key methods.
+  6. **Script Integration and Debugging**: Apply script changes in Visual Studio, resolving IntelliSense errors using GD.Print and Visual Studio debugger. Utilize Grok and Copilot as appropriate to aid debugging.
+  7. **Scene Testing**: Compile and run scene in Godot 4.4, using profiler to monitor 60 FPS target. Test functionality with predefined test cases from Scene Plan. Debug compilation/runtime errors with Grok and Copilot, ensuring inputs yield expected results.
+  8. **Iteration and Integration**: Repeat Steps 3–7 until Scene Plan is fulfilled. Implement interscene interactions using standardized scene transitions with error-handling (e.g., try-catch for scene loading). Validate interactions and resolve issues.
+  9. **Documentation and Version Control**: Update `docs/user_guide.md` with scene functionality, controls, and audio notes. Commit changes daily to GitHub via Visual Studio Git Changes, using task-specific branches. Merge successful branches to `main` or `dev` and delete via VS Git control panel; document failed branches in `docs/user_guide.md` before deletion.
+
+- **My Role**:
+  1. Draft Scene Plans with pseudocode, specifying `WarEaglesDigital.Scripts` namespace, node paths, signals, and error-handling.
+  2. Generate Copilot prompts in pseudocode, adhering to `GrokPromptingRules.txt` for Godot 4.4 .NET compatibility.
+  3. Proof scripts for form and functionality, suggesting fixes and NUnit tests for key methods.
+  4. Guide debugging with Godot profiler, Visual Studio debugger, and GD.Print logging.
+  5. Suggest UI tooltip text and AI decision tree logic for gameplay integration.
+  6. Provide Git commands or Visual Studio Git Changes guidance for commits, branching, and conflict resolution.
+
+- **Discussion**: This workflow ensures modular, testable code development within Godot 4.4 .NET, aligning with the project’s UX and performance goals (60 FPS target). The iterative process, supported by Copilot prompts and Grok’s feedback, minimizes errors and ensures compatibility with `WarEaglesDigital.Scripts`. Explicit inclusion of documentation and version control supports robust implementation of gameplay mechanics (e.g., Event, Launch, Action phases) and seamless integration with `AudioManager.cs` and assets.
 
 ## Testing and Debugging
 - **Considerations**:
@@ -46,7 +71,7 @@
   2. Suggest commit messages, branching strategies, and cleanup steps.
   3. Guide conflict resolution during merges if files are provided.
 
-#WAR EAGLES DIGITAL EDITION CREATION PLAN AND WORKFLOW 
+# War Eagles Digital Edition Creation Plan and Workflow 
 
 ## Asset Creation Phase
 - **Status**: Completed.
@@ -58,10 +83,10 @@
 - **Status**: Active.
 - **Tasks**:
 
--Ensure that ESC key and spacebar consistently provide game pause and switch to PauseMenu.tscn.
+- Ensure that ESC key and spacebar consistently provide game pause and switch to PauseMenu.tscn.
 
-###UI Preparation and Initial Implementation Sub-Phase *additional UI element implementation is to be expected during gameplay coding*
-  1. **Credit Roll**:Completed.
+### UI Preparation and Initial Implementation Sub-Phase *additional UI element implementation is to be expected during gameplay coding*
+  1. **Credit Roll**: Completed.
 
   2. **Extras Folder**:
      - Create `res://extras/` directory for assets like concept art (.png), lore (.txt), or audio commentary (.ogg).
@@ -81,48 +106,47 @@
      - Implement return logic to `PauseMenu.tscn`.
      - **Discussion**: A clear help system reduces player frustration in strategy games, per “Game Feel” by Steve Swink. Using tooltips enhances accessibility. 
 
-###Coding Planning Sub-phase
+### Coding Planning Sub-phase
 
-  5. **Plan Gameplay Coding**:
+**Plan Gameplay Coding**:
      - Outline phase-by-phase mechanics (Event, Launch, Action) for C# scripts.
      - Plan event purchases and effects.
      - Plan auto-assignment of unit designations from `designations.csv` with tooltip support.
      - **Discussion**: Planning gameplay coding ensures modular, testable mechanics, as recommended in Godot forums (godotdevelopers.org). A detailed outline for Event, Launch, and Action phases, leveraging `events.csv` and `designations.csv`, supports data-driven design. Including CAP audio planning ensures integration with `AudioStreamPlayer3D` toggling during CAP/Landing phases, maintaining performance (60 FPS target) and compatibility with `AudioManager.cs`.
 
-  6. **Plan State Machine Build and AI Behavior**:
+**Plan State Machine Build and AI Behavior**:
      - Outline opponent AI using decision trees in `OpponentAI.cs`, integrating with gameplay phases.
      - Plan AI-driven event purchases and unit deployments.
      - Ensure AI states align with Standard Rules and gameplay plan for balance.
-     - **Discussion**: Planning a state machine with decision trees ensures predictable AI behavior, as noted in Gamasutra AI articles. Outlining `OpponentAI.cs` to integrate with gameplay phases and data  supports modularity. Aligning with the gameplay coding plan ensures AI states complement player mechanics.
+     - **Discussion**: Planning a state machine with decision trees ensures predictable AI behavior, as noted in Gamasutra AI articles. Outlining `OpponentAI.cs` to integrate with gameplay phases and data supports modularity. Aligning with the gameplay coding plan ensures AI states complement player mechanics.
 
-##Coding Implementation Sub-phase
+## Coding Implementation Sub-phase
 
-*TBD, largely defined during Coding Planning Sub-phase
+- **TBD**, largely defined during Coding Planning Sub-phase
 
 - **My Role**:
-  1. Provide C# script outlines  in `WarEaglesDigital.Scripts`.
+  1. Provide C# script outlines in `WarEaglesDigital.Scripts`.
   2. Suggest UI tooltip text.
   3. Draft file structures and scene transitions for `PauseMenu.tscn`.
   4. Guide debugging with Godot’s profiler and NUnit tests.
   5. Assist with gameplay and AI planning, ensuring alignment.
 
-###Playtesting Phase
+#Playtesting Phase
 
-##Mechanic and Systems Validation Subphase
-**Tasks**
--Ensure inputs have expected results
- Ensure expected progression of game occurences and scene interactions
- Check and validate visual and audio presentation
- Iteratively validate system resource usage and framerate via Profiler.
-
-##Developer Playtest Subphase
-
-##External Playtest Subphase
-
-
-###Distribution Preparation Phase
+## Mechanic and Systems Validation Subphase
 - **Tasks**:
-  1. Maintain licensing spreadsheet for assets .
+  - Ensure inputs have expected results
+  - Ensure expected progression of game occurrences and scene interactions
+  - Check and validate visual and audio presentation
+  - Iteratively validate system resource usage and framerate via Profiler.
+
+## Developer Playtest Subphase
+
+## External Playtest Subphase
+
+#Distribution Preparation Phase
+- **Tasks**:
+  1. Maintain licensing spreadsheet for assets.
   2. Create `LICENSE.md` or `CREDITS.md` in repo.
   3. Test export presets for Windows.
   4. Clean Git repo pre-release (merge branches, delete tests).
@@ -130,5 +154,4 @@
   1. Draft licensing templates.
   2. Guide export setup and platform distribution.
 
-###Beta Distribution
-
+#Beta Distribution

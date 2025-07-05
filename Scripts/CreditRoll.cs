@@ -81,10 +81,10 @@ namespace WarEaglesDigital.Scripts
                 GD.Print("L_10646.TTF font loaded.");
 
             // Create nodes in order: backgrounds first, then label, then button
-            _creditBG0 = CreateBackgroundSprite("_creditBG0");
-            AddChild(_creditBG0);
-            _creditBG1 = CreateBackgroundSprite("_creditBG1");
-            AddChild(_creditBG1);
+            //_creditBG0 = CreateBackgroundSprite("_creditBG0");
+            //AddChild(_creditBG0);
+            //_creditBG1 = CreateBackgroundSprite("_creditBG1");
+            //AddChild(_creditBG1);
 
             _creditsLabel = new RichTextLabel
             {
@@ -156,20 +156,20 @@ namespace WarEaglesDigital.Scripts
         }
 
         // Helper to create and configure Sprite2D backgrounds
-        private Sprite2D CreateBackgroundSprite(string name)
-        {
-            var sprite = new Sprite2D
-            {
-                Name = name,
-                Position = Vector2.Zero,
-                Centered = false,
-                ShowBehindParent = true, // Ensure sprite renders behind RichTextLabel
-                Texture = null, // Set by animation
-                Scale = GetViewport().GetVisibleRect().Size / new Vector2(2560, 1440) // Will be scaled by texture size
-            };
-            GD.Print($"{name} created and configured.");
-            return sprite;
-        }
+        //private Sprite2D CreateBackgroundSprite(string name)
+        //{
+            //var sprite = new Sprite2D
+            //{
+                //Name = name,
+                //Position = Vector2.Zero,
+                //Centered = false,
+                //ShowBehindParent = true, // Ensure sprite renders behind RichTextLabel
+                //Texture = null, // Set by animation
+                //Scale = GetViewport().GetVisibleRect().Size / new Vector2(2560, 1440) // Will be scaled by texture size
+            //};
+           // GD.Print($"{name} created and configured.");
+            //return sprite;
+        //}
 
         // Create the Credits_Roll animation with scrolling and crossfades
         private void CreateCreditsAnimation()
@@ -188,51 +188,6 @@ namespace WarEaglesDigital.Scripts
             anim.TrackInsertKey(0, 0.0f, 0.0f);
             anim.TrackInsertKey(0, duration, -scrollDistance);
 
-            // 2. Background crossfades and texture changes
-            string[] textures = {
-        "res://Assets/Sprites/CreditBG/CreditBG1.png",
-        "res://Assets/Sprites/CreditBG/CreditBG2.png",
-        "res://Assets/Sprites/CreditBG/CreditBG3.png",
-        "res://Assets/Sprites/CreditBG/CreditBG4.png",
-        "res://Assets/Sprites/CreditBG/CreditBG5.png",
-        "res://Assets/Sprites/CreditBG/CreditBG6.png",
-        "res://Assets/Sprites/CreditBG/CreditBG7.png",
-        "res://Assets/Sprites/CreditBG/CreditBG8.png",
-        "res://Assets/Sprites/CreditBG/CreditBG9.png"
-    };
-
-            // Helper for background animation tracks
-            void AddBGTracks(Sprite2D sprite, int[] texIndices, int baseTrackIdx, float startTime)
-            {
-                // Texture track
-                anim.AddTrack(Animation.TrackType.Value);
-                anim.TrackSetPath(baseTrackIdx, sprite.GetPath().ToString() + ":texture");
-                for (int i = 0; i < texIndices.Length; i++)
-                {
-                    float t = startTime + i * 20.0f;
-                    var tex = GD.Load<Texture2D>(textures[texIndices[i]]);
-                    if (tex == null)
-                        GD.PrintErr($"Failed to load texture: {textures[texIndices[i]]}");
-                    anim.TrackInsertKey(baseTrackIdx, t, tex);
-                }
-
-                // Alpha (modulate:a) track
-                anim.AddTrack(Animation.TrackType.Value);
-                anim.TrackSetPath(baseTrackIdx + 1, sprite.GetPath().ToString() + ":modulate:a");
-                for (int i = 0; i < texIndices.Length; i++)
-                {
-                    float tOn = startTime + i * 20.0f;
-                    anim.TrackInsertKey(baseTrackIdx + 1, tOn, 0.0f);
-                    anim.TrackInsertKey(baseTrackIdx + 1, tOn + 2.0f, 1.0f);
-                    anim.TrackInsertKey(baseTrackIdx + 1, tOn + 8.0f, 1.0f);
-                    anim.TrackInsertKey(baseTrackIdx + 1, tOn + 10.0f, 0.0f);
-                }
-            }
-
-            // _creditBG0: odd textures (0,2,4,6,8), starts at t=0
-            AddBGTracks(_creditBG0, new int[] { 0, 2, 4, 6, 8 }, 1, 0.0f);
-            // _creditBG1: even textures (1,3,5,7), starts at t=10
-            AddBGTracks(_creditBG1, new int[] { 1, 3, 5, 7 }, 4, 10.0f);
 
             // Create and add to default library
             var library = new AnimationLibrary();

@@ -1,7 +1,162 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbdx7i4epdg8d"]
+[gd_scene load_steps=14 format=3 uid="uid://cbdx7i4epdg8d"]
 
 [ext_resource type="Script" uid="uid://chhkgngw15vp3" path="res://Scripts/CreditRoll.cs" id="1_vep7r"]
-[ext_resource type="Theme" uid="uid://d0w0rah24hrex" path="res://Data/Resources/CreditsTheme.tres" id="2_uvjgo"]
+[ext_resource type="Texture2D" uid="uid://dqnj2hyoxsvy8" path="res://Assets/Sprites/CreditBG/CreditBG1.png" id="2_uvjgo"]
+[ext_resource type="Texture2D" uid="uid://bwnl30mn1mtdp" path="res://Assets/Sprites/CreditBG/CreditBG3.png" id="3_k6uw4"]
+[ext_resource type="Texture2D" uid="uid://cfl8plaw8qiho" path="res://Assets/Sprites/CreditBG/CreditBG2.png" id="3_l11cb"]
+[ext_resource type="Texture2D" uid="uid://cp7vd0kvbsevi" path="res://Assets/Sprites/CreditBG/CreditBG5.png" id="4_xti83"]
+[ext_resource type="Texture2D" uid="uid://c15f3taccmd0m" path="res://Assets/Sprites/CreditBG/CreditBG7.png" id="5_iiues"]
+[ext_resource type="Texture2D" uid="uid://c8pxym3id4iev" path="res://Assets/Sprites/CreditBG/CreditBG4.png" id="5_injcr"]
+[ext_resource type="Texture2D" uid="uid://dprx8mqs6yyq4" path="res://Assets/Sprites/CreditBG/CreditBG9.png" id="6_gqq2w"]
+[ext_resource type="Texture2D" uid="uid://yu4emdske1ki" path="res://Assets/Sprites/CreditBG/CreditBG6.png" id="7_ow73i"]
+[ext_resource type="Texture2D" uid="uid://choeuif4qxf0x" path="res://Assets/Sprites/CreditBG/CreditBG8.png" id="9_8evny"]
+
+[sub_resource type="Animation" id="Animation_vep7r"]
+resource_name = "BackgroundAnimation"
+length = 90.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_BG0:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69, 71, 79, 81, 89, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, true, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("_BG0:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69, 71, 79, 81, 89, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("_BG0:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69, 71, 79, 81, 89, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_uvjgo"), ExtResource("2_uvjgo"), ExtResource("2_uvjgo"), ExtResource("2_uvjgo"), ExtResource("3_k6uw4"), ExtResource("3_k6uw4"), ExtResource("3_k6uw4"), ExtResource("3_k6uw4"), ExtResource("4_xti83"), ExtResource("4_xti83"), ExtResource("4_xti83"), ExtResource("4_xti83"), ExtResource("5_iiues"), ExtResource("5_iiues"), ExtResource("5_iiues"), ExtResource("5_iiues"), ExtResource("6_gqq2w"), ExtResource("6_gqq2w"), ExtResource("6_gqq2w"), ExtResource("6_gqq2w")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("_BG1:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69, 71, 79, 81, 89, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("3_l11cb"), ExtResource("3_l11cb"), ExtResource("3_l11cb"), ExtResource("3_l11cb"), ExtResource("5_injcr"), ExtResource("5_injcr"), ExtResource("5_injcr"), ExtResource("5_injcr"), ExtResource("7_ow73i"), ExtResource("7_ow73i"), ExtResource("7_ow73i"), ExtResource("7_ow73i"), ExtResource("9_8evny"), ExtResource("9_8evny"), ExtResource("9_8evny"), ExtResource("9_8evny"), ExtResource("9_8evny"), ExtResource("9_8evny")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("_BG1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69, 71, 79, 81, 89, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, true, false, true, true, true, false, true, true, true, false, true, true, true, false, false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("_BG1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 9, 11, 19, 21, 29, 31, 39, 41, 49, 51, 59, 61, 69, 71, 79, 81, 89, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k6uw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_BG0:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("_BG0:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_uvjgo")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("_BG1:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("_BG1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("_BG1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvjgo"]
+_data = {
+&"BackgroundAnimation": SubResource("Animation_vep7r"),
+&"RESET": SubResource("Animation_k6uw4")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,398 +167,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vep7r")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="_BG0" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("2_uvjgo")
+centered = false
+
+[node name="_BG1" type="Sprite2D" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 1600.0
-offset_bottom = 2000.0
-theme = ExtResource("2_uvjgo")
-bbcode_enabled = true
-text = "[code]War Eagles[/code][char=2122]
-[i]Digital Edition[/i]
-
-
-Based on the War Eagles[char=2122] tabletop strategy game, [char=00a9]1995 Geoffrey T. Bohrer
-
-[i][Developed and Published by[/i]
-[b][i]Arizoft Games[/i][/b]
-
-[b]3D Modelmakers[/b]
-
-[b][i]Aircraft[/i][/b]
-
-42manako
-[i]IL-2[/i]
-
-DeltaXF
-[i]G4M[/i]
-
-Götz von Berlichingen 
-[i]Me-163 Komet[/i]
-
-Helijah
-[i]B-24 Liberator, Do-335 Pfeil, Gladiator, He-111, I-16 Iskra, J2M3 Raiden, Lancaster, Me-262, Meteor, P-38J, P-39, and SB-2[/i]
- 
-KojfDiscord
-[i]BF-109D, BF-109E, Boston, FW-190A, La-7, TA-152[/i]
- 
-Magumbo44
-[i]KI-48,Ki-51[/i]
-
-manilov.ap
-[i]AR-234 Blitz, B-17, B-25, B-26 Marauder, Bf-110C, Do-17Z, F4U1 Corsair, Hurricane I, Hurricane II, Il-4, Ju-87D Stuka, Ju-88A, Ki-43 Hayabusa, Ki-61 Hien, LaGG-3, Mosquito, P-40, P-47C, Pe-2, Spitfire II, Spitfire IX, TB-3, Tu-2, Typhoon, Whitley, Yak-3, and Yak-9[/i]
-
-MotherbrainJr
-[i]Ki-21-II[/i]
- 
-Paaar
-[i]Blenheim Mk IV[/i]
-
-Sajjad Husain
-[i]Ki-27[/i]
-
-Terminal-NJ
-[i]P-51D[/i]
-
-Zdw930
-[i]A6M5 Zero[/i]
-
-
-[b][i]AntiAircraft and Radar[/i][/b]
-
-42manako
-[i]M2 .50 Quad (M16 MGMC)[/i]
-
-artfletch
-[i]QF 40mm Mk III[/i]
-
-
-Basic Hsu
-[i]3.7 cm FlAK 28[/i]
-
-Bear17
-[i]8.8 cm FlAK 18, Generic Flak[/i]
-
-DFS studio
-[i]2 cm FlAK 38[/i]
-
-Grace Belt
-[i]HF-DF[/i]
-
-JasonKills
-[i]Ta Chi 6, AN/TPS-3[/i]
-
-KillCaptureDestroy
-[i]ZU-57[/i]
-
-le ogre corse
-[i]90mm M2, Type 10 120mm, ZU-76[/i]
-
-marcusmole
-[i]Type 98 20mm[/i]
-
-MarModels
-[i]AN/TPS-3[/i]
-
-Mike1980
-[i]Bofors 40mm[/i]
-
-Nostromo_11
-[i]QF 3in 20CWT[/i]
-
-RCTESTFLIGHT
-[i]Freya[/i]
-
-Ronald_Reagan
-[i]20mm Oerlikon[/i]
-
-trolosqlfod
-[i]Type 96 25mm[/i]
-
-
-[b][i]Other Models[/i][/b]
-
-3DDomino
-[i]London, Leningrad[/i]
-
-42manako
-[i]Utah Beach[/i]
-
-abass20
-[i]Airfield Tower[/i]
-
-AlanTinka
-[i]Hamburg Railyard, Cavite Bay, Port Moresby[/i]
-
-Assetfactory
-[i]Ploesti, Schweinfurt, Yokohama[/i]
-
-Awesome Ploy 3D
-[i]Grimsbergen[/i]
-
-benjamintang2012
-[i]Hamburg Railyard[/i]
- 
-chris.berghs
-[i]Cavite Bay, Kronstadt, Port Moresby, Singapore, Southampton, Truk[/i]
-
-CMPLab
-[i]Formosa[/i]
-
-Colin.Greenall
-[i]Cavite Bay, Kronstadt, Port Moresby, Singapore, Southampton, Truk[/i]
-
-CommonSpence
-[i]Airstrip Hangar[/i]
-
-Duane’s Mind
-[i]Tank Farm, Peenemünde[/i]
-
-ElectricL
-[i]Airfield Hangar, Airbase Hangar[/i]
-
-Eugene Yi
-[i]Cavite Bay[/i]
-
-firedragon1099
-[i]London[/i]
-
-Foster Azreal
-[i]Tractor Factory, Third Shock Army[/i]
-
-FristiCG
-[i]Hamburg Railyard[/i]
-
-GeoLan 3D
-[i]Sasebo, Portsmouth[/i]
-
-Götz von Berlichingen
-[i]Peenemünde[/i]
- 
-ittoKubashi7
-[i]Tank Farm[/i]
-
-Jorrit
-[i]Truk[/i]
-
-kriss50
-[i]Kronstadt[/i]
-
-KTKloss
-[i]Cavite Bay, Port Moresby, Singapore, Southampton, Truk[/i]
-
-Kwon_Hyuk
-[i]Tank Farm, Ploesti[/i]
-
-LeeMorehead
-[i]Berlin[/i]
-
-Metazeon
-[i]Betio[/i]
-
-mistersquido
-[i]Cavite Bay[/i]
-
-Nate Loper
-[i]Midway Islands, Mt. Fuji[/i]
-
-Nostromo_11
-[i]Airbase Tower[/i]
-
-novusod
-[i]Augsburg[/i]
-
-Oakioats
-[i]Ploesti, Airfield Building[/i]
-
-OmegaRedZA
-[i]Tractor Factory[/i]
-
-Pippa
-[i]Birmingham, Voronezh[/i]
-
-Rob Li
-[i]Malta[/i]
-
-SebastianSosnowski
-[i]Guadalcanal[/i]
-
-senotov.ivan
-[i]Cavite Bay, Kronstadt, Port Moresby, Singapore, Southampton, Truk[/i]
-
-Shotkey
-[i]Airbase Building[/i]
-
-standerwickd
-[i]Airstrip Tower[/i]
-
-SyntheticMN
-[i]Airstrip Building[/i]
-
-Thomas Visona
-[i]Utah Beach[/i]
-
-USACE Sacramento District
-[i]Möhne Dam[/i]
- 
-UTTM2
-[i]Tokyo, Osaka, Coventry, Stalingrad[/i]
-
-Valger
-[i]The Kremlin (Lenin’s Tomb)[/i]
-
-xplanepilot
-[i]Cavite Bay, Kronstadt, Port Moresby, Singapore, Southampton, Truk[/i]
-
-
-[b]Visual Effects[/b]
-
-Kenney
-[i]www.kenney.nl[/i]
-
-
-[b]Terrain Effects[/b]
-
-AmbientCG.com
-Laslo.S
-xerminator
-
-
-[b]Environmental Effects[/b]
-
-AmbientCG.com
-
-
-[b]Soundtrack[/b]
-
-
-[b][i]Introductory Theme[/i][/b]
-
-Brian Teoh – [i]Honor Bound[/i]
-
-
-[b][i]Japan’s Theme[/i][/b] 
-
-Rafael Knux - [i]Ice and Snow[/i]
-Anonymous - [i]Coy Koi[/i]
-RUSTED MUSIC STUDIO - [i]Gohōbi no Kyūsoku
-                      Tēburu no Shita de Yopparau
-                      Nakama no Sakaba
-                      Sake o Nomu[/i]
-
-[b][i]Germany’s Theme[/i][/b]
-
-Kevin MacLeod - [i]Night Vigil[/i]
-Lite Saturation - [i]Anxious March[/i]
-Pawel Feszczuk - [i]The Day It All Began And It All Ended[/i]
-[i]Ich Hatt’ Einen Kameraden[/i]
-R-SEN Productions - [i]I'll Have My Revenge[/i]
-RUSTED MUSIC STUDIO - [i]Dragonslayer‘s March[/i]
-
-[b][i]Soviet Theme[/i][/b]
-
-Rafael Knux - [i]The Range[/i]
-creapracticus - [i]Tundra[/i]
-[i]Dorogi
-Katyusha[/i]
-Pawel Feszczuk - [i]Wild Boar Tavern[/i]
-[i]Comin’ In On A Wing And A Prayer (Russian)[/i]
-
-[b][i]UK Theme[/i][/b]
-
-RUSTED MUSIC STUDIO - [i]The Siege Begins[/i]
-R-SEN Productions - [i]The Last Sunset[/i]
-Brian Teoh - [i]Battle Ready[/i]
-Pawel Feszczuk - [i]Determination
-                 Strategy[/i]
-Glenn Miller and His Orchestra - [i]When That Man Is Dead And Gone[/i]
-George Formby and his Ukulele - [i]Bless 'em All[/i]
-The Andrews Sisters - [i]Begin the Beguine[/i]
-Mal Hallett and His Orchestra - [i]He Wears A Pair Of Silver Wings[/i]
-
-[b][i]US Theme[/i][/b]
-
-The US Army Blues - [i]BugaBlue
-                    Main Stem[/i]
-Kevin MacLeod - [i]Swing Maching
-                Stompin at Midnight[/i]
-Louis Prima And His Orchestra - [i]Sentimental Journey[/i]
-The Song Spinners - [i]Comin’ In On A Wing And A Prayer
-                    Johnny Zero[/i]
-Tommy Dorsey and His Orchestra - [i]On The Atchison, Topeka, and the Santa Fe[/i]
-Marion Hutton, Tex Beneke & The Modernaires - [i]Don’t Sit Under The Apple Tree[/i]
-
-[b][i]Battle Theme[/i][/b]
-
-Pawel Feszczuk - [i]Battleground[/i]
-Rafael Knux - [i]Guerilla Tactics[/i]
-
-[b][i]Credits Theme[/i][/b]
-
-Nihilore - [i]Fatigue[/i]
-
-[b][i]Victory Theme[/i][/b]
-
-Rafael Knux - [i]Black Knight[/i]
-creapracticus - [i]Goodguys Theme[/i]
-
-[b][i]Defeat Theme[/i][/b]
-
-Brian Teoh - [i]Think About It[/i]
-
-[b][i]Extras Theme[/i][/b]
-
-Xennial - [i]All At Sea[/i]
-
-
-[b]Audio Effects[/b]
-
-craigsmith
-DavidSmith2024
-DennisH18
-dobroide
-Farapello
-fight2flyphoto
-freesound_community
-Fronbondi_Skegs
-kakaist
-loveburd
-MaxHammarbäck 
-mbelew
-mikhalin1992
-pablodavilla
-qubodup
-sonically_sound
-SorinDragon
-SvenSound
-ubikphonik
-Waveadventurer
-
-
-[b]Designer and Lead Developer[/b]
-
-Geoffrey Bohrer
-
-
-[b]Special Thanks To:[/b]
-
-Tokisan Games and the Terrain 3d Team
-
-The xAI Team
-
-The Internet Archive
-
-Sovmusik.ru
-
-U.S. National Archives and Records Administration
-
-
-
-[b]Powered By[/b]
-
-[img]res://Assets/Sprites/logo_small_monochrome_light.png[/img]
-
-
-
-"
-fit_content = true
+show_behind_parent = true
+centered = false
+
+[node name="_backgroundPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uvjgo")
+}
+autoplay = "BackgroundAnimation"
