@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://b122xns0cwsut"
 
 UnitDatabase="*res://Scripts/UnitDatabase.cs"
 AudioManager="*res://Scripts/AudioManager.cs"
+GameManager="*res://Scripts/GameManager.cs"
 
 [display]
 

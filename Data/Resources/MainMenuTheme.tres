@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dcd53orrmnhi8"]
+
+[ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="1_kpnxg"]
+[ext_resource type="StyleBox" uid="uid://60m4lrxtpgrd" path="res://Data/Resources/MM_Hvr_PopupMenu_SBF.tres" id="2_e6wmm"]
+[ext_resource type="StyleBox" uid="uid://cgxmgiuxttvyd" path="res://Data/Resources/MM_PopupMenu_SBF.tres" id="3_i854q"]
+[ext_resource type="StyleBox" uid="uid://dqjfrw4uv7e5c" path="res://Data/Resources/MM_Popup_line.tres" id="4_e6wmm"]
+
+[resource]
+PopupMenu/colors/title_color = Color(0, 0, 0, 0)
+PopupMenu/colors/title_outline_modulate = Color(0, 0, 0, 0)
+PopupMenu/constants/h_separation = 10
+PopupMenu/font_sizes/font_size = 40
+PopupMenu/font_sizes/title_font_size = 1
+PopupMenu/fonts/font = ExtResource("1_kpnxg")
+PopupMenu/styles/hover = ExtResource("2_e6wmm")
+PopupMenu/styles/panel = ExtResource("3_i854q")
+PopupMenu/styles/separator = ExtResource("4_e6wmm")

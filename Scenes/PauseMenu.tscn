@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmt2xpcgcxyjf"]
+[gd_scene load_steps=16 format=3 uid="uid://dmt2xpcgcxyjf"]
 
 [ext_resource type="Texture2D" uid="uid://0vlslhjho8fi" path="res://Assets/Sprites/MenuBG_2K.png" id="1_1363l"]
 [ext_resource type="FontFile" uid="uid://s2i0qyq8iank" path="res://Assets/Fonts/DEUTSCH.TTF" id="1_c7c70"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dp1fngqk0dglh" path="res://Assets/Sprites/Hinomaru_1_64.png" id="7_p6p71"]
 [ext_resource type="Texture2D" uid="uid://c173k5xjy4tem" path="res://Assets/Sprites/RAFRoundel_1_64.png" id="8_hw4na"]
 [ext_resource type="Texture2D" uid="uid://jbpanaxenr32" path="res://Assets/Sprites/USRoundel_41_64.png" id="9_epvri"]
+[ext_resource type="Theme" uid="uid://dcd53orrmnhi8" path="res://Data/Resources/MainMenuTheme.tres" id="9_n6ygf"]
 [ext_resource type="Texture2D" uid="uid://dj3wjf1m7oiu1" path="res://Assets/Sprites/RedStar_1_64.png" id="10_mexcr"]
 [ext_resource type="Texture2D" uid="uid://cxwsru2f3f8et" path="res://Assets/Sprites/Balkenkruez_1_64.png" id="11_8kogi"]
 
@@ -94,9 +95,11 @@ offset_left = 25.0
 offset_top = 400.0
 offset_right = 525.0
 offset_bottom = 1215.0
+theme = ExtResource("9_n6ygf")
 vertical = true
 
 [node name="ContinueButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Open last saved game"
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
@@ -114,6 +117,7 @@ flat = true
 alignment = 0
 
 [node name="SaveButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Play the tutorial scenario: \"The Nonstop Offensive\""
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
@@ -131,6 +135,7 @@ flat = true
 alignment = 0
 
 [node name="LoadButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Choose a saved game to open
 "
@@ -148,6 +153,7 @@ text = "LOAD"
 alignment = 0
 
 [node name="NewButton" type="OptionButton" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Choose a nation to set up a new game"
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
@@ -193,6 +199,7 @@ popup/item_10/icon = ExtResource("11_8kogi")
 popup/item_10/id = 4
 
 [node name="CreditsButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "You wouldn't have this game without these artists!"
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
@@ -210,6 +217,7 @@ flat = true
 alignment = 0
 
 [node name="OptionsButton" type="OptionButton" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Adjust game settings"
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
@@ -238,6 +246,7 @@ popup/item_4/text = "Game Settings"
 popup/item_4/id = 3
 
 [node name="ExtrasButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
@@ -254,6 +263,7 @@ flat = true
 alignment = 0
 
 [node name="HelpButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Read \"Principles of Aerial Warfare\""
 theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
@@ -271,6 +281,7 @@ flat = true
 alignment = 0
 
 [node name="QuitButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
 layout_mode = 2
 tooltip_text = "Quit the game without saving"
 mouse_filter = 1

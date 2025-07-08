@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://de1xvl8yuu50w"]
+
+[ext_resource type="Script" uid="uid://slh467r08cbd" path="res://Scripts/Model_Pics.cs" id="1_iiuqv"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_iiuqv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.62932, 0.240151, -0.73911, 0, 0.951056, 0.309017, 0.777146, 0.194471, -0.598519, -34.1932, 22.6147, -28.8491)
+fov = 27.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.13398)
+light_specular = 0.0
+light_bake_mode = 0
+
+[node name="Node3D" type="Node3D" parent="."]

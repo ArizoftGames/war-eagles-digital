@@ -13,7 +13,6 @@ sky_material = SubResource("ProceduralSkyMaterial_0ghhm")
 [sub_resource type="Environment" id="Environment_whms8"]
 background_mode = 2
 sky = SubResource("Sky_04rgg")
-tonemap_mode = 2
 
 [node name="Node3D" type="Node3D"]
 

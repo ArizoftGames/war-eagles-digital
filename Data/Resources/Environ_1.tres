@@ -12,7 +12,6 @@ ambient_light_color = Color(0.785641, 0.785641, 0.785641, 1)
 ambient_light_sky_contribution = 0.41
 ambient_light_energy = 0.65
 reflected_light_source = 1
-tonemap_exposure = 1.02
 tonemap_white = 2.0
 sdfgi_energy = 0.5
 glow_intensity = 1.27
