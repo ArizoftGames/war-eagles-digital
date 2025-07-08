@@ -23,23 +23,25 @@ Audacity 3.7.3
 
 Microsoft Visual Studio Community 2022
 Version 17.14.8
-VisualStudio.17.Release/17.14.7+36221.1
+VisualStudio.17.Release/17.14.8+36301.6
 Microsoft .NET Framework
 Version 4.8.09037
+
 Installed Version: Community
+
 ASP.NET and Web Tools   17.14.114.53116
 Azure App Service Tools v3.0.0   17.14.114.53116
-C# Tools   4.14.0-3.25279.5+995f12b60535afe75cafbcefada9161d8dc4f31f
-GitHub Copilot   17.14.794.21998
+C# Tools   4.14.0-3.25326.11+bd4f2062291278e0df1e3fd3180c0c862495a3a7
+GitHub Copilot   17.14.827.52834
 Markdown Editor v2   2.0.183
 Microsoft JVM Debugger   1.0
 NuGet Package Manager   6.14.0
 TypeScript Tools   17.0.40502.2001
-Visual Basic Tools   4.14.0-3.25279.5+995f12b60535afe75cafbcefada9161d8dc4f31f
-Visual F# Tools   17.14.0-beta.25230.7+c1a9d78ad4a474a716ccffb4367ed5151e3f7c9f
+Visual Basic Tools   4.14.0-3.25326.11+bd4f2062291278e0df1e3fd3180c0c862495a3a7
+Visual F# Tools   17.14.0-
 Visual Studio IntelliCode   2.2
 Visual Studio Tools for Unity   17.14.1.0
-Installed Version: Community
+
 
 ___________________
 System:
