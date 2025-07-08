@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dgu8lvvteillc"
+
+[deps]
+
+files=["res://Docs/ExtrasModels.Zip.translation", "res://Docs/ExtrasModels.Img.translation"]
+
+source_file="res://Docs/ExtrasModels.csv"
+dest_files=["res://Docs/ExtrasModels.Zip.translation", "res://Docs/ExtrasModels.Img.translation"]
+
+[params]
+
+compress=true
+delimiter=0

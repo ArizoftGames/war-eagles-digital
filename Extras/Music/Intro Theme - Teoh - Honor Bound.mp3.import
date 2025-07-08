@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cr07ucnv3o2m7"
+path="res://.godot/imported/Intro Theme - Teoh - Honor Bound.mp3-6d7832024580f1012e9bbd8b0cd5a8ba.mp3str"
+
+[deps]
+
+source_file="res://Extras/Music/Intro Theme - Teoh - Honor Bound.mp3"
+dest_files=["res://.godot/imported/Intro Theme - Teoh - Honor Bound.mp3-6d7832024580f1012e9bbd8b0cd5a8ba.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

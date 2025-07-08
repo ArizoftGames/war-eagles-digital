@@ -42,6 +42,12 @@ project/assembly_name="War Eagles Digital"
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
+[global_group]
+
+glb_models="Resource cleanup tag"
+audio_players=""
+terrains="Resource mgt"
+
 [physics]
 
 2d/run_on_separate_thread=true

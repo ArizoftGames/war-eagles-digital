@@ -1,0 +1,18 @@
+Button Text,AudioManager Method Call,Export Filename,Tooltip
+Germany’s Theme 1,"PlayMusicByNationMood(“Germany”,”Confident”)",res://Extras/Music/MainGermany1.mp3,CC-0
+Germany’s Theme 2,"PlayMusicByNationMood(“Germany”,”Pugnacious”)",res://Extras/Music/MainGermany2.mp3,CC-0
+Japan’s Theme 1,"PlayMusicByNationMood(“Japan”,”Confident”)",res://Extras/Music/MainJapan1.mp3,CC-0
+Japan’s Theme 2,"PlayMusicByNationMood(“Japan”,”Pugnacious”)",res://Extras/Music/MainJapan2.mp3,CC-0
+Soviet Theme 1,"PlayMusicByNationMood(“Soviet”,”Confident”)",res://Extras/Music/MainSoviet1 - Fesczuk et alii.mp3,CC-BY by Arizoft Games and Pawel Fesczuk
+Soviet Theme 2,"PlayMusicByNationMood(“Soviet”,”Pugnacious”)",res://Extras/Music/MainSoviet2 - Feszczuk et alii.mp3,CC-BY by Arizoft Games and Pawel Fesczuk
+UK Theme 1,"PlayMusicByNationMood(“UK”,”Confident”)",res://Extras/Music/MainUK1-Feszczuk et alii.mp3,CC-BY by Arizoft Games and Pawel Fesczuk
+UK Theme 2,"PlayMusicByNationMood(“UK”,”Pugnacious”)",res://Extras/Music/MainUK2-Feszczuk et alii .mp3,CC-BY by Arizoft Games and Pawel Fesczuk
+US Theme 1,"PlayMusicByNationMood(“US”,”Confident”)",res://Extras/Music/MainUS1.mp3,CC-0
+US Theme 2,"PlayMusicByNationMood(“US”,”Pugnacious”)",res://Extras/Music/MainUS2.mp3,CC-0
+Introduction - Teoh - Honor Bound,PlayMusicByUseCase(“Start Game”),res://Extras/Music/Intro Theme - Teoh - Honor Bound.mp3,CC-0
+Battle Theme - Feszczuk - Battleground,PlayMusicByUseCase(“Open Battle Board”),res://Extras/Music/Battle Theme - Feszczuk - Battleground.mp3,CC-BY by Pawel Fesczuk
+Credits Theme -Nihilore - Fatigue,PlayMusicByUseCase(“Open Credits Animation”),res://Extras/Music/Credits Theme -Nihilore – Fatigue.mp3,CC-0
+Defeat Theme- Teoh - Think About It,PlayMusicByUseCase(“Player Loses”),res://Extras/Music/Defeat Theme- Teoh - Think About It.mp3,CC-0
+Extras Theme - Xennial - All at Sea,PlayMusicByUseCase(“Open Extras”),res://Extras/Music/Extras Theme - Xennial - All at Sea.mp3,CC-BY by Xennial
+Victory Theme - Knux - Black Knight,PlayMusicByUseCase(“Player Wins”),res://Extras/Music/Victory Theme - Knux - Black Knight.mp3,CC-0
+"Source Tracks-.zip, 72.8MB",[none],res://Extras/Music/War Eagles Source Music/War Eagles Source Music.zip,Details on enclosed license document.

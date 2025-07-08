@@ -1,17 +1,19 @@
 War Eagles Digital User Guide
 Introduction
 
+*[NYI] denotes Not Yet Implemented, throughout.
+
 Overview of War Eagles Digital, based on the 1995 tabletop game.
 Objective: Build an air force, raid enemy zones, and earn Victory Points.
 
-Setup
+Setup[NYI]
 
 Coin Toss: Winner chooses First Player and Axis/Allies.
 Zone Cards: Select 5 unique zones secretly, form game board.
 Air Force: Spend Production Points (from zones) on units, aces, events.
 Deployment: Place units in Base or Combat Air Patrol areas.
 
-Gameplay
+Gameplay[NYI]
 
 Turns: 10 turns, each with Event, Launch, Action, Landing, Combat Air Patrol phases.
 Event Phase: Play event cards (e.g., “Bonus Production: +10 PP”).
@@ -22,9 +24,9 @@ Combat Air Patrol Phase: Move aircraft to protect zones.
 
 Controls
 
-UI Elements:
-Deploy Button: “Click to place unit in Base Area” (tooltip).
-Launch Button: “Click to move aircraft to Raid Area” (tooltip).
+ESC key: pauses the game and displays the Main Menu.
+
+Space: pauses the game and displays the Main Menu.
 
 THE MAIN MENU:
 
@@ -59,14 +61,18 @@ HELP: [NYI] Opens the main Help Menu. Clicking the "Main Menu" button in the low
 QUIT: [NYI] Provides an option to save the game, if you've started playing this session, and then closes the game.
 
 
-Keyboard Shortcuts: TBD during coding.
+Keyboard Shortcuts:
 
-Events
+ESC key: pauses the game and displays the Main Menu.
+
+Space: pauses the game and displays the Main Menu.
+
+Events[NYI]
 
 Types: Technology (lasting effects), Immediate (1-turn effects).
 Examples: TBD from events.csv (e.g., “Fuel Shortage: -1 Range, 1 turn”).
 
-Winning
+Winning[NYI]
 
 Earn Victory Points from undestroyed Target Units and destroyed enemy units.
 Highest VP total at end of Turn 10 wins; continue if tied.

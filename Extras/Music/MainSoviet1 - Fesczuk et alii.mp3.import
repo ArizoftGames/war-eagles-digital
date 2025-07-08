@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xc6tt2j2bg4i"
+path="res://.godot/imported/MainSoviet1 - Fesczuk et alii.mp3-1a19ad78aeee9c8ed00bb78b95d9aef7.mp3str"
+
+[deps]
+
+source_file="res://Extras/Music/MainSoviet1 - Fesczuk et alii.mp3"
+dest_files=["res://.godot/imported/MainSoviet1 - Fesczuk et alii.mp3-1a19ad78aeee9c8ed00bb78b95d9aef7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

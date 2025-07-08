@@ -72,6 +72,40 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             SkipIntro();
         }
 
+        private void OnQuitButtonPressed()
+        {
+            try
+            {
+
+                //GD.Print($"Memory before free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+                // Godot's Array does not have ForEach, use a regular foreach loop
+                foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                    (node as Node)?.QueueFree();
+
+                foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                {
+                    node.Call("stop");
+                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                    (node as Node)?.QueueFree();
+                }
+
+                foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                    (node as Node)?.QueueFree();
+
+                MusicBox.StopMusic();
+                                
+                //GD.Print($"Memory before quit: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+
+                GD.Print("Closing Game.");
+                GetTree().Quit();
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in OnQuitButtonPressed: {ex.Message}");
+            }
+        }
+
+
         private void SkipIntro()
         {
             //GD.Print("Skip Triggered");
@@ -79,11 +113,11 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             state_machine.Start("RESET");
         }
 
-        public void OnQuitButtonPressed() //Quits game from Main Menu
-        {
-            GD.Print("Closing game");
-            GetTree().Quit();
-        }
+        //public void OnQuitButtonPressed() //Quits game from Main Menu
+        //{
+           // GD.Print("Closing game");
+           // GetTree().Quit();
+       // }
 
         private void OnCreditsButtonPressed()
         {

@@ -18,36 +18,40 @@ namespace WarEaglesDigital.Scripts
             AddChild(canvasLayer);
 
             // Create a Panel for background
-            _notificationPanel = new Panel();
-            _notificationPanel.Visible = false;
-            // Set custom anchors and offsets for bottom-right with 20px margin (for 2560x1440 viewport)
-            _notificationPanel.AnchorLeft = 1.0f;
-            _notificationPanel.AnchorTop = 1.0f;
-            _notificationPanel.AnchorRight = 1.0f;
-            _notificationPanel.AnchorBottom = 1.0f;
-            _notificationPanel.OffsetRight = -20; // 20px from right edge
-            _notificationPanel.OffsetBottom = -20; // 20px from bottom edge
-            _notificationPanel.OffsetLeft = -620; // Panel width (600) + 20px margin
-            _notificationPanel.OffsetTop = -320; // Panel height (300) + 20px margin
-            _notificationPanel.CustomMinimumSize = new Vector2(600, 300);
+            _notificationPanel = new Panel
+            {
+                Visible = false,
+                // Set custom anchors and offsets for bottom-right with 20px margin (for 2560x1440 viewport)
+                AnchorLeft = 1.0f,
+                AnchorTop = 1.0f,
+                AnchorRight = 1.0f,
+                AnchorBottom = 1.0f,
+                OffsetRight = -20, // 20px from right edge
+                OffsetBottom = -20, // 20px from bottom edge
+                OffsetLeft = -620, // Panel width (600) + 20px margin
+                OffsetTop = -220, // Panel height (200) + 20px margin
+                CustomMinimumSize = new Vector2(600, 200)
+            };
             canvasLayer.AddChild(_notificationPanel);
 
-            _notificationLabel = new Label();
-            _notificationLabel.Text = "";
-            _notificationLabel.Visible = false;
-            _notificationLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-            _notificationLabel.ClipText = false;
-            _notificationLabel.HorizontalAlignment = HorizontalAlignment.Left; // Align text left
-            // Set Label to fill panel with padding
-            _notificationLabel.AnchorLeft = 0.0f;
-            _notificationLabel.AnchorTop = 0.0f;
-            _notificationLabel.AnchorRight = 1.0f;
-            _notificationLabel.AnchorBottom = 1.0f;
-            _notificationLabel.OffsetLeft = 10; // 10px padding
-            _notificationLabel.OffsetRight = -10;
-            _notificationLabel.OffsetTop = 10;
-            _notificationLabel.OffsetBottom = -10;
-            _notificationLabel.AddThemeFontSizeOverride("font_size", 24);
+            _notificationLabel = new Label
+            {
+                Text = "",
+                Visible = false,
+                AutowrapMode = TextServer.AutowrapMode.WordSmart,
+                ClipText = false,
+                HorizontalAlignment = HorizontalAlignment.Left, // Align text left
+                                                                // Set Label to fill panel with padding
+                AnchorLeft = 0.0f,
+                AnchorTop = 0.0f,
+                AnchorRight = 1.0f,
+                AnchorBottom = 1.0f,
+                OffsetLeft = 10, // 10px padding
+                OffsetRight = -10,
+                OffsetTop = 10,
+                OffsetBottom = -10
+            };
+            _notificationLabel.AddThemeFontSizeOverride("font_size", 36);
             try
             {
                 var font = ResourceLoader.Load<FontFile>("res://Assets/Fonts/BAHNSCHRIFT.TTF");
@@ -68,9 +72,16 @@ namespace WarEaglesDigital.Scripts
             _notificationPanel.AddChild(_notificationLabel);
 
             // Set Panel background
-            var styleBox = new StyleBoxFlat();
-            styleBox.BgColor = new Color(0, 0, 0, 0.7f);
+            var styleBox = new StyleBoxFlat
+            {
+                BgColor = new Color(0, 0, 0, 0.7f)
+            };
             styleBox.SetCornerRadiusAll(10);
+            styleBox.BorderColor = new Color(1, 1, 1, 1f);
+            styleBox.BorderWidthTop = 2;
+            styleBox.BorderWidthBottom = 2;
+            styleBox.BorderWidthLeft = 2;
+            styleBox.BorderWidthRight = 2;
             _notificationPanel.AddThemeStyleboxOverride("panel", styleBox);
 
             _notificationTimer = new Timer

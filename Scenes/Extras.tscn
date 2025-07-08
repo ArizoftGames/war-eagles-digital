@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djnnbodppq6rl"]
+[gd_scene load_steps=3 format=3 uid="uid://djnnbodppq6rl"]
 
 [ext_resource type="Theme" uid="uid://cw6t7lhrewpw5" path="res://Data/Resources/UI_Theme .tres" id="1_5xmmr"]
+[ext_resource type="Script" uid="uid://c5rqb05dtg0i0" path="res://Scripts/Extras.cs" id="2_mb4rn"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5xmmr")
+script = ExtResource("2_mb4rn")
 
 [node name="OptionsContainer" type="TabContainer" parent="."]
 layout_mode = 0

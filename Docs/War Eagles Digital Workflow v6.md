@@ -2,11 +2,22 @@
 
 # Planning and Implementation Guidelines
 
+##Coding guidelines
+-**General**
+  *Priorities are ordered by precedence: Compatibility overrides Robustness, and Robustness overrides Efficiency. In conflicts, prioritize the higher-ranked principle and seek user input if unclear.
+  1. Compatibility: Verify that new code is compatible with user-provided code (uploaded files) or members of the war-eagles-digital solution before output. Do not infer or generate missing information (e.g., class definitions, namespaces) or access external sources like GitHub. If information is missing, request specific files or details from the user.
+  2. Robustness: Incorporate error-handling (e.g., try-catch, null checks) and debugging (e.g., GD.Print, Godot’s debugger) into code at production, matching user-provided code style. Recommend modifications to user-provided code (e.g., adding validation) when issues arise, clearly referencing file and line.
+  3. Efficiency: Subordinate to Compatibility and Robustness, write lightweight code using centralized methods, Godot’s APIs, and .NET libraries (e.g., System.Collections.Generic). Avoid redundant logic and advise on implementation (e.g., caching, instancing) when compatible with user-provided code.
+  4.  Follow PascalCase naming conventions for FileNames.cs, Nodes, and Methods().  Variables should be bool lower_case with underscore between words where useful.  Instances should be _camelCase preceded by underscores.  Direct Node references should be as presented in Godot. All naming should be descriptive of function.  Existing asset names vary;  future assets should be named in lower_case with underscores between words.
+  5. Commenting should be as verbose as necessary to explain the function of the code.
+ 
+  
+
 ## Coding Workflow
 - **Tasks**:
   1. **Scene Planning**: Collaborate with Grok to define scene goals, objectives, and solutions. Specify required assets. Grok drafts a Scene Plan with high-level pseudocode, outlining key logic, `Node3D` nodes, signals, and error-handling within the `WarEaglesDigital.Scripts` namespace.
   2. **Scene Creation**: Create scene(s) in Godot 4.4 .NET editor, populating scene tree(s) with PascalCasing for node names. Source assets and create `.tres` files. Attach C# scripts in `WarEaglesDigital.Scripts` namespace.
-  3. **Copilot Prompt Development**: Provide Grok with Scene Plan and raw `.tscn` text output from Godot. Upon consensus that the scene meets the Scene Plan, Grok generates a Copilot prompt in pseudocode, specifying `WarEaglesDigital.Scripts` namespace, node paths, signals, and error-handling.
+  3. **Copilot Prompt Development**: Provide Grok with Scene Plan and raw `.tscn` text output from Godot. Upon consensus that the scene meets the Scene Plan, Grok generates a Copilot prompt in pseudocode, specifying `WarEaglesDigital.Scripts` namespace, node paths, signals, and error-handling. Ensure that prompts specify good resource amangement techniques where appropriate.
   4. **Prompt Review and Code Generation**: Review/edit Copilot prompt, verifying `WarEaglesDigital.Scripts` namespace, node paths, signal connections, and error-handling. Input prompt to Copilot, checking output for errors (e.g., truncation, missing functionality) using checklist:
      - Confirm `WarEaglesDigital.Scripts` namespace usage.
      - Validate node paths against scene tree.
@@ -83,14 +94,12 @@
 - **Status**: Active.
 - **Tasks**:
 
-- Ensure that ESC key and spacebar consistently provide game pause and switch to PauseMenu.tscn.
-
 ### UI Preparation and Initial Implementation Sub-Phase *additional UI element implementation is to be expected during gameplay coding*
   1. **Credit Roll**: Completed.
 
   2. **Extras Folder**:
-     - Create `res://extras/` directory for assets like concept art (.png), lore (.txt), or audio commentary (.ogg).
-     - Develop `ExtrasMenu.tscn` with a `GridContainer` or `ItemList`, accessible via `PauseMenu.tscn` and splash menu buttons.
+     - Create `res://extras/` directory for assets (complete).
+     - Develop `ExtrasMenu.tscn` with a `GridContainer` or `ItemList`.
      - Implement return logic to `PauseMenu.tscn`.
      - **Discussion**: An extras folder adds player engagement by showcasing behind-the-scenes content, as noted in itch.io devlogs (itch.io). A dedicated `ExtrasMenu.tscn` with a `GridContainer` provides a clean interface for browsing assets, and clear file paths prevent loading errors. Integration with `PauseMenu.tscn` ensures consistent navigation, supporting the project’s UX goals.
 
@@ -110,9 +119,10 @@
 
 **Plan Gameplay Coding**:
      - Outline phase-by-phase mechanics (Event, Launch, Action) for C# scripts.
+     - Ensure that phase-by-phase coding plan reflects and results in gameplay as described in StandardRules.txt.
      - Plan event purchases and effects.
-     - Plan auto-assignment of unit designations from `designations.csv` with tooltip support.
-     - **Discussion**: Planning gameplay coding ensures modular, testable mechanics, as recommended in Godot forums (godotdevelopers.org). A detailed outline for Event, Launch, and Action phases, leveraging `events.csv` and `designations.csv`, supports data-driven design. Including CAP audio planning ensures integration with `AudioStreamPlayer3D` toggling during CAP/Landing phases, maintaining performance (60 FPS target) and compatibility with `AudioManager.cs`.
+     - Stress maintaining efficient code and good resource management practices throughout 
+     - **Discussion**: Planning gameplay coding ensures modular, testable mechanics, as recommended in Godot forums (godotdevelopers.org).
 
 **Plan State Machine Build and AI Behavior**:
      - Outline opponent AI using decision trees in `OpponentAI.cs`, integrating with gameplay phases.

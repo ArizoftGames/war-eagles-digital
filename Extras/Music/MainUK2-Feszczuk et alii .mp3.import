@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbyhiuqvmw8sl"
+path="res://.godot/imported/MainUK2-Feszczuk et alii .mp3-e293b9f12219eeab97b361a20dacc08d.mp3str"
+
+[deps]
+
+source_file="res://Extras/Music/MainUK2-Feszczuk et alii .mp3"
+dest_files=["res://.godot/imported/MainUK2-Feszczuk et alii .mp3-e293b9f12219eeab97b361a20dacc08d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

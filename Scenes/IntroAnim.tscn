@@ -10594,7 +10594,7 @@ environment = ExtResource("1_ukawc")
 [node name="Manchuria" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="T3D_Manch" type="Terrain3D" parent="Manchuria"]
+[node name="T3D_Manch" type="Terrain3D" parent="Manchuria" groups=["terrains"]]
 data_directory = "res://Data/T3D_Manch_Data"
 material = SubResource("Terrain3DMaterial_uxvhs")
 assets = ExtResource("3_2l8ww")
@@ -10612,25 +10612,25 @@ pixel_size = 0.5
 axis = 1
 texture = ExtResource("4_thav8")
 
-[node name="StripTowerLOD0" parent="Manchuria/T3D_Manch/RussianAirfield" instance=ExtResource("5_wr1tv")]
+[node name="StripTowerLOD0" parent="Manchuria/T3D_Manch/RussianAirfield" groups=["glb_models"] instance=ExtResource("5_wr1tv")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -38.168)
 
-[node name="StripHangarLOD0" parent="Manchuria/T3D_Manch/RussianAirfield" instance=ExtResource("6_nfrox")]
+[node name="StripHangarLOD0" parent="Manchuria/T3D_Manch/RussianAirfield" groups=["glb_models"] instance=ExtResource("6_nfrox")]
 transform = Transform3D(0.196775, 0, 1.48704, 0, 1.5, 0, -1.48704, 0, 0.196775, -93.656, 0, 87.043)
 
 [node name="Node" type="Node3D" parent="Manchuria/T3D_Manch/RussianAirfield"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="fldbldg" parent="Manchuria/T3D_Manch/RussianAirfield" instance=ExtResource("8_lad38")]
+[node name="fldbldg" parent="Manchuria/T3D_Manch/RussianAirfield" groups=["glb_models"] instance=ExtResource("8_lad38")]
 transform = Transform3D(-0.0226184, 0, -1.49983, 0, 1.5, 0, 1.49983, 0, -0.0226184, -30.1548, 0, -41.2687)
 
-[node name="I16LOD0" parent="Manchuria/T3D_Manch/RussianAirfield" instance=ExtResource("10_vfsk0")]
+[node name="I16LOD0" parent="Manchuria/T3D_Manch/RussianAirfield" groups=["glb_models"] instance=ExtResource("10_vfsk0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, 47)
 
-[node name="tent" parent="Manchuria/T3D_Manch/RussianAirfield" instance=ExtResource("7_mx3x7")]
+[node name="tent" parent="Manchuria/T3D_Manch/RussianAirfield" groups=["glb_models"] instance=ExtResource("7_mx3x7")]
 transform = Transform3D(-0.244996, 0, -0.435863, 0, 0.5, 0, 0.435863, 0, -0.244996, -144.943, 0, 71.65)
 
-[node name="I16LOD1" parent="Manchuria/T3D_Manch/RussianAirfield" instance=ExtResource("10_vfsk0")]
+[node name="I16LOD1" parent="Manchuria/T3D_Manch/RussianAirfield" groups=["glb_models"] instance=ExtResource("10_vfsk0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 47)
 
 [node name="BombBlast1" type="GPUParticles3D" parent="Manchuria/T3D_Manch/RussianAirfield"]
@@ -10733,7 +10733,7 @@ draw_pass_1 = SubResource("QuadMesh_ent03")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 visible = false
 
-[node name="T3D_Eur" type="Terrain3D" parent="Europe"]
+[node name="T3D_Eur" type="Terrain3D" parent="Europe" groups=["terrains"]]
 data_directory = "res://Data/T3D_Eur_Data"
 material = SubResource("Terrain3DMaterial_mx3x7")
 assets = ExtResource("13_ofnlf")
@@ -10751,26 +10751,26 @@ pixel_size = 1.0
 axis = 1
 texture = ExtResource("15_we53k")
 
-[node name="fldhangar" parent="Europe/T3D_Eur/GEBase" instance=ExtResource("16_3y1n5")]
+[node name="fldhangar" parent="Europe/T3D_Eur/GEBase" groups=["glb_models"] instance=ExtResource("16_3y1n5")]
 transform = Transform3D(1.43321, 0, 1.39496, 0, 2, 0, -1.39496, 0, 1.43321, -71.0288, 0, -66.3285)
 
-[node name="basehangar" parent="Europe/T3D_Eur/GEBase" instance=ExtResource("17_prhd3")]
+[node name="basehangar" parent="Europe/T3D_Eur/GEBase" groups=["glb_models"] instance=ExtResource("17_prhd3")]
 transform = Transform3D(2.51706, 0, -3.10876, 0, 4, 0, 3.10876, 0, 2.51706, 356.651, 0, 21.52)
 
-[node name="fldtwr" parent="Europe/T3D_Eur/GEBase" instance=ExtResource("18_bvsrg")]
+[node name="fldtwr" parent="Europe/T3D_Eur/GEBase" groups=["glb_models"] instance=ExtResource("18_bvsrg")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 212.966, 0, 279.621)
 
-[node name="basebldg" parent="Europe/T3D_Eur/GEBase" instance=ExtResource("19_y0g2k")]
+[node name="basebldg" parent="Europe/T3D_Eur/GEBase" groups=["glb_models"] instance=ExtResource("19_y0g2k")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -84.8279, 0, 405.932)
 
-[node name="basebldg2" parent="Europe/T3D_Eur/GEBase" instance=ExtResource("19_y0g2k")]
+[node name="basebldg2" parent="Europe/T3D_Eur/GEBase" groups=["glb_models"] instance=ExtResource("19_y0g2k")]
 transform = Transform3D(7.99338, 0, -0.325379, 0, 8, 0, 0.325379, 0, 7.99338, -84.6122, 0, 325.085)
 
 [node name="Fuji" type="Node3D" parent="Europe/T3D_Eur"]
 transform = Transform3D(0.630676, 0, 0.776046, 0, 1, 0, -0.776046, 0, 0.630676, -1974.34, -5, 1541.63)
 visible = false
 
-[node name="Fuji2" parent="Europe/T3D_Eur/Fuji" instance=ExtResource("20_7da5v")]
+[node name="Fuji2" parent="Europe/T3D_Eur/Fuji" groups=["glb_models"] instance=ExtResource("20_7da5v")]
 transform = Transform3D(0.630676, 0, -0.776046, 0, 1, 0, 0.776046, 0, 0.630676, 0, 5, 0)
 
 [node name="JPField" type="Node3D" parent="Europe/T3D_Eur"]
@@ -10785,14 +10785,14 @@ texture = ExtResource("21_2g6jm")
 
 [node name="Node3D" type="Node3D" parent="Europe/T3D_Eur/JPField"]
 
-[node name="fldtwr" parent="Europe/T3D_Eur/JPField/Node3D" instance=ExtResource("18_bvsrg")]
+[node name="fldtwr" parent="Europe/T3D_Eur/JPField/Node3D" groups=["glb_models"] instance=ExtResource("18_bvsrg")]
 transform = Transform3D(0.386936, 0, -0.922106, 0, 1, 0, 0.922106, 0, 0.386936, -0.934326, 0, 107.242)
 
 [node name="Coast" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 visible = false
 
-[node name="T3D_Coast" type="Terrain3D" parent="Coast"]
+[node name="T3D_Coast" type="Terrain3D" parent="Coast" groups=["terrains"]]
 data_directory = "res://Data/T3D_Coast_Data"
 material = SubResource("Terrain3DMaterial_1lw3e")
 assets = ExtResource("21_7detu")
@@ -10811,37 +10811,37 @@ pixel_size = 1.0
 axis = 1
 texture = ExtResource("4_thav8")
 
-[node name="p39LOD0" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("27_7da5v")]
+[node name="p39LOD0" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("27_7da5v")]
 transform = Transform3D(0.325568, 0, 0.945518, 0, 1, 0, -0.945518, 0, 0.325568, 36.7502, 0, 100.589)
 
-[node name="M2FiftyQuadLOD0" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("28_7da5v")]
+[node name="M2FiftyQuadLOD0" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("28_7da5v")]
 transform = Transform3D(-0.0171803, 0, -0.299508, 0, 0.3, 0, 0.299508, 0, -0.0171803, 385.257, 0, -276.962)
 
-[node name="tent" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("7_mx3x7")]
+[node name="tent" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("7_mx3x7")]
 transform = Transform3D(0.689961, 0, -0.723847, 0, 1, 0, 0.723847, 0, 0.689961, 200.585, 0, 84.1942)
 
-[node name="tent2" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("7_mx3x7")]
+[node name="tent2" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("7_mx3x7")]
 transform = Transform3D(0.686161, 0, -0.72745, 0, 1, 0, 0.72745, 0, 0.686161, 146.285, 0, 128.063)
 
-[node name="StripTowerLOD0" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("5_wr1tv")]
+[node name="StripTowerLOD0" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("5_wr1tv")]
 transform = Transform3D(0.611444, 0, -0.791288, 0, 1, 0, 0.791288, 0, 0.611444, -80.5386, 0, -70.506)
 
-[node name="fldhangar" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("16_3y1n5")]
+[node name="fldhangar" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("16_3y1n5")]
 transform = Transform3D(1.46271, 0, 1.364, 0, 2, 0, -1.364, 0, 1.46271, 278.654, 0, 4.62)
 
-[node name="fldbldg" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("8_lad38")]
+[node name="fldbldg" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("8_lad38")]
 transform = Transform3D(1.50429, 0, -1.99677, 0, 2.5, 0, 1.99677, 0, 1.50429, -25.8699, 0, -97.0043)
 
-[node name="p39LOD1" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("27_7da5v")]
+[node name="p39LOD1" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("27_7da5v")]
 transform = Transform3D(0.325568, 0, 0.945519, 0, 1, 0, -0.945519, 0, 0.325568, -14.343, 0, 149.984)
 
-[node name="p39LOD2" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("27_7da5v")]
+[node name="p39LOD2" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("27_7da5v")]
 transform = Transform3D(0.325568, 0, 0.945519, 0, 1, 0, -0.945519, 0, 0.325568, 74.0576, 0, 68.5059)
 
-[node name="p39LOD3" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("27_7da5v")]
+[node name="p39LOD3" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("27_7da5v")]
 transform = Transform3D(0.325568, 0, 0.945519, 0, 1, 0, -0.945519, 0, 0.325568, 115.299, 0, 26.9555)
 
-[node name="B25LOD0" parent="Coast/T3D_Coast/Airstrip" instance=ExtResource("29_2g6jm")]
+[node name="B25LOD0" parent="Coast/T3D_Coast/Airstrip" groups=["glb_models"] instance=ExtResource("29_2g6jm")]
 transform = Transform3D(-0.721651, 0, -0.692257, 0, 1, 0, 0.692257, 0, -0.721651, 100, 0, -200)
 
 [node name="AirshowBox" type="Node3D" parent="."]
@@ -10875,7 +10875,7 @@ modulate = Color(0.707967, 0.707967, 0.707967, 1)
 pixel_size = 0.001
 texture = ExtResource("30_rbivt")
 
-[node name="I16LOD0" parent="AirshowBox" instance=ExtResource("10_vfsk0")]
+[node name="I16LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("10_vfsk0")]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 0.999999, 0, -0.999999, 0, -3.61999e-06, 180.173, -150, 0)
 
 [node name="I16LOD0Audio" type="AudioStreamPlayer3D" parent="AirshowBox/I16LOD0"]
@@ -10887,7 +10887,7 @@ pitch_scale = 2.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="I16LOD0Gun" type="AudioStreamPlayer3D" parent="AirshowBox/I16LOD0"]
+[node name="I16LOD0Gun" type="AudioStreamPlayer3D" parent="AirshowBox/I16LOD0" groups=["audio_players"]]
 transform = Transform3D(1, 1.49012e-08, 5.96046e-08, 1.49012e-08, 1, 4.47035e-08, -2.98023e-08, 0, 1, 0, 0, 0)
 stream = ExtResource("36_i0e84")
 volume_db = 9.0
@@ -10905,19 +10905,19 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_rhx4o")
 draw_pass_1 = SubResource("QuadMesh_fjqc7")
 
-[node name="Ki51LOD0" parent="AirshowBox" instance=ExtResource("30_17swa")]
+[node name="Ki51LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("30_17swa")]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 200, -75, 90)
 
-[node name="Ki51LOD0Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0"]
+[node name="Ki51LOD0Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0" groups=["audio_players"]]
 stream = ExtResource("39_i0e84")
 volume_db = 12.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="Bomb" parent="AirshowBox/Ki51LOD0" instance=ExtResource("31_rbivt")]
+[node name="Bomb" parent="AirshowBox/Ki51LOD0" groups=["glb_models"] instance=ExtResource("31_rbivt")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5, 0)
 
-[node name="BombAudio0" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0"]
+[node name="BombAudio0" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0" groups=["audio_players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 stream = ExtResource("38_nc8nf")
 volume_db = 12.0
@@ -10925,10 +10925,10 @@ unit_size = 25.0
 bus = &"Effects"
 doppler_tracking = 2
 
-[node name="Ki51LOD1" parent="AirshowBox/Ki51LOD0" instance=ExtResource("30_17swa")]
+[node name="Ki51LOD1" parent="AirshowBox/Ki51LOD0" groups=["glb_models"] instance=ExtResource("30_17swa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
-[node name="Ki51LOD1Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0/Ki51LOD1"]
+[node name="Ki51LOD1Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0/Ki51LOD1" groups=["audio_players"]]
 stream = ExtResource("39_i0e84")
 volume_db = 12.0
 unit_size = 25.0
@@ -10936,10 +10936,10 @@ panning_strength = 3.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="Bomb" parent="AirshowBox/Ki51LOD0/Ki51LOD1" instance=ExtResource("31_rbivt")]
+[node name="Bomb" parent="AirshowBox/Ki51LOD0/Ki51LOD1" groups=["glb_models"] instance=ExtResource("31_rbivt")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="BombAudio2" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0/Ki51LOD1/Bomb"]
+[node name="BombAudio2" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD0/Ki51LOD1/Bomb" groups=["audio_players"]]
 transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, -16.6667, 3.33333, 8.33331)
 stream = ExtResource("38_nc8nf")
 volume_db = 12.0
@@ -10948,13 +10948,13 @@ pitch_scale = 1.3
 bus = &"Effects"
 doppler_tracking = 2
 
-[node name="Ki51LOD2" parent="AirshowBox" instance=ExtResource("30_17swa")]
+[node name="Ki51LOD2" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("30_17swa")]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 250, -70, 115)
 
-[node name="Bomb" parent="AirshowBox/Ki51LOD2" instance=ExtResource("31_rbivt")]
+[node name="Bomb" parent="AirshowBox/Ki51LOD2" groups=["glb_models"] instance=ExtResource("31_rbivt")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 5, 0)
 
-[node name="BombAudio1" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2/Bomb"]
+[node name="BombAudio1" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2/Bomb" groups=["audio_players"]]
 transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 16.6667, -3.33333, -8.33331)
 stream = ExtResource("38_nc8nf")
 volume_db = 12.0
@@ -10973,7 +10973,7 @@ trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_t5hey")
 draw_pass_1 = SubResource("QuadMesh_rhx4o")
 
-[node name="Ki51LOD2Audio0" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2"]
+[node name="Ki51LOD2Audio0" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2" groups=["audio_players"]]
 volume_db = 18.0
 unit_size = 25.0
 max_db = 6.0
@@ -10981,16 +10981,16 @@ panning_strength = 3.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="Ki51LOD2Audio1" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2"]
+[node name="Ki51LOD2Audio1" type="AudioStreamPlayer3D" parent="AirshowBox/Ki51LOD2" groups=["audio_players"]]
 stream = ExtResource("39_cgk0g")
 bus = &"Effects"
 doppler_tracking = 2
 
-[node name="bf109dLOD0" parent="AirshowBox" instance=ExtResource("32_6ga2h")]
+[node name="bf109dLOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("32_6ga2h")]
 transform = Transform3D(0.985601, 0.0158831, 0.168343, -0.0574943, 0.967737, 0.245308, -0.159015, -0.251454, 0.954718, -405, 0, 375)
 visible = false
 
-[node name="Bf109Audio" type="AudioStreamPlayer3D" parent="AirshowBox/bf109dLOD0"]
+[node name="Bf109Audio" type="AudioStreamPlayer3D" parent="AirshowBox/bf109dLOD0" groups=["audio_players"]]
 stream = ExtResource("44_ofnlf")
 volume_db = 24.0
 unit_size = 100.0
@@ -10998,13 +10998,13 @@ pitch_scale = 0.7
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="Bf109Gun" type="AudioStreamPlayer3D" parent="AirshowBox/bf109dLOD0"]
+[node name="Bf109Gun" type="AudioStreamPlayer3D" parent="AirshowBox/bf109dLOD0" groups=["audio_players"]]
 stream = ExtResource("45_7detu")
 volume_db = 18.0
 unit_size = 25.0
 bus = &"Effects"
 
-[node name="he111LOD0" parent="AirshowBox" instance=ExtResource("33_tx8x6")]
+[node name="he111LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("33_tx8x6")]
 transform = Transform3D(0.384038, 0, -0.923315, 0, 1, 0, 0.923316, 0, 0.384038, -160.754, -30, -2.10498)
 visible = false
 
@@ -11029,11 +11029,11 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7detu")
 draw_pass_1 = SubResource("QuadMesh_7dcw0")
 
-[node name="hurri1LOD0" parent="AirshowBox" instance=ExtResource("34_pie4w")]
+[node name="hurri1LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("34_pie4w")]
 transform = Transform3D(0.366502, 0.302915, -0.879727, 0, 0.945519, 0.325569, 0.930417, -0.119322, 0.346534, -185, 42, 65)
 visible = false
 
-[node name="HurriAudio" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0"]
+[node name="HurriAudio" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0" groups=["audio_players"]]
 transform = Transform3D(1, 0, 0, 1.49012e-08, 0.999999, 2.98023e-08, 0, -5.58794e-08, 1, 0, 0, 0)
 stream = ExtResource("44_ofnlf")
 volume_db = 48.0
@@ -11051,7 +11051,7 @@ lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_676gw")
 draw_pass_1 = SubResource("QuadMesh_mwvy0")
 
-[node name="HurriHits" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurriSmoke"]
+[node name="HurriHits" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurriSmoke" groups=["audio_players"]]
 transform = Transform3D(1, 2.23517e-08, -2.38419e-07, -7.45058e-08, 1, 4.80562e-07, 2.98023e-08, 7.45058e-08, 1, 1.13898, -8.14886, 6.22925)
 stream = ExtResource("49_eqq7h")
 volume_db = 36.0
@@ -11069,7 +11069,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_fjqc7")
 draw_pass_1 = SubResource("QuadMesh_i0e84")
 
-[node name="HurriGun1" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurriTrac0"]
+[node name="HurriGun1" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurriTrac0" groups=["audio_players"]]
 transform = Transform3D(1, 0, 0, 1.49012e-08, 0.999999, 2.98023e-08, 0, -5.58794e-08, 1, -4.266, -6.165, 3.04201)
 stream = ExtResource("36_i0e84")
 volume_db = 24.0
@@ -11099,7 +11099,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_nc8nf")
 draw_pass_1 = SubResource("QuadMesh_2l8ww")
 
-[node name="HurriGun2" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurrirTrac2"]
+[node name="HurriGun2" type="AudioStreamPlayer3D" parent="AirshowBox/hurri1LOD0/HurrirTrac2" groups=["audio_players"]]
 transform = Transform3D(1, 2.23517e-08, 0, 2.01166e-07, 1, 1.86265e-08, -5.96046e-08, 7.45058e-08, 1, 4.00171, -6.49573, 3.26486)
 stream = ExtResource("36_i0e84")
 volume_db = 24.0
@@ -11118,11 +11118,11 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_nc8nf")
 draw_pass_1 = SubResource("QuadMesh_2l8ww")
 
-[node name="Ki43LOD0" parent="AirshowBox" instance=ExtResource("35_vfsk0")]
+[node name="Ki43LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("35_vfsk0")]
 transform = Transform3D(0.216017, -0.394437, -0.89317, 0.24321, 0.907672, -0.34202, 0.945614, -0.143346, 0.292004, 168, 20, 100)
 visible = false
 
-[node name="Ki43Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki43LOD0"]
+[node name="Ki43Audio" type="AudioStreamPlayer3D" parent="AirshowBox/Ki43LOD0" groups=["audio_players"]]
 stream = ExtResource("39_i0e84")
 volume_db = 36.0
 unit_size = 25.0
@@ -11131,11 +11131,11 @@ panning_strength = 3.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="B25LOD1" parent="AirshowBox" instance=ExtResource("29_2g6jm")]
+[node name="B25LOD1" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("29_2g6jm")]
 transform = Transform3D(0.996239, 0, -0.0866515, 0, 1, 0, 0.0866515, 0, 0.996239, -65, -150, -970)
 visible = false
 
-[node name="B25Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B25LOD1"]
+[node name="B25Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B25LOD1" groups=["audio_players"]]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
 stream = ExtResource("52_r02sr")
 unit_size = 50.0
@@ -11144,19 +11144,19 @@ panning_strength = 3.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="B25LOD2" parent="AirshowBox/B25LOD1" instance=ExtResource("29_2g6jm")]
+[node name="B25LOD2" parent="AirshowBox/B25LOD1" groups=["glb_models"] instance=ExtResource("29_2g6jm")]
 transform = Transform3D(1, -5.09718e-25, -2.27374e-13, 0, 1, -2.24176e-12, 2.27374e-13, 2.24176e-12, 1, 40, -35, 50)
 visible = false
 
-[node name="B25LOD0" parent="AirshowBox/B25LOD1/B25LOD2" instance=ExtResource("29_2g6jm")]
+[node name="B25LOD0" parent="AirshowBox/B25LOD1/B25LOD2" groups=["glb_models"] instance=ExtResource("29_2g6jm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -5, 10)
 visible = false
 
-[node name="me262LOD0" parent="AirshowBox" instance=ExtResource("40_b8i5w")]
+[node name="me262LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("40_b8i5w")]
 transform = Transform3D(-0.482963, 0, -0.129409, 0, 0.5, 0, 0.129409, 0, -0.482963, -102.393, -150, -942.859)
 visible = false
 
-[node name="Me262Audio" type="AudioStreamPlayer3D" parent="AirshowBox/me262LOD0"]
+[node name="Me262Audio" type="AudioStreamPlayer3D" parent="AirshowBox/me262LOD0" groups=["audio_players"]]
 stream = ExtResource("55_qrfg1")
 unit_size = 50.0
 pitch_scale = 1.2
@@ -11164,11 +11164,11 @@ panning_strength = 3.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="B17LOD0" parent="AirshowBox" instance=ExtResource("41_dd4tu")]
+[node name="B17LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("41_dd4tu")]
 transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 1100, 25, -500)
 visible = false
 
-[node name="B17Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B17LOD0"]
+[node name="B17Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B17LOD0" groups=["audio_players"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 stream = ExtResource("52_r02sr")
 volume_db = -10.0
@@ -11176,23 +11176,23 @@ unit_size = 100.0
 pitch_scale = 0.5
 bus = &"Planes"
 
-[node name="B17LOD1" parent="AirshowBox/B17LOD0" instance=ExtResource("41_dd4tu")]
+[node name="B17LOD1" parent="AirshowBox/B17LOD0" groups=["glb_models"] instance=ExtResource("41_dd4tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
 visible = false
 
-[node name="B17LOD2" parent="AirshowBox/B17LOD0/B17LOD1" instance=ExtResource("41_dd4tu")]
+[node name="B17LOD2" parent="AirshowBox/B17LOD0/B17LOD1" groups=["glb_models"] instance=ExtResource("41_dd4tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 100)
 visible = false
 
-[node name="B17LOD3" parent="AirshowBox/B17LOD0/B17LOD1/B17LOD2" instance=ExtResource("41_dd4tu")]
+[node name="B17LOD3" parent="AirshowBox/B17LOD0/B17LOD1/B17LOD2" groups=["glb_models"] instance=ExtResource("41_dd4tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 visible = false
 
-[node name="B24LOD0" parent="AirshowBox" instance=ExtResource("42_846qw")]
+[node name="B24LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("42_846qw")]
 transform = Transform3D(-7.23998e-06, 0, 2, 0, 2, 0, -2, 0, -7.23998e-06, 750, -50, -550)
 visible = false
 
-[node name="B24Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B24LOD0"]
+[node name="B24Audio" type="AudioStreamPlayer3D" parent="AirshowBox/B24LOD0" groups=["audio_players"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -25.0005, 37.5, 150)
 stream = ExtResource("52_r02sr")
 volume_db = -10.0
@@ -11200,27 +11200,27 @@ unit_size = 100.0
 pitch_scale = 0.6
 bus = &"Planes"
 
-[node name="B24LOD1" parent="AirshowBox/B24LOD0" instance=ExtResource("42_846qw")]
+[node name="B24LOD1" parent="AirshowBox/B24LOD0" groups=["glb_models"] instance=ExtResource("42_846qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
 visible = false
 
-[node name="B24LOD2" parent="AirshowBox/B24LOD0" instance=ExtResource("42_846qw")]
+[node name="B24LOD2" parent="AirshowBox/B24LOD0" groups=["glb_models"] instance=ExtResource("42_846qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 100)
 visible = false
 
-[node name="B24LOD3" parent="AirshowBox/B24LOD0/B24LOD2" instance=ExtResource("42_846qw")]
+[node name="B24LOD3" parent="AirshowBox/B24LOD0/B24LOD2" groups=["glb_models"] instance=ExtResource("42_846qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
 visible = false
 
-[node name="p51d_LOD0" parent="AirshowBox" instance=ExtResource("43_5xl4c")]
+[node name="p51d_LOD0" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("43_5xl4c")]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 750, -15, -600)
 visible = false
 
-[node name="p51d_LOD0" parent="AirshowBox/p51d_LOD0" instance=ExtResource("43_5xl4c")]
+[node name="p51d_LOD0" parent="AirshowBox/p51d_LOD0" groups=["glb_models"] instance=ExtResource("43_5xl4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 5, 50)
 visible = false
 
-[node name="P51Audio" type="AudioStreamPlayer3D" parent="AirshowBox/p51d_LOD0/p51d_LOD0"]
+[node name="P51Audio" type="AudioStreamPlayer3D" parent="AirshowBox/p51d_LOD0/p51d_LOD0" groups=["audio_players"]]
 stream = ExtResource("44_ofnlf")
 unit_size = 75.0
 pitch_scale = 0.9
@@ -11228,11 +11228,11 @@ panning_strength = 3.0
 bus = &"Planes"
 doppler_tracking = 2
 
-[node name="p51d_LOD1" parent="AirshowBox" instance=ExtResource("43_5xl4c")]
+[node name="p51d_LOD1" parent="AirshowBox" groups=["glb_models"] instance=ExtResource("43_5xl4c")]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 750, 30, -400)
 visible = false
 
-[node name="p51d_LOD0" parent="AirshowBox/p51d_LOD1" instance=ExtResource("43_5xl4c")]
+[node name="p51d_LOD0" parent="AirshowBox/p51d_LOD1" groups=["glb_models"] instance=ExtResource("43_5xl4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 5, 50)
 visible = false
 
