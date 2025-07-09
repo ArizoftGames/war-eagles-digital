@@ -4,6 +4,9 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>WarEaglesDigital</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="Docs\CopilotPromptChecklist.md" />
+  </ItemGroup>
 <ItemGroup>
     <PackageReference Include="CsvHelper" Version="33.0.1" />
   </ItemGroup>

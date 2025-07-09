@@ -3,7 +3,7 @@ War Eagles (TM)  Digital is a port of a tabletop game designed in 1995 by Geoffr
 
 The games employs a visual aesthetic of aircraft miniatures being used on a well-constructed sand table or miniatures-game play surface.  The models themselves are as detailed as may be while accenting performance on a computer with limited video capability.  The audio aesthietic is built around national themes, with tracks reminiscent of national character and the music of the period.  Sound effects are drawn from life.  The primary directive of the development effort is user experience; good playflow and mechanics are second, with fidelity to the original design and historical accuracy being considerations as well.
 
-This solution incorporates in part the following documents in D:/War Eagles DIgital/war-eagles-digital/Docs:
+This solution incorporates in part the following documents in res://Docs:
 
 StandardRules.md  is the rules of play of the original, wood-block iteration.  It is used to define and describe the playflow.
 TechStack.md describes the target hardware and software configuration for the distro, and the hardware and software development environment

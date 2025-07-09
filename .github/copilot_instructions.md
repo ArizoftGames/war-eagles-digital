@@ -2,7 +2,7 @@ War Eagles is being developed in Godot 4.4.1, with the aid of Grok 3 for researc
 
 The planned workflow is described in Guidelines.md and consists in brief of: User defines requirements-Grok creates a pseudocode prompt-User reviews prompt-User inputs prompt to Copilot-Copilot prroduces code-User uses Intellisense and Grok to review code-code is implemented and debugged by user and Grok, with Copilot help where appropriate.
 
-This solution incorporates in part the following documents in D:\War Eagles Digital\war-eagles-digital\Docs\README.txt:
+This solution incorporates in part the following documents in res://Docs:
 
 StandardRules.md  is the rules of play of the original, wood-block iteration.  It is used to define and describe the playflow.
 TechStack.md describes the target hardware and software configuration for the distro, and the hardware and software development environment.
