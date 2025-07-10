@@ -18,6 +18,10 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
             var creditsButton = GetNode<Button>("Pause_Menu/MainMenu/CreditsButton");
             creditsButton.Pressed += OnCreditsButtonPressed;
 
+            //Connect signal from ExtrasButton
+            var extrasButton = GetNode<Button>("Pause_Menu/MainMenu/ExtrasButton");
+            extrasButton.Pressed += OnExtrasButtonPressed;
+
         }
 
         private void OnCreditsButtonPressed()
@@ -33,6 +37,20 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 GD.PrintErr("Failed to open Credits Menu.");
             }
 
+        }
+
+        public void OnExtrasButtonPressed()
+        {
+            try
+            {
+                //Loads Extras.tscn
+                GD.Print("Opening Extras Menu");
+                GetTree().ChangeSceneToFile("res://Scenes/Extras.tscn");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to open Extras Menu: {ex.Message}");
+            }
         }
 
         private void OnQuitButtonPressed()

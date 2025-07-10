@@ -27,6 +27,8 @@ public partial class Extras : Control
     private Dictionary<string, Dictionary<string, string>> _musicData = new();
     private string _currentExportPath;
 
+    
+
     public override void _Ready()
     {
         try
@@ -53,16 +55,14 @@ public partial class Extras : Control
             {
                 FileMode = FileDialog.FileModeEnum.SaveFile
             };
-            _exportDialog.AddFilter("*.zip;*.mp3;*.txt", "Supported Files");
+            //_exportDialog.AddFilter("*.zip;*.mp3;*.txt", "Supported Files");
             _exportDialog.FileSelected += OnExportFileSelected;
             _exportDialog.UseNativeDialog = true;
             _exportDialog.SetTitle("Export to System");
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            _exportDialog.SetCurrentFile("ExportedFile");
+           //_exportDialog.SetCurrentFile(toExport);
             _exportDialog.Access = FileDialog.AccessEnum.Filesystem;
             _exportDialog.SetCurrentDir(documentsPath);
-            GD.Print("Documents Path: " + documentsPath);
-            //_exportDialog.RootSubfolder = documentsPath;
             AddChild(_exportDialog);
 
             // Load CSV data
@@ -198,7 +198,7 @@ public partial class Extras : Control
                 };
                 _soundtrackList.SetItemMetadata(idx, metadata);
 
-                GD.Print($"Setting metadata for track: {trackEntry.GetValueOrDefault("Button Text")}, Method: {metadata["Method"]}, Arguments: {metadata["Arguments"]}");
+                //GD.Print($"Setting metadata for track: {trackEntry.GetValueOrDefault("Button Text")}, Method: {metadata["Method"]}, Arguments: {metadata["Arguments"]}");
 
                 var exportButton = new TextureButton
                 {
@@ -296,6 +296,7 @@ public partial class Extras : Control
                 var readingText = new RichTextLabel
                 {
                     Name = "FurtherReadingText",
+                    BbcodeEnabled = true,
                     Text = LoadFileText("res://Docs/FurtherReading.txt"),
                     SizeFlagsVertical = Control.SizeFlags.ExpandFill,
                     SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
@@ -321,7 +322,7 @@ public partial class Extras : Control
                     SizeFlagsStretchRatio = 1.0f,
 
                 };
-                furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.txt");
+                furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.pdf");
                 furtherExport.OffsetBottom = 10;
                 furtherReadingVBox.AddChild(furtherExport);
             }
@@ -341,9 +342,12 @@ public partial class Extras : Control
     {
         try
         {
+            //var toExport = zipFile;
+            _exportDialog.SetCurrentFile(zipFile);
             _currentExportPath = "res://Extras/Models/" + zipFile;
             if (FileAccess.FileExists(_currentExportPath))
                 _exportDialog.PopupCentered();
+                       
             else
             {
                 GD.PrintErr("Model file not found: " + _currentExportPath);
@@ -361,6 +365,11 @@ public partial class Extras : Control
     {
         try
         {
+            
+            var toExport = filename;
+            toExport = toExport.Replace("res://Extras/Music/", "");
+            GD.Print($"Exporting music: {toExport}");
+            _exportDialog.SetCurrentFile(toExport);
             _currentExportPath = filename;
             if (FileAccess.FileExists(_currentExportPath))
             {
@@ -383,6 +392,7 @@ public partial class Extras : Control
     {
         try
         {
+            _exportDialog.SetCurrentFile("res://Docs/FurtherReading.pdf");
             _currentExportPath = filePath;
             if (FileAccess.FileExists(_currentExportPath))
                 _exportDialog.PopupCentered();

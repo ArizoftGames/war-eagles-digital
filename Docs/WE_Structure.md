@@ -17,3 +17,5 @@ IntroAnim.tscn: Current main scene.  Plays disclaimer screen and introductory an
 PauseMenu.tscn: Will be activated at any time during gameplay with ESC.  Immediately presents main menu with buttons for Continue, Save, Load, New [Game], Credits, Options, Extras, Help, and Quit.
 
 CreditRoll.tscn: Displays credits.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
+
+Extras.tscn: Displays and certain game files an support assets, and exports to user system by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.

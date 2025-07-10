@@ -19,7 +19,7 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
 
             ///Set MusicBox volume
             var MusicBus = AudioServer.GetBusIndex("Music");
-            AudioServer.SetBusVolumeDb(MusicBus, 8.0f); // Set volume to 12 dB
+            AudioServer.SetBusVolumeDb(MusicBus, 8.0f); // Set volume to 8 dB
 
             // Connect the SkipButton's pressed signal
             var skipButton = GetNode<Button>("SkipButton");
@@ -29,12 +29,15 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             var creditsButton = GetNode<Button>("Splashscreen/MainMenu/CreditsButton");
             creditsButton.Pressed += OnCreditsButtonPressed;
 
+            // Connect the ExtrasButton's pressed signal
+            var extrasButton = GetNode<Button>("Splashscreen/MainMenu/ExtrasButton");
+            extrasButton.Pressed += OnExtrasButtonPressed;
+
             //Connect Intro_Animation start signal
             animation_Tree.AnimationStarted += OnIntro_AnimationStarted;
 
             //Start AnimationTree
             animation_Tree.Active = true;
-
 
             GD.Print("IntroAnim initialized successfully.");
         }
@@ -59,6 +62,34 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
                 }
             }
 
+        public void ReleaseResources()
+        {
+            try
+            {
+                // Godot's Array does not have ForEach, use a regular foreach loop
+                foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                    (node as Node)?.QueueFree();
+
+                foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                {
+                    node.Call("stop");
+                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                    (node as Node)?.QueueFree();
+                }
+
+                foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                    (node as Node)?.QueueFree();
+
+                GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
+            }
+        }
+        
+
         public override void _Input(InputEvent @event)
         {
             if (@event is InputEventKey keyEvent && keyEvent.Pressed && keyEvent.Keycode == Key.Space)
@@ -77,25 +108,10 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             try
             {
 
-                //GD.Print($"Memory before free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
-                // Godot's Array does not have ForEach, use a regular foreach loop
-                foreach (var node in GetTree().GetNodesInGroup("glb_models"))
-                    (node as Node)?.QueueFree();
-
-                foreach (var node in GetTree().GetNodesInGroup("audio_players"))
-                {
-                    node.Call("stop");
-                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
-                    (node as Node)?.QueueFree();
-                }
-
-                foreach (var node in GetTree().GetNodesInGroup("terrains"))
-                    (node as Node)?.QueueFree();
-
-                MusicBox.StopMusic();
-                                
-                //GD.Print($"Memory before quit: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
-
+                // Release resources before quitting
+                ReleaseResources();
+                MusicBox.StopMusic();           
+                
                 GD.Print("Closing Game.");
                 GetTree().Quit();
             }
@@ -123,7 +139,11 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
         {
             try
             {
-                GD.Print("Opening Credits Menu");
+                //Release resources before opening Credits Menu
+                ReleaseResources();
+                //GD.Print("Releasing resources before opening Credits Menu.");
+
+                //GD.Print("Opening Credits Menu");
                 GetTree().ChangeSceneToFile(CreditsMenuScene);
 
             }
@@ -132,6 +152,22 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
                 GD.PrintErr("Failed to open Credits Menu.");
             }
 
+        }
+
+        public void OnExtrasButtonPressed()
+        {
+             
+            try
+            {
+                ReleaseResources();
+
+                GD.Print("Opening Extras Menu");
+                GetTree().ChangeSceneToFile("res://Scenes/Extras.tscn");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to open Extras Menu: {ex.Message}");
+            }
         }
     }
 }

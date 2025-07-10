@@ -1,0 +1,18 @@
+# Scene Plan: ExtrasMenu.tscn
+
+## Tabs
+- Models: 5x4 GridContainer with 20 model thumbnails and export buttons.
+- Soundtrack: ItemList with 16 tracks, play/export buttons.
+- History of Aerial Strategy: RichTextLabel with res://Extras/Articles/History Of Air Strategy.txt (lorem ipsum placeholder).
+- Further Reading: RichTextLabel with res://Docs/FurtherReading.md.
+- Designer’s Notes: RichTextLabel with res://Extras/Articles/Design Notes.txt (lorem ipsum placeholder).
+
+## Required Assets
+- Articles:
+  - res://Extras/Articles/History Of Air Strategy.txt → OptionsContainer/History of Aerial Strategy/RichTextLabel (placeholder).
+  - res://Extras/Articles/Design Notes.txt → OptionsContainer/Designer’s Notes/RichTextLabel (placeholder).
+  - res://Docs/FurtherReading.md → OptionsContainer/Further Reading/RichTextLabel.
+- Models: res://Extras/Models/ (20 .png thumbnails, .zip files) per ExtrasModels.csv.
+- Music: res://Extras/Music/ (16 .mp3 tracks, 1 .zip) per ExtrasMusic.csv.
+- Export icon: res://Assets/Sprites/MusicExport.png.
+- Theme: res://Data/Resources/UI_Theme.tres (Bahnschrift, font_size=24, semi-transparent backgrounds).

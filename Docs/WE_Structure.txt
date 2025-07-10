@@ -5,7 +5,7 @@ Audio Bus Layout: res//Audio/WE_Bus_layout.tres; Busses: Master, fed by Music, P
 Autoloads:
 
 GameManager.cs - centralizes global actions and frequently called methods.
-	 _Input(Input Event @event) {detects explicitly defined input events and calls methods based on them}, PauseGame(), ScreenShot(), [NYI]AccessConsole() 
+	 _Input(Input Event @event) {detects explicitly defined input events and calls methods based on them}, PauseGame(), ScreenShot(), AccessConsole() {Not yet implemented}
 UnitDatabase.cs - reads data fron csv parsers and constructs dictionaries.
 	GetAirUnitByName(string unit), GetAntiAircraftUnitByName(string unit), GetZoneByTargetName		(string targetName), GetAceByPilot(string pilot), GetEventByName(string name), 		GetZoneAsDictionary(string targetName), GetAirUnitAsDictionary(string unitName), 		GetEventAsDictionary(string name)
 
@@ -17,3 +17,5 @@ IntroAnim.tscn: Current main scene.  Plays disclaimer screen and introductory an
 PauseMenu.tscn: Will be activated at any time during gameplay with ESC.  Immediately presents main menu with buttons for Continue, Save, Load, New [Game], Credits, Options, Extras, Help, and Quit.
 
 CreditRoll.tscn: Displays credits.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
+
+Extras.tscn: Displays and certain game files an support assets, and exports to user system by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
