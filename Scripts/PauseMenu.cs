@@ -7,6 +7,7 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
     public partial class PauseMenu : Node3D
     {
         private const string CreditsMenuScene = "res://Scenes/CreditRoll.tscn";
+        [Export] private Label _versionLabel;
 
         public override void _Ready()
         {
@@ -21,6 +22,26 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
             //Connect signal from ExtrasButton
             var extrasButton = GetNode<Button>("Pause_Menu/MainMenu/ExtrasButton");
             extrasButton.Pressed += OnExtrasButtonPressed;
+
+            //Apply Versioning info
+
+            try
+            {
+                if (_versionLabel != null)
+                {
+                    string version = ProjectSettings.GetSetting("application/config/version").AsString();
+                    int buildNumber = ProjectSettings.GetSetting("application/config/build_number").AsInt32();
+                    _versionLabel.Text = $"Version: {version} Build {buildNumber}";
+                }
+                else
+                {
+                    GD.PrintErr("VersionLabel node not found in PauseMenu.tscn.");
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to set version label in PauseMenu: {ex.Message}");
+            }
 
         }
 

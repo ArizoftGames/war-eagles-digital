@@ -6,6 +6,7 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
 {
     public partial class IntroAnim : Node3D
     {
+        [Export] private Label _versionLabel;
         private AnimationTree animation_Tree;
         private AnimationNodeStateMachinePlayback state_machine;
         private AudioManager MusicBox;
@@ -38,6 +39,25 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
 
             //Start AnimationTree
             animation_Tree.Active = true;
+
+            //Get _versionLabel settings
+            try
+            {
+                if (_versionLabel != null)
+                {
+                    string version = ProjectSettings.GetSetting("application/config/version").AsString();
+                    int buildNumber = ProjectSettings.GetSetting("application/config/build_number").AsInt32();
+                    _versionLabel.Text = $"Version: {version} Build {buildNumber}";
+                }
+                else
+                {
+                    GD.PrintErr("VersionLabel node not found in IntroAnim.tscn.");
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to set version label in IntroAnim: {ex.Message}");
+            }
 
             GD.Print("IntroAnim initialized successfully.");
         }

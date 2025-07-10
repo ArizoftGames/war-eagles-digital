@@ -6980,7 +6980,7 @@ tracks/235/keys = {
 tracks/236/type = "value"
 tracks/236/imported = false
 tracks/236/enabled = true
-tracks/236/path = NodePath("Splashscreen/Ver Info:visible")
+tracks/236/path = NodePath("Splashscreen/VersionLabel:visible")
 tracks/236/interp = 1
 tracks/236/loop_wrap = true
 tracks/236/keys = {
@@ -7907,7 +7907,7 @@ tracks/313/keys = {
 tracks/314/type = "value"
 tracks/314/imported = false
 tracks/314/enabled = true
-tracks/314/path = NodePath("Splashscreen/Ver Info:modulate")
+tracks/314/path = NodePath("Splashscreen/VersionLabel:modulate")
 tracks/314/interp = 1
 tracks/314/loop_wrap = true
 tracks/314/keys = {
@@ -9918,7 +9918,7 @@ tracks/109/keys = {
 tracks/110/type = "value"
 tracks/110/imported = false
 tracks/110/enabled = true
-tracks/110/path = NodePath("Splashscreen/Ver Info:visible")
+tracks/110/path = NodePath("Splashscreen/VersionLabel:visible")
 tracks/110/interp = 1
 tracks/110/loop_wrap = true
 tracks/110/keys = {
@@ -10086,7 +10086,7 @@ tracks/123/keys = {
 tracks/124/type = "value"
 tracks/124/imported = false
 tracks/124/enabled = true
-tracks/124/path = NodePath("Splashscreen/Ver Info:modulate")
+tracks/124/path = NodePath("Splashscreen/VersionLabel:modulate")
 tracks/124/interp = 1
 tracks/124/loop_wrap = true
 tracks/124/keys = {
@@ -10585,8 +10585,9 @@ states/SetMenu/position = Vector2(647, 220.606)
 transitions = ["Start", "PreIntro", SubResource("AnimationNodeStateMachineTransition_nc8nf"), "PreIntro", "Intro_Animation", SubResource("AnimationNodeStateMachineTransition_i0e84"), "RESET", "End", SubResource("AnimationNodeStateMachineTransition_ent03"), "Intro_Animation", "RESET", SubResource("AnimationNodeStateMachineTransition_2l8ww")]
 graph_offset = Vector2(0, 83.2047)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("_versionLabel")]
 script = ExtResource("1_u436d")
+_versionLabel = NodePath("Splashscreen/VersionLabel")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ukawc")
@@ -11297,16 +11298,27 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Ver Info" type="Label" parent="Splashscreen"]
-layout_mode = 0
-offset_left = 2260.0
-offset_top = 1380.0
-offset_right = 2500.0
-offset_bottom = 1427.0
+[node name="VersionLabel" type="Label" parent="Splashscreen"]
+custom_minimum_size = Vector2(320, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -460.0
+offset_top = -120.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 theme_override_fonts/font = ExtResource("45_pie4w")
 theme_override_font_sizes/font_size = 40
-text = "ver. 0.0.0"
+text = "ver. 0.1.0
+Build 1000000"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="MainMenu" type="BoxContainer" parent="Splashscreen"]
 layout_mode = 0
