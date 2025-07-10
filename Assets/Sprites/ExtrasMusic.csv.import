@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bst5vvusnpl0x"
+
+[deps]
+
+files=["res://Assets/Sprites/ExtrasMusic.AudioManager Method Call.translation", "res://Assets/Sprites/ExtrasMusic.Export Filename.translation", "res://Assets/Sprites/ExtrasMusic.Tooltip.translation"]
+
+source_file="res://Assets/Sprites/ExtrasMusic.csv"
+dest_files=["res://Assets/Sprites/ExtrasMusic.AudioManager Method Call.translation", "res://Assets/Sprites/ExtrasMusic.Export Filename.translation", "res://Assets/Sprites/ExtrasMusic.Tooltip.translation"]
+
+[params]
+
+compress=true
+delimiter=0

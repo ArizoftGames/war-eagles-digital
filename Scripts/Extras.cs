@@ -7,10 +7,13 @@ public partial class Extras : Control
 {
     // Node references
     private TabContainer _optionsContainer;
+    private VBoxContainer _modelsContainer;
     private GridContainer _modelsGrid;
     private Label _modelsLabel;
+    private HBoxContainer _soundtrackContainer; 
     private ItemList _soundtrackList;
     private RichTextLabel _historyText;
+    private VBoxContainer _furtherReading;
     private RichTextLabel _furtherReadingText;
     private RichTextLabel _designersNotesText;
     private Button _backButton;
@@ -34,11 +37,14 @@ public partial class Extras : Control
 
             // Get node references from scene
             _optionsContainer = GetNode<TabContainer>("OptionsContainer");
-            _modelsGrid = GetNode<GridContainer>("OptionsContainer/Models");
+            _modelsContainer = GetNode<VBoxContainer>("OptionsContainer/Models");
+            _modelsGrid = GetNode<GridContainer>("OptionsContainer/Models/ModelsGrid");
             _modelsLabel = GetNode<Label>("OptionsContainer/Models/ModelsLabel");
-            _soundtrackList = GetNode<ItemList>("OptionsContainer/Soundtrack");
+            _soundtrackContainer = GetNode<HBoxContainer>("OptionsContainer/Soundtrack");
+            _soundtrackList = GetNode<ItemList>("OptionsContainer/Soundtrack/SoundtrackList");
             _historyText = GetNode<RichTextLabel>("OptionsContainer/History of Aerial Strategy");
-            _furtherReadingText = GetNode<RichTextLabel>("OptionsContainer/Further Reading");
+            _furtherReading = GetNode<VBoxContainer>("OptionsContainer/Further Reading");
+            _furtherReadingText = GetNode<RichTextLabel>("OptionsContainer/Further Reading/Further ReadingLabel");
             _designersNotesText = GetNode<RichTextLabel>("OptionsContainer/Designer's Notes");
             _backButton = GetNode<Button>("BackButton");
 
@@ -49,6 +55,14 @@ public partial class Extras : Control
             };
             _exportDialog.AddFilter("*.zip;*.mp3;*.txt", "Supported Files");
             _exportDialog.FileSelected += OnExportFileSelected;
+            _exportDialog.UseNativeDialog = true;
+            _exportDialog.SetTitle("Export to System");
+            var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            _exportDialog.SetCurrentFile("ExportedFile");
+            _exportDialog.Access = FileDialog.AccessEnum.Filesystem;
+            _exportDialog.SetCurrentDir(documentsPath);
+            GD.Print("Documents Path: " + documentsPath);
+            //_exportDialog.RootSubfolder = documentsPath;
             AddChild(_exportDialog);
 
             // Load CSV data
@@ -96,28 +110,43 @@ public partial class Extras : Control
     {
         try
         {
-            _modelsGrid.Set("theme_override_constants/h_separation", 20);
-            _modelsGrid.Set("theme_override_constants/v_separation", 20);
-            _modelsGrid.Columns = 4;
+            _modelsGrid.Set("theme_override_constants/h_separation", 256);
+            _modelsGrid.Set("theme_override_constants/v_separation", 5);
+            _modelsGrid.Columns = 5;
 
             foreach (var modelEntry in _modelsData.Values)
             {
-                var container = new CenterContainer();
+                var container = new VBoxContainer();
                 var thumbnail = new TextureRect
                 {
                     Texture = LoadTexture("res://Extras/Models/" + modelEntry.GetValueOrDefault("Img")),
-                    CustomMinimumSize = new Vector2(256, 256)
+                    CustomMinimumSize = new Vector2(256, 256),
+                    Size = new Vector2(256, 256),
                 };
                 var exportButton = new Button
                 {
+                    AnchorRight = .5f,
+                    AnchorLeft = -.5f,
+                    OffsetLeft = -128,
+                    OffsetRight = 128,  
+                    OffsetTop = -40,
+                    OffsetBottom = 0,   
+                    Alignment = (HorizontalAlignment)1f,    
+                    Flat = true,
+                    Position = new Vector2(0, 200),
                     Text = modelEntry.GetValueOrDefault("Model"),
                     TooltipText = $"Export {modelEntry.GetValueOrDefault("Model")} (.zip, {modelEntry.GetValueOrDefault("Tooltip")})"
                 };
+                var fontColor = new Color(.7f, 0.9f, 0.8f, 1f);
+                var outlineColor = new Color(.1f, 0.1f, 0.1f, 1f);
+                exportButton.AddThemeColorOverride("font_color", fontColor);
+                exportButton.AddThemeConstantOverride("outline_size", 3);
                 exportButton.Pressed += () => OnExportModelPressed(modelEntry.GetValueOrDefault("Zip"));
                 container.AddChild(thumbnail);
-                container.AddChild(exportButton);
+                thumbnail.AddChild(exportButton);
                 _modelsGrid.AddChild(container);
             }
+           
         }
         catch (Exception e)
         {
@@ -130,52 +159,47 @@ public partial class Extras : Control
     {
         try
         {
-            // Clear existing items and children in SoundtrackList
             _soundtrackList.Clear();
             foreach (Node child in _soundtrackList.GetChildren())
             {
                 child.QueueFree();
             }
 
-            // Create HBoxContainer to layout ItemList and Export buttons
-            var layoutContainer = new HBoxContainer
-            {
-                Name = "LayoutContainer",
-                SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-                SizeFlagsVertical = Control.SizeFlags.ExpandFill
-            };
-            _soundtrackList.AddChild(layoutContainer);
-
-            // Re-parent ItemList to layoutContainer and adjust size
-            _soundtrackList.Reparent(layoutContainer);
+            // Restore correct sizing for _soundtrackList
             _soundtrackList.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
-            _soundtrackList.SizeFlagsStretchRatio = 3.0f; // ItemList takes 75% width
+            _soundtrackList.SizeFlagsStretchRatio = 3.0f;
 
-            // Create VBoxContainer for Export buttons
+            // Remove and recreate exportContainer if it exists (to avoid duplicate buttons)
+            var existingExportContainer = _soundtrackContainer.GetNodeOrNull<VBoxContainer>("ExportContainer");
+            if (existingExportContainer != null)
+                existingExportContainer.QueueFree();
+
             var exportContainer = new VBoxContainer
             {
                 Name = "ExportContainer",
                 SizeFlagsHorizontal = Control.SizeFlags.ShrinkEnd,
+                SizeFlagsStretchRatio = 1.0f,
                 SizeFlagsVertical = Control.SizeFlags.ExpandFill,
                 CustomMinimumSize = new Vector2(50, 0)
             };
-            layoutContainer.AddChild(exportContainer);
-            exportContainer.Set("theme_override_constants/separation", 10);
+            _soundtrackContainer.AddChild(exportContainer);
+            exportContainer.Set("theme_override_constants/separation", 11);
 
-            // Populate ItemList with tracks
             foreach (var trackEntry in _musicData.Values)
             {
                 int idx = _soundtrackList.AddItem(trackEntry.GetValueOrDefault("Button Text"));
                 _soundtrackList.SetItemTooltip(idx, trackEntry.GetValueOrDefault("Tooltip"));
+
                 var metadata = new Godot.Collections.Dictionary<string, string>
                 {
-                    { "MethodCall", trackEntry.GetValueOrDefault("AudioManager Method Call") },
-                    { "ExportFilename", trackEntry.GetValueOrDefault("Export Filename") },
-                    { "Tooltip", trackEntry.GetValueOrDefault("Tooltip") }
+                    { "Method", trackEntry.GetValueOrDefault("AudioManager Method") },
+                    { "Arguments", trackEntry.GetValueOrDefault("Arguments") },
+                    { "ExportFilename", trackEntry.GetValueOrDefault("Export Filename") }
                 };
                 _soundtrackList.SetItemMetadata(idx, metadata);
 
-                // Create Export button for this track
+                GD.Print($"Setting metadata for track: {trackEntry.GetValueOrDefault("Button Text")}, Method: {metadata["Method"]}, Arguments: {metadata["Arguments"]}");
+
                 var exportButton = new TextureButton
                 {
                     TextureNormal = LoadTexture("res://Assets/Sprites/MusicExport.png"),
@@ -187,16 +211,68 @@ public partial class Extras : Control
                 exportContainer.AddChild(exportButton);
             }
 
-            // Connect ItemList selection signal
             _soundtrackList.ItemSelected += OnSoundtrackItemSelected;
-
-            // Adjust ItemList row height to match buttons
             _soundtrackList.Set("theme_override_constants/separation", 10);
+
+            // Optional: Debug print
+            GD.Print($"_soundtrackList SizeFlagsHorizontal: {_soundtrackList.SizeFlagsHorizontal}, SizeFlagsStretchRatio: {_soundtrackList.SizeFlagsStretchRatio}");
         }
         catch (Exception e)
         {
             GD.PrintErr("Soundtrack population error: " + e.Message);
-            _soundtrackList.AddChild(new Label { Text = "Error: Music data unavailable" });
+            _soundtrackList.AddItem("Error: Music data unavailable");
+        }
+    }
+
+    private void OnSoundtrackItemSelected(long index)
+    {
+        try
+        {
+            var metadataVariant = _soundtrackList.GetItemMetadata((int)index);
+            if (metadataVariant.Obj is Godot.Collections.Dictionary metadata)
+            {
+                string method = metadata.ContainsKey("Method") ? metadata["Method"].AsString() : null;
+                string arguments = metadata.ContainsKey("Arguments") ? metadata["Arguments"].AsString() : null;
+
+                if (string.IsNullOrEmpty(method) || string.IsNullOrEmpty(arguments))
+                {
+                    GD.PrintErr($"Invalid metadata for track: {_soundtrackList.GetItemText((int)index)}");
+                    return;
+                }
+
+                GD.Print($"Selected track: {_soundtrackList.GetItemText((int)index)}, Method: {method}, Arguments: {arguments}");
+
+                string[] args = arguments.Split(',');
+                for (int i = 0; i < args.Length; i++)
+                    args[i] = args[i].Trim();
+
+                if (method == "PlayMusicByUseCase")
+                {
+                    if (args.Length == 1)
+                        _audioManager?.Call("PlayMusicByUseCase", args[0]);
+                    else
+                        GD.PrintErr($"Invalid argument count for PlayMusicByUseCase: {args.Length}");
+                }
+                else if (method == "PlayMusicByNationMood")
+                {
+                    if (args.Length == 2)
+                        _audioManager?.Call("PlayMusicByNationMood", args[0], args[1]);
+                    else
+                        GD.PrintErr($"Invalid argument count for PlayMusicByNationMood: {args.Length}");
+                }
+                else
+                {
+                    GD.PrintErr($"Unknown AudioManager method: {method}");
+                }
+            }
+            else
+            {
+                GD.PrintErr($"Invalid metadata type for track: {_soundtrackList.GetItemText((int)index)}");
+            }
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr("Item selection error: " + e.Message);
         }
     }
 
@@ -206,21 +282,53 @@ public partial class Extras : Control
         try
         {
             _historyText.Text = LoadFileText("res://Extras/Articles/History Of Air Strategy.txt");
-            _furtherReadingText.Text = LoadFileText("res://Docs/FurtherReading.txt");
             _designersNotesText.Text = LoadFileText("res://Extras/Articles/Design Notes.txt");
 
-            // Export buttons for articles
-            var historyExport = new Button { Text = "Export History" };
-            historyExport.Pressed += () => OnExportArticlePressed("res://Extras/Articles/History Of Air Strategy.txt");
-            _historyText.AddChild(historyExport);
+            // --- Further Reading Tab Layout Fix ---
+            // Remove all children from the parent container of _furtherReadingText
+            var furtherReadingParent = _furtherReadingText.GetParent();
+            if (furtherReadingParent is VBoxContainer furtherReadingVBox)
+            {
+                foreach (var child in furtherReadingVBox.GetChildren())
+                    child.QueueFree();
 
-            var furtherExport = new Button { Text = "Export Bibliography" };
-            furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.txt");
-            _furtherReadingText.AddChild(furtherExport);
+                // Create and add RichTextLabel
+                var readingText = new RichTextLabel
+                {
+                    Name = "FurtherReadingText",
+                    Text = LoadFileText("res://Docs/FurtherReading.txt"),
+                    SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+                    SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                    SizeFlagsStretchRatio = 9.0f,
 
-            var notesExport = new Button { Text = "Export Notes" };
-            notesExport.Pressed += () => OnExportArticlePressed("res://Extras/Articles/Design Notes.txt");
-            _designersNotesText.AddChild(notesExport);
+                };
+                furtherReadingVBox.AddChild(readingText);
+
+                // Add vertical spacer
+                var spacer = new Control
+                {
+                    SizeFlagsVertical = Control.SizeFlags.Expand
+                };
+                furtherReadingVBox.AddChild(spacer);
+
+                // Add Export button at bottom center
+                var furtherExport = new Button
+                {
+                    Text = "Export List",
+                    Name = "ExportBibliographyButton",
+                    SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter,
+                    SizeFlagsVertical = Control.SizeFlags.ShrinkEnd,
+                    SizeFlagsStretchRatio = 1.0f,
+
+                };
+                furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.txt");
+                furtherExport.OffsetBottom = 10;
+                furtherReadingVBox.AddChild(furtherExport);
+            }
+            else
+            {
+                GD.PrintErr("Further Reading parent is not a VBoxContainer. Button placement may fail.");
+            }
         }
         catch (Exception e)
         {
@@ -245,34 +353,6 @@ public partial class Extras : Control
         catch (Exception e)
         {
             GD.PrintErr("Model export error: " + e.Message);
-        }
-    }
-
-    private void OnSoundtrackItemSelected(long index)
-    {
-        try
-        {
-            var metadataVariant = _soundtrackList.GetItemMetadata((int)index);
-            if (metadataVariant.Obj is Godot.Collections.Dictionary metadata)
-            {
-                string methodCall = metadata.ContainsKey("MethodCall") ? metadata["MethodCall"].AsString() : null;
-                if (!string.IsNullOrEmpty(methodCall))
-                {
-                    _audioManager?.Call(methodCall);
-                }
-                else
-                {
-                    GD.PrintErr($"No AudioManager method call for track: {_soundtrackList.GetItemText((int)index)}");
-                }
-            }
-            else
-            {
-                GD.PrintErr("No metadata for selected track or invalid metadata type");
-            }
-        }
-        catch (Exception e)
-        {
-            GD.PrintErr("Item selection error: " + e.Message);
         }
     }
 

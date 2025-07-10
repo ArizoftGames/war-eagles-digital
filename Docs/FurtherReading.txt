@@ -1,9 +1,9 @@
 [b]Further Reading for War Eagles[/b]
 
-War Eagles is, first and last, a game, meant to provide entertainment.  But story of the application of air power, and the dvelopment of its theory, before and during World War II is a fascinating one.  Its lessons persist to the present day, and have influenced many of the events of this century and the last decade of the last.  And no game about that period would be worth playing if it wasn't rooted in the discoveries, triumphs, and brutal tragedies of that learning process.  If you're interested in learning more, these books can provide an outline of what happened, why it happened, and what the principals thought they were doing. Maybe most importantly, the stories of the pilots and commanders who fought that war can help you imagine what it was like to be in the center of that bloody and terrifying time.
+War Eagles is, first and last, a game. It's entertainment, not education.  But the story of the strategy of air power, and how it developed before and during World War II, is a fascinating one.  Its lessons persist to the present day, and have influenced many of the events of this century and the last decade of the last.  No game about that period would be worth playing if it wasn't rooted in the discoveries, triumphs, and brutal tragedies of that learning process.  If you're interested in learning more, these books can provide an outline of what happened, why it happened, and what the principals thought they were doing. Maybe most importantly, the stories of the pilots and commanders who fought that war can help you imagine what it was like to be in the center of that bloody and terrifying time.
 
 [i]The Command of the Air[/i] by Giulio Douhet  
-  A pioneering work on air power theory, laying the groundwork for how nations used aircraft in WWII.
+  The pioneering work on air power theory, laying the groundwork for how nations used aircraft in WWII.
 
 [i]The Birth of British Air Power[/i] by Peter Dye  
   Explores how Britain built its air forces, setting the stage for epic battles like the Battle of Britain.
@@ -20,17 +20,20 @@ War Eagles is, first and last, a game, meant to provide entertainment.  But stor
 [i]Japan 1944-45[/i] by Mark Lardas  
   An in-depth treatment of the end of the Japanese war in the Pacific with an emphasis on the bloody and fiery bombing campaign that brought Japan to its knees.
 
-[i]The First and the Last[/] by Adolph Galland  
+[i]The First and the Last[/i] by Adolph Galland  
   The story of the German war in the air, told firsthand by a man who was one of the highest-scoring aces of the war and became the Luftwaffe's General of Fighters at age 30. 
 
-- *Thunderbolt!* by Robert Johnson  
+[i]Thunderbolt![/i] by Robert Johnson  
   The story of an American P-47 pilot, capturing the intensity of air combat in Europe.
 
-- *Samurai!* by Saburo Sakai  
+[i]Samurai![/i] by Saburo Sakai  
   A Japanese pilot's riveting account of survival and skill in the Pacific theater.
 
-- *Wing Leader* by J.E. Johnson  
+[i]Wing Leader[/i] by J.E. Johnson  
   One of the highest-scoring aces of the Battle of Britain, Johnson rose to command a fighter wing in record time, and tells the story of Britain's air war, and his own.
 
-- *Fight for the Sky* by Douglas Bader  
-  The inspiring story of a legless RAF pilot who became a legend in the Battle of Britain and the development and the employment of teh British fighter force.
+[i]Fight for the Sky[/i] by Douglas Bader  
+  The inspiring story of a legless RAF pilot who became a legend in the Battle of Britain and the development and the employment of the British fighter force.
+
+
+

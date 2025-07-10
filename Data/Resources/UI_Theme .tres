@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cw6t7lhrewpw5"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://cw6t7lhrewpw5"]
 
 [ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="2_60vsq"]
 [ext_resource type="StyleBox" uid="uid://dmnydpe6brirs" path="res://Data/Resources/UI_disabled_style_box_flat.tres" id="2_qhh8n"]
@@ -7,14 +7,15 @@
 [ext_resource type="StyleBox" uid="uid://duurht2vggj4" path="res://Data/Resources/UI_FltBtn_base_Style_Box.tres" id="4_jabvp"]
 [ext_resource type="StyleBox" uid="uid://d35f3xatrmhon" path="res://Data/Resources/UI_Panel_style_box_flat.tres" id="5_bi8dm"]
 [ext_resource type="StyleBox" uid="uid://87nhpjru8rwk" path="res://Data/Resources/UI_tabbar_Style_Box.tres" id="5_oagqv"]
+[ext_resource type="StyleBox" uid="uid://xjkucxnfrfi3" path="res://Data/Resources/UI DialogBox Panel.tres" id="5_osyj4"]
 [ext_resource type="FontFile" uid="uid://v8j0djlp211e" path="res://Assets/Fonts/DEJAVUSERIF-BOLD.TTF" id="6_kpeqm"]
+[ext_resource type="StyleBox" uid="uid://jmvmdxolhvq0" path="res://Data/Resources/UI_ItemList_Panel_Style_Box.tres" id="6_nhwoy"]
 [ext_resource type="StyleBox" uid="uid://cmmpncw2n87m7" path="res://Data/Resources/UI_focus_style_box_flat.tres" id="7_jabvp"]
 [ext_resource type="FontFile" uid="uid://c5jtrhufvepkm" path="res://Assets/Fonts/DEJAVUSERIF-BOLDITALIC.TTF" id="7_nhwoy"]
 [ext_resource type="FontFile" uid="uid://wm3d8iaxn3rg" path="res://Assets/Fonts/DEJAVUSERIF-ITALIC.TTF" id="8_osyj4"]
 [ext_resource type="FontFile" uid="uid://dulkqf3sonx4m" path="res://Assets/Fonts/L_10646.TTF" id="9_tphad"]
 [ext_resource type="StyleBox" uid="uid://blcxju53aqls8" path="res://Data/Resources/UI_TTLabel_style_box_flat.tres" id="10_5eacd"]
 [ext_resource type="FontFile" uid="uid://bchdpx0f46bqn" path="res://Assets/Fonts/DEJAVUSERIF.TTF" id="10_y7rfg"]
-[ext_resource type="StyleBox" uid="uid://rt40lqkl6ye4" path="res://Data/Resources/UI_TabCont_Panel_Style_Box.tres" id="11_nhwoy"]
 [ext_resource type="StyleBox" uid="uid://b0ukjfwupr8ce" path="res://Data/Resources/UI_TabCont_unsel_SBF.tres" id="14_osyj4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4n55"]
@@ -47,10 +48,15 @@ Button/styles/disabled = SubResource("StyleBoxEmpty_f4n55")
 Button/styles/focus = ExtResource("2_wkpri")
 Button/styles/hover = SubResource("StyleBoxFlat_3")
 Button/styles/normal = ExtResource("3_u5uvh")
+FileDialog/font_sizes/title_font_size = 24
+FileDialog/fonts/title_font = ExtResource("9_tphad")
+FileDialog/styles/panel = ExtResource("5_osyj4")
 FlatButton/styles/pressed = ExtResource("4_jabvp")
-ItemList/font_sizes/font_size = 40
-ItemList/fonts/font = ExtResource("2_60vsq")
-ItemList/styles/panel = ExtResource("11_nhwoy")
+ItemList/font_sizes/font_size = 46
+ItemList/fonts/font = ExtResource("10_y7rfg")
+ItemList/styles/panel = ExtResource("6_nhwoy")
+ItemList/styles/selected = ExtResource("6_nhwoy")
+ItemList/styles/selected_focus = ExtResource("6_nhwoy")
 Label/colors/font_color = Color(0.960784, 0.964706, 0.960784, 1)
 Label/font_sizes/font_size = 40
 Label/fonts/font = SubResource("FontFile_1")
@@ -68,7 +74,7 @@ RichTextLabel/fonts/mono_font = ExtResource("9_tphad")
 RichTextLabel/fonts/normal_font = ExtResource("10_y7rfg")
 TabContainer/font_sizes/font_size = 60
 TabContainer/fonts/font = ExtResource("2_60vsq")
-TabContainer/styles/panel = ExtResource("11_nhwoy")
+TabContainer/styles/panel = ExtResource("6_nhwoy")
 TabContainer/styles/tab_disabled = ExtResource("2_qhh8n")
 TabContainer/styles/tab_focus = ExtResource("7_jabvp")
 TabContainer/styles/tab_hovered = ExtResource("7_jabvp")

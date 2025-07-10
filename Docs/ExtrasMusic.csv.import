@@ -2,14 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://bst5vvusnpl0x"
+uid="uid://2iydkxs4d4qj"
 
 [deps]
 
-files=["res://Docs/ExtrasMusic.AudioManager Method Call.translation", "res://Docs/ExtrasMusic.Export Filename.translation", "res://Docs/ExtrasMusic.Tooltip.translation"]
+files=["res://Docs/ExtrasMusic.AudioManager Method.translation", "res://Docs/ExtrasMusic.Arguments.translation", "res://Docs/ExtrasMusic.Export Filename.translation", "res://Docs/ExtrasMusic.Tooltip.translation"]
 
 source_file="res://Docs/ExtrasMusic.csv"
-dest_files=["res://Docs/ExtrasMusic.AudioManager Method Call.translation", "res://Docs/ExtrasMusic.Export Filename.translation", "res://Docs/ExtrasMusic.Tooltip.translation"]
+dest_files=["res://Docs/ExtrasMusic.AudioManager Method.translation", "res://Docs/ExtrasMusic.Arguments.translation", "res://Docs/ExtrasMusic.Export Filename.translation", "res://Docs/ExtrasMusic.Tooltip.translation"]
 
 [params]
 
