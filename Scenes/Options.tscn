@@ -16,6 +16,7 @@ grow_vertical = 2
 theme = ExtResource("1_qqnya")
 
 [node name="DisplayMenuPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(768, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -82,7 +83,7 @@ flat = true
 
 [node name="HUDMenu" type="VBoxContainer" parent="DisplayMenuPanel/DisplayMenu"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 25
 
 [node name="HUDMenuLabel" type="Label" parent="DisplayMenuPanel/DisplayMenu/HUDMenu"]
 custom_minimum_size = Vector2(0, 120)
@@ -129,7 +130,163 @@ theme = ExtResource("5_bdxpv")
 text = "System"
 alignment = 1
 
-[node name="Button" type="Button" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+[node name="FontNatButton" type="Button" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
 layout_mode = 2
 text = "National Font"
 flat = true
+
+[node name="FontSysButton" type="Button" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+layout_mode = 2
+text = "System Font"
+flat = true
+
+[node name="FormatLabel" type="Label" parent="DisplayMenuPanel/DisplayMenu/HUDMenu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Turn and Phase Format"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FormatButton" type="OptionButton" parent="DisplayMenuPanel/DisplayMenu/HUDMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "Time, Date"
+popup/item_0/id = 1
+popup/item_1/text = "Phase, Turn"
+popup/item_1/id = 2
+
+[node name="CloseContainer" type="HBoxContainer" parent="DisplayMenuPanel/DisplayMenu"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="AcceptButton" type="Button" parent="DisplayMenuPanel/DisplayMenu/CloseContainer"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Accept"
+
+[node name="CancelButton" type="Button" parent="DisplayMenuPanel/DisplayMenu/CloseContainer"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Cancel"
+
+[node name="AudioMenuPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(768, 512)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 268.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioMenu" type="VBoxContainer" parent="AudioMenuPanel"]
+custom_minimum_size = Vector2(768, 512)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -256.0
+offset_right = 390.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="AudioMenuLabel" type="Label" parent="AudioMenuPanel/AudioMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Volume Levels"
+horizontal_alignment = 1
+
+[node name="SliderLabels" type="HBoxContainer" parent="AudioMenuPanel/AudioMenu"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="AudioMenuPanel/AudioMenu/SliderLabels"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "MASTER"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="AudioMenuPanel/AudioMenu/SliderLabels"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="EffectsLabel" type="Label" parent="AudioMenuPanel/AudioMenu/SliderLabels"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Effects"
+horizontal_alignment = 1
+
+[node name="VoiceLabel" type="Label" parent="AudioMenuPanel/AudioMenu/SliderLabels"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Voice"
+horizontal_alignment = 1
+
+[node name="Sliders" type="HBoxContainer" parent="AudioMenuPanel/AudioMenu"]
+custom_minimum_size = Vector2(192, 256)
+layout_mode = 2
+
+[node name="Master" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Music" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+custom_minimum_size = Vector2(192, 256)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Effects" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+custom_minimum_size = Vector2(192, 256)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Voice" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+custom_minimum_size = Vector2(192, 156)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="CloseContainer" type="HBoxContainer" parent="AudioMenuPanel/AudioMenu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="AcceptButton" type="Button" parent="AudioMenuPanel/AudioMenu/CloseContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Accept"
+
+[node name="CancelButton" type="Button" parent="AudioMenuPanel/AudioMenu/CloseContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Cancel"
