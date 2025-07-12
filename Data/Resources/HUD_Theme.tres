@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bng11hie8wjeq"]
+
+[ext_resource type="StyleBox" uid="uid://b3g7qwmt28nua" path="res://Data/Resources/HUD_WE_Panel_SBF.tres" id="1_1f7rh"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_1f7rh")

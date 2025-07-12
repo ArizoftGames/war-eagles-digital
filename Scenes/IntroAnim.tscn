@@ -50,7 +50,6 @@
 [ext_resource type="FontFile" uid="uid://16exijtd5qax" path="res://Assets/Fonts/COURBI.TTF" id="44_tx8x6"]
 [ext_resource type="AudioStream" uid="uid://d2xgurs7mgsk7" path="res://Audio/Effects/twenty.ogg" id="45_7detu"]
 [ext_resource type="FontFile" uid="uid://cnf2kq6b2kvqy" path="res://Assets/Fonts/COURBD.TTF" id="45_pie4w"]
-[ext_resource type="FontFile" uid="uid://b78xn8f6l3bhs" path="res://Assets/Fonts/BOSTON.TTF" id="46_cbo0m"]
 [ext_resource type="Texture2D" uid="uid://dp1fngqk0dglh" path="res://Assets/Sprites/Hinomaru_1_64.png" id="47_u436d"]
 [ext_resource type="Texture2D" uid="uid://c173k5xjy4tem" path="res://Assets/Sprites/RAFRoundel_1_64.png" id="48_b8i5w"]
 [ext_resource type="Texture2D" uid="uid://jbpanaxenr32" path="res://Assets/Sprites/USRoundel_41_64.png" id="49_dd4tu"]
@@ -59,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://cxwsru2f3f8et" path="res://Assets/Sprites/Balkenkruez_1_64.png" id="51_5xl4c"]
 [ext_resource type="AudioStream" uid="uid://cy5rlo5my7xsp" path="res://Audio/Effects/MultiLevel.ogg" id="52_r02sr"]
 [ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="53_b8i5w"]
+[ext_resource type="Theme" uid="uid://dcd53orrmnhi8" path="res://Data/Resources/MainMenuTheme.tres" id="54_2l8ww"]
 [ext_resource type="Texture2D" uid="uid://0vlslhjho8fi" path="res://Assets/Sprites/MenuBG_2K.png" id="54_dd4tu"]
 [ext_resource type="AudioStream" uid="uid://cw2ceumqs7q7o" path="res://Audio/Effects/JetLevel.ogg" id="55_qrfg1"]
 [ext_resource type="Texture2D" uid="uid://4letnqknvft4" path="res://Assets/Sprites/aglogo-rnd-tr-512.png" id="55_yn7hd"]
@@ -11249,7 +11249,6 @@ playback_auto_capture = false
 follow_viewport_enabled = true
 
 [node name="Splashscreen" type="Control" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
@@ -11326,62 +11325,33 @@ offset_left = 25.0
 offset_top = 400.0
 offset_right = 525.0
 offset_bottom = 1215.0
+theme = ExtResource("54_2l8ww")
 vertical = true
 
 [node name="ContinueButton" type="Button" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "Open last saved game"
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-text = "Continue"
+text = "CONTINUE"
 flat = true
 alignment = 0
 
-[node name="LoadButton" type="MenuButton" parent="Splashscreen/MainMenu"]
+[node name="LoadButton" type="Button" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "Choose a saved game to open
 "
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
 text = "LOAD"
+flat = true
 alignment = 0
 
-[node name="NewButton" type="OptionButton" parent="Splashscreen/MainMenu"]
+[node name="NewButton" type="MenuButton" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "Choose a nation to set up a new game"
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-flat = true
-selected = 0
-fit_to_longest_item = false
+text = "NEW"
+alignment = 0
 item_count = 11
 popup/item_0/text = "New"
 popup/item_0/id = 0
-popup/item_0/disabled = true
+popup/item_0/separator = true
 popup/item_1/id = 2
 popup/item_1/separator = true
 popup/item_2/text = "Imperial Japan"
@@ -11403,6 +11373,7 @@ popup/item_8/text = "Soviet Union"
 popup/item_8/icon = ExtResource("50_846qw")
 popup/item_8/id = 3
 popup/item_9/id = 10
+popup/item_9/separator = true
 popup/item_10/text = "German Reich"
 popup/item_10/icon = ExtResource("51_5xl4c")
 popup/item_10/id = 4
@@ -11410,56 +11381,26 @@ popup/item_10/id = 4
 [node name="TutorialButton" type="Button" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "Play the tutorial scenario: \"The Nonstop Offensive\""
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-text = "Tutorial"
+text = "TUTORIAL"
 flat = true
 alignment = 0
 
 [node name="CreditsButton" type="Button" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "You wouldn't have this game without these artists!"
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-text = "Credits"
+text = "CREDITS"
 flat = true
 alignment = 0
 
-[node name="OptionsButton" type="OptionButton" parent="Splashscreen/MainMenu"]
+[node name="OptionsButton" type="MenuButton" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "Adjust game settings"
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-flat = true
-selected = 0
-fit_to_longest_item = false
+text = "OPTIONS"
+alignment = 0
 item_count = 5
 popup/item_0/text = "Options"
 popup/item_0/id = 4
+popup/item_0/separator = true
 popup/item_1/text = "Video and Display"
 popup/item_1/id = 1
 popup/item_2/text = "Audio"
@@ -11471,34 +11412,15 @@ popup/item_4/id = 3
 
 [node name="ExtrasButton" type="Button" parent="Splashscreen/MainMenu"]
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-text = "Extras"
+tooltip_text = "Models, music, and more!"
+text = "EXTRAS"
 flat = true
 alignment = 0
 
 [node name="HelpButton" type="Button" parent="Splashscreen/MainMenu"]
 layout_mode = 2
 tooltip_text = "Read \"Principles of Aerial Warfare\""
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-text = "Help"
+text = "HELP"
 flat = true
 alignment = 0
 
@@ -11506,17 +11428,7 @@ alignment = 0
 layout_mode = 2
 tooltip_text = "Quit the game without saving"
 mouse_filter = 1
-theme_override_colors/font_disabled_color = Color(0.922184, 0.342464, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.257259, 0.616731, 7.70092e-07, 1)
-theme_override_colors/font_hover_color = Color(0.857945, 1, 0.441248, 1)
-theme_override_colors/font_outline_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-theme_override_colors/font_color = Color(0.817737, 0.648206, 0, 1)
-theme_override_colors/font_focus_color = Color(0.858824, 1, 0.443137, 1)
-theme_override_colors/font_pressed_color = Color(0.258824, 0.615686, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("46_cbo0m")
-theme_override_font_sizes/font_size = 70
-text = "Quit"
+text = "QUIT"
 flat = true
 alignment = 0
 

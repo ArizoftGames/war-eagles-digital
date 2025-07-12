@@ -19,10 +19,9 @@ offset_left = 50.0
 offset_top = 50.0
 offset_right = 2510.0
 offset_bottom = 1390.0
-current_tab = 3
+current_tab = 0
 
 [node name="Models" type="VBoxContainer" parent="OptionsContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -52,6 +51,7 @@ bbcode_enabled = true
 metadata/_tab_index = 2
 
 [node name="Further Reading" type="VBoxContainer" parent="OptionsContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

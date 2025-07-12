@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://w1oxyu48s3so"]
+
+[ext_resource type="FontVariation" uid="uid://eoid2gjtsjfr" path="res://Data/Resources/kremlinvariation.tres" id="1_7lxte"]
+[ext_resource type="StyleBox" uid="uid://pamcb377vx5w" path="res://Data/Resources/HUD_SU_Panel_SBF.tres" id="1_8d1xw"]
+
+[resource]
+Button/colors/font_color = Color(0.89, 0.79, 0.1, 1)
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_7lxte")
+Button/styles/normal = ExtResource("1_8d1xw")
+Label/colors/font_color = Color(0.89, 0.79, 0.1, 1)
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("1_7lxte")
+Label/styles/normal = ExtResource("1_8d1xw")
+Panel/styles/panel = ExtResource("1_8d1xw")

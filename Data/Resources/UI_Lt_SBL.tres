@@ -1,0 +1,5 @@
+[gd_resource type="StyleBoxLine" format=3 uid="uid://djmpx0a4ugl72"]
+
+[resource]
+color = Color(0.505169, 0.763261, 0.736596, 1)
+thickness = 10

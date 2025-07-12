@@ -4,7 +4,6 @@
 [ext_resource type="StyleBox" uid="uid://dmnydpe6brirs" path="res://Data/Resources/UI_disabled_style_box_flat.tres" id="2_qhh8n"]
 [ext_resource type="StyleBox" uid="uid://bruwt4ne6wt7n" path="res://Data/Resources/UI_Btn_focus_style_box_flat.tres" id="2_wkpri"]
 [ext_resource type="StyleBox" uid="uid://b7vr5r0mdivw6" path="res://Data/Resources/UI_Btn_base_Style_Box.tres" id="3_u5uvh"]
-[ext_resource type="StyleBox" uid="uid://duurht2vggj4" path="res://Data/Resources/UI_FltBtn_base_Style_Box.tres" id="4_jabvp"]
 [ext_resource type="StyleBox" uid="uid://d35f3xatrmhon" path="res://Data/Resources/UI_Panel_style_box_flat.tres" id="5_bi8dm"]
 [ext_resource type="StyleBox" uid="uid://87nhpjru8rwk" path="res://Data/Resources/UI_tabbar_Style_Box.tres" id="5_oagqv"]
 [ext_resource type="StyleBox" uid="uid://xjkucxnfrfi3" path="res://Data/Resources/UI DialogBox Panel.tres" id="5_osyj4"]
@@ -15,18 +14,13 @@
 [ext_resource type="FontFile" uid="uid://wm3d8iaxn3rg" path="res://Assets/Fonts/DEJAVUSERIF-ITALIC.TTF" id="8_osyj4"]
 [ext_resource type="FontFile" uid="uid://dulkqf3sonx4m" path="res://Assets/Fonts/L_10646.TTF" id="9_tphad"]
 [ext_resource type="StyleBox" uid="uid://blcxju53aqls8" path="res://Data/Resources/UI_TTLabel_style_box_flat.tres" id="10_5eacd"]
+[ext_resource type="StyleBox" uid="uid://djmpx0a4ugl72" path="res://Data/Resources/UI_Lt_SBL.tres" id="10_osyj4"]
 [ext_resource type="FontFile" uid="uid://bchdpx0f46bqn" path="res://Assets/Fonts/DEJAVUSERIF.TTF" id="10_y7rfg"]
 [ext_resource type="StyleBox" uid="uid://b0ukjfwupr8ce" path="res://Data/Resources/UI_TabCont_unsel_SBF.tres" id="14_osyj4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4n55"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3"]
-bg_color = Color(0.290196, 0.619608, 0.709804, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhwoy"]
 
 [sub_resource type="FontFile" id="FontFile_1"]
 cache/0/16/0/ascent = 13.6
@@ -39,28 +33,75 @@ cache/0/40/0/descent = 0.0
 cache/0/40/0/underline_position = 0.0
 cache/0/40/0/underline_thickness = 0.0
 cache/0/40/0/scale = 1.0
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/48/0/ascent = 0.0
+cache/0/48/0/descent = 0.0
+cache/0/48/0/underline_position = 0.0
+cache/0/48/0/underline_thickness = 0.0
+cache/0/48/0/scale = 1.0
+cache/0/56/0/ascent = 0.0
+cache/0/56/0/descent = 0.0
+cache/0/56/0/underline_position = 0.0
+cache/0/56/0/underline_thickness = 0.0
+cache/0/56/0/scale = 1.0
 
 [resource]
-Button/colors/font_color = Color(0.960784, 0.964706, 0.960784, 1)
+Button/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("2_60vsq")
 Button/styles/disabled = SubResource("StyleBoxEmpty_f4n55")
 Button/styles/focus = ExtResource("2_wkpri")
-Button/styles/hover = SubResource("StyleBoxFlat_3")
+Button/styles/hover = ExtResource("2_wkpri")
 Button/styles/normal = ExtResource("3_u5uvh")
+Button/styles/pressed = ExtResource("2_wkpri")
 FileDialog/font_sizes/title_font_size = 24
 FileDialog/fonts/title_font = ExtResource("9_tphad")
 FileDialog/styles/panel = ExtResource("5_osyj4")
-FlatButton/styles/pressed = ExtResource("4_jabvp")
+FlatButton/styles/pressed = SubResource("StyleBoxEmpty_nhwoy")
+ItemList/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
+ItemList/colors/font_outline_color = Color(1, 1, 1, 1)
 ItemList/font_sizes/font_size = 46
 ItemList/fonts/font = ExtResource("10_y7rfg")
 ItemList/styles/panel = ExtResource("6_nhwoy")
 ItemList/styles/selected = ExtResource("6_nhwoy")
 ItemList/styles/selected_focus = ExtResource("6_nhwoy")
-Label/colors/font_color = Color(0.960784, 0.964706, 0.960784, 1)
+Label/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/constants/outline_size = 1
 Label/font_sizes/font_size = 40
 Label/fonts/font = SubResource("FontFile_1")
+Panel/styles/panel = ExtResource("5_bi8dm")
 PanelContainer/styles/panel = ExtResource("5_bi8dm")
+PopupMenu/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
+PopupMenu/colors/font_hover_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_outline_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_separator_color = Color(0.505169, 0.763261, 0.736596, 1)
+PopupMenu/colors/title_color = Color(0.814494, 0.936236, 0.92138, 1)
+PopupMenu/font_sizes/font_separator_size = 48
+PopupMenu/font_sizes/font_size = 48
+PopupMenu/font_sizes/title_font_size = 56
+PopupMenu/fonts/font = ExtResource("2_60vsq")
+PopupMenu/fonts/font_separator = ExtResource("2_60vsq")
+PopupMenu/fonts/title_font = ExtResource("2_60vsq")
+PopupMenu/styles/hover = ExtResource("7_jabvp")
+PopupMenu/styles/labeled_separator_left = ExtResource("10_osyj4")
+PopupMenu/styles/labeled_separator_right = ExtResource("10_osyj4")
+PopupMenu/styles/panel = ExtResource("5_bi8dm")
+PopupMenu/styles/separator = ExtResource("10_osyj4")
 RichTextLabel/colors/font_color = Color(0.870761, 0.945134, 0.951537, 1)
 RichTextLabel/font_sizes/bold_font_size = 40
 RichTextLabel/font_sizes/bold_italics_font_size = 40

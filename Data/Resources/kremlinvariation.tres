@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://eoid2gjtsjfr"]
+
+[ext_resource type="FontFile" uid="uid://c6qkkx8fmyb1a" path="res://Assets/Fonts/KREMLIN COMRADE.TTF" id="1_0qwug"]
+
+[resource]
+base_font = ExtResource("1_0qwug")
+variation_embolden = -1.0

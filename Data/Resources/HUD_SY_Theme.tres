@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://8x3p758q3e4"]
+
+[ext_resource type="StyleBox" uid="uid://bbnm053u8mfwh" path="res://Data/Resources/HUD_SY_Panel_SBF.tres" id="1_d6aib"]
+[ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="1_kcqkj"]
+
+[resource]
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_kcqkj")
+Button/styles/normal = ExtResource("1_d6aib")
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("1_kcqkj")
+Label/styles/normal = ExtResource("1_d6aib")
+Panel/styles/panel = ExtResource("1_d6aib")

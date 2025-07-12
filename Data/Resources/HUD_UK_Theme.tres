@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://d18fwkkxuiceh"]
+
+[ext_resource type="StyleBox" uid="uid://bsyd1adkhpi3o" path="res://Data/Resources/HUD_UK_Panel_SBF.tres" id="1_h0nmi"]
+[ext_resource type="FontFile" uid="uid://csimqowkltipl" path="res://Assets/Fonts/TIMESBD.TTF" id="1_tupw3"]
+[ext_resource type="FontFile" uid="uid://853e4p4ructj" path="res://Assets/Fonts/TIMES.TTF" id="3_3ejtk"]
+
+[resource]
+Button/colors/font_color = Color(0.21, 0.17, 0.03, 1)
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_tupw3")
+Button/styles/normal = ExtResource("1_h0nmi")
+Label/colors/font_color = Color(0.211765, 0.168627, 0.0313726, 1)
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("3_3ejtk")
+Label/styles/normal = ExtResource("1_h0nmi")
+Panel/styles/panel = ExtResource("1_h0nmi")

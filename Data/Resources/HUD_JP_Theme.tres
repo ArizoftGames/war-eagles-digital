@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://brn114db2ii11"]
+
+[ext_resource type="FontFile" uid="uid://ci1uq0l54nskd" path="res://Assets/Fonts/YOZAKURAJP-REGULAR.OTF" id="1_hbyps"]
+[ext_resource type="StyleBox" uid="uid://b0bjlikxn4bo2" path="res://Data/Resources/HUD_JP_Panel_SBF.tres" id="1_pf2me"]
+
+[resource]
+Button/colors/font_color = Color(0.86, 0, 0, 1)
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_hbyps")
+Button/styles/normal = ExtResource("1_pf2me")
+Label/colors/font_color = Color(0.86, 0, 0, 1)
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("1_hbyps")
+Label/styles/normal = ExtResource("1_pf2me")
+Panel/styles/panel = ExtResource("1_pf2me")

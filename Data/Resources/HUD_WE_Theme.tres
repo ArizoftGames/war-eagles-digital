@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://inc5bbuts5fe"]
+
+[ext_resource type="StyleBox" uid="uid://bv7lc38lbbxyx" path="res://Data/Resources/HUD_WE_BTN_SBF.tres" id="1_0ymy5"]
+[ext_resource type="StyleBox" uid="uid://b3g7qwmt28nua" path="res://Data/Resources/HUD_WE_Panel_SBF.tres" id="1_ekhcs"]
+
+[resource]
+Button/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
+Button/font_sizes/font_size = 60
+Button/styles/normal = ExtResource("1_0ymy5")
+Button/styles/pressed = ExtResource("1_ekhcs")
+Panel/styles/panel = ExtResource("1_ekhcs")

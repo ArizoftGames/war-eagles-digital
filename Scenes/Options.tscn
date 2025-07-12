@@ -1,0 +1,135 @@
+[gd_scene load_steps=6 format=3 uid="uid://hnbt83ji848q"]
+
+[ext_resource type="Theme" uid="uid://cw6t7lhrewpw5" path="res://Data/Resources/UI_Theme .tres" id="1_qqnya"]
+[ext_resource type="Theme" uid="uid://w1oxyu48s3so" path="res://Data/Resources/HUD_SU_Theme.tres" id="2_hg628"]
+[ext_resource type="Theme" uid="uid://inc5bbuts5fe" path="res://Data/Resources/HUD_WE_Theme.tres" id="3_q4at1"]
+[ext_resource type="Theme" uid="uid://2mtooslkwdu3" path="res://Data/Resources/HUD_HC_Theme.tres" id="4_6f4k2"]
+[ext_resource type="Theme" uid="uid://8x3p758q3e4" path="res://Data/Resources/HUD_SY_Theme.tres" id="5_bdxpv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qqnya")
+
+[node name="DisplayMenuPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(768, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -650.0
+offset_right = 512.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="DisplayMenu" type="VBoxContainer" parent="DisplayMenuPanel"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 58.0
+
+[node name="DisplaymenuLabel" type="Label" parent="DisplayMenuPanel/DisplayMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "  Display Options
+"
+
+[node name="VideoMenu" type="VBoxContainer" parent="DisplayMenuPanel/DisplayMenu"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VideoMenuLabel" type="Label" parent="DisplayMenuPanel/DisplayMenu/VideoMenu"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Video Resolution"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VideoButton" type="OptionButton" parent="DisplayMenuPanel/DisplayMenu/VideoMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+alignment = 1
+selected = 0
+item_count = 5
+popup/item_0/text = "Standard"
+popup/item_0/id = 0
+popup/item_1/text = "HD"
+popup/item_1/id = 1
+popup/item_2/text = "2K"
+popup/item_2/id = 2
+popup/item_3/text = "4K"
+popup/item_3/id = 3
+popup/item_4/text = "8K"
+popup/item_4/id = 4
+
+[node name="AutoButton" type="Button" parent="DisplayMenuPanel/DisplayMenu/VideoMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Autodetect"
+flat = true
+
+[node name="HUDMenu" type="VBoxContainer" parent="DisplayMenuPanel/DisplayMenu"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="HUDMenuLabel" type="Label" parent="DisplayMenuPanel/DisplayMenu/HUDMenu"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Interface Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HUDThemes" type="GridContainer" parent="DisplayMenuPanel/DisplayMenu/HUDMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="NationalThemeButton" type="CheckButton" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_hg628")
+text = "National"
+
+[node name="WEThemeButton" type="CheckButton" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_q4at1")
+text = "War Eagles"
+
+[node name="HCThemeButton" type="CheckButton" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_6f4k2")
+text = "Contrast"
+alignment = 1
+
+[node name="SYThemeButton" type="CheckButton" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_bdxpv")
+text = "System"
+alignment = 1
+
+[node name="Button" type="Button" parent="DisplayMenuPanel/DisplayMenu/HUDMenu/HUDThemes"]
+layout_mode = 2
+text = "National Font"
+flat = true

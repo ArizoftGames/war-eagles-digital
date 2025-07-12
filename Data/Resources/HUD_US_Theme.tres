@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c6fytrvq7801w"]
+
+[ext_resource type="StyleBox" uid="uid://bmsqjmfq2csl5" path="res://Data/Resources/HUD_US_Panel_SBF.tres" id="1_pv7ya"]
+[ext_resource type="FontFile" uid="uid://cnf2kq6b2kvqy" path="res://Assets/Fonts/COURBD.TTF" id="1_ysh6o"]
+[ext_resource type="FontFile" uid="uid://b78xn8f6l3bhs" path="res://Assets/Fonts/BOSTON.TTF" id="2_lqgro"]
+
+[resource]
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_ysh6o")
+Button/styles/normal = ExtResource("1_pv7ya")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("2_lqgro")
+Label/styles/normal = ExtResource("1_pv7ya")
+Panel/styles/panel = ExtResource("1_pv7ya")
