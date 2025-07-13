@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b5j4247t5ll48"
+
+[deps]
+
+files=["res://Docs/KeyBindings.Keyboard or Mouse.translation", "res://Docs/KeyBindings.Controller.translation"]
+
+source_file="res://Docs/KeyBindings.csv"
+dest_files=["res://Docs/KeyBindings.Keyboard or Mouse.translation", "res://Docs/KeyBindings.Controller.translation"]
+
+[params]
+
+compress=true
+delimiter=0

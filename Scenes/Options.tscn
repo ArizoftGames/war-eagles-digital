@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://8x3p758q3e4" path="res://Data/Resources/HUD_SY_Theme.tres" id="5_bdxpv"]
 
 [node name="Control" type="Control"]
+custom_minimum_size = Vector2(2560, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,10 +25,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -650.0
-offset_right = 512.0
-offset_bottom = 650.0
+offset_left = -384.0
+offset_top = -200.0
+offset_right = 384.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -178,6 +179,7 @@ size_flags_vertical = 4
 text = "Cancel"
 
 [node name="AudioMenuPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(768, 512)
 layout_mode = 1
 anchors_preset = 8
@@ -245,28 +247,28 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(192, 256)
 layout_mode = 2
 
-[node name="Master" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+[node name="MasterSlider" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 max_value = 10.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="Music" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+[node name="MusicSlider" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
 custom_minimum_size = Vector2(192, 256)
 layout_mode = 2
 max_value = 10.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="Effects" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+[node name="EffectsSlider" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
 custom_minimum_size = Vector2(192, 256)
 layout_mode = 2
 max_value = 10.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="Voice" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
+[node name="VoiceSlider" type="VSlider" parent="AudioMenuPanel/AudioMenu/Sliders"]
 custom_minimum_size = Vector2(192, 156)
 layout_mode = 2
 max_value = 10.0
@@ -287,6 +289,817 @@ text = "Accept"
 
 [node name="CancelButton" type="Button" parent="AudioMenuPanel/AudioMenu/CloseContainer"]
 custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Cancel"
+
+[node name="ControlsPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1280, 1440)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlsMenu" type="VBoxContainer" parent="ControlsPanel"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -673.5
+offset_right = 640.0
+offset_bottom = 673.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ControlsMenuLabel" type="Label" parent="ControlsPanel/ControlsMenu"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "Game Controls"
+horizontal_alignment = 1
+
+[node name="ControlSelectors" type="HBoxContainer" parent="ControlsPanel/ControlsMenu"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ControllerLabel" type="Label" parent="ControlsPanel/ControlsMenu/ControlSelectors"]
+custom_minimum_size = Vector2(426, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Select Game Controller:"
+horizontal_alignment = 1
+
+[node name="KBMButton" type="CheckBox" parent="ControlsPanel/ControlsMenu/ControlSelectors"]
+custom_minimum_size = Vector2(426, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+text = "Keyboard and Mouse (KBM)"
+flat = true
+
+[node name="ControllerButton" type="CheckBox" parent="ControlsPanel/ControlsMenu/ControlSelectors"]
+custom_minimum_size = Vector2(426, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X-Box Controller + KBM"
+flat = true
+
+[node name="KeyBindingList" type="GridContainer" parent="ControlsPanel/ControlsMenu"]
+custom_minimum_size = Vector2(1260, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 6
+columns = 3
+
+[node name="KeyBindingLabel" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel2" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel3" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel4" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel5" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel6" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel7" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel8" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel9" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel10" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel11" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel12" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel13" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel14" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel15" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel16" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel17" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel18" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel19" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel20" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel21" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel22" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel23" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel24" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel25" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel26" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel27" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel28" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel29" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel30" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel31" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel32" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel33" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel34" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel35" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel36" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel37" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel38" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel39" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel40" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel41" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel42" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel43" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel44" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel45" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel46" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel47" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel48" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel49" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel50" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel51" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel52" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel53" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel54" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel55" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel56" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel57" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel58" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel59" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel60" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel61" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel62" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel63" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel64" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel65" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel66" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel67" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel68" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel69" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel70" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel71" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel72" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel73" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel74" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel75" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel76" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel77" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel78" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel79" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel80" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel81" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel82" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel83" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel84" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel85" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel86" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel87" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel88" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme = ExtResource("1_qqnya")
+theme_type_variation = &"GridLabel"
+text = "KB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyBindingLabel89" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GridLabel"
+text = "KBM"
+horizontal_alignment = 1
+
+[node name="KeyBindingLabel90" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+custom_minimum_size = Vector2(412, 0)
+layout_mode = 2
+theme_type_variation = &"GridLabel"
+text = "XB"
+horizontal_alignment = 1
+
+[node name="CloseContainer" type="HBoxContainer" parent="ControlsPanel/ControlsMenu"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="AcceptButton" type="Button" parent="ControlsPanel/ControlsMenu/CloseContainer"]
+custom_minimum_size = Vector2(160, 120)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Accept"
+
+[node name="CancelButton" type="Button" parent="ControlsPanel/ControlsMenu/CloseContainer"]
+custom_minimum_size = Vector2(160, 120)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Cancel"

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://cw6t7lhrewpw5"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://cw6t7lhrewpw5"]
 
 [ext_resource type="StyleBox" uid="uid://dkv6a4hr0x50r" path="res://Data/Resources/UI_VSlideBG_SBF.tres" id="1_osyj4"]
 [ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="2_60vsq"]
@@ -10,6 +10,7 @@
 [ext_resource type="StyleBox" uid="uid://bruwt4ne6wt7n" path="res://Data/Resources/UI_Btn_focus_style_box_flat.tres" id="5_y7rfg"]
 [ext_resource type="FontFile" uid="uid://v8j0djlp211e" path="res://Assets/Fonts/DEJAVUSERIF-BOLD.TTF" id="6_kpeqm"]
 [ext_resource type="StyleBox" uid="uid://jmvmdxolhvq0" path="res://Data/Resources/UI_ItemList_Panel_Style_Box.tres" id="6_nhwoy"]
+[ext_resource type="StyleBox" uid="uid://dpbem0cy7htlv" path="res://Data/Resources/UI_GridLabel_SBF.tres" id="7_78tbv"]
 [ext_resource type="StyleBox" uid="uid://cmmpncw2n87m7" path="res://Data/Resources/UI_focus_style_box_flat.tres" id="7_jabvp"]
 [ext_resource type="FontFile" uid="uid://c5jtrhufvepkm" path="res://Assets/Fonts/DEJAVUSERIF-BOLDITALIC.TTF" id="7_nhwoy"]
 [ext_resource type="FontFile" uid="uid://wm3d8iaxn3rg" path="res://Assets/Fonts/DEJAVUSERIF-ITALIC.TTF" id="8_osyj4"]
@@ -75,6 +76,11 @@ FileDialog/font_sizes/title_font_size = 24
 FileDialog/fonts/title_font = ExtResource("9_tphad")
 FileDialog/styles/panel = ExtResource("5_osyj4")
 FlatButton/styles/pressed = SubResource("StyleBoxEmpty_nhwoy")
+GridLabel/base_type = &"Label"
+GridLabel/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
+GridLabel/font_sizes/font_size = 24
+GridLabel/fonts/font = ExtResource("2_60vsq")
+GridLabel/styles/normal = ExtResource("7_78tbv")
 ItemList/colors/font_color = Color(0.814494, 0.936236, 0.92138, 1)
 ItemList/colors/font_outline_color = Color(1, 1, 1, 1)
 ItemList/font_sizes/font_size = 46

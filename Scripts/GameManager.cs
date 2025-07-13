@@ -120,6 +120,35 @@ namespace WarEaglesDigital.Scripts
                 {
                     ScreenShot();
                 }
+                else if (keyEvent.Keycode == Key.X)
+                {
+                    try
+                    {
+                        // Godot's Array does not have ForEach, use a regular foreach loop
+                        foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                            (node as Node)?.QueueFree();
+
+                        foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                        {
+                            node.Call("stop");
+                            node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                            (node as Node)?.QueueFree();
+                        }
+
+                        foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                            (node as Node)?.QueueFree();
+
+                        GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
+                    }
+
+                    GetTree().Quit();
+                }
+
             }
         }
 

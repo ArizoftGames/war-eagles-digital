@@ -2,6 +2,11 @@ Current completed structure of War Eagles by scene:
 
 Audio Bus Layout: res//Audio/WE_Bus_layout.tres; Busses: Master, fed by Music, Planes, and Effects;  Planes and Effects will be consolidated from player POV and are separate for animation mixing with the game.
 
+Global groups for resource management:
+audio_players
+glb_models
+terrains
+
 UI Themes: res://Data/Resources/UI_Theme .tres  *UI menu pages*
 		   res://Data/Resources/MainMenuTheme.tres  *Main Menu; displayed in PauseMenu.tscn and IntroAnim.tscn*
 		   res://Data/Resources/HUD_Theme.tres  *Minimal UI for gameplay; template theme [NYI]*
