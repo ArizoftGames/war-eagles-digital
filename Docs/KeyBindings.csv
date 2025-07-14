@@ -1,16 +1,17 @@
 Command or Task,Keyboard or Mouse,Controller
-Pause Game and Open Menu,Esc or Spacebar,TBD
-Quit Game no save [NYI],X,TBD
+Pause Game and Open Menu,Esc or Spacebar,Menu
+Quit Game no save [NYI],X,Share
 Open Console [NYI],~,NA
-Open Help Menu [NYI],H,TBD
-Screenshot,Delete,TBD
-End Phase [NYI],Z,Y
+Open Help Menu [NYI],H,View
+Screenshot,Delete,LS
+End Phase [NYI],Z,RB
 End Turn [NYI],Enter,RT
+Skip Voiceover,Backspace,Y
 View Player Losses Pool [NYI],L,A
 View Enemy Losses Pool [NYI],K,B
 Game History [NYI],G,NA
-Select Focus Unit [NYI],"Q, LMB",LS Down
-Drag Unit [NYI],LMB,LS
+Select Unit [NYI],"Q, LMB",RS Down
+Drag Unit [NYI],LMB,RS
 Camera Zoom In [NYI],+ or MW,LB
 Camera Zoom Out [NYI],- or MW,LT
 Camera ** [NYI],**,**
