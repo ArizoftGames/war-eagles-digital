@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://fupbktd15men"]
+
+[ext_resource type="Texture2D" uid="uid://0vlslhjho8fi" path="res://Assets/Sprites/MenuBG_2K.png" id="1_0s034"]
+[ext_resource type="Script" uid="uid://b1qblkcc5avbx" path="res://Scripts/Loading.cs" id="1_hgo68"]
+[ext_resource type="Texture2D" uid="uid://c3a8wgfq43mga" path="res://WELogo_128.png" id="2_dhtv6"]
+[ext_resource type="FontFile" uid="uid://bcacsv5ibnaut" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="3_dhtv6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hgo68")
+
+[node name="LoadingPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LoadingBG" type="Sprite2D" parent="LoadingPanel"]
+texture = ExtResource("1_0s034")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="LoadingPanel/LoadingBG"]
+position = Vector2(1214, 720)
+texture = ExtResource("2_dhtv6")
+centered = false
+
+[node name="LoadingContainer" type="VBoxContainer" parent="LoadingPanel/LoadingBG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="LoadingLabel" type="Label" parent="LoadingPanel/LoadingBG/LoadingContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.233, 0.51, 0.925, 1)
+theme_override_colors/font_shadow_color = Color(0.415104, 0.667936, 0.823424, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_dhtv6")
+theme_override_font_sizes/font_size = 80
+text = "LOADING...
+"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,13 +1,13 @@
-Current completed structure of War Eagles by scene:
+#Current completed structure of War Eagles by scene:
 
-Audio Bus Layout: res//Audio/WE_Bus_layout.tres; Busses: Master, fed by Music, Planes, and Effects;  Planes and Effects will be consolidated from player POV and are separate for animation mixing with the game.
+##Audio Bus Layout: res//Audio/WE_Bus_layout.tres; Busses: Master, fed by Music, Planes, and Effects;  Planes and Effects will be consolidated from player POV and are separate for animation mixing with the game.
 
-Global groups for resource management:
+##Global groups for resource management:
 audio_players
 glb_models
 terrains
 
-UI Themes: res://Data/Resources/UI_Theme .tres  *UI menu pages*
+##UI Themes: res://Data/Resources/UI_Theme .tres  *UI menu pages*
 		   res://Data/Resources/MainMenuTheme.tres  *Main Menu; displayed in PauseMenu.tscn and IntroAnim.tscn*
 		   res://Data/Resources/HUD_Theme.tres  *Minimal UI for gameplay; template theme [NYI]*
 		   res://Data/Resources/HUD_GE_Theme.tres  *German HUD theme; used in gameplay*
@@ -20,7 +20,7 @@ UI Themes: res://Data/Resources/UI_Theme .tres  *UI menu pages*
 		   res://Data/Resources/HUD_WE_Theme.tres  *War Eagles HUD theme; palette match to UI_Menu*
 
 
-Autoloads:
+##Autoloads:
 
 GameManager.cs - centralizes global actions and frequently called methods.
 	 _Input(Input Event @event) {detects explicitly defined input events and calls methods based on them}, PauseGame(), ScreenShot(), AccessConsole() {Not yet implemented}
@@ -30,7 +30,13 @@ UnitDatabase.cs - reads data fron csv parsers and constructs dictionaries.
 AudioManager.cs - instances AudioStreamPlayers to play music and effects; music may be played by (Player Nationality + AI Mood) or by use case.  Connects to busses (Music or Effects).
 	PlayMusicByNationMood(string nationality, string mood), PlayMusicByUseCase(string useCase),  		PlaySoundEffect(string key), StopMusic(), SetBusVolume(string busName, float linearVolume), 		GetBusVolume(string busName), SetEffectsVolume(float linearVolume) *For future Options UI; sets 	Planes and Effects bus volumes
 
-IntroAnim.tscn: Current main scene.  Plays disclaimer screen and introductory animation (skippable) and then presents main menu with buttons for Continue, New [Game], Load, Tutorial, Credits, Options, Extras, Help, and Quit.
+##Scenes:
+
+Loading.tscn:  Current main scene. Displays "Loading..." texz and WE Icon. Fades seamlessly into IntroAnim.  Home for game loading tasks
+
+IntroAnim.tscn: Plays disclaimer screen and introductory animation (skippable) and then fades seamlessly into SplashMenu. 
+
+SplashMenu.tscn:  Presents main menu with buttons for Continue, New [Game], Load, Tutorial, Credits, Options, Extras, Help, and Quit.
 
 PauseMenu.tscn: Will be activated at any time during gameplay with ESC.  Immediately presents main menu with buttons for Continue, Save, Load, New [Game], Credits, Options, Extras, Help, and Quit.
 

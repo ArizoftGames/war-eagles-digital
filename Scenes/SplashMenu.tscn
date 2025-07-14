@@ -1,0 +1,213 @@
+[gd_scene load_steps=14 format=3 uid="uid://cctrtd8nx412d"]
+
+[ext_resource type="Script" uid="uid://c8ayaygmgbsh0" path="res://Scripts/SplashMenu.cs" id="1_brecu"]
+[ext_resource type="Texture2D" uid="uid://bpx4aa0cgtpud" path="res://Assets/Sprites/SplashBG.png" id="1_whe6n"]
+[ext_resource type="FontFile" uid="uid://s2i0qyq8iank" path="res://Assets/Fonts/DEUTSCH.TTF" id="2_dbobc"]
+[ext_resource type="FontFile" uid="uid://cnifdhyhkb3la" path="res://Assets/Fonts/COUR.TTF" id="3_brecu"]
+[ext_resource type="FontFile" uid="uid://budr0qss5bqm1" path="res://Assets/Fonts/COURI.TTF" id="4_w8e32"]
+[ext_resource type="FontFile" uid="uid://16exijtd5qax" path="res://Assets/Fonts/COURBI.TTF" id="5_2qm71"]
+[ext_resource type="FontFile" uid="uid://cnf2kq6b2kvqy" path="res://Assets/Fonts/COURBD.TTF" id="6_fcxp6"]
+[ext_resource type="Theme" uid="uid://dcd53orrmnhi8" path="res://Data/Resources/MainMenuTheme.tres" id="7_jw2r5"]
+[ext_resource type="Texture2D" uid="uid://dp1fngqk0dglh" path="res://Assets/Sprites/Hinomaru_1_64.png" id="8_jkppq"]
+[ext_resource type="Texture2D" uid="uid://c173k5xjy4tem" path="res://Assets/Sprites/RAFRoundel_1_64.png" id="9_ifw1w"]
+[ext_resource type="Texture2D" uid="uid://jbpanaxenr32" path="res://Assets/Sprites/USRoundel_41_64.png" id="10_kbijp"]
+[ext_resource type="Texture2D" uid="uid://dj3wjf1m7oiu1" path="res://Assets/Sprites/RedStar_1_64.png" id="11_qysmr"]
+[ext_resource type="Texture2D" uid="uid://cxwsru2f3f8et" path="res://Assets/Sprites/Balkenkruez_1_64.png" id="12_3m3kg"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_versionLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brecu")
+_versionLabel = NodePath("Splashscreen/VersionLabel")
+
+[node name="Splashscreen" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplashBG" type="Sprite2D" parent="Splashscreen"]
+texture = ExtResource("1_whe6n")
+centered = false
+
+[node name="Title" type="Label" parent="Splashscreen"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 10.0
+offset_right = 2241.0
+offset_bottom = 460.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.262933, 0.262932, 0.262932, 0.490196)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_dbobc")
+theme_override_font_sizes/font_size = 420
+text = "War Eagles"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PoweredInfo" type="RichTextLabel" parent="Splashscreen"]
+clip_contents = false
+layout_mode = 0
+offset_left = 110.0
+offset_top = 1300.0
+offset_right = 2410.0
+offset_bottom = 1400.0
+theme_override_colors/default_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+theme_override_fonts/normal_font = ExtResource("3_brecu")
+theme_override_fonts/italics_font = ExtResource("4_w8e32")
+theme_override_fonts/bold_italics_font = ExtResource("5_2qm71")
+theme_override_fonts/bold_font = ExtResource("6_fcxp6")
+theme_override_font_sizes/bold_italics_font_size = 75
+theme_override_font_sizes/italics_font_size = 75
+theme_override_font_sizes/mono_font_size = 75
+theme_override_font_sizes/normal_font_size = 75
+theme_override_font_sizes/bold_font_size = 75
+bbcode_enabled = true
+text = "[b]Powered by [img]res://Assets/Sprites/logo_small_monochrome_light.png[/img] and[/b] [img]res://Assets/Sprites/T3DLogo_light.png[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VersionLabel" type="Label" parent="Splashscreen"]
+custom_minimum_size = Vector2(320, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -460.0
+offset_top = -120.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+theme_override_fonts/font = ExtResource("6_fcxp6")
+theme_override_font_sizes/font_size = 40
+text = "ver. 0.1.0
+Build 1000000"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MainMenu" type="BoxContainer" parent="Splashscreen"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 400.0
+offset_right = 525.0
+offset_bottom = 1233.0
+theme = ExtResource("7_jw2r5")
+vertical = true
+
+[node name="ContinueButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Open last saved game"
+text = "CONTINUE"
+flat = true
+alignment = 0
+
+[node name="LoadButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Choose a saved game to open
+"
+text = "LOAD"
+flat = true
+alignment = 0
+
+[node name="NewButton" type="MenuButton" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Choose a nation to set up a new game"
+text = "NEW"
+alignment = 0
+item_count = 11
+popup/item_0/text = "New"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/id = 2
+popup/item_1/separator = true
+popup/item_2/text = "Imperial Japan"
+popup/item_2/icon = ExtResource("8_jkppq")
+popup/item_2/id = 0
+popup/item_3/id = 7
+popup/item_3/separator = true
+popup/item_4/text = "British Commonwealth"
+popup/item_4/icon = ExtResource("9_ifw1w")
+popup/item_4/id = 1
+popup/item_5/id = 8
+popup/item_5/separator = true
+popup/item_6/text = "United States"
+popup/item_6/icon = ExtResource("10_kbijp")
+popup/item_6/id = 1
+popup/item_7/id = 9
+popup/item_7/separator = true
+popup/item_8/text = "Soviet Union"
+popup/item_8/icon = ExtResource("11_qysmr")
+popup/item_8/id = 3
+popup/item_9/id = 10
+popup/item_9/separator = true
+popup/item_10/text = "German Reich"
+popup/item_10/icon = ExtResource("12_3m3kg")
+popup/item_10/id = 4
+
+[node name="TutorialButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Play the tutorial scenario: \"The Nonstop Offensive\""
+text = "TUTORIAL"
+flat = true
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "You wouldn't have this game without these artists!"
+text = "CREDITS"
+flat = true
+alignment = 0
+
+[node name="OptionsButton" type="MenuButton" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Adjust game settings"
+text = "OPTIONS"
+alignment = 0
+item_count = 5
+popup/item_0/text = "Options"
+popup/item_0/id = 4
+popup/item_0/separator = true
+popup/item_1/text = "Video and Display"
+popup/item_1/id = 1
+popup/item_2/text = "Audio"
+popup/item_2/id = 0
+popup/item_3/text = "Controls"
+popup/item_3/id = 2
+popup/item_4/text = "Game Settings"
+popup/item_4/id = 3
+
+[node name="ExtrasButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Models, music, and more!"
+text = "EXTRAS"
+flat = true
+alignment = 0
+
+[node name="HelpButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Read \"Principles of Aerial Warfare\""
+text = "HELP"
+flat = true
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="Splashscreen/MainMenu"]
+layout_mode = 2
+tooltip_text = "Quit the game without saving"
+mouse_filter = 1
+text = "QUIT"
+flat = true
+alignment = 0

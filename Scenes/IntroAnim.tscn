@@ -11249,6 +11249,7 @@ playback_auto_capture = false
 follow_viewport_enabled = true
 
 [node name="Splashscreen" type="Control" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0

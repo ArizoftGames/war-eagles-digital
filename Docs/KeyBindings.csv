@@ -1,21 +1,26 @@
 Command or Task,Keyboard or Mouse,Controller
-Pause Game and Open Menu,Esc or Spacebar,Menu
-Quit Game no save [NYI],X,Share
+Pause Game and Open Menu,Esc or Spacebar,Back
+Quit Game no save [NYI],X,Start
 Open Console [NYI],~,NA
-Open Help Menu [NYI],H,View
-Screenshot,Delete,LS
+Open Help Menu [NYI],H,X
+Screenshot,Delete,Share
 End Phase [NYI],Z,RB
 End Turn [NYI],Enter,RT
 Skip Voiceover,Backspace,Y
 View Player Losses Pool [NYI],L,A
 View Enemy Losses Pool [NYI],K,B
 Game History [NYI],G,NA
-Select Unit [NYI],"Q, LMB",RS Down
-Drag Unit [NYI],LMB,RS
+Select Unit [NYI],Q or LMB,RS Down
+Drag Unit [NYI],Hold LMB,RS
+Drop Unit at Focus,E,NA
+Scroll Focus,Tab,NA
 Camera Zoom In [NYI],+ or MW,LB
 Camera Zoom Out [NYI],- or MW,LT
-Camera ** [NYI],**,**
-Camera ** [NYI],**,**
-Camera ** [NYI],**,**
-Camera ** [NYI],**,**
-Camera ** [NYI],**,**
+Camera Pan Up,Up Arrow or  Hold MMB,LS Up
+Camera Pan Down,Down Arrow or Hold MMB,LS Down
+Camera Pan Left,Left Arrow or Hold MMB,LS Left
+Camera Pan Rt,Rt Arrow or Hold MMB,LS Right
+Camera Move Forward,W or Hold RMB,D Pad Up
+Camera Move Back,S or Hold RMB,D Pad Down
+Camera Strafe Left,A or Hold RMB,D Pad Left
+Camera Strafe Right,D or Hold RMB,D Pad Right

@@ -27,15 +27,18 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             skipButton.Pressed += OnSkipButtonPressed;
 
             // Connect the CreditsButton's pressed signal
-            var creditsButton = GetNode<Button>("Splashscreen/MainMenu/CreditsButton");
-            creditsButton.Pressed += OnCreditsButtonPressed;
+            /* var creditsButton = GetNode<Button>("Splashscreen/MainMenu/CreditsButton");
+             creditsButton.Pressed += OnCreditsButtonPressed;
 
-            // Connect the ExtrasButton's pressed signal
-            var extrasButton = GetNode<Button>("Splashscreen/MainMenu/ExtrasButton");
-            extrasButton.Pressed += OnExtrasButtonPressed;
+             // Connect the ExtrasButton's pressed signal
+             var extrasButton = GetNode<Button>("Splashscreen/MainMenu/ExtrasButton");
+             extrasButton.Pressed += OnExtrasButtonPressed;*/
 
             //Connect Intro_Animation start signal
             animation_Tree.AnimationStarted += OnIntro_AnimationStarted;
+
+            //Connect RESET finished signal
+            animation_Tree.AnimationFinished += OnRESETAnimationFinished;
 
             //Start AnimationTree
             animation_Tree.Active = true;
@@ -67,9 +70,9 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             if (animName == "Intro_Animation")
             {
                 try
-                { 
-                //GD.Print("MusicBox playing IntroTheme.");
-                MusicBox.PlayMusicByUseCase("Start Game"); // Play intro music
+                {
+                    //GD.Print("MusicBox playing IntroTheme.");
+                    MusicBox.PlayMusicByUseCase("Start Game"); // Play intro music
                 }
                 catch (Exception e)
                 {
@@ -77,10 +80,10 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
                 }
             }
             else
-                {
-                
-                }
+            {
+
             }
+        }
 
         public void ReleaseResources()
         {
@@ -108,7 +111,7 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
                 GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
             }
         }
-        
+
 
         public override void _Input(InputEvent @event)
         {
@@ -118,35 +121,51 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             }
         }
 
-       private void OnSkipButtonPressed()
+        private void OnSkipButtonPressed()
         {
             SkipIntro();
         }
 
-        private void OnQuitButtonPressed()
+        private void OnRESETAnimationFinished(StringName animName)
         {
-            try
+            if (animName == "RESET")
             {
+                //OnAnimationFinished();
+                try
+                {
 
-                // Release resources before quitting
-                ReleaseResources();
-                MusicBox.StopMusic();           
-                
-                GD.Print("Closing Game.");
-                GetTree().Quit();
+                    // Release resources before quitting
+                    ReleaseResources();
+                    //MusicBox.StopMusic();
+                    GetTree().ChangeSceneToFile("res://Scenes/SplashMenu.tscn"); // Change to Splash Menu scene
+
+                    //GD.Print("Closing Game.");
+                    //GetTree().Quit();
+                }
+                catch (Exception ex)
+                {
+                    GD.PrintErr($"Exception in OnAnimationFinished: {ex.Message}");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                GD.PrintErr($"Exception in OnQuitButtonPressed: {ex.Message}");
+                // GD.PrintErr($"Unexpected animation finished: {animName}");
             }
         }
 
 
         private void SkipIntro()
         {
-            //GD.Print("Skip Triggered");
+            try 
+            { 
             // Advance AnimationTree to RESET state via AtEnd transition
             state_machine.Start("RESET");
+            GD.Print("Skip Triggered");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Error skipping intro: {ex.Message}");
+            }
         }
 
         //public void OnQuitButtonPressed() //Quits game from Main Menu
@@ -155,9 +174,9 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
            // GetTree().Quit();
        // }
 
-        private void OnCreditsButtonPressed()
-        {
-            try
+       // private void OnCreditsButtonPressed()
+        //{
+            /*try
             {
                 //Release resources before opening Credits Menu
                 ReleaseResources();
@@ -172,9 +191,9 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
                 GD.PrintErr("Failed to open Credits Menu.");
             }
 
-        }
+        }*/
 
-        public void OnExtrasButtonPressed()
+        /*public void OnExtrasButtonPressed()
         {
              
             try
@@ -188,6 +207,6 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             {
                 GD.PrintErr($"Failed to open Extras Menu: {ex.Message}");
             }
-        }
+        }*/
     }
 }
