@@ -10,10 +10,12 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
         private AnimationTree animation_Tree;
         private AnimationNodeStateMachinePlayback state_machine;
         private AudioManager MusicBox;
-        private const string CreditsMenuScene = "res://Scenes/CreditRoll.tscn"; // Path to the Credits Menu scene
-
+        
         public override void _Ready()
         {
+            var startTime = Time.GetTicksMsec();
+            GD.Print($"IntroAnim _Ready started at {startTime} ms");
+
             animation_Tree = GetNode<AnimationTree>("AnimationTree");
             state_machine = (AnimationNodeStateMachinePlayback)animation_Tree.Get("parameters/playback");
             MusicBox = GetNode<AudioManager>("/root/AudioManager");
@@ -25,14 +27,6 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             // Connect the SkipButton's pressed signal
             var skipButton = GetNode<Button>("SkipButton");
             skipButton.Pressed += OnSkipButtonPressed;
-
-            // Connect the CreditsButton's pressed signal
-            /* var creditsButton = GetNode<Button>("Splashscreen/MainMenu/CreditsButton");
-             creditsButton.Pressed += OnCreditsButtonPressed;
-
-             // Connect the ExtrasButton's pressed signal
-             var extrasButton = GetNode<Button>("Splashscreen/MainMenu/ExtrasButton");
-             extrasButton.Pressed += OnExtrasButtonPressed;*/
 
             //Connect Intro_Animation start signal
             animation_Tree.AnimationStarted += OnIntro_AnimationStarted;
@@ -62,6 +56,7 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
                 GD.PrintErr($"Failed to set version label in IntroAnim: {ex.Message}");
             }
 
+            GD.Print($"IntroAnim _Ready completed in {Time.GetTicksMsec() - startTime} ms");
             GD.Print("IntroAnim initialized successfully.");
         }
 
@@ -89,26 +84,33 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
         {
             try
             {
-                // Godot's Array does not have ForEach, use a regular foreach loop
+                // Free nodes in groups
                 foreach (var node in GetTree().GetNodesInGroup("glb_models"))
                     (node as Node)?.QueueFree();
 
                 foreach (var node in GetTree().GetNodesInGroup("audio_players"))
                 {
                     node.Call("stop");
-                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                    node.Set("stream", (Godot.Resource)null); // Clear stream in Godot 4.x
                     (node as Node)?.QueueFree();
                 }
 
                 foreach (var node in GetTree().GetNodesInGroup("terrains"))
                     (node as Node)?.QueueFree();
 
-                GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+                // Free Loading.tscn if present
+                var loadingNode = GetTree().Root.GetNodeOrNull<Node>("Loading");
+                if (loadingNode != null)
+                {
+                    loadingNode.QueueFree();
+                    GD.Print("Loading.tscn freed during IntroAnim cleanup");
+                }
 
+                GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
+                GD.PrintErr($"Exception in ReleaseResources: {ex.Message}");
             }
         }
 
@@ -168,45 +170,6 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
             }
         }
 
-        //public void OnQuitButtonPressed() //Quits game from Main Menu
-        //{
-           // GD.Print("Closing game");
-           // GetTree().Quit();
-       // }
-
-       // private void OnCreditsButtonPressed()
-        //{
-            /*try
-            {
-                //Release resources before opening Credits Menu
-                ReleaseResources();
-                //GD.Print("Releasing resources before opening Credits Menu.");
-
-                //GD.Print("Opening Credits Menu");
-                GetTree().ChangeSceneToFile(CreditsMenuScene);
-
-            }
-            catch (Exception)
-            {
-                GD.PrintErr("Failed to open Credits Menu.");
-            }
-
-        }*/
-
-        /*public void OnExtrasButtonPressed()
-        {
-             
-            try
-            {
-                ReleaseResources();
-
-                GD.Print("Opening Extras Menu");
-                GetTree().ChangeSceneToFile("res://Scenes/Extras.tscn");
-            }
-            catch (Exception ex)
-            {
-                GD.PrintErr($"Failed to open Extras Menu: {ex.Message}");
-            }
-        }*/
+        
     }
 }

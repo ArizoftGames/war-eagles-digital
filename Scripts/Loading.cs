@@ -22,17 +22,29 @@ namespace WarEaglesDigital.Scripts
             new Vector2I(3840, 2160),
             new Vector2I(7680, 4320)
         };
+        private Resource _introAnimScene; // Preloaded IntroAnim.tscn
+        private const float _minimumLoadingTime = 3.0f; // Covers loading and grey screen
 
         public override void _Ready()
         {
             GD.Print("Loading scene initialized");
             LoadGameSettings();
+            WaitTimer(_minimumLoadingTime);
         }
 
-        private async void LoadGameSettings()
+        private void LoadGameSettings()
         {
             try
             {
+                // Start preloading IntroAnim.tscn
+                _introAnimScene = ResourceLoader.Load("res://Scenes/IntroAnim.tscn");
+                if (_introAnimScene == null)
+                {
+                    GD.PushError("Failed to preload IntroAnim.tscn");
+                    return;
+                }
+
+                // Perform loading tasks
                 bool configOk = CheckConfigFile();
                 if (!configOk)
                 {
@@ -42,12 +54,24 @@ namespace WarEaglesDigital.Scripts
                 LoadControllerSettings();
                 LoadGameplaySettings();
                 ApplySettings();
-                await ToSignal(GetTree().CreateTimer(3.0f), "timeout");
-                TransitionToIntroAnim();
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in LoadGameSettings: {ex.Message}");
+            }
+        }
+
+        private async void WaitTimer(float delay)
+        {
+            try
+            {
+                await ToSignal(GetTree().CreateTimer(delay), "timeout");
+                TransitionToIntroAnim();
+            }
+            catch (Exception ex)
+            {
+                GD.PushError($"Error in WaitTimer: {ex.Message}");
+                TransitionToIntroAnim(); // Proceed to transition on error
             }
         }
 
@@ -167,9 +191,11 @@ namespace WarEaglesDigital.Scripts
                 foreach (int device in joypads)
                 {
                     string joyName = Input.GetJoyName(device);
+                    string joyGUID = Input.GetJoyGuid(device);
                     if (joyName != null && (joyName.Contains("Xbox", StringComparison.OrdinalIgnoreCase) || joyName.Contains("XInput", StringComparison.OrdinalIgnoreCase)))
                     {
                         GD.Print($"Detected Xbox controller: Name={joyName}");
+                        GD.Print($"GUID: {joyGUID}");
                         bindings = "Default";
                         break;
                     }
@@ -279,7 +305,19 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn");
+                if (_introAnimScene is PackedScene packedScene && packedScene.CanInstantiate())
+                {
+                    var startTime = Time.GetTicksMsec();
+                    GD.Print("Attempting scene transition to IntroAnim.tscn");
+                    GetTree().ChangeSceneToPacked(packedScene);
+                    GD.Print($"Scene transition took {Time.GetTicksMsec() - startTime} ms");
+                    // No QueueFree; Loading.tscn persists until IntroAnim cleanup
+                }
+                else
+                {
+                    GD.PushError("Preloaded IntroAnim.tscn is not valid or cannot be instantiated");
+                    GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn"); // Fallback
+                }
             }
             catch (Exception ex)
             {

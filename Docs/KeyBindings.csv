@@ -1,26 +1,27 @@
 Command or Task,Keyboard or Mouse,Controller
-Pause Game and Open Menu,Esc or Spacebar,Back
-Quit Game no save [NYI],X,Start
+Pause Game and Open Menu,Esc or Spacebar,Back (Button 4)
+Quit Game no save [NYI],X,Home (Button 5)
 Open Console [NYI],~,NA
-Open Help Menu [NYI],H,X
-Screenshot,Delete,Share
-End Phase [NYI],Z,RB
-End Turn [NYI],Enter,RT
-Skip Voiceover,Backspace,Y
-View Player Losses Pool [NYI],L,A
-View Enemy Losses Pool [NYI],K,B
-Game History [NYI],G,NA
-Select Unit [NYI],Q or LMB,RS Down
-Drag Unit [NYI],Hold LMB,RS
-Drop Unit at Focus,E,NA
-Scroll Focus,Tab,NA
-Camera Zoom In [NYI],+ or MW,LB
-Camera Zoom Out [NYI],- or MW,LT
-Camera Pan Up,Up Arrow or  Hold MMB,LS Up
-Camera Pan Down,Down Arrow or Hold MMB,LS Down
-Camera Pan Left,Left Arrow or Hold MMB,LS Left
-Camera Pan Rt,Rt Arrow or Hold MMB,LS Right
-Camera Move Forward,W or Hold RMB,D Pad Up
-Camera Move Back,S or Hold RMB,D Pad Down
-Camera Strafe Left,A or Hold RMB,D Pad Left
-Camera Strafe Right,D or Hold RMB,D Pad Right
+Open Help Menu [NYI],H,X (Button 2)
+Screenshot,Delete,Start (Button 6)
+End Phase [NYI],Z,LB (Button 9)
+End Turn [NYI],Enter,RB (Button 10)
+Skip Voiceover,Backspace,Y (Button 3)
+View Player Losses Pool [NYI],L,A (Button 0)
+View Enemy Losses Pool [NYI],K,B (Button 1)
+Game History [NYI],G,None
+Move Cursor (Pointer),Mouse,RS (Axis 2 and 3)
+Select Unit [NYI],Q or LMB,RS  (Button 8)
+Drag Unit [NYI],Hold LMB, Hold RS (Button 8)
+Drop Unit at Focus,E,None
+Scroll Focus,Tab,None
+Camera Zoom In [NYI],+ or MW,RT (Axis 5 0.2)
+Camera Zoom Out [NYI],- or MW,LT (Axis 4 0.2)
+Camera Pan Up,Up Arrow or  Hold MMB,LS Up (Axis 1  -0.2)
+Camera Pan Down,Down Arrow or Hold MMB,LS Down (Axis 1  0.2)
+Camera Pan Left,Left Arrow or Hold MMB,LS Left (Axis 0  -0.2)
+Camera Pan Rt,Rt Arrow or Hold MMB,LS Right (Axis 0  0.2)
+Camera Move Forward,W or Hold RMB,D Pad Up (Button 11)
+Camera Move Back,S or Hold RMB,D Pad Down  (Button 12)
+Camera Strafe Left,A or Hold RMB,D Pad Left (Button 13)
+Camera Strafe Right,D or Hold RMB,D Pad Right (Button 14)
