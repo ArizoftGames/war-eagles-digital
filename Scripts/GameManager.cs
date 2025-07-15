@@ -188,7 +188,8 @@ namespace WarEaglesDigital.Scripts
                 }
 
                 string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string path = $"res://Screenshots/screenshot_{timestamp}.png";
+                var savePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+                string path = $"{savePath}/{timestamp}.png";
                 Error result = screenshot.SavePng(path);
                 if (result != Error.Ok)
                 {
