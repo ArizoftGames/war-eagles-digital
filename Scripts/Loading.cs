@@ -23,7 +23,7 @@ namespace WarEaglesDigital.Scripts
             new Vector2I(7680, 4320)
         };
         private Resource _introAnimScene; // Preloaded IntroAnim.tscn
-        private const float _minimumLoadingTime = 3.0f; // Covers loading and grey screen
+        private const float _minimumLoadingTime = 5.0f; // Covers loading and grey screen
 
         public override void _Ready()
         {
