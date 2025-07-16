@@ -9,12 +9,16 @@ namespace WarEaglesDigital.Scripts
 {
     public partial class Loading : Control
     {
+        private AnimationPlayer Fadeout_Player;
         private readonly string _userConfigPath = "user://War Eagles/config.cfg";
         private readonly string _resConfigPath = "res://Data/War Eagles/config.cfg";
         private ConfigFile _config = new ConfigFile();
         private Dictionary _settings = new Dictionary();
         private string _activeConfigPath;
         private readonly Vector2I[] _supportedResolutions = new[]
+        // AnimationPlayer for fadeout effect
+
+
         {
             new Vector2I(1280, 720),
             new Vector2I(1920, 1080),
@@ -23,7 +27,7 @@ namespace WarEaglesDigital.Scripts
             new Vector2I(7680, 4320)
         };
         private Resource _introAnimScene; // Preloaded IntroAnim.tscn
-        private const float _minimumLoadingTime = 5.0f; // Covers loading and grey screen
+        private const float _minimumLoadingTime = 3.0f; // Covers loading and grey screen
 
         public override void _Ready()
         {
@@ -37,12 +41,12 @@ namespace WarEaglesDigital.Scripts
             try
             {
                 // Start preloading IntroAnim.tscn
-                _introAnimScene = ResourceLoader.Load("res://Scenes/IntroAnim.tscn");
-                if (_introAnimScene == null)
+               // _introAnimScene = ResourceLoader.Load("res://Scenes/IntroAnim.tscn");
+                /*if (_introAnimScene == null)
                 {
                     GD.PushError("Failed to preload IntroAnim.tscn");
                     return;
-                }
+                }*/
 
                 // Perform loading tasks
                 bool configOk = CheckConfigFile();
@@ -65,8 +69,12 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
+                
+                //Fadeout_Player = GetNode<AnimationPlayer>("FadeoutPlayer");
+                
                 await ToSignal(GetTree().CreateTimer(delay), "timeout");
                 TransitionToIntroAnim();
+                //Fadeout_Player.Play("Fadeout");
             }
             catch (Exception ex)
             {
@@ -301,28 +309,52 @@ namespace WarEaglesDigital.Scripts
             GD.Print($"HUD theme application NYI for theme: {theme}");
         }
 
-        private void TransitionToIntroAnim()
+        private async void TransitionToIntroAnim()
         {
             try
             {
-                if (_introAnimScene is PackedScene packedScene && packedScene.CanInstantiate())
-                {
-                    var startTime = Time.GetTicksMsec();
-                    GD.Print("Attempting scene transition to IntroAnim.tscn");
-                    GetTree().ChangeSceneToPacked(packedScene);
-                    GD.Print($"Scene transition took {Time.GetTicksMsec() - startTime} ms");
-                    // No QueueFree; Loading.tscn persists until IntroAnim cleanup
-                }
-                else
-                {
-                    GD.PushError("Preloaded IntroAnim.tscn is not valid or cannot be instantiated");
-                    GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn"); // Fallback
-                }
+                var transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/Transition.tscn").Instantiate();
+                AddChild(transitionScene);
+                var animPlayer = transitionScene.GetNode<AnimationPlayer>("AnimationPlayer");
+                animPlayer.Play("FadeIn");
+                await ToSignal(animPlayer, "animation_finished");
+                GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn");
+                animPlayer.Play("FadeOut");
+                await ToSignal(animPlayer, "animation_finished");
+                transitionScene.QueueFree();
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
             }
         }
+
+        /*        private void TransitionToIntroAnim()
+                {
+                    try
+                    {
+                       // if (_introAnimScene is PackedScene packedScene && packedScene.CanInstantiate())
+                        //{
+                            //Fadeout_Player = GetNode<AnimationPlayer>("FadeoutPlayer");
+                            var startTime = Time.GetTicksMsec();
+                            GD.Print("Attempting scene transition to IntroAnim.tscn");
+                            //Fadeout_Player.Play("Fadeout");
+                            //GetTree().ChangeSceneToPacked(packedScene);
+                            GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn");
+
+                            GD.Print($"Scene transition took {Time.GetTicksMsec() - startTime} ms");
+                            // No QueueFree; Loading.tscn persists until IntroAnim cleanup
+                        //}
+                        //else
+                        //{
+                        //    GD.PushError("Preloaded IntroAnim.tscn is not valid or cannot be instantiated");
+                        //    GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn"); // Fallback
+                        //}
+                    }
+                    catch (Exception ex)
+                    {
+                        GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
+                    }
+                }*/
     }
 }
