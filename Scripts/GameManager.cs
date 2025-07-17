@@ -179,6 +179,25 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
+        private string GetExportPath()
+        {
+            string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string warEaglesPath = System.IO.Path.Combine(documentsPath, "War Eagles");
+            if (!System.IO.Directory.Exists(warEaglesPath))
+            {
+                try
+                {
+                    System.IO.Directory.CreateDirectory(warEaglesPath);
+                    GD.Print($"Created War Eagles directory at: {warEaglesPath}");
+                }
+                catch (Exception ex)
+                {
+                    GD.PushError($"Failed to create War Eagles directory: {ex.Message}");
+                }
+            }
+            return warEaglesPath;
+        }
+
         public void ScreenShot()
         {
             try
@@ -191,19 +210,19 @@ namespace WarEaglesDigital.Scripts
                     return;
                 }
 
-                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                var savePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-                string path = $"{savePath}/{timestamp}.png";
-                Error result = screenshot.SavePng(path);
+                //string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string exportPath = GetExportPath();
+                string fileName = System.IO.Path.Combine(exportPath, $"Screenshot_{DateTime.Now:yyyyMMdd_HHmmss}.png");
+                Error result = screenshot.SavePng(fileName);
                 if (result != Error.Ok)
                 {
-                    GD.PrintErr($"Failed to save screenshot to {path}: Error code {result}");
+                    GD.PrintErr($"Failed to save screenshot to {fileName}: Error code {result}");
                     ShowNotification($"Failed to save screenshot: Error {result}");
                 }
                 else
                 {
-                    GD.Print($"Screenshot saved to {path}");
-                    ShowNotification($"Screenshot saved: {path}");
+                    GD.Print($"Screenshot saved to {fileName}");
+                    ShowNotification($"Screenshot saved: {fileName}");
                 }
             }
             catch (Exception ex)

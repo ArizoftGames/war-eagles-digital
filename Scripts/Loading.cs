@@ -40,19 +40,35 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                // Start preloading IntroAnim.tscn
-               // _introAnimScene = ResourceLoader.Load("res://Scenes/IntroAnim.tscn");
-                /*if (_introAnimScene == null)
+                // Migration from old user:// to current user://
+                string oldConfigPath = "user://War Eagles/config.cfg";
+                string newConfigPath = _userConfigPath; // Already absolute: "user://War Eagles/config.cfg"
+                if (FileAccess.FileExists(oldConfigPath) && !FileAccess.FileExists(newConfigPath))
+                {
+                    using var oldDir = DirAccess.Open("user://");
+                    using var newDir = DirAccess.Open("user://");
+                    if (oldDir != null && newDir != null && !newDir.DirExists("War Eagles"))
+                        newDir.MakeDir("War Eagles");
+                    if (oldDir.FileExists("War Eagles/config.cfg"))
+                    {
+                        oldDir.Copy("War Eagles/config.cfg", newConfigPath);
+                        oldDir.Remove("War Eagles/config.cfg");
+                    }
+                }
+
+                // Perform loading tasks
+                _introAnimScene = ResourceLoader.Load("res://Scenes/IntroAnim.tscn");
+                if (_introAnimScene == null)
                 {
                     GD.PushError("Failed to preload IntroAnim.tscn");
                     return;
-                }*/
+                }
 
-                // Perform loading tasks
                 bool configOk = CheckConfigFile();
                 if (!configOk)
                 {
-                    GD.PushError("Config file check failed. Using default settings.");
+                    GD.PushError("Config file check failed. Creating default settings.");
+                    WriteDefaultConfig();
                 }
                 LoadDisplaySettings();
                 LoadControllerSettings();
@@ -88,52 +104,31 @@ namespace WarEaglesDigital.Scripts
             try
             {
                 var userDir = DirAccess.Open("user://");
-                if (userDir != null && userDir.DirExists("War Eagles") && FileAccess.FileExists(_userConfigPath))
-                {
-                    Error err = _config.Load(_userConfigPath);
-                    if (err == Error.Ok)
-                    {
-                        _activeConfigPath = _userConfigPath;
-                        return true;
-                    }
-                }
-                var resDir = DirAccess.Open("res://Data");
-                if (resDir != null && resDir.DirExists("War Eagles") && FileAccess.FileExists(_resConfigPath))
-                {
-                    Error err = _config.Load(_resConfigPath);
-                    if (err == Error.Ok)
-                    {
-                        _activeConfigPath = _resConfigPath;
-                        return true;
-                    }
-                }
                 if (userDir != null && !userDir.DirExists("War Eagles"))
                 {
                     Error mkErr = userDir.MakeDir("War Eagles");
-                    if (mkErr == Error.Ok)
+                    if (mkErr != Error.Ok)
                     {
-                        _config.Save(_userConfigPath);
-                        _activeConfigPath = _userConfigPath;
-                        return true;
+                        GD.PushError($"Failed to create user://War Eagles/: {mkErr}");
+                        var resDir = DirAccess.Open("res://Data");
+                        if (resDir != null && !resDir.DirExists("War Eagles"))
+                            resDir.MakeDir("War Eagles");
+                        _activeConfigPath = "res://Data/War Eagles/config.cfg";
+                        return false;
                     }
                 }
-                if (resDir != null && !resDir.DirExists("War Eagles"))
+                _activeConfigPath = "user://War Eagles/config.cfg";
+                if (FileAccess.FileExists(_activeConfigPath))
                 {
-                    Error mkErr = resDir.MakeDir("War Eagles");
-                    if (mkErr == Error.Ok)
-                    {
-                        _config.Save(_resConfigPath);
-                        _activeConfigPath = _resConfigPath;
-                        return true;
-                    }
+                    Error err = _config.Load(_activeConfigPath);
+                    return err == Error.Ok;
                 }
-                GD.PushError("Failed to create config file. Using default settings.");
-                return true;
+                return false; // Triggers config write if absent
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in CheckConfigFile: {ex.Message}");
-                return true;
+                return false;
             }
         }
 
@@ -326,6 +321,36 @@ namespace WarEaglesDigital.Scripts
             catch (Exception ex)
             {
                 GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
+            }
+        }
+
+        private void WriteDefaultConfig()
+        {
+            try
+            {
+                var userDir = DirAccess.Open("user://");
+                if (userDir != null && !userDir.DirExists("War Eagles"))
+                    userDir.MakeDir("War Eagles");
+                _config.SetValue("Display", "Resolution", new Vector2I(1920, 1080));
+                _config.SetValue("Display", "Scale", 1.0f);
+                _config.SetValue("Display", "HUDTheme", "National");
+                _config.SetValue("Display", "HUDFont", "National");
+                _config.SetValue("Display", "HUDFormat", "Time/Date");
+                _config.SetValue("Controller", "Bindings", "Keyboard");
+                _config.SetValue("Gameplay", "Mode", "Quality");
+                _config.SetValue("Gameplay", "Year", "Historical");
+                _config.SetValue("Gameplay", "Opponent", "Historical");
+                _config.SetValue("Gameplay", "Zone", "Nation");
+                _config.SetValue("Gameplay", "Purchase", "Historical");
+                _config.SetValue("Gameplay", "MoveSpeed", "Normal");
+                _config.SetValue("Gameplay", "CombatSpeed", "Normal");
+                _config.SetValue("Gameplay", "TransitionSpeed", "Normal");
+                _config.SetValue("Gameplay", "VoiceOver", "Normal");
+                _config.Save(_activeConfigPath);
+            }
+            catch (Exception ex)
+            {
+                GD.PushError($"Error in WriteDefaultConfig: {ex.Message}");
             }
         }
 
