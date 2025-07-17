@@ -9,6 +9,7 @@
   4.  The coding language for the War Eagles project is C#. 
   5.  Follow PascalCase naming conventions for FileNames.cs, Nodes, and Methods().  Variables should be bool lower_case with underscore between words where useful.  Instances should be _camelCase preceded by underscores.  Direct Node references should be as presented in Godot. All naming should be descriptive of function.  Existing asset names vary;  future assets should be named in lower_case with underscores between words.
   6. Commenting should be as verbose as necessary to explain the function of the code.
+  7.  Commented-out code lines are intended for archival purposes during debugging and should be retained (as comments) when creating replacement (updated) code.  They will be removed for efficiency before project deployment.
 
 ##Prompting Guide
 
@@ -17,11 +18,19 @@ These rules ensure precise, efficient collaboration with Grok and Copilot for pr
 GLOBAL:  Frame ALL Copilot prompts in pseudocode.  Avoid using plain language in prompts;  Copilot can misinterpret plain language easily.
 
 1. Prioritize Godot 4.4+ Sources: Always emphasize Godot 4.4-specific documentation and APIs in prompts. Copilot may default to outdated Godot 3.x or generic C# sources, which are incompatible. Specify `Godot 4.4 .NET` to avoid errors.
-2. Seek Objective Truth: Coach Copilot to use the `war-eagles-digital` solution’s scripts and `WarEaglesDigital.Scripts` namespace accurately. Avoid interpolation; rely on provided code and user observations to ensure solutions match reality.
-3.  Conserve Queries:  Compose Copilot prompts to accomplish as much as possible per prompt.  Balance with Copilot’s ability to provide quality code for large tasks.  Leverage Copilot’s ability to access the entire solution, and use clearly-marked placeholders RATHER THAN ASSUMED DATA where exact data hasn’t been provided, to allow the user to insert the data before inputting the prompt.
-4. Support Hybrid Workflow: Favor programmatic solutions for dynamic logic and editor-based solutions for scene layout and tasks like animation. Prompt Grok to validate editor integration and maintain naming consistency.
-5.  Encourage Precise Feedback: Request detailed user observations (e.g., animation timing, console logs) to compensate for limited runtime traces in Godot 4.4. Clarify vague terms to accelerate debugging.
-6. Respect User Control: Adapt to user decisions and provide clear instructions for applying changes. Confirm results before proceeding to new tasks.
+2. Where applicable, prompt Copilot to use this layering strategy for proper visibility:
+Layer 1 = Loading, Options, Transiton, [NYI]Results
+Layer 2 = IntroAnim, SplashMenu, PauseMenu, [NYI]GameSetup
+Layer 3 = [NYI]HUD
+Layer 4 = [NYI]Specialty Displays (Battle Board, Losses Pools, Events)
+Layer 5 = [NYI] Units and Zones (nodes), Gameboard Effects (nodes)
+Layer 6 = Game (gameboard; terrains)
+If in doubt about applicability or category, seek user input in preference to inference.
+3. Seek Objective Truth: Coach Copilot to use the `war-eagles-digital` solution’s scripts and `WarEaglesDigital.Scripts` namespace accurately. Avoid interpolation; rely on provided code and user observations to ensure solutions match reality.
+4.  Conserve Queries:  Compose Copilot prompts to accomplish as much as possible per prompt.  Balance with Copilot’s ability to provide quality code for large tasks.  Leverage Copilot’s ability to access the entire solution, and use clearly-marked placeholders RATHER THAN ASSUMED DATA where exact data hasn’t been provided, to allow the user to insert the data before inputting the prompt.
+5. Support Hybrid Workflow: Favor programmatic solutions for dynamic logic and editor-based solutions for scene layout and tasks like animation. Prompt Grok to validate editor integration and maintain naming consistency.
+6.  Encourage Precise Feedback: Request detailed user observations (e.g., animation timing, console logs) to compensate for limited runtime traces in Godot 4.4. Clarify vague terms to accelerate debugging.
+7. Respect User Control: Adapt to user decisions and provide clear instructions for applying changes. Confirm results before proceeding to new tasks.
  
 ## Coding Workflow
 - **Tasks**:
@@ -55,7 +64,9 @@ GLOBAL:  Frame ALL Copilot prompts in pseudocode.  Avoid using plain language in
   2. Test audio and video functionality at runtime at the time of implementation.
   3. Add NUnit tests for key methods. 
   4. Playtest gameplay phases as created/implemented in Godot editor.
-  5. Monitor 60 FPS target with 40 aircraft, 10 zones, 20 AA units using profiler.
+  5. Monitor 60 FPS target using profiler.
+  7. QueueFree() is a useful resource management technique and complies with Efficiency guidelines.  However, in some cases, its aggressive nature can interfere with code execution.  Removing QueueFree() and substituting alternative resource management should be eliminated as a potential fix early in the debugging process in cases where it's been used.
+
 - **My Role**:
   1. Provide unit test examples and playtest scenarios.
   2. Guide bug tracking and profiler usage.

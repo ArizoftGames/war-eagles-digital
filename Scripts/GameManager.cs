@@ -102,10 +102,10 @@ namespace WarEaglesDigital.Scripts
 
             // Log viewport and panel info for debugging
             var viewportSize = GetViewport().GetVisibleRect().Size;
-            GD.Print($"Viewport size: {viewportSize}");
+           /* GD.Print($"Viewport size: {viewportSize}");
             GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
             GD.Print($"Notification Panel size: {_notificationPanel.Size}");
-            GD.Print($"Notification Label size: {_notificationLabel.Size}");
+            GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
         }
 
         public override void _Input(InputEvent @event)
@@ -256,9 +256,9 @@ namespace WarEaglesDigital.Scripts
                     _notificationLabel.Visible = true;
                     _notificationPanel.Visible = true;
                     _notificationTimer.Start();
-                    GD.Print($"Notification Label position: {_notificationLabel.GlobalPosition}");
+                   /* GD.Print($"Notification Label position: {_notificationLabel.GlobalPosition}");
                     GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
-                    GD.Print($"Notification Label size: {_notificationLabel.Size}");
+                    GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
                 }
                 else
                 {
@@ -294,6 +294,33 @@ namespace WarEaglesDigital.Scripts
             {
                 GD.PrintErr($"Exception in SetGameSettings: {ex.Message}");
             }*/
+        }
+
+        public async void TransitionTo(string NextScenePath)
+        {
+            try
+            {
+                GD.Print($"Transitioning to scene: {NextScenePath}");
+                          
+                var transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/Transition.tscn").Instantiate();
+                AddChild(transitionScene);
+                GD.Print("Transition scene instantiated successfully.");
+                var animPlayer = transitionScene.GetNode<AnimationPlayer>("AnimationPlayer");
+                animPlayer.Play("FadeIn");
+                await ToSignal(animPlayer, "animation_finished");
+                GD.Print("FadeIn animation finished, changing scene...");
+                GetTree().ChangeSceneToFile(NextScenePath);
+                GD.Print($"Scene changed to {NextScenePath}, playing FadeOut animation.");
+                animPlayer.Play("FadeOut");
+                await ToSignal(animPlayer, "animation_finished");
+                GD.Print("FadeOut animation finished, removing transition scene.");
+                //transitionScene.QueueFree();
+                GD.Print($"Transition to {NextScenePath} completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
+            }
         }
     }
 }

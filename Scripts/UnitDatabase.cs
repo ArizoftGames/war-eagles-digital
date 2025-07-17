@@ -42,12 +42,12 @@ namespace WarEaglesDigital.Scripts
                 designations = Designation.LoadDesignations("res://Data/RawData/Designations.csv");
 
                 // Log counts to verify loading
-                GD.Print($"Loaded {airUnits.Count} air units.");
+               /* GD.Print($"Loaded {airUnits.Count} air units.");
                 GD.Print($"Loaded {antiAircraftUnits.Count} anti-aircraft units.");
                 GD.Print($"Loaded {zones.Count} zones.");
                 GD.Print($"Loaded {aces.Count} aces.");
                 GD.Print($"Loaded {events.Count} events.");
-                GD.Print($"Loaded {designations.Count} designations.");
+                GD.Print($"Loaded {designations.Count} designations.");*/
             }
             catch (Exception e)
             {

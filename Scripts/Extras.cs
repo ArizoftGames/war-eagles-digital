@@ -65,10 +65,12 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                 _exportDialog.FileSelected += OnExportFileSelected;
                 _exportDialog.UseNativeDialog = true;
                 _exportDialog.SetTitle("Export to System");
-                var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+                string exportPath = GetExportPath();
+                //var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
                 //_exportDialog.SetCurrentFile(toExport);
                 _exportDialog.Access = FileDialog.AccessEnum.Filesystem;
-                _exportDialog.SetCurrentDir(documentsPath);
+                //_exportDialog.SetCurrentDir(documentsPath);
+                _exportDialog.SetCurrentDir(exportPath);
                 AddChild(_exportDialog);
 
                 // Load CSV data
@@ -340,6 +342,25 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
             {
                 GD.PrintErr("Article population error: " + e.Message);
             }
+        }
+
+        private string GetExportPath()
+        {
+            string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string warEaglesPath = System.IO.Path.Combine(documentsPath, "War Eagles");
+            if (!System.IO.Directory.Exists(warEaglesPath))
+            {
+                try
+                {
+                    System.IO.Directory.CreateDirectory(warEaglesPath);
+                    GD.Print($"Created War Eagles directory at: {warEaglesPath}");
+                }
+                catch (Exception ex)
+                {
+                    GD.PushError($"Failed to create War Eagles directory: {ex.Message}");
+                }
+            }
+            return warEaglesPath;
         }
 
         // Export model handler

@@ -9,17 +9,16 @@ namespace WarEaglesDigital.Scripts
 {
     public partial class Loading : Control
     {
-        private AnimationPlayer Fadeout_Player;
+        //private AnimationPlayer Fadeout_Player;
         private readonly string _userConfigPath = "user://War Eagles/config.cfg";
         private readonly string _resConfigPath = "res://Data/War Eagles/config.cfg";
         private ConfigFile _config = new ConfigFile();
         private Dictionary _settings = new Dictionary();
         private string _activeConfigPath;
         private readonly Vector2I[] _supportedResolutions = new[]
-        // AnimationPlayer for fadeout effect
 
 
-        {
+       {
             new Vector2I(1280, 720),
             new Vector2I(1920, 1080),
             new Vector2I(2560, 1440),
@@ -31,7 +30,7 @@ namespace WarEaglesDigital.Scripts
 
         public override void _Ready()
         {
-            GD.Print("Loading scene initialized");
+            //GD.Print("Loading scene initialized");
             LoadGameSettings();
             WaitTimer(_minimumLoadingTime);
         }
@@ -89,13 +88,16 @@ namespace WarEaglesDigital.Scripts
                 //Fadeout_Player = GetNode<AnimationPlayer>("FadeoutPlayer");
                 
                 await ToSignal(GetTree().CreateTimer(delay), "timeout");
-                TransitionToIntroAnim();
+                GD.Print("WaitTimer completed, calling TransitionTo()");
+                var gameManager = GetNodeOrNull<Node>("/root/GameManager");
+                gameManager.Call("TransitionTo", "res://Scenes/IntroAnim.tscn"); 
+                // TransitionToIntroAnim();
                 //Fadeout_Player.Play("Fadeout");
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in WaitTimer: {ex.Message}");
-                TransitionToIntroAnim(); // Proceed to transition on error
+                //TransitionToIntroAnim(); // Proceed to transition on error
             }
         }
 
@@ -304,7 +306,7 @@ namespace WarEaglesDigital.Scripts
             GD.Print($"HUD theme application NYI for theme: {theme}");
         }
 
-        private async void TransitionToIntroAnim()
+      /*  private async void TransitionToIntroAnim()
         {
             try
             {
@@ -322,7 +324,7 @@ namespace WarEaglesDigital.Scripts
             {
                 GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
             }
-        }
+        }*/
 
         private void WriteDefaultConfig()
         {
