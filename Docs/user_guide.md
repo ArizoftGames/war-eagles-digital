@@ -26,7 +26,11 @@ Controls
 
 ESC key: pauses the game and displays the Main Menu. 
 
-Space: pauses the game and displays the Main Menu. 
+Space: pauses the game and displays the Main Menu.
+
+X: Quits without saving.
+
+Delete: Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents.
 
 THE MAIN MENU: 
 
@@ -56,11 +60,12 @@ OPTIONS:  [NYI] Opens the Options screen, which allows you to change your video 
 
 EXTRAS:  
 MODELS tab: This tab contains selected models from the game that you can export to your computer for personal use. Models are bundled into .zip files.  Check the attached Modellicense.txt files for licensing requirement, especially before distributing the models or using them for commercial purposes.
-SOUNDTRACK Tab:  Allows you to listen to the music used in War Eagles (by clicking on the titles) or export the songs by clicking the ìExportî icon to the right [res://Assets/Sprites/MusicExport.png]. The last entry exports a .zip file containing selected songs used as the sources for the national soundtrack. Again, these are all free for your personal enjoyment, but check the enclosed licenses before distributing them or using them for commercial purposes.
+SOUNDTRACK Tab:  Allows you to listen to the music used in War Eagles (by clicking on the titles) or export the songs by clicking the ‚ÄúExport‚Äù icon to the right [res://Assets/Sprites/MusicExport.png]. The last entry exports a .zip file containing selected songs used as the sources for the national soundtrack. Again, these are all free for your personal enjoyment, but check the enclosed licenses before distributing them or using them for commercial purposes.
 HISTORY OF AERIAL STRATEGY: [NYI]  A brief article about the roots and development of the strategy of air power, from WWI through WWII.
 FURTHER READING: A list of some of the books that inspired and informed the creating of War Eagles.  You can export this list as a PDF.
-DESIGNERíS NOTES:  A brief article describing the development of War Eagles, from its first concept as a collectible card game in 1995 to the development of the digital version youíre l;ooking at today.
-Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or space bar will return you to the Main Menu (as if you had paused the game). 
+DESIGNER‚ÄôS NOTES:  A brief article describing the development of War Eagles, from its first concept as a collectible card game in 1995 to the development of the digital version you‚Äôre l;ooking at today.
+Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or space bar will return you to the Main Menu (as if you had paused the game).
+*Player's Note: Everything you save from the Extras screen will be stored in the War Eagles Folder in your Documents.*
 
 HELP: [NYI] Opens the main Help Menu. Clicking the "Main Menu" button in the lower-right of the screen or pressing the Escape key or spacebar will return you to the Main Menu (as if you had paused the game). 
 
@@ -71,7 +76,12 @@ Keyboard Shortcuts:
 
 ESC key: pauses the game and displays the Main Menu. 
 
-Space: pauses the game and displays the Main Menu. 
+Space: pauses the game and displays the Main Menu.
+
+X: Quits without saving.
+
+Delete: Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents.
+
 
 Events[NYI] 
 

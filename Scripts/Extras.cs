@@ -190,7 +190,7 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                     CustomMinimumSize = new Vector2(50, 0)
                 };
                 _soundtrackContainer.AddChild(exportContainer);
-                exportContainer.Set("theme_override_constants/separation", 11);
+                exportContainer.Set("theme_override_constants/separation", 13);
 
                 foreach (var trackEntry in _musicData.Values)
                 {

@@ -274,26 +274,15 @@ namespace WarEaglesDigital.Scripts
         public void SetGameSettings(Godot.Collections.Dictionary<string, Variant> settings)
         {
             GD.Print("SetGameSettings called.");
+            //NYI
             
-            /*try
-            {
-                if (settings == null || settings.Count == 0)
-                {
-                    GD.PrintErr("SetGameSettings called with null or empty settings");
-                    return;
-                }
-                foreach (var setting in settings)
-                {
-                    GD.Print($"Setting {setting.Key} to {setting.Value}");
-                    // Here you would apply the setting to your game logic
-                    // For example, if you had a volume setting:
-                    // if (setting.Key == "volume") { AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), (float)setting.Value); }
-                }
-            }
-            catch (Exception ex)
-            {
-                GD.PrintErr($"Exception in SetGameSettings: {ex.Message}");
-            }*/
+           
+        }
+
+        public void GetGameSettings()
+        {
+            //NYI
+
         }
 
         public async void TransitionTo(string NextScenePath)
