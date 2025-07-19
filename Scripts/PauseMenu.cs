@@ -11,22 +11,36 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
 
         public override void _Ready()
         {
-            //Connect signal from QuitButton
-            var quitButton = GetNode<Button>("Pause_Menu/MainMenu/QuitButton");
-            quitButton.Pressed += OnQuitButtonPressed;
-
-            //Connect signal from CreditsButton
-            var creditsButton = GetNode<Button>("Pause_Menu/MainMenu/CreditsButton");
-            creditsButton.Pressed += OnCreditsButtonPressed;
-
-            //Connect signal from ExtrasButton
-            var extrasButton = GetNode<Button>("Pause_Menu/MainMenu/ExtrasButton");
-            extrasButton.Pressed += OnExtrasButtonPressed;
-
-            //Apply Versioning info
-
             try
             {
+                // Connect existing signals
+                var quitButton = GetNode<Button>("Pause_Menu/MainMenu/QuitButton");
+                quitButton.Pressed += OnQuitButtonPressed;
+
+                var creditsButton = GetNode<Button>("Pause_Menu/MainMenu/CreditsButton");
+                creditsButton.Pressed += OnCreditsButtonPressed;
+
+                var extrasButton = GetNode<Button>("Pause_Menu/MainMenu/ExtrasButton");
+                extrasButton.Pressed += OnExtrasButtonPressed;
+
+                // Preload Options.tscn
+                var optionsScene = GD.Load<PackedScene>("res://Scenes/Options.tscn");
+                if (optionsScene == null)
+                {
+                    GD.PrintErr("Failed to preload Options.tscn.");
+                    return;
+                }
+                var optionsInstance = optionsScene.Instantiate();
+                AddChild(optionsInstance);
+                var optionsControl = optionsInstance as Control;
+                if (optionsControl != null)
+                    optionsControl.Visible = false; // Hide by default
+
+                // Connect OptionsButton signal
+                var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
+                optionsButton.GetPopup().IndexPressed += OnOptionsButtonItemSelected;
+
+                // Apply Versioning info
                 if (_versionLabel != null)
                 {
                     string version = ProjectSettings.GetSetting("application/config/version").AsString();
@@ -40,9 +54,8 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"Failed to set version label in PauseMenu: {ex.Message}");
+                GD.PrintErr($"Exception in PauseMenu._Ready: {ex.Message}");
             }
-
         }
 
         private void OnCreditsButtonPressed()
@@ -58,6 +71,63 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 GD.PrintErr("Failed to open Credits Menu.");
             }
 
+        }
+
+        private void OnOptionsButtonItemSelected(long index)
+        {
+            try
+            {
+                var optionsNode = GetNode<Control>("Control");
+                if (optionsNode == null)
+                {
+                    GD.PrintErr("Control node not found.");
+                    return;
+                }
+                GD.Print("Options node found: ", optionsNode);
+                optionsNode.Show(); // Ensure root is visible
+
+                // Hide all panels initially
+                foreach (Node child in optionsNode.GetChildren())
+                {
+                    if (child is Panel panel)
+                        panel.Visible = false;
+                }
+
+                // Show the selected panel based on index
+                switch (index)
+                {
+                    case 1: // Video and Display
+                        var displayPanel = optionsNode.GetNode<Panel>("DisplayMenuPanel");
+                        if (displayPanel != null)
+                        {
+                            GD.Print("DisplayPanel found: ", displayPanel);
+                            displayPanel.Show();
+                            GD.Print("DisplayPanel visible: ", displayPanel.Visible);
+                            var displayMenu = displayPanel as DisplayMenuPanel;
+                            if (displayMenu != null)
+                                displayMenu.InitializeDisplayMenu("Video and Display");
+                            else
+                                GD.PrintErr("DisplayMenuPanel script not attached to DisplayMenuPanel node.");
+                        }
+                        break;
+                    case 0: // Audio
+                        var audioPanel = optionsNode.GetNode<Panel>("AudioMenuPanel");
+                        if (audioPanel != null) audioPanel.Visible = true;
+                        break;
+                    case 2: // Controls
+                        var controlsPanel = optionsNode.GetNode<Panel>("ControlsPanel");
+                        if (controlsPanel != null) controlsPanel.Visible = true;
+                        break;
+                    case 3: // Game Settings
+                        var gameplayPanel = optionsNode.GetNode<Panel>("GameplayPanel");
+                        if (gameplayPanel != null) gameplayPanel.Visible = true;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in OnOptionsButtonItemSelected: {ex.Message}");
+            }
         }
 
         public void OnExtrasButtonPressed()
@@ -104,6 +174,25 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 GD.PrintErr($"Exception in OnQuitButtonPressed: {ex.Message}");
             }
         }
+
+       /* private void InitializeOptionsPopup()
+        {
+            try
+            {
+                var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
+                var popup = optionsButton.GetPopup();
+                popup.Clear();
+                popup.AddItem("Options", 4, true); // Separator label
+                popup.AddItem("Video and Display", 1);
+                popup.AddItem("Audio", 0);
+                popup.AddItem("Controls", 2);
+                popup.AddItem("Game Settings", 3);
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in InitializeOptionsPopup: {ex.Message}");
+            }
+        }*/
 
     }
 }

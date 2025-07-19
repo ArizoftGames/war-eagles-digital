@@ -10,6 +10,7 @@
  5.  Follow PascalCase naming conventions for FileNames.cs, Nodes, and Methods().  Variables should be bool lower_case with underscore between words where useful.  Instances should be _camelCase preceded by underscores.  Direct Node references should be as presented in Godot. All naming should be descriptive of function.  Existing asset names vary;  future assets should be named in lower_case with underscores between words. 
  6. Commenting should be as verbose as necessary to explain the function of the code. 
  7.  Commented-out code lines are intended for archival purposes during debugging and should be retained (as comments) when creating replacement (updated) code.  They will be removed for efficiency before project deployment. 
+ 8. Grok must explicitly ask, ‘Is [element] intended, and if so, provide details (e.g., file, value)?’ rather than including inferred coding elements (e.g., method arguments, resource keys).
 
 ##Prompting Guide 
 
@@ -26,7 +27,10 @@ Layer 4 = [NYI]Specialty Displays (Battle Board, Losses Pools, Events)
 Layer 5 = [NYI] Units and Zones (nodes), Gameboard Effects (nodes) 
 Layer 6 = Game (gameboard; terrains) 
 If in doubt about applicability or category, seek user input in preference to inference. 
-3. Seek Objective Truth: Coach Copilot to use the `war-eagles-digital` solution7 until Scene Plan is fulfilled. Implement interscene interactions using standardized scene transitions with error-handling (e.g., try-catch for scene loading). Validate interactions and resolve issues. 
+3. Seek Objective Truth: Coach Copilot to use the `war-eagles-digital` solution7 until Scene Plan is fulfilled. Implement interscene interactions using standardized scene transitions with error-handling (e.g., try-catch for scene loading). Validate interactions and resolve issues.
+4. Before generating pseudocode, confirm all elements (e.g., arguments, resources) are explicitly provided or requested from user. 
+5.Proactive Debugging: Add GD.Print in key methods (e.g., InitializeDisplayMenu) to log entry/exit, aiding flow tracking as complexity increases.
+6. Iterate Guidelines: Tweak prompting to emphasize runtime behavior checks (e.g., “verify visibility post-signal”) to boost confidence in catching issues. 
  9. **Documentation and Version Control**: Update `docs/user_guide.md` with scene functionality, controls, and audio notes. Commit changes daily to GitHub via Visual Studio Git Changes, using task-specific branches. Merge successful branches to `main` or `dev` and delete via VS Git control panel; document failed branches in `docs/user_guide.md` before deletion. 
 
 - **My Role**: 

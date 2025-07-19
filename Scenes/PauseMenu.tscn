@@ -20,8 +20,10 @@ script = ExtResource("1_h171x")
 _versionLabel = NodePath("Pause_Menu/Version Label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Pause_Menu" type="Control" parent="."]
+light_mask = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 2560.0

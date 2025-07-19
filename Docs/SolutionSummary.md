@@ -1,5 +1,16 @@
 #Current completed structure of War Eagles by scene:
 
+CSV's that provide data to autoloads:
+res://Data/RawData/Designations.csv (SquadronName,Nationality,Type,Special)
+res://Data/RawData/Music.csv (Nationality,Mood,Use Case,Title,Filename) 
+res://Data/RawData/SoundEffects.csv (Motor,Status,Gun,Sound,Bomb,Filename)
+res://Data/RawData/WEBasicAces.csv (Pilot,Nationality,Cost,Bonus,Model,FlavorText)
+res://Data/RawData/WEBasicEvents.csv (Title,Nationality,Cost,Effect,Area of Effect,Duration,Maximum Quantity,Model,Sound)
+res://Data/RawData/WEBasicAirUnits.csv (Unit,Nationality,Role,Weight,Cost,Air Attack Strength,Bombing Strength,Damage Capacity,Fuel,Year,Special 1,Special 2,Model LOD0,Bomb,Motor,Gun)
+res://Data/RawData/WEBasicAntiAircraftUnits.csv (Unit ,Nationality,Cost,AntiAircraft Strength,Damage Capacity,Domain,Special,Model,Gun)
+res://Data/RawData/WEBasicZones.csv (Target Name,Nationality,Domain,AA Strength,Damage Capacity,Production,VP Value,Facility,Category,Facility AA,Facility Damage Cap,Model,Sprite)
+
+
 ##Audio Bus Layout: res//Audio/WE_Bus_layout.tres; Busses: Master, fed by Music, Planes, and Effects;  Planes and Effects will be consolidated from player POV and are separate for animation mixing with the game.
 
 ##Global groups for resource management:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brce3w3ns360d"]
+[gd_scene load_steps=3 format=3 uid="uid://brce3w3ns360d"]
 
 [ext_resource type="Theme" uid="uid://cw6t7lhrewpw5" path="res://Data/Resources/UI_Theme .tres" id="1_rou1w"]
+[ext_resource type="Script" uid="uid://bcujn4fnjqwd8" path="res://Scripts/DisplayMenuPanel.cs" id="2_hg628"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(2560, 0)
@@ -13,7 +14,6 @@ grow_vertical = 2
 theme = ExtResource("1_rou1w")
 
 [node name="DisplayMenuPanel" type="Panel" parent="."]
-visible = false
 custom_minimum_size = Vector2(1024, 1162)
 layout_mode = 1
 anchors_preset = 8
@@ -28,6 +28,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+script = ExtResource("2_hg628")
 
 [node name="DisplayMenu" type="VBoxContainer" parent="DisplayMenuPanel"]
 custom_minimum_size = Vector2(1024, 0)
@@ -95,6 +96,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="GameplayPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

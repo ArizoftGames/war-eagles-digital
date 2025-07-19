@@ -20,7 +20,7 @@ run/max_fps=60
 run/delta_smoothing=false
 boot_splash/image="uid://4letnqknvft4"
 config/icon="uid://c3a8wgfq43mga"
-config/build_number=1000204
+config/build_number=1000220
 
 [audio]
 
@@ -127,3 +127,4 @@ environment/ssil/quality=1
 occlusion_culling/occlusion_rays_per_thread=128
 environment/screen_space_reflection/roughness_quality=0
 environment/defaults/default_clear_color=Color(0.720467, 0.720468, 0.720467, 1)
+
