@@ -46,7 +46,7 @@ AudioManager.cs - instances AudioStreamPlayers to play music and effects; music 
 
 ##Scenes:
 
-Loading.tscn:  Current main scene. Displays "Loading..." texz and WE Icon. Fades seamlessly into IntroAnim.  Detects and writes config.cfg, uses existing user edited setting if present.  Makes if necessary and writes to "%APPDATA%\Roaming\War Eagles\War Eagles"
+Loading.tscn:  Current main scene. Displays "Loading..." text and WE Icon. Fades seamlessly into IntroAnim.  Detects and writes config.cfg, uses existing user edited setting if present.  Makes if necessary and writes to "%APPDATA%\Roaming\War Eagles\War Eagles"
 
 IntroAnim.tscn: Plays disclaimer screen and introductory animation (skippable) and then fades seamlessly into SplashMenu. 
 
@@ -55,6 +55,12 @@ SplashMenu.tscn:  Presents main menu with buttons for Continue, New [Game], Load
 PauseMenu.tscn: Will be activated at any time during gameplay with ESC or spacebar.  Immediately presents main menu with buttons for Continue, Save, Load, New [Game], Credits, Options, Extras, Help, and Quit.
 
 CreditRoll.tscn: Displays credits via Rich Text Label over a slideshow.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
+
+Options.tscn:  Four options windows, selected by OptionButton Items in the menus:
+-Video and Display:  Allows user to change resolution, HUD [NYI] Theme and font, and turn display[NYI].
+-Audio [NYI[:  Allows user to change music and sound effects volume, and set audio busses (Music, Planes, Effects) volumes. 
+-Controls [NYI]:  Allows user to display key bindings for all actions, enable Xbox controller.
+-Gameplay  [NYI]:  Allows user to change gameplay settings, including game setup restrictions, enable/disable animations, disable vioceovers and button clicks.
 
 Extras.tscn: Displays and certain game files and support assets, and  makes if necessary and exports them to %DOCUMENTS%\War Eagles by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
 

@@ -27,6 +27,22 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
                 var creditsButton = GetNode<Button>("Splashscreen/MainMenu/CreditsButton");
                 creditsButton.Pressed += OnCreditsButtonPressed;
 
+                var optionsScene = GD.Load<PackedScene>("res://Scenes/Options.tscn");
+                if (optionsScene == null)
+                {
+                    GD.PrintErr("Failed to preload Options.tscn.");
+                    return;
+                }
+                var optionsInstance = optionsScene.Instantiate();
+                AddChild(optionsInstance);
+                var optionsControl = optionsInstance as Control;
+                if (optionsControl != null)
+                    optionsControl.Visible = false; // Hide by default
+
+                // Connect OptionsButton signal
+                var optionsButton = GetNode<MenuButton>("Splashscreen/MainMenu/OptionsButton");
+                optionsButton.GetPopup().IndexPressed += OnOptionsButtonItemSelected;
+
                 // Connect the ExtrasButton's pressed signal
                 var extrasButton = GetNode<Button>("Splashscreen/MainMenu/ExtrasButton");
                 extrasButton.Pressed += OnExtrasButtonPressed;
@@ -125,7 +141,64 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
 
     }
 
-    public void OnExtrasButtonPressed()
+        private void OnOptionsButtonItemSelected(long index)
+        {
+            try
+            {
+                var optionsNode = GetNode<Control>("Control");
+                if (optionsNode == null)
+                {
+                    GD.PrintErr("Control node not found.");
+                    return;
+                }
+                GD.Print("Options node found: ", optionsNode);
+                optionsNode.Show(); // Ensure root is visible
+
+                // Hide all panels initially
+                foreach (Node child in optionsNode.GetChildren())
+                {
+                    if (child is Panel panel)
+                        panel.Visible = false;
+                }
+
+                // Show the selected panel based on index
+                switch (index)
+                {
+                    case 1: // Video and Display
+                        var displayPanel = optionsNode.GetNode<Panel>("DisplayMenuPanel");
+                        if (displayPanel != null)
+                        {
+                            GD.Print("DisplayPanel found: ", displayPanel);
+                            displayPanel.Show();
+                            GD.Print("DisplayPanel visible: ", displayPanel.Visible);
+                            var displayMenu = displayPanel as DisplayMenuPanel;
+                            if (displayMenu != null)
+                                displayMenu.InitializeDisplayMenu("Video and Display");
+                            else
+                                GD.PrintErr("DisplayMenuPanel script not attached to DisplayMenuPanel node.");
+                        }
+                        break;
+                    case 0: // Audio
+                        var audioPanel = optionsNode.GetNode<Panel>("AudioMenuPanel");
+                        if (audioPanel != null) audioPanel.Visible = true;
+                        break;
+                    case 2: // Controls
+                        var controlsPanel = optionsNode.GetNode<Panel>("ControlsPanel");
+                        if (controlsPanel != null) controlsPanel.Visible = true;
+                        break;
+                    case 3: // Game Settings
+                        var gameplayPanel = optionsNode.GetNode<Panel>("GameplayPanel");
+                        if (gameplayPanel != null) gameplayPanel.Visible = true;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in OnOptionsButtonItemSelected: {ex.Message}");
+            }
+        }
+
+        public void OnExtrasButtonPressed()
     {
 
         try

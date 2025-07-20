@@ -1,100 +1,128 @@
-War Eagles Digital User Guide 
-Introduction 
+War Eagles Digital User Guide  
+Introduction  
 
-*[NYI] denotes Not Yet Implemented, throughout. 
+*[NYI] denotes Not Yet Implemented, throughout.  
 
-Overview of War Eagles Digital, based on the 1995 tabletop game. 
-Objective: Build an air force, raid enemy zones, and earn Victory Points. 
+Overview of War Eagles Digital, based on the 1995 tabletop game.  
+Objective: Build an air force, raid enemy zones, and earn Victory Points.  
 
-Setup[NYI] 
+Setup[NYI]  
 
-Coin Toss: Winner chooses First Player and Axis/Allies. 
-Zone Cards: Select 5 unique zones secretly, form game board. 
-Air Force: Spend Production Points (from zones) on units, aces, events. 
-Deployment: Place units in Base or Combat Air Patrol areas. 
+Coin Toss: Winner chooses First Player and Axis/Allies.  
+Zone Cards: Select 5 unique zones secretly, form game board.  
+Air Force: Spend Production Points (from zones) on units, aces, events.  
+Deployment: Place units in Base or Combat Air Patrol areas.  
 
-Gameplay[NYI] 
+Gameplay[NYI]  
 
-Turns: 10 turns, each with Event, Launch, Action, Landing, Combat Air Patrol phases. 
-Event Phase: Play event cards (e.g., ). 
-Launch Phase: Move aircraft to Raid, Repair, or Shuttle. 
-Action Phase: Air combat, anti-aircraft, bombing, saving rolls. 
-Landing Phase: Return aircraft to Base areas. 
-Combat Air Patrol Phase: Move aircraft to protect zones. 
+Turns: 10 turns, each with Event, Launch, Action, Landing, Combat Air Patrol phases.  
+Event Phase: Play event cards (e.g., ).  
+Launch Phase: Move aircraft to Raid, Repair, or Shuttle.  
+Action Phase: Air combat, anti-aircraft, bombing, saving rolls.  
+Landing Phase: Return aircraft to Base areas.  
+Combat Air Patrol Phase: Move aircraft to protect zones.  
 
-Controls 
+Controls  
 
-ESC key: pauses the game and displays the Main Menu. 
+ESC key: pauses the game and displays the Main Menu.  
 
-Space: pauses the game and displays the Main Menu.
+Space: pauses the game and displays the Main Menu. 
 
-X: Quits without saving.
+X: Quits without saving. 
 
-Delete: Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents.
+Delete: Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents. 
 
-THE MAIN MENU: 
+THE MAIN MENU:  
 
-The Main Menu appears once the opening animation is concluded or skipped by pressing the spacebar or clicking the indicated area at the bottom of the screen, or when the game is paused by pressing the Escape Key or the Space Bar or clicking the word "Pause" in the Main Screen.  The Main Menu indicates the currently-running game version in the lower-right corner.  The following options are available, located on the left-hand side of the screen: 
+The Main Menu appears once the opening animation is concluded or skipped by pressing the spacebar or clicking the indicated area at the bottom of the screen, or when the game is paused by pressing the Escape Key or the Space Bar or clicking the word "Pause" in the Main Screen.  The Main Menu indicates the currently-running game version in the lower-right corner.  The following options are available, located on the left-hand side of the screen:  
 
-CONTINUE:  
-[NYI] Loads the last-saved game if you just started a new session, or returns you to the Main Screen if you've paused the game. 
+CONTINUE:   
+[NYI] Loads the last-saved game if you just started a new session, or returns you to the Main Screen if you've paused the game.  
 
-SAVE:   
-[NYI] Saves the current game.  You'll be given an option to name your save;  if you don't the save will be named with the current time, the turn number, and the active phase.  This option will only be available if you paused the game to access the Main Menu. 
+SAVE:    
+[NYI] Saves the current game.  You'll be given an option to name your save;  if you don't the save will be named with the current time, the turn number, and the active phase.  This option will only be available if you paused the game to access the Main Menu.  
 
-NEW:   
-[NYI] Allows you to set up and start playing a new game of War Eagles.  This option will provide you with the choice to start the tutorial or start a new full game. Clicking the "Restart" button at the bottom-center of the screen will restart the program, beginning with the opening animation.  
+NEW:    
+[NYI] Allows you to set up and start playing a new game of War Eagles.  This option will provide you with the choice to start the tutorial or start a new full game. Clicking the "Restart" button at the bottom-center of the screen will restart the program, beginning with the opening animation.   
 
-LOAD:   
-[NYI] Loads a saved game.  You'll asked to choose the game by name, and load it by clicking the "Load" button in the bottom-center of the screen.  Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or spacebar will return you to the Main Menu (as if you had paused the game).   
+LOAD:    
+[NYI] Loads a saved game.  You'll asked to choose the game by name, and load it by clicking the "Load" button in the bottom-center of the screen.  Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or spacebar will return you to the Main Menu (as if you had paused the game).    
 
-TUTORIAL:  
-[NYI] Starts the tutorial scenario.  Pressing the Escape key or the spacebar, or clicking the "Restart" button in the lower-righthand corner of the screen, will restart the program beginning with the opening animation. 
+TUTORIAL:   
+[NYI] Starts the tutorial scenario.  Pressing the Escape key or the spacebar, or clicking the "Restart" button in the lower-righthand corner of the screen, will restart the program beginning with the opening animation.  
 
-CREDITS: 
-The most important screen in War Eagles;  without these folks' contributions, and their generous licensing, this game simply wouldn't exist.  Note that contributors are listed by name under each category to which they've contributed.  In the case of composite models, each of the modelmakers who contributed is credited with the model.  For the musical themes, each of the songs used to create the theme track is credited with the artist's name. 
+CREDITS:  
+The most important screen in War Eagles;  without these folks' contributions, and their generous licensing, this game simply wouldn't exist.  Note that contributors are listed by name under each category to which they've contributed.  In the case of composite models, each of the modelmakers who contributed is credited with the model.  For the musical themes, each of the songs used to create the theme track is credited with the artist's name.  
 
-You can access the Credit Screen from the Main Menu by clicking "Credits."  Pressing the Escape Key, the spacebar, or clicking the "Back" button in the lower-right corner will close the Credit Screen and return you to the Main Menu. 
+You can access the Credit Screen from the Main Menu by clicking "Credits."  Pressing the Escape Key, the spacebar, or clicking the "Back" button in the lower-right corner will close the Credit Screen and return you to the Main Menu.  
 
-OPTIONS:  [NYI] Opens the Options screen, which allows you to change your video resolution, adjust the volumes of the game music and sopund effects, and provides some choices about how you control the game and how gameplay proceeds.  Clicking the "Accept" button in the bottom-center will activate the options you've selected and cause the game to save. Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or spacebar will return you to the Main Menu (as if you had paused the game).  
+OPTIONS:  [NYI] Opens the Options screen, which allows you to change your video resolution, adjust the volumes of the game music and sopund effects, and provides some choices about how you control the game and how gameplay proceeds.  Clicking the "Accept" button at the bottom will activate the options you've selected and cause the game to save. Clicking the "Cancel" button, or pressing the Escape key or spacebar, will return you to the Main Menu (as if you had paused the game).
 
-EXTRAS:  
-MODELS tab: This tab contains selected models from the game that you can export to your computer for personal use. Models are bundled into .zip files.  Check the attached Modellicense.txt files for licensing requirement, especially before distributing the models or using them for commercial purposes.
-SOUNDTRACK Tab:  Allows you to listen to the music used in War Eagles (by clicking on the titles) or export the songs by clicking the “Export” icon to the right [res://Assets/Sprites/MusicExport.png]. The last entry exports a .zip file containing selected songs used as the sources for the national soundtrack. Again, these are all free for your personal enjoyment, but check the enclosed licenses before distributing them or using them for commercial purposes.
-HISTORY OF AERIAL STRATEGY: [NYI]  A brief article about the roots and development of the strategy of air power, from WWI through WWII.
-FURTHER READING: A list of some of the books that inspired and informed the creating of War Eagles.  You can export this list as a PDF.
-DESIGNER’S NOTES:  A brief article describing the development of War Eagles, from its first concept as a collectible card game in 1995 to the development of the digital version you’re l;ooking at today.
-Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or space bar will return you to the Main Menu (as if you had paused the game).
-*Player's Note: Everything you save from the Extras screen will be stored in the War Eagles Folder in your Documents.*
+	Video and Display:  Allows you to set the resolution the game plays at (Standard, HD, 2K, 4K, or 8K).  The game automatically detects your video hardware;  but if you want to use a separate monitor, or cast the view, this lets you choose manually.  You can also choose to customize the way the user interface looks;  by default, it will present in colors that represent your nation, but you can use the War Eagles color palette, a high-contrast palette, or a system-style view.  If you like the national colors but find the font hard to read, you can adjust that here as well. The game also represents the phase and turn you’re in by a fictitious time and date;  you can set the dispaly to simple phase/turn here. 
 
-HELP: [NYI] Opens the main Help Menu. Clicking the "Main Menu" button in the lower-right of the screen or pressing the Escape key or spacebar will return you to the Main Menu (as if you had paused the game). 
+	Audio:  You can adjust the volume of the music, the sound effects, and the voiceovers;  or you can adjust them simultaneously using the master volume.
 
-QUIT: [NYI] Provides an option to save the game, if you've started playing this session, and then closes the game. 
+	Controls: Presents the actions available in the game and the keys, mouse clicks, or controller inputs to perform them.  You can also enable your controller here, though doing so will require you to restart the game.
+
+	Gameplay Options:  Provides the ability to customize your gaming experience:
+
+		Mode (requires restart): Quality Mode presents the game as intended.  Performance mode removes the enviromental effects, the gameboard terrain, the voiceovers, and reduces the quality of some models.  USING PERFORMANCE MODE WILL SIGNIFICANTLY   REDUCE THE VISUAL EXPERIENCE!  You should only select this if your computer performs badly while playing on Quality Mode.
+		Game Year:  “Historical” means you may only select “years” in Game Setup in which the Nation you started with was historically a belligerent.  “Free” lets you choose any game year.
+		Opponent Selection:  “Historical”  mean you may only choose an opponent who was historically an enemy of your alliance (Allies: UK, US and Soviets;  or Axis, Germany or Japan) AND a belligerent in the year you’ve selected.  “Year Only means you can choose your opponent from any country, limited by the year;  “Alliance Only” means you can select your opponent from the enemy Alliance, but without being limited by the year.  “Free” means you can choose any country as an opponent in any year.
+
+		Zone Selection:  “Nation” limits your Zone selections to your nationality only.  “Alliance allows you to select any Zones available to nations of your alliance, and “Free” allows you to select any Zones. *Changing the Zone selection limits may affect play balance!*
+
+		Unit, Ace, and Event Purchases:  “Historical” limits you to purchasing units, aces, and events of your Nation, available in the game year you chose.  “Nation Only”  allows you to purchase any items available to your Nation, regardless of year;  “Year Only” allows you to purchase any items, of any Nation, available in that year.  “Alliance Only” allows you to purchase any units, aces, or events available to Nations in your Alliance; “Alliance and Year” further filters this selection by the year the item is available.
+
+		Button Press Sound:  “Off” disables the keystroke sound when you press any button.
+
+		Movement:  “Normal” plays all unit movement animations; “Fast Player” disables animations when you move a unit; “Fast Opponent”  disables animations whe your opponent moves; “Fast Movement” disables all movement animations.
+
+		Combat: “Normal” plays all combat animations; “Fast Player” disables animations when your units attack or are damaged; “Fast Opponent”  disables animations when your opponent attacks or is damaged; “Fast Movement” disables all combat animations.
+
+		Transitions: “Normal” plays all phase and turn transition animations.  “Fast Phases” disables phase transitions;  “Fast Turns” disables turn transitions. “Fast Transitions” disables all transition effects.
+
+		Voiceovers:  “Normal” leaves all voiceovers in the game.  “Voice in Tutorial Only” disables all voiceovers in regular gameplay.  “Voice in Game Only” disables all the voiceovers in the Tutorial Scenario. “No Voiceovers” disables all voiceovers.
+
+			
+
+EXTRAS:   
+MODELS tab: This tab contains selected models from the game that you can export to your computer for personal use. Models are bundled into .zip files.  Check the attached Modellicense.txt files for licensing requirement, especially before distributing the models or using them for commercial purposes. 
+SOUNDTRACK Tab:  Allows you to listen to the music used in War Eagles (by clicking on the titles) or export the songs by clicking the icon to the right [res://Assets/Sprites/MusicExport.png]. The last entry exports a .zip file containing selected songs used as the sources for the national soundtrack. Again, these are all free for your personal enjoyment, but check the enclosed licenses before distributing them or using them for commercial purposes. 
+HISTORY OF AERIAL STRATEGY: [NYI]  A brief article about the roots and development of the strategy of air power, from WWI through WWII. 
+FURTHER READING: A list of some of the books that inspired and informed the creating of War Eagles.  You can export this list as a PDF. 
+DESIGNER’S NOTES:  A brief discussion of the design process and history of War Eagles. 
+Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or space bar will return you to the Main Menu (as if you had paused the game). 
+*Player's Note: Everything you save from the Extras screen will be stored in the War Eagles Folder in your Documents.* 
+
+HELP: [NYI] Opens the main Help Menu. Clicking the "Main Menu" button in the lower-right of the screen or pressing the Escape key or spacebar will return you to the Main Menu (as if you had paused the game).  
+
+QUIT: [NYI] Provides an option to save the game, if you've started playing this session, and then closes the game.  
 
 
-Keyboard Shortcuts: 
+Keyboard Shortcuts:  
 
-ESC key: pauses the game and displays the Main Menu. 
+ESC key: pauses the game and displays the Main Menu.  
 
-Space: pauses the game and displays the Main Menu.
+Space: pauses the game and displays the Main Menu. 
 
-X: Quits without saving.
+X: Quits without saving. 
 
-Delete: Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents.
+Delete: Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents. 
 
 
-Events[NYI] 
+Events[NYI]  
 
-Types: Technology (lasting effects), Immediate (1-turn effects). 
-Examples: TBD from events.csv (e.g., ). 
+Types: Technology (lasting effects), Immediate (1-turn effects).  
+Examples: TBD from events.csv (e.g., ).  
 
-Winning[NYI] 
+Winning[NYI]  
 
-Earn Victory Points from undestroyed Target Units and destroyed enemy units. 
-Highest VP total at end of Turn 10 wins; continue if tied. 
+Earn Victory Points from undestroyed Target Units and destroyed enemy units.  
+Highest VP total at end of Turn 10 wins; continue if tied.  
 
-Notes 
+Notes  
 
-Add tooltip text during coding (e.g., ). 
-Update weekly with coding/testing insights (e.g., AI opponent behavior). 
+Add tooltip text during coding (e.g., ).  
+Update weekly with coding/testing insights (e.g., AI opponent behavior).  
 
