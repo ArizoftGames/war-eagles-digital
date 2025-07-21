@@ -24,6 +24,7 @@ layer = 2
 
 [node name="Pause_Menu" type="Control" parent="."]
 light_mask = 2
+visibility_layer = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 2560.0
@@ -188,18 +189,15 @@ layout_mode = 2
 tooltip_text = "Adjust game settings"
 text = "OPTIONS"
 alignment = 0
-item_count = 5
-popup/item_0/text = "Options"
-popup/item_0/id = 4
-popup/item_0/separator = true
-popup/item_1/text = "Video and Display"
+item_count = 4
+popup/item_0/text = "Video and Display"
+popup/item_0/id = 0
+popup/item_1/text = "Audio"
 popup/item_1/id = 1
-popup/item_2/text = "Audio"
-popup/item_2/id = 0
-popup/item_3/text = "Controls"
-popup/item_3/id = 2
-popup/item_4/text = "Game Settings"
-popup/item_4/id = 3
+popup/item_2/text = "Controls"
+popup/item_2/id = 2
+popup/item_3/text = "Game Settings"
+popup/item_3/id = 3
 
 [node name="ExtrasButton" type="Button" parent="Pause_Menu/MainMenu"]
 process_mode = 3

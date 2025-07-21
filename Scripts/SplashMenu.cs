@@ -35,8 +35,7 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
                 }
                 var optionsInstance = optionsScene.Instantiate();
                 AddChild(optionsInstance);
-                var optionsControl = optionsInstance as Control;
-                if (optionsControl != null)
+                if (optionsInstance is Control optionsControl)
                     optionsControl.Visible = false; // Hide by default
 
                 // Connect OptionsButton signal
@@ -171,8 +170,7 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
                             GD.Print("DisplayPanel found: ", displayPanel);
                             displayPanel.Show();
                             GD.Print("DisplayPanel visible: ", displayPanel.Visible);
-                            var displayMenu = displayPanel as DisplayMenuPanel;
-                            if (displayMenu != null)
+                            if (displayPanel is DisplayMenuPanel displayMenu)
                                 displayMenu.InitializeDisplayMenu("Video and Display");
                             else
                                 GD.PrintErr("DisplayMenuPanel script not attached to DisplayMenuPanel node.");

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brce3w3ns360d"]
+[gd_scene load_steps=4 format=3 uid="uid://brce3w3ns360d"]
 
 [ext_resource type="Theme" uid="uid://cw6t7lhrewpw5" path="res://Data/Resources/UI_Theme .tres" id="1_rou1w"]
 [ext_resource type="Script" uid="uid://bcujn4fnjqwd8" path="res://Scripts/DisplayMenuPanel.cs" id="2_hg628"]
+[ext_resource type="Script" uid="uid://clhmwdrhbhin4" path="res://Scripts/AudioMenuPanel.cs" id="3_5hy3q"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(2560, 0)
@@ -11,9 +12,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("1_rou1w")
 
 [node name="DisplayMenuPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(1024, 1162)
 layout_mode = 1
 anchors_preset = 8
@@ -37,22 +40,6 @@ offset_right = 640.0
 offset_bottom = 58.0
 
 [node name="AudioMenuPanel" type="Panel" parent="."]
-visible = false
-custom_minimum_size = Vector2(768, 512)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -256.0
-offset_right = 268.0
-offset_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AudioMenu" type="VBoxContainer" parent="AudioMenuPanel"]
 custom_minimum_size = Vector2(768, 512)
 layout_mode = 1
 anchors_preset = 8
@@ -61,9 +48,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -390.0
-offset_top = -256.0
+offset_top = -281.5
 offset_right = 390.0
-offset_bottom = 256.0
+offset_bottom = 281.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5hy3q")
+
+[node name="AudioMenu" type="VBoxContainer" parent="AudioMenuPanel"]
+custom_minimum_size = Vector2(768, 512)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12

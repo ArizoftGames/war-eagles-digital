@@ -12,6 +12,27 @@
  7.  Commented-out code lines are intended for archival purposes during debugging and should be retained (as comments) when creating replacement (updated) code.  They will be removed for efficiency before project deployment. 
  8. Grok must explicitly ask, ‘Is [element] intended, and if so, provide details (e.g., file, value)?’ rather than including inferred coding elements (e.g., method arguments, resource keys).
 
+##Coding Workflow
+
+1. Scene Planning: Collaborate with Grok to define scene goals, objectives, and solutions. Specify required assets. Grok drafts a Scene Plan with high-level pseudocode, outlining key logic, Node3D nodes, signals, and error-handling within the WarEaglesDigital.Scripts namespace.
+2. Scene Creation: Create scene(s) in Godot 4.4 .NET editor, populating scene tree(s) with PascalCasing for node names. Source assets and create .tres files. Attach C# scripts in WarEaglesDigital.Scripts namespace.
+3. Copilot Prompt Development: Provide Grok with Scene Plan and raw .tscn text output from Godot. Upon consensus that the scene meets the Scene Plan, Grok generates a Copilot prompt in pseudocode, specifying WarEaglesDigital.Scripts namespace, node paths, signals, and error-handling. Ensure that prompts specify good resource amangement techniques where appropriate.
+*Grok should recommend signals connections and handling during this step for prompt inclusion upon user approval*
+4. Prompt Review and Code Generation: Review/edit Copilot prompt, verifying WarEaglesDigital.Scripts namespace, node paths, signal connections, and error-handling. Input prompt to Copilot, checking output for errors (e.g., truncation, missing functionality) using checklist:
+Confirm WarEaglesDigital.Scripts namespace usage.
+Validate node paths against scene tree.
+Ensure signal connections are defined.
+Add try-catch blocks if missing.
+5. Script Proofing and Feedback: Upload Copilot-generated script to Grok for proofing. Grok reviews for form and functionality (e.g., namespace, signals, error-handling) using a template and provides structured feedback with suggested fixes, including NUnit test suggestions for key methods.
+6. Script Integration and Debugging: Apply script changes in Visual Studio, resolving IntelliSense errors using GD.Print and Visual Studio debugger. Utilize Grok and Copilot as appropriate to aid debugging.
+7. Scene Testing: Compile and run scene in Godot 4.4, using profiler to monitor 60 FPS target. Test functionality with predefined test cases from Scene Plan. Debug compilation/runtime errors with Grok and Copilot, ensuring inputs yield expected results.
+8. Iteration and Integration: Repeat Steps 3–7 until Scene Plan is fulfilled. Implement interscene interactions using standardized scene transitions with error-handling (e.g., try-catch for scene loading). Validate interactions and resolve issues.
+9. Documentation and Version Control: Update docs/user_guide.md with scene functionality, controls, and audio notes. Commit changes daily to GitHub via Visual Studio Git Changes, using task-specific branches. Merge successful branches to main or dev and delete via VS Git control panel; document failed branches in docs/user_guide.md before deletion.oding Workflow
+
+## Refining the Coding Workflow during UI Creation
+The main goal of creating prompts to build the UI screens programmatically, rather than the much FASTER route of me  building them in the editor and just scripting function, is to get the Geoff> Evie >  Copilot workflow detailed in Guidelines under Coding Workflow as refined as we possibly can before we start in to the gameplay and AI coding, where the end state is less well-defined and missed marks may be less immediately recognizable and fixable.  
+The baseline, what can be produced with full foreknowledge of the intended result, has been established.  We're now working on introducing variables by reducing known end states, and identifying issues and incorporating mitigations.
+
 ##Prompting Guide 
 
 These rules ensure precise, efficient collaboration with Grok and Copilot for projects like `war-eagles-digital`, using Godot 4.4 .NET. 
@@ -29,9 +50,9 @@ Layer 6 = Game (gameboard; terrains)
 If in doubt about applicability or category, seek user input in preference to inference. 
 3. Seek Objective Truth: Coach Copilot to use the `war-eagles-digital` solution7 until Scene Plan is fulfilled. Implement interscene interactions using standardized scene transitions with error-handling (e.g., try-catch for scene loading). Validate interactions and resolve issues.
 4. Before generating pseudocode, confirm all elements (e.g., arguments, resources) are explicitly provided or requested from user. 
-5.Proactive Debugging: Add GD.Print in key methods (e.g., InitializeDisplayMenu) to log entry/exit, aiding flow tracking as complexity increases.
+5. Proactive Debugging: Add GD.Print in key methods (e.g., InitializeDisplayMenu) to log entry/exit, aiding flow tracking as complexity increases.
 6. Iterate Guidelines: Tweak prompting to emphasize runtime behavior checks (e.g., “verify visibility post-signal”) to boost confidence in catching issues. 
- 9. **Documentation and Version Control**: Update `docs/user_guide.md` with scene functionality, controls, and audio notes. Commit changes daily to GitHub via Visual Studio Git Changes, using task-specific branches. Merge successful branches to `main` or `dev` and delete via VS Git control panel; document failed branches in `docs/user_guide.md` before deletion. 
+ 7. Prompt should be prefaced with a roleplaying statement, such as: "You are a Godot 4.4 .NET developer in a AAA game studio working on the `war-eagles-digital` project. Your task is to generate C# code for <script name>, providing the specified functionality, ensuring compatibility with existing code and following the project's coding guidelines."" 
 
 - **My Role**: 
  1. Draft Scene Plans with pseudocode, specifying `WarEaglesDigital.Scripts` namespace, node paths, signals, and error-handling. 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://hnbt83ji848q"]
+[gd_scene load_steps=7 format=3 uid="uid://hnbt83ji848q"]
 
 [ext_resource type="Theme" uid="uid://cw6t7lhrewpw5" path="res://Data/Resources/UI_Theme .tres" id="1_qqnya"]
 [ext_resource type="Theme" uid="uid://w1oxyu48s3so" path="res://Data/Resources/HUD_SU_Theme.tres" id="2_hg628"]
 [ext_resource type="Theme" uid="uid://inc5bbuts5fe" path="res://Data/Resources/HUD_WE_Theme.tres" id="3_q4at1"]
 [ext_resource type="Theme" uid="uid://2mtooslkwdu3" path="res://Data/Resources/HUD_HC_Theme.tres" id="4_6f4k2"]
 [ext_resource type="Theme" uid="uid://8x3p758q3e4" path="res://Data/Resources/HUD_SY_Theme.tres" id="5_bdxpv"]
+[ext_resource type="Script" uid="uid://clhmwdrhbhin4" path="res://Scripts/AudioMenuPanel.cs" id="6_nsth2"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(2560, 0)
@@ -179,7 +180,7 @@ size_flags_vertical = 4
 text = "Cancel"
 
 [node name="AudioMenuPanel" type="Panel" parent="."]
-custom_minimum_size = Vector2(768, 512)
+custom_minimum_size = Vector2(768, 563)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,19 +193,14 @@ offset_right = 268.0
 offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_nsth2")
 
 [node name="AudioMenu" type="VBoxContainer" parent="AudioMenuPanel"]
 custom_minimum_size = Vector2(768, 512)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -390.0
-offset_top = -256.0
-offset_right = 390.0
-offset_bottom = 256.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
@@ -273,6 +269,10 @@ layout_mode = 2
 max_value = 10.0
 tick_count = 10
 ticks_on_borders = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AudioMenuPanel/AudioMenu"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
 
 [node name="CloseContainer" type="HBoxContainer" parent="AudioMenuPanel/AudioMenu"]
 custom_minimum_size = Vector2(0, 80)

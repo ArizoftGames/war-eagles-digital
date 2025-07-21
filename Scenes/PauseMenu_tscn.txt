@@ -1,0 +1,227 @@
+[gd_scene load_steps=15 format=3 uid="uid://dmt2xpcgcxyjf"]
+
+[ext_resource type="Texture2D" uid="uid://0vlslhjho8fi" path="res://Assets/Sprites/MenuBG_2K.png" id="1_1363l"]
+[ext_resource type="FontFile" uid="uid://s2i0qyq8iank" path="res://Assets/Fonts/DEUTSCH.TTF" id="1_c7c70"]
+[ext_resource type="Script" uid="uid://cn4bhii85xv28" path="res://Scripts/PauseMenu.cs" id="1_h171x"]
+[ext_resource type="Texture2D" uid="uid://cshhbee6vxsit" path="res://Assets/Sprites/WELogo_2K.png" id="2_h171x"]
+[ext_resource type="FontFile" uid="uid://cnifdhyhkb3la" path="res://Assets/Fonts/COUR.TTF" id="2_pmvjn"]
+[ext_resource type="FontFile" uid="uid://budr0qss5bqm1" path="res://Assets/Fonts/COURI.TTF" id="3_1363l"]
+[ext_resource type="FontFile" uid="uid://16exijtd5qax" path="res://Assets/Fonts/COURBI.TTF" id="4_h171x"]
+[ext_resource type="FontFile" uid="uid://cnf2kq6b2kvqy" path="res://Assets/Fonts/COURBD.TTF" id="5_n6ygf"]
+[ext_resource type="Texture2D" uid="uid://dp1fngqk0dglh" path="res://Assets/Sprites/Hinomaru_1_64.png" id="7_p6p71"]
+[ext_resource type="Texture2D" uid="uid://c173k5xjy4tem" path="res://Assets/Sprites/RAFRoundel_1_64.png" id="8_hw4na"]
+[ext_resource type="Texture2D" uid="uid://jbpanaxenr32" path="res://Assets/Sprites/USRoundel_41_64.png" id="9_epvri"]
+[ext_resource type="Theme" uid="uid://dcd53orrmnhi8" path="res://Data/Resources/MainMenuTheme.tres" id="9_n6ygf"]
+[ext_resource type="Texture2D" uid="uid://dj3wjf1m7oiu1" path="res://Assets/Sprites/RedStar_1_64.png" id="10_mexcr"]
+[ext_resource type="Texture2D" uid="uid://cxwsru2f3f8et" path="res://Assets/Sprites/Balkenkruez_1_64.png" id="11_8kogi"]
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("_versionLabel")]
+script = ExtResource("1_h171x")
+_versionLabel = NodePath("Pause_Menu/Version Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Pause_Menu" type="Control" parent="."]
+light_mask = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2560.0
+offset_bottom = 1440.0
+
+[node name="Background" type="Sprite2D" parent="Pause_Menu"]
+texture = ExtResource("1_1363l")
+centered = false
+
+[node name="GameLogo" type="Sprite2D" parent="Pause_Menu"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_h171x")
+centered = false
+offset = Vector2(1100, 300)
+
+[node name="Title" type="Label" parent="Pause_Menu"]
+layout_mode = 0
+anchor_left = 0.148438
+anchor_top = 0.00694444
+anchor_right = 0.883203
+anchor_bottom = 0.354167
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.262933, 0.262932, 0.262932, 0.490196)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_c7c70")
+theme_override_font_sizes/font_size = 420
+text = "War Eagles"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PoweredInfo" type="RichTextLabel" parent="Pause_Menu"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0429688
+anchor_top = 0.902778
+anchor_right = 0.941406
+anchor_bottom = 0.972222
+theme_override_colors/default_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+theme_override_fonts/normal_font = ExtResource("2_pmvjn")
+theme_override_fonts/italics_font = ExtResource("3_1363l")
+theme_override_fonts/bold_italics_font = ExtResource("4_h171x")
+theme_override_fonts/bold_font = ExtResource("5_n6ygf")
+theme_override_font_sizes/bold_italics_font_size = 75
+theme_override_font_sizes/italics_font_size = 75
+theme_override_font_sizes/mono_font_size = 75
+theme_override_font_sizes/normal_font_size = 75
+theme_override_font_sizes/bold_font_size = 75
+bbcode_enabled = true
+text = "[b]Powered by [img]res://Assets/Sprites/logo_small_monochrome_light.png[/img] and[/b] [img]res://Assets/Sprites/T3DLogo_light.png[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Version Label" type="Label" parent="Pause_Menu"]
+custom_minimum_size = Vector2(440, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.820313
+anchor_top = 0.916667
+anchor_right = 0.992188
+anchor_bottom = 0.986111
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+theme_override_fonts/font = ExtResource("5_n6ygf")
+theme_override_font_sizes/font_size = 40
+text = "Version v 0.1.0
+Build 1000000"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="BoxContainer" parent="Pause_Menu"]
+layout_mode = 0
+anchor_left = 0.00976563
+anchor_top = 0.277778
+anchor_right = 0.205078
+anchor_bottom = 0.85625
+offset_top = -3.05176e-05
+offset_bottom = -18.0
+theme = ExtResource("9_n6ygf")
+vertical = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Open last saved game"
+text = "CONTINUE"
+flat = true
+alignment = 0
+
+[node name="SaveButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Save the game
+"
+text = "SAVE"
+flat = true
+alignment = 0
+
+[node name="LoadButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Choose a saved game to open
+"
+text = "LOAD"
+flat = true
+alignment = 0
+
+[node name="NewButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Choose a nation to set up a new game"
+text = "NEW"
+alignment = 0
+item_count = 11
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/id = 2
+popup/item_1/separator = true
+popup/item_2/text = "Imperial Japan"
+popup/item_2/icon = ExtResource("7_p6p71")
+popup/item_2/id = 0
+popup/item_3/id = 7
+popup/item_3/separator = true
+popup/item_4/text = "British Commonwealth"
+popup/item_4/icon = ExtResource("8_hw4na")
+popup/item_4/id = 1
+popup/item_5/id = 8
+popup/item_5/separator = true
+popup/item_6/text = "United States"
+popup/item_6/icon = ExtResource("9_epvri")
+popup/item_6/id = 1
+popup/item_7/id = 9
+popup/item_7/separator = true
+popup/item_8/text = "Soviet Union"
+popup/item_8/icon = ExtResource("10_mexcr")
+popup/item_8/id = 3
+popup/item_9/id = 10
+popup/item_9/separator = true
+popup/item_10/text = "German Reich"
+popup/item_10/icon = ExtResource("11_8kogi")
+popup/item_10/id = 4
+
+[node name="CreditsButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "You wouldn't have this game without these artists!"
+text = "CREDITS"
+flat = true
+alignment = 0
+
+[node name="OptionsButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Adjust game settings"
+text = "OPTIONS"
+alignment = 0
+item_count = 4
+popup/item_0/text = "Video and Display"
+popup/item_0/id = 0
+popup/item_1/text = "Audio"
+popup/item_1/id = 1
+popup/item_2/text = "Controls"
+popup/item_2/id = 2
+popup/item_3/text = "Game Settings"
+popup/item_3/id = 3
+
+[node name="ExtrasButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Models, music, and more!"
+text = "EXTRAS"
+flat = true
+alignment = 0
+
+[node name="HelpButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Read \"Principles of Aerial Warfare\""
+text = "HELP"
+flat = true
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="Pause_Menu/MainMenu"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "Quit the game without saving"
+mouse_filter = 1
+text = "QUIT
+"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="Pause_Menu/MainMenu/QuitButton" to="." method="OnQuitButtonPressed"]

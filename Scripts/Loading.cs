@@ -12,7 +12,7 @@ namespace WarEaglesDigital.Scripts
         //private AnimationPlayer Fadeout_Player;
         private readonly string _userConfigPath = "user://War Eagles/config.cfg";
         private readonly string _resConfigPath = "res://Data/War Eagles/config.cfg";
-        private ConfigFile _config = new ConfigFile();
+        private ConfigFile _config = new();
         private Dictionary _settings = new Dictionary();
         private string _activeConfigPath;
         private readonly Vector2I[] _supportedResolutions = new[]

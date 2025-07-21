@@ -32,12 +32,14 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 }
                 var optionsInstance = optionsScene.Instantiate();
                 AddChild(optionsInstance);
-                var optionsControl = optionsInstance as Control;
-                if (optionsControl != null)
+                GD.Print("Options children: ", optionsInstance.GetChildren());
+                if (optionsInstance is Control optionsControl)
                     optionsControl.Visible = false; // Hide by default
 
                 // Connect OptionsButton signal
+
                 var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
+                var popup = optionsButton.GetPopup();
                 optionsButton.GetPopup().IndexPressed += OnOptionsButtonItemSelected;
 
                 // Apply Versioning info
@@ -73,7 +75,8 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
 
         }
 
-        private void OnOptionsButtonItemSelected(long index)
+
+private void OnOptionsButtonItemSelected(long index)
         {
             try
             {
@@ -92,35 +95,43 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                     if (child is Panel panel)
                         panel.Visible = false;
                 }
-
+                GD.Print("Selected index: ", index);
                 // Show the selected panel based on index
                 switch (index)
                 {
-                    case 1: // Video and Display
+                    
+                    case 0: // Video and Display
                         var displayPanel = optionsNode.GetNode<Panel>("DisplayMenuPanel");
                         if (displayPanel != null)
                         {
                             GD.Print("DisplayPanel found: ", displayPanel);
                             displayPanel.Show();
                             GD.Print("DisplayPanel visible: ", displayPanel.Visible);
-                            var displayMenu = displayPanel as DisplayMenuPanel;
-                            if (displayMenu != null)
+                            if (displayPanel is DisplayMenuPanel displayMenu)
                                 displayMenu.InitializeDisplayMenu("Video and Display");
                             else
                                 GD.PrintErr("DisplayMenuPanel script not attached to DisplayMenuPanel node.");
                         }
                         break;
-                    case 0: // Audio
+                    case 1: // Audio
                         var audioPanel = optionsNode.GetNode<Panel>("AudioMenuPanel");
-                        if (audioPanel != null) audioPanel.Visible = true;
+                        GD.Print("audioPanel: ", optionsNode.GetNodeOrNull<Panel>("AudioMenuPanel"));
+                        if (audioPanel != null)
+                        {
+                            GD.Print("AudioPanel found: ", audioPanel);
+                            audioPanel.Show();
+                            GD.Print("AudioPanel visible: ", audioPanel.Visible);
+                            if (audioPanel is AudioMenuPanel audioMenu)
+                                audioMenu.InitializeAudioMenu("Audio");
+                            else
+                                GD.PrintErr("AudioMenuPanel script not attached to AudioMenuPanel node.");
+                        }
                         break;
                     case 2: // Controls
-                        var controlsPanel = optionsNode.GetNode<Panel>("ControlsPanel");
-                        if (controlsPanel != null) controlsPanel.Visible = true;
+                        GD.Print("Controls branch NYI: ControlsMenuPanel.cs not implemented.");
                         break;
                     case 3: // Game Settings
-                        var gameplayPanel = optionsNode.GetNode<Panel>("GameplayPanel");
-                        if (gameplayPanel != null) gameplayPanel.Visible = true;
+                        GD.Print("Gameplay branch NYI: GameplayMenuPanel.cs not implemented.");
                         break;
                 }
             }
@@ -129,6 +140,7 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 GD.PrintErr($"Exception in OnOptionsButtonItemSelected: {ex.Message}");
             }
         }
+
 
         public void OnExtrasButtonPressed()
         {
