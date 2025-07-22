@@ -18,7 +18,7 @@ namespace WarEaglesDigital.Scripts //Handles the introductory sequence scene
 
             animation_Tree = GetNode<AnimationTree>("AnimationTree");
             state_machine = (AnimationNodeStateMachinePlayback)animation_Tree.Get("parameters/playback");
-            MusicBox = GetNode<AudioManager>("/root/AudioManager");
+            MusicBox = GetNode<AudioManager>("/root/MusicManager");
 
             ///Set MusicBox volume
             var MusicBus = AudioServer.GetBusIndex("Music");

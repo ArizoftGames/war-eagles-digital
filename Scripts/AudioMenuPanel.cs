@@ -35,11 +35,11 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                // Get AudioManager singleton
-                _audioManager = GetNodeOrNull<AudioManager>("/root/AudioManager");
+                // Get MusicManager singleton
+                _audioManager = GetNodeOrNull<AudioManager>("/root/MusicManager");
                 if (_audioManager == null)
                 {
-                    GD.PrintErr("AudioMenuPanel: AudioManager node missing");
+                    GD.PrintErr("AudioMenuPanel: MusicManager node missing");
                     return;
                 }
 
@@ -261,13 +261,13 @@ namespace WarEaglesDigital.Scripts
 
         private float LinearToSlider(float linearVolume)
         {
-            // Convert AudioManager linear volume (0-1) to slider scale (0-10)
+            // Convert MusicManager linear volume (0-1) to slider scale (0-10)
             return Mathf.Round(linearVolume * 10f);
         }
 
         private float SliderToLinear(double sliderValue)
         {
-            // Convert slider value (0-10) to AudioManager linear volume (0-1)
+            // Convert slider value (0-10) to MusicManager linear volume (0-1)
             return (float)(sliderValue / 10.0);
         }
 

@@ -11771,7 +11771,7 @@ theme_override_fonts/font = ExtResource("45_pie4w")
 theme_override_font_sizes/font_size = 150
 text = "Presents..."
 
-[node name="SkipButton" type="Button" parent="."]
+[node name="SkipButton" type="Button" parent="." groups=["ui_buttons"]]
 visible = false
 offset_left = 806.0
 offset_top = 1370.0

@@ -114,7 +114,7 @@ theme = ExtResource("9_n6ygf")
 vertical = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ContinueButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="ContinueButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Open last saved game"
@@ -122,7 +122,7 @@ text = "CONTINUE"
 flat = true
 alignment = 0
 
-[node name="SaveButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="SaveButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Save the game
@@ -131,7 +131,7 @@ text = "SAVE"
 flat = true
 alignment = 0
 
-[node name="LoadButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="LoadButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Choose a saved game to open
@@ -140,7 +140,7 @@ text = "LOAD"
 flat = true
 alignment = 0
 
-[node name="NewButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
+[node name="NewButton" type="MenuButton" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Choose a nation to set up a new game"
@@ -175,7 +175,7 @@ popup/item_10/text = "German Reich"
 popup/item_10/icon = ExtResource("11_8kogi")
 popup/item_10/id = 4
 
-[node name="CreditsButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="CreditsButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "You wouldn't have this game without these artists!"
@@ -183,7 +183,7 @@ text = "CREDITS"
 flat = true
 alignment = 0
 
-[node name="OptionsButton" type="MenuButton" parent="Pause_Menu/MainMenu"]
+[node name="OptionsButton" type="MenuButton" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Adjust game settings"
@@ -199,7 +199,7 @@ popup/item_2/id = 2
 popup/item_3/text = "Game Settings"
 popup/item_3/id = 3
 
-[node name="ExtrasButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="ExtrasButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Models, music, and more!"
@@ -207,7 +207,7 @@ text = "EXTRAS"
 flat = true
 alignment = 0
 
-[node name="HelpButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="HelpButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Read \"Principles of Aerial Warfare\""
@@ -215,7 +215,7 @@ text = "HELP"
 flat = true
 alignment = 0
 
-[node name="QuitButton" type="Button" parent="Pause_Menu/MainMenu"]
+[node name="QuitButton" type="Button" parent="Pause_Menu/MainMenu" groups=["ui_buttons"]]
 process_mode = 3
 layout_mode = 2
 tooltip_text = "Quit the game without saving"

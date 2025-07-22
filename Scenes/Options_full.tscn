@@ -180,6 +180,7 @@ size_flags_vertical = 4
 text = "Cancel"
 
 [node name="AudioMenuPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(768, 563)
 layout_mode = 1
 anchors_preset = 8
@@ -292,18 +293,18 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Cancel"
 
-[node name="ControlsPanel" type="Panel" parent="."]
-visible = false
+[node name="ControlsMenuPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(1280, 1440)
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 1440.0
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="ControlsMenu" type="VBoxContainer" parent="ControlsPanel"]
+[node name="ControlsMenu" type="VBoxContainer" parent="ControlsMenuPanel"]
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -319,7 +320,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ControlsMenuLabel" type="Label" parent="ControlsPanel/ControlsMenu"]
+[node name="ControlsMenuLabel" type="Label" parent="ControlsMenuPanel/ControlsMenu"]
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -327,14 +328,14 @@ theme_override_font_sizes/font_size = 48
 text = "Game Controls"
 horizontal_alignment = 1
 
-[node name="ControlSelectors" type="HBoxContainer" parent="ControlsPanel/ControlsMenu"]
+[node name="ControlSelectors" type="HBoxContainer" parent="ControlsMenuPanel/ControlsMenu"]
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="ControllerLabel" type="Label" parent="ControlsPanel/ControlsMenu/ControlSelectors"]
+[node name="ControllerLabel" type="Label" parent="ControlsMenuPanel/ControlsMenu/ControlSelectors"]
 custom_minimum_size = Vector2(426, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -342,7 +343,7 @@ theme_override_font_sizes/font_size = 32
 text = "Select Game Controller:"
 horizontal_alignment = 1
 
-[node name="KBMButton" type="CheckBox" parent="ControlsPanel/ControlsMenu/ControlSelectors"]
+[node name="KBMButton" type="CheckBox" parent="ControlsMenuPanel/ControlsMenu/ControlSelectors"]
 custom_minimum_size = Vector2(426, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -352,21 +353,21 @@ button_pressed = true
 text = "Keyboard and Mouse (KBM)"
 flat = true
 
-[node name="ControllerButton" type="CheckBox" parent="ControlsPanel/ControlsMenu/ControlSelectors"]
+[node name="ControllerButton" type="CheckBox" parent="ControlsMenuPanel/ControlsMenu/ControlSelectors"]
 custom_minimum_size = Vector2(426, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "X-Box Controller + KBM"
 flat = true
 
-[node name="KeyBindingList" type="GridContainer" parent="ControlsPanel/ControlsMenu"]
+[node name="KeyBindingList" type="GridContainer" parent="ControlsMenuPanel/ControlsMenu"]
 custom_minimum_size = Vector2(1260, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 6
 columns = 3
 
-[node name="KeyBindingLabel" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+[node name="KeyBindingLabel" type="Label" parent="ControlsMenuPanel/ControlsMenu/KeyBindingList"]
 custom_minimum_size = Vector2(412, 0)
 layout_mode = 2
 theme = ExtResource("1_qqnya")
@@ -375,7 +376,7 @@ text = "KB"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="KeyBindingLabel2" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+[node name="KeyBindingLabel2" type="Label" parent="ControlsMenuPanel/ControlsMenu/KeyBindingList"]
 custom_minimum_size = Vector2(412, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -383,14 +384,14 @@ theme_type_variation = &"GridLabel"
 text = "KBM"
 horizontal_alignment = 1
 
-[node name="KeyBindingLabel3" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+[node name="KeyBindingLabel3" type="Label" parent="ControlsMenuPanel/ControlsMenu/KeyBindingList"]
 custom_minimum_size = Vector2(412, 0)
 layout_mode = 2
 theme_type_variation = &"GridLabel"
 text = "XB"
 horizontal_alignment = 1
 
-[node name="KeyBindingLabel4" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+[node name="KeyBindingLabel4" type="Label" parent="ControlsMenuPanel/ControlsMenu/KeyBindingList"]
 custom_minimum_size = Vector2(412, 0)
 layout_mode = 2
 theme = ExtResource("1_qqnya")
@@ -399,7 +400,7 @@ text = "KB"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="KeyBindingLabel5" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+[node name="KeyBindingLabel5" type="Label" parent="ControlsMenuPanel/ControlsMenu/KeyBindingList"]
 custom_minimum_size = Vector2(412, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -407,32 +408,32 @@ theme_type_variation = &"GridLabel"
 text = "KBM"
 horizontal_alignment = 1
 
-[node name="KeyBindingLabel6" type="Label" parent="ControlsPanel/ControlsMenu/KeyBindingList"]
+[node name="KeyBindingLabel6" type="Label" parent="ControlsMenuPanel/ControlsMenu/KeyBindingList"]
 custom_minimum_size = Vector2(412, 0)
 layout_mode = 2
 theme_type_variation = &"GridLabel"
 text = "XB"
 horizontal_alignment = 1
 
-[node name="CloseContainer" type="HBoxContainer" parent="ControlsPanel/ControlsMenu"]
+[node name="CloseContainer" type="HBoxContainer" parent="ControlsMenuPanel/ControlsMenu"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="AcceptButton" type="Button" parent="ControlsPanel/ControlsMenu/CloseContainer"]
+[node name="AcceptButton" type="Button" parent="ControlsMenuPanel/ControlsMenu/CloseContainer"]
 custom_minimum_size = Vector2(160, 120)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Accept"
 
-[node name="CancelButton" type="Button" parent="ControlsPanel/ControlsMenu/CloseContainer"]
+[node name="CancelButton" type="Button" parent="ControlsMenuPanel/ControlsMenu/CloseContainer"]
 custom_minimum_size = Vector2(160, 120)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Cancel"
 
-[node name="GameplayPanel" type="Panel" parent="."]
+[node name="GameplayMenuPanel" type="Panel" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -441,7 +442,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GamePlayMenu" type="VBoxContainer" parent="GameplayPanel"]
+[node name="GamePlayMenu" type="VBoxContainer" parent="GameplayMenuPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -450,7 +451,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="GameplayLabel" type="Label" parent="GameplayPanel/GamePlayMenu"]
+[node name="GameplayLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu"]
 custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -458,30 +459,30 @@ text = "Gameplay Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameplayContainer" type="HBoxContainer" parent="GameplayPanel/GamePlayMenu"]
+[node name="GameplayContainer" type="HBoxContainer" parent="GameplayMenuPanel/GamePlayMenu"]
 layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="SetupContainer" type="VBoxContainer" parent="GameplayPanel/GamePlayMenu/GameplayContainer"]
+[node name="SetupContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
 custom_minimum_size = Vector2(560, 1120)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="SetupLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="SetupLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 text = "Setup Options"
 horizontal_alignment = 1
 
-[node name="RestartLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="RestartLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Accepting changes to these settings will cause the game (but not your computer) to restart."
 autowrap_mode = 3
 
-[node name="ModeButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="ModeButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 selected = 0
@@ -491,20 +492,20 @@ popup/item_0/id = 0
 popup/item_1/text = "Performance Mode"
 popup/item_1/id = 1
 
-[node name="ModeLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="ModeLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Performance mode will eliminate all animations, the surface terrain, and some details in the models.  Recommended ONLY if your computer shows very bad performance on Quality Mode."
 autowrap_mode = 3
 
-[node name="YearLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="YearLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Game Year Selection:"
 
-[node name="YearButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="YearButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -515,13 +516,13 @@ popup/item_0/id = 0
 popup/item_1/text = "Free"
 popup/item_1/id = 1
 
-[node name="OpponentLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="OpponentLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Opponent Selection:"
 
-[node name="OpponentButon" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="OpponentButon" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -536,13 +537,13 @@ popup/item_2/id = 2
 popup/item_3/text = "Free"
 popup/item_3/id = 3
 
-[node name="ZoneLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="ZoneLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Zone Selection:"
 
-[node name="ZoneButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="ZoneButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -555,13 +556,13 @@ popup/item_1/id = 1
 popup/item_2/text = "Free"
 popup/item_2/id = 2
 
-[node name="PurchaseLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="PurchaseLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Unit, Ace, And Event Purchases:"
 
-[node name="PurchaseButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
+[node name="PurchaseButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/SetupContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -580,22 +581,22 @@ popup/item_4/id = 4
 popup/item_5/text = "Free"
 popup/item_5/id = 5
 
-[node name="EffectsContainer" type="VBoxContainer" parent="GameplayPanel/GamePlayMenu/GameplayContainer"]
+[node name="EffectsContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
 custom_minimum_size = Vector2(560, 1120)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="EffectsLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
+[node name="EffectsLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
 layout_mode = 2
 text = "Game Effects"
 horizontal_alignment = 1
 
-[node name="ButtonPressLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
+[node name="ButtonPressLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Button Press Sound:"
 
-[node name="ButtonPressButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
+[node name="ButtonPressButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 selected = 0
@@ -605,29 +606,29 @@ popup/item_0/id = 0
 popup/item_1/text = "Off"
 popup/item_1/id = 1
 
-[node name="GameSpeedContainer" type="VBoxContainer" parent="GameplayPanel/GamePlayMenu/GameplayContainer"]
+[node name="GameSpeedContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
 custom_minimum_size = Vector2(560, 1120)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="SpeedLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="SpeedLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 layout_mode = 2
 text = "Game Speed Options"
 horizontal_alignment = 1
 
-[node name="FastLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="FastLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "\"Fast\" options will eliminate the animations from the selected game actions, speeding up play."
 autowrap_mode = 3
 
-[node name="MoveLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="MoveLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Movement:"
 
-[node name="MoveButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="MoveButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -642,12 +643,12 @@ popup/item_2/id = 2
 popup/item_3/text = "Fast Movement"
 popup/item_3/id = 3
 
-[node name="CombatLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="CombatLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Combat:"
 
-[node name="CombatButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="CombatButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -662,12 +663,12 @@ popup/item_2/id = 2
 popup/item_3/text = "Fast Combat"
 popup/item_3/id = 3
 
-[node name="TransitionLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="TransitionLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Transitions:"
 
-[node name="TransitionButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="TransitionButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -684,12 +685,12 @@ popup/item_3/id = 3
 popup/item_4/text = "No Transitions"
 popup/item_4/id = 4
 
-[node name="VoiceLabel" type="Label" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="VoiceLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Voiceovers:"
 
-[node name="VoiceButton" type="OptionButton" parent="GameplayPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
+[node name="VoiceButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/GameSpeedContainer"]
 custom_minimum_size = Vector2(560, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -704,12 +705,12 @@ popup/item_2/id = 2
 popup/item_3/text = "No Voiceovers"
 popup/item_3/id = 3
 
-[node name="TBDContainer2" type="VBoxContainer" parent="GameplayPanel/GamePlayMenu/GameplayContainer"]
+[node name="TBDContainer2" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
 custom_minimum_size = Vector2(560, 1120)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="CloseContainer" type="HBoxContainer" parent="GameplayPanel/GamePlayMenu"]
+[node name="CloseContainer" type="HBoxContainer" parent="GameplayMenuPanel/GamePlayMenu"]
 custom_minimum_size = Vector2(2500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -717,20 +718,20 @@ size_flags_vertical = 3
 theme_override_constants/separation = 100
 alignment = 2
 
-[node name="ResetButton" type="Button" parent="GameplayPanel/GamePlayMenu/CloseContainer"]
+[node name="ResetButton" type="Button" parent="GameplayMenuPanel/GamePlayMenu/CloseContainer"]
 custom_minimum_size = Vector2(180, 120)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Reset
 "
 
-[node name="AcceptButton" type="Button" parent="GameplayPanel/GamePlayMenu/CloseContainer"]
+[node name="AcceptButton" type="Button" parent="GameplayMenuPanel/GamePlayMenu/CloseContainer"]
 custom_minimum_size = Vector2(180, 120)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Accept"
 
-[node name="CancelButton" type="Button" parent="GameplayPanel/GamePlayMenu/CloseContainer"]
+[node name="CancelButton" type="Button" parent="GameplayMenuPanel/GamePlayMenu/CloseContainer"]
 custom_minimum_size = Vector2(180, 120)
 layout_mode = 2
 size_flags_vertical = 4

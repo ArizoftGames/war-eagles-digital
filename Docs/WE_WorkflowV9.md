@@ -20,11 +20,11 @@
     
 3. **Options Menu**: v 0.1.1 upon completion
 
-  Divided into 4 windows, eacxh accessed by a selecting the corresponding Item in MainMenu (SplashMenu.tscn or PauseMenu.tscn):
-	A. Video and Display: Completed.
-	B. Audio    - Create AudioMenuPanel.cs to populate the AudioMenu branch of Options.tscn with sliders for `Master` and combined `Planes`/`Effects` volumes, interfacing with `AudioManager.cs`s bus volume (`res://Audio/WE_Bus_layout.tres`) ensure robust audio management, while a scalable design accommodates future settings. 
-	C. Controls – Create ControlsMenuPanel.cs to populate the ControlsMenu branch of Options.tscn.  This should provide a mechanism to enable X-Box controller support and a (so far) fixed input map for KBM and controller including camera controls. Address cost/benefit of implementing custom keybinding.
-	D. Gameplay Options – Create GameplayMenuPanel.cs to populate the GameplayMenu branch of Options.tscn.  Contains buttons to set persistent gameplay and UI options per player preference;  write to and read from config.cfg reference in Loading.cs and located in user://War Eagles/. 
+  Divided into 4 windows, each accessed by a selecting the corresponding Item in MainMenu.OptionsButton (SplashMenu.tscn or PauseMenu.tscn):
+	 Index 0. Video and Display: Completed. (Excursus:  Implement Loading.cs as main scene to load settings in config.cfg;  Options windows will read/write to user://War Eagles/config.cfg.  Completed.)
+	 Index 1. Audio: Completed. (Excursus: implement MusicManager and EffectsManager as autoloads vis single AudioManager, and UI button clicks via ui_buttons global group.) 
+	 Index 2. Controls – Create ControlsMenuPanel.cs to populate the ControlsMenu branch of Options.tscn.  This should provide a mechanism to enable X-Box controller support and a (so far) fixed input map for KBM and controller including camera controls. Address cost/benefit of implementing custom keybinding.(Excursus: Implement controller detection, integration, and activation.)
+	 Index 3. Gameplay Options – Create GameplayMenuPanel.cs to populate the GameplayMenu branch of Options.tscn.  Contains buttons to set persistent gameplay and UI options per player preference;  write to and read from config.cfg reference in Loading.cs and located in user://War Eagles/. 
 
 
 4. **Help System Presentation**:
@@ -34,6 +34,18 @@
      - Units and Zone pages present 3d models in embedded VP and stats in label
      - Sections for Game Concepts, Moving Units, Combat Mechanics, Game Setup,  Phases, Units, Zones, Controls, Menus from user_guide.md
      - **Discussion**: A clear help system reduces player frustration in strategy games, per “Game Feel” by Steve Swink. Using tooltips enhances accessibility. 
+
+.  **HUD/in-game interface**
+ - Create `HUD.tscn` with a `Control` node for in-game UI.
+ - Include:
+     - Phase/turn indicator (center)
+     - Nationality indicator ([roundel].png)
+     - Current VP tally
+     - Button links to player/opponent losses pools
+     - Pause button - instantiates `PauseMenu.tscn` over the current scene.
+     - Consider Save (Quicksave?) and Quit buttons (Quit already implemented via X key and on Pause Menu)
+     - Hud will begin using HUD_**_Theme.tres as determined by nationality [NYI], but is customizable by player via Video and Display.  Placeholder with res://Data/Resources/HUD_WE_Theme.tres.
+     - **Discussion**: A well-designed HUD enhances player immersion and usability.  Early HUD implentation will aid visualization, design and testing of gameplay elements.
 
 ### Coding Planning Sub-phase
 

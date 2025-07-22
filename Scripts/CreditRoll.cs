@@ -16,7 +16,7 @@ namespace WarEaglesDigital.Scripts
         private Sprite2D _creditBG0;
         private Sprite2D _creditBG1;
         private Button _backButton;
-        private AudioManager _audioManager;
+        private AudioManager _musicManager;
 
         private const string CreditsTextPath = "res://docs/CreditsText32.txt";
         private const string CreditsThemeUseCase = "Open Credits Animation";
@@ -42,13 +42,13 @@ namespace WarEaglesDigital.Scripts
                 GD.PrintErr("Failed to find Credits_Roll animation.");
             }
             LoadCreditsText();
-            _audioManager = GetNodeOrNull<AudioManager>("/root/AudioManager");
-            if (_audioManager != null)
+            _musicManager = GetNodeOrNull<AudioManager>("/root/MusicManager");
+            if (_musicManager != null)
             {
-                GD.Print("AudioManager found at /root/AudioManager.");
+                GD.Print("AudioManager found at /root/MusicManager.");
                 try
                 {
-                    _audioManager.PlayMusicByUseCase(CreditsThemeUseCase);
+                    _musicManager.PlayMusicByUseCase(CreditsThemeUseCase);
                     GD.Print("Credits music started.");
                 }
                 catch (Exception e)
@@ -244,7 +244,7 @@ namespace WarEaglesDigital.Scripts
         // Transitions to PauseMenu scene
         private void GoToPauseMenu()
         {
-            _audioManager.StopMusic();
+            _musicManager.StopMusic();
             GetTree().ChangeSceneToFile(PauseMenuScene);
         }
     }

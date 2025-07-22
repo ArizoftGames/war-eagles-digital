@@ -26,7 +26,7 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
         private FileDialog _exportDialog;
 
         // AudioManager singleton
-        private AudioManager _audioManager;
+        private AudioManager _musicManager;
 
         // CSV data
         private Dictionary<string, Dictionary<string, string>> _modelsData = [];
@@ -40,8 +40,8 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
             try
             {
                 // Initialize AudioManager and play Open Extras music
-                _audioManager = GetNodeOrNull<AudioManager>("/root/AudioManager");
-                _audioManager?.PlayMusicByUseCase("Open Extras");
+                _musicManager = GetNodeOrNull<AudioManager>("/root/MusicManager");
+                _musicManager?.PlayMusicByUseCase("Open Extras");
 
                 // Get node references from scene
                 _optionsContainer = GetNode<TabContainer>("OptionsContainer");
@@ -256,14 +256,14 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                     if (method == "PlayMusicByUseCase")
                     {
                         if (args.Length == 1)
-                            _audioManager?.Call("PlayMusicByUseCase", args[0]);
+                            _musicManager?.Call("PlayMusicByUseCase", args[0]);
                         else
                             GD.PrintErr($"Invalid argument count for PlayMusicByUseCase: {args.Length}");
                     }
                     else if (method == "PlayMusicByNationMood")
                     {
                         if (args.Length == 2)
-                            _audioManager?.Call("PlayMusicByNationMood", args[0], args[1]);
+                            _musicManager?.Call("PlayMusicByNationMood", args[0], args[1]);
                         else
                             GD.PrintErr($"Invalid argument count for PlayMusicByNationMood: {args.Length}");
                     }
@@ -460,7 +460,7 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
         {
             try
             {
-                _audioManager?.StopMusic();
+                _musicManager?.StopMusic();
                 GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
             }
             catch (Exception e)

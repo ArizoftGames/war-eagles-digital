@@ -17,6 +17,7 @@
 1. Scene Planning: Collaborate with Grok to define scene goals, objectives, and solutions. Specify required assets. Grok drafts a Scene Plan with high-level pseudocode, outlining key logic, Node3D nodes, signals, and error-handling within the WarEaglesDigital.Scripts namespace.
 2. Scene Creation: Create scene(s) in Godot 4.4 .NET editor, populating scene tree(s) with PascalCasing for node names. Source assets and create .tres files. Attach C# scripts in WarEaglesDigital.Scripts namespace.
 3. Copilot Prompt Development: Provide Grok with Scene Plan and raw .tscn text output from Godot. Upon consensus that the scene meets the Scene Plan, Grok generates a Copilot prompt in pseudocode, specifying WarEaglesDigital.Scripts namespace, node paths, signals, and error-handling. Ensure that prompts specify good resource amangement techniques where appropriate.
+*Include existing exemplar scripts with task requirements, per `Guidelines.md's Compatibility priority.*
 *Grok should recommend signals connections and handling during this step for prompt inclusion upon user approval*
 4. Prompt Review and Code Generation: Review/edit Copilot prompt, verifying WarEaglesDigital.Scripts namespace, node paths, signal connections, and error-handling. Input prompt to Copilot, checking output for errors (e.g., truncation, missing functionality) using checklist:
 Confirm WarEaglesDigital.Scripts namespace usage.
@@ -53,7 +54,8 @@ If in doubt about applicability or category, seek user input in preference to in
 5. Proactive Debugging: Add GD.Print in key methods (e.g., InitializeDisplayMenu) to log entry/exit, aiding flow tracking as complexity increases.
 6. Iterate Guidelines: Tweak prompting to emphasize runtime behavior checks (e.g., “verify visibility post-signal”) to boost confidence in catching issues. 
  7. Prompt should be prefaced with a roleplaying statement, such as: "You are a Godot 4.4 .NET developer in a AAA game studio working on the `war-eagles-digital` project. Your task is to generate C# code for <script name>, providing the specified functionality, ensuring compatibility with existing code and following the project's coding guidelines."" 
-
+8. Identify and request all dependent scripts and scenes upfront. Verify autoloads vs. scene scripts in `SolutionSummary.md` before prompting.
+9. Prompt for inclusion of all UI buttons and selectable elements in ui_buttons global group to activate audio feedback (selectable by user).
 - **My Role**: 
  1. Draft Scene Plans with pseudocode, specifying `WarEaglesDigital.Scripts` namespace, node paths, signals, and error-handling. 
  2. Generate Copilot prompts in pseudocode, adhering to `GrokPromptingRules.txt` for Godot 4.4 .NET compatibility. 

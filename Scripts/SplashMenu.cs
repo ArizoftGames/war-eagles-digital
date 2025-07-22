@@ -16,7 +16,7 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
 
             try
             {
-                MusicBox = GetNode<AudioManager>("/root/AudioManager");
+                MusicBox = GetNode<AudioManager>("/root/MusicManager");
 
                 ///Set MusicBox volume
                 var MusicBus = AudioServer.GetBusIndex("Music");
@@ -39,7 +39,10 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
                     optionsControl.Visible = false; // Hide by default
 
                 // Connect OptionsButton signal
+                //var optionsButton = GetNode<MenuButton>("Splashscreen/MainMenu/OptionsButton");
+                //optionsButton.GetPopup().IndexPressed += OnOptionsButtonItemSelected;
                 var optionsButton = GetNode<MenuButton>("Splashscreen/MainMenu/OptionsButton");
+                var popup = optionsButton.GetPopup();
                 optionsButton.GetPopup().IndexPressed += OnOptionsButtonItemSelected;
 
                 // Connect the ExtrasButton's pressed signal
@@ -163,7 +166,7 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
                 // Show the selected panel based on index
                 switch (index)
                 {
-                    case 1: // Video and Display
+                    case 0: // Video and Display
                         var displayPanel = optionsNode.GetNode<Panel>("DisplayMenuPanel");
                         if (displayPanel != null)
                         {
@@ -176,16 +179,31 @@ namespace WarEaglesDigital.Scripts // Handles the splash menu scene
                                 GD.PrintErr("DisplayMenuPanel script not attached to DisplayMenuPanel node.");
                         }
                         break;
-                    case 0: // Audio
+                    case 1: // Audio
+                        //var audioPanel = optionsNode.GetNode<Panel>("AudioMenuPanel");
+                        //if (audioPanel != null) audioPanel.Visible = true;
                         var audioPanel = optionsNode.GetNode<Panel>("AudioMenuPanel");
-                        if (audioPanel != null) audioPanel.Visible = true;
+                        GD.Print("audioPanel: ", optionsNode.GetNodeOrNull<Panel>("AudioMenuPanel"));
+                        if (audioPanel != null)
+                        {
+                            GD.Print("AudioPanel found: ", audioPanel);
+                            audioPanel.Show();
+                            GD.Print("AudioPanel visible: ", audioPanel.Visible);
+                            if (audioPanel is AudioMenuPanel audioMenu)
+                                audioMenu.InitializeAudioMenu("Audio");
+                            else
+                                GD.PrintErr("AudioMenuPanel script not attached to AudioMenuPanel node.");
+                        }
+
                         break;
+
+
                     case 2: // Controls
-                        var controlsPanel = optionsNode.GetNode<Panel>("ControlsPanel");
+                        var controlsPanel = optionsNode.GetNode<Panel>("ControlsMenuPanel");
                         if (controlsPanel != null) controlsPanel.Visible = true;
                         break;
                     case 3: // Game Settings
-                        var gameplayPanel = optionsNode.GetNode<Panel>("GameplayPanel");
+                        var gameplayPanel = optionsNode.GetNode<Panel>("GameplayMenuPanel");
                         if (gameplayPanel != null) gameplayPanel.Visible = true;
                         break;
                 }

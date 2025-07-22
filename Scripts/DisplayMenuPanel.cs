@@ -91,7 +91,7 @@ namespace WarEaglesDigital.Scripts
                     _initial_settings[key] = _settings[key];
 
                 // AudioManager
-                _audio_manager = GetNodeOrNull<AudioManager>("/root/AudioManager");
+                _audio_manager = GetNodeOrNull<AudioManager>("/root/MusicManager");
                 if (_audio_manager == null)
                     GD.Print("AudioManager not found at /root/AudioManager");
 

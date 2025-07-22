@@ -13,10 +13,11 @@ res://Data/RawData/WEBasicZones.csv (Target Name,Nationality,Domain,AA Strength,
 
 ##Audio Bus Layout: res//Audio/WE_Bus_layout.tres; Busses: Master, fed by Music, Planes, and Effects;  Planes and Effects will be consolidated from player POV and are separate for animation mixing with the game.
 
-##Global groups for resource management:
-audio_players
-glb_models
-terrains
+##Global groups:
+audio_players*-resource management*
+glb_models*-resource management*
+terrains*-resource management*
+ui_buttons*-button click implementation*
 
 ##UI Themes: res://Data/Resources/UI_Theme .tres  *UI menu pages*
 		   res://Data/Resources/MainMenuTheme.tres  *Main Menu; displayed in PauseMenu.tscn and IntroAnim.tscn*
@@ -38,12 +39,14 @@ X releases resources and quits immediately.
 
 GameManager.cs - centralizes global actions and frequently called methods.
 	 _Input(Input Event @event) {detects explicitly defined input events and calls methods based on them}, PauseGame(), ScreenShot(), AccessConsole() {Not yet implemented}, TransitionTo(string NextScenePath)-covers awkward scene transitions (up to ~ 1 sec), SetGameSettings(){NYI}, GetGameSettings() {NYI}
+	*/root/GameManager*
 UnitDatabase.cs - reads data fron csv parsers and constructs dictionaries.
 	GetAirUnitByName(string unit), GetAntiAircraftUnitByName(string unit), GetZoneByTargetName		(string targetName), GetAceByPilot(string pilot), GetEventByName(string name), 		GetZoneAsDictionary(string targetName), GetAirUnitAsDictionary(string unitName), 		GetEventAsDictionary(string name)
-
+	*/root/UnitDatabase*
 AudioManager.cs - instances AudioStreamPlayers to play music and effects; music may be played by (Player Nationality + AI Mood) or by use case.  Connects to busses (Music or Effects).
 	PlayMusicByNationMood(string nationality, string mood), PlayMusicByUseCase(string useCase),  		PlaySoundEffect(string key), StopMusic(), SetBusVolume(string busName, float linearVolume), 		GetBusVolume(string busName), SetEffectsVolume(float linearVolume) *For future Options UI; sets 	Planes and Effects bus volumes
-
+	*/root/MusicManager*: AudioManager singleton that plays music based on the current game state.
+	*/root/EffectsManager*: AudioManager singleton that plays impact effects based on input or events.
 ##Scenes:
 
 Loading.tscn:  Current main scene. Displays "Loading..." text and WE Icon. Fades seamlessly into IntroAnim.  Detects and writes config.cfg, uses existing user edited setting if present.  Makes if necessary and writes to "%APPDATA%\Roaming\War Eagles\War Eagles"
@@ -56,12 +59,12 @@ PauseMenu.tscn: Will be activated at any time during gameplay with ESC or spaceb
 
 CreditRoll.tscn: Displays credits via Rich Text Label over a slideshow.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
 
-Options.tscn:  Four options windows, selected by OptionButton Items in the menus:
+Options.tscn:  Four options windows, selected by OptionButton Items in the menus: (in every case, AcceptButton calls a ConfirmationDialog to apply changes, CancelButton dismisses without changes)
 -Video and Display:  Allows user to change resolution, HUD [NYI] Theme and font, and turn display[NYI].
--Audio [NYI[:  Allows user to change music and sound effects volume, and set audio busses (Music, Planes, Effects) volumes. 
+-Audio:  Allows user to change music and sound effects volume, and set audio busses' (Master, Music, Effects) volumes. *Note: "Planes" bus is static and used for mixing in animations*
 -Controls [NYI]:  Allows user to display key bindings for all actions, enable Xbox controller.
 -Gameplay  [NYI]:  Allows user to change gameplay settings, including game setup restrictions, enable/disable animations, disable vioceovers and button clicks.
 
-Extras.tscn: Displays and certain game files and support assets, and  makes if necessary and exports them to %DOCUMENTS%\War Eagles by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
+Extras.tscn: Displays and certain game files and support assets, and  makes (if necessary) and exports them to %DOCUMENTS%\War Eagles by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
 
 Transition.tscn: instantiated by GameManager.TransitionTo(string NestSCenePath) to cover awkward scene transitions. Fades MenuBG.png in and out over 2 seconds.
