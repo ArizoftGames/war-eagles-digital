@@ -52,8 +52,8 @@ namespace WarEaglesDigital.Scripts
         private Theme _theme_su, _theme_we, _theme_hc, _theme_sy;
         private FontFile _font_sys;
 
-        // AudioManager reference
-        private AudioManager _audio_manager;
+        // AudioManager reference (no longer needed for local calls)
+        // private AudioManager _audio_manager;
 
         public override void _Ready()
         {
@@ -90,11 +90,6 @@ namespace WarEaglesDigital.Scripts
                 foreach (var key in _settings.Keys)
                     _initial_settings[key] = _settings[key];
 
-                // AudioManager
-                _audio_manager = GetNodeOrNull<AudioManager>("/root/MusicManager");
-                if (_audio_manager == null)
-                    GD.Print("AudioManager not found at /root/AudioManager");
-
                 // Preload themes and font
                 try
                 {
@@ -121,6 +116,9 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
+                // List to collect buttons for ui_buttons group
+                List<Button> buttons = new List<Button>();
+
                 // --- Display Menu Container ---
                 _display_menu = new VBoxContainer { CustomMinimumSize = new Vector2(1024, 0) };
                 AddChild(_display_menu);
@@ -177,6 +175,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _auto_detect_button.Pressed += OnAutoDetectButtonPressed;
                 _video_menu.AddChild(_auto_detect_button);
+                buttons.Add(_auto_detect_button);
 
                 // --- HUD Menu ---
                 _hud_menu = new VBoxContainer();
@@ -214,6 +213,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _national_theme_button.Toggled += OnNationalThemeButtonToggled;
                 _hud_themes.AddChild(_national_theme_button);
+                buttons.Add(_national_theme_button);
 
                 // War Eagles Theme Button
                 _we_theme_button = new CheckButton
@@ -225,6 +225,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _we_theme_button.Toggled += OnWEThemeButtonToggled;
                 _hud_themes.AddChild(_we_theme_button);
+                buttons.Add(_we_theme_button);
 
                 // Contrast Theme Button
                 _hc_theme_button = new CheckButton
@@ -236,6 +237,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _hc_theme_button.Toggled += OnHCThemeButtonToggled;
                 _hud_themes.AddChild(_hc_theme_button);
+                buttons.Add(_hc_theme_button);
 
                 // System Theme Button
                 _sy_theme_button = new CheckButton
@@ -247,6 +249,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _sy_theme_button.Toggled += OnSYThemeButtonToggled;
                 _hud_themes.AddChild(_sy_theme_button);
+                buttons.Add(_sy_theme_button);
 
                 // Font National Button
                 _font_nat_button = new Button
@@ -258,6 +261,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _font_nat_button.Pressed += OnFontNatButtonPressed;
                 _hud_themes.AddChild(_font_nat_button);
+                buttons.Add(_font_nat_button);
 
                 // Font System Button
                 _font_sys_button = new Button
@@ -278,6 +282,7 @@ namespace WarEaglesDigital.Scripts
                 }
                 _font_sys_button.Pressed += OnFontSysButtonPressed;
                 _hud_themes.AddChild(_font_sys_button);
+                buttons.Add(_font_sys_button);
 
                 // Format Label
                 _format_label = new Label
@@ -320,6 +325,7 @@ namespace WarEaglesDigital.Scripts
                 };
                 _accept_button.Pressed += OnAcceptButtonPressed;
                 _close_container.AddChild(_accept_button);
+                buttons.Add(_accept_button);
 
                 // Cancel Button
                 _cancel_button = new Button
@@ -331,9 +337,14 @@ namespace WarEaglesDigital.Scripts
                 };
                 _cancel_button.Pressed += OnCancelButtonPressed;
                 _close_container.AddChild(_cancel_button);
+                buttons.Add(_cancel_button);
 
-                // Set initial toggled state for theme buttons
-                SetThemeButtonStates(_settings["HUDTheme"].As<string>());
+                // Add buttons to ui_buttons group
+                foreach (var button in buttons)
+                    AddButtonToUIGroup(button, button.Name);
+
+                // Notify EffectsManager to connect ui_buttons audio
+                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception ex)
             {
@@ -355,7 +366,7 @@ namespace WarEaglesDigital.Scripts
                 _settings["Resolution"] = _supported_resolutions[(int)index];
                 float scale = (float)Math.Round((_supported_resolutions[(int)index].Y / 1440.0) * 4) / 4;
                 _settings["Scale"] = scale;
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
             }
             catch (Exception ex)
             {
@@ -385,7 +396,7 @@ namespace WarEaglesDigital.Scripts
                 float scale = (float)Math.Round((_supported_resolutions[closest].Y / 1440.0) * 4) / 4;
                 _settings["Scale"] = scale;
                 _video_button.Selected = closest;
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
             }
             catch (Exception ex)
             {
@@ -399,7 +410,7 @@ namespace WarEaglesDigital.Scripts
             {
                 _settings["HUDTheme"] = "National";
                 SetThemeButtonStates("National");
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
                 // NYI: Apply HUD_SU_Theme.tres
             }
         }
@@ -410,7 +421,7 @@ namespace WarEaglesDigital.Scripts
             {
                 _settings["HUDTheme"] = "War Eagles";
                 SetThemeButtonStates("War Eagles");
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
                 // NYI: Apply HUD_WE_Theme.tres
             }
         }
@@ -421,7 +432,7 @@ namespace WarEaglesDigital.Scripts
             {
                 _settings["HUDTheme"] = "Contrast";
                 SetThemeButtonStates("Contrast");
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
                 // NYI: Apply HUD_HC_Theme.tres
             }
         }
@@ -432,7 +443,7 @@ namespace WarEaglesDigital.Scripts
             {
                 _settings["HUDTheme"] = "System";
                 SetThemeButtonStates("System");
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
                 // NYI: Apply HUD_SY_Theme.tres
             }
         }
@@ -440,7 +451,7 @@ namespace WarEaglesDigital.Scripts
         private void OnFontNatButtonPressed()
         {
             _settings["HUDFont"] = "National";
-            _audio_manager?.PlaySoundEffect("Keystroke");
+            // _audio_manager?.PlaySoundEffect("Keystroke");
             // NYI: Set HUD font to nationality-specific font
         }
 
@@ -451,7 +462,7 @@ namespace WarEaglesDigital.Scripts
                 if (_font_sys == null)
                     GD.Print("System font (BAHNSCHRIFT.TTF) not loaded.");
                 _settings["HUDFont"] = "System";
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
                 // NYI: Apply font to HUD nodes
             }
             catch (Exception ex)
@@ -463,7 +474,7 @@ namespace WarEaglesDigital.Scripts
         private void OnFormatButtonItemSelected(long index)
         {
             _settings["HUDFormat"] = index == 1 ? "Phase, Turn" : "Time, Date";
-            _audio_manager?.PlaySoundEffect("Keystroke");
+            // _audio_manager?.PlaySoundEffect("Keystroke");
             // NYI: Apply format
         }
 
@@ -476,19 +487,16 @@ namespace WarEaglesDigital.Scripts
                     DialogText = "Accept these settings?",
                     Borderless = true,
                     Unresizable = false,
-                    //WindowInitialPosition = Window.WindowInitialPosition.CenterPrimaryScreen, // Center the dialog
-                    //AnchorsPreset = (int)Control.LayoutPreset.Center, // Center the dialog
-                    Size = (Vector2I)new Vector2(400, 200), // Set a reasonable size
-                    Position = (Vector2I)new Vector2(0, 0) // Offset from center if needed (optional)
+                    Size = (Vector2I)new Vector2(400, 200),
+                    Position = (Vector2I)new Vector2(0, 0)
                 };
-                //_confirmation_dialog.WindowInitialPosition = Window.WindowInitialPosition.Center;
-                _confirmation_dialog.SetInitialPosition(Window.WindowInitialPosition.CenterPrimaryScreen);   
+                _confirmation_dialog.SetInitialPosition(Window.WindowInitialPosition.CenterPrimaryScreen);
                 _confirmation_dialog.AddThemeColorOverride("background_color", new Color(0, 0, 0, 0));
                 _confirmation_dialog.Confirmed += OnConfirmationDialogConfirmed;
                 _confirmation_dialog.Canceled += OnConfirmationDialogCanceled;
                 AddChild(_confirmation_dialog);
                 _confirmation_dialog.Popup();
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
             }
             catch (Exception ex)
             {
@@ -499,7 +507,7 @@ namespace WarEaglesDigital.Scripts
         private void OnCancelButtonPressed()
         {
             RestoreInitialSettings();
-            _audio_manager?.PlaySoundEffect("Keystroke");
+            // _audio_manager?.PlaySoundEffect("Keystroke");
             GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
         }
 
@@ -528,7 +536,7 @@ namespace WarEaglesDigital.Scripts
                 else
                     GD.Print("GameManager not found for SetGameSettings.");
 
-                _audio_manager?.PlaySoundEffect("Keystroke");
+                // _audio_manager?.PlaySoundEffect("Keystroke");
                 _confirmation_dialog.QueueFree();
                 GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
             }
@@ -541,7 +549,7 @@ namespace WarEaglesDigital.Scripts
         private void OnConfirmationDialogCanceled()
         {
             RestoreInitialSettings();
-            _audio_manager?.PlaySoundEffect("Keystroke");
+            // _audio_manager?.PlaySoundEffect("Keystroke");
             _confirmation_dialog.QueueFree();
             GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
         }
@@ -578,7 +586,26 @@ namespace WarEaglesDigital.Scripts
             // NYI: Apply HUD format to UI
         }
 
-        // For external calls
+        public static void AddButtonToUIGroup(BaseButton button, string buttonName)
+        {
+            try
+            {
+                if (button != null)
+                {
+                    button.AddToGroup("ui_buttons");
+                    //GD.Print($"Added {buttonName} to ui_buttons group");
+                }
+                else
+                {
+                    //GD.Print($"Error: {buttonName} is null, cannot add to ui_buttons group");
+                }
+            }
+            catch (Exception ex)
+            {
+                //GD.Print($"Error adding {buttonName} to ui_buttons group: {ex.Message}");
+            }
+        }
+
         public void InitializeDisplayMenu(string branch)
         {
             if (branch == "Video and Display")

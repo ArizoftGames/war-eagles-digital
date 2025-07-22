@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using WarEaglesDigital.Scripts;
 
 namespace WarEaglesDigital.Scripts
 {
@@ -32,6 +33,7 @@ namespace WarEaglesDigital.Scripts
                 InitializeAudioBuses();
                 LoadMusicTracks();
                 LoadSoundEffects();
+                ConnectUIButtonAudio();
                 GD.Print("AudioManager initialized successfully.");
             }
             catch (Exception ex)
@@ -87,13 +89,13 @@ namespace WarEaglesDigital.Scripts
                     }
 
                     var dict = new Godot.Collections.Dictionary<string, string>
-            {
-                { "Nationality", values[0].Trim() },
-                { "Mood", values[1].Trim() },
-                { "Use Case", values[2].Trim() },
-                { "Title", values[3].Trim() },
-                { "Filename", values[4].Trim() }
-            };
+                    {
+                        { "Nationality", values[0].Trim() },
+                        { "Mood", values[1].Trim() },
+                        { "Use Case", values[2].Trim() },
+                        { "Title", values[3].Trim() },
+                        { "Filename", values[4].Trim() }
+                    };
 
                     string nationality = dict["Nationality"];
                     string mood = dict["Mood"];
@@ -146,14 +148,14 @@ namespace WarEaglesDigital.Scripts
                     }
 
                     var dict = new Godot.Collections.Dictionary<string, string>
-            {
-                { "Motor", values[0].Trim() },
-                { "Status", values[1].Trim() },
-                { "Gun", values[2].Trim() },
-                { "Sound", values[3].Trim() },
-                { "Bomb", values[4].Trim() },
-                { "Filename", values[5].Trim() }
-            };
+                    {
+                        { "Motor", values[0].Trim() },
+                        { "Status", values[1].Trim() },
+                        { "Gun", values[2].Trim() },
+                        { "Sound", values[3].Trim() },
+                        { "Bomb", values[4].Trim() },
+                        { "Filename", values[5].Trim() }
+                    };
 
                     string motor = dict["Motor"];
                     string status = dict["Status"];
@@ -312,6 +314,30 @@ namespace WarEaglesDigital.Scripts
             catch (Exception ex)
             {
                 GD.PrintErr($"Failed to set Planes/Effects volume: {ex.Message}");
+            }
+        }
+
+        public void ConnectUIButtonAudio()
+        {
+            try
+            {
+                foreach (var node in GetTree().GetNodesInGroup("ui_buttons"))
+                {
+                    if (node is Button btn)
+                    {
+                        btn.Pressed += () => PlaySoundEffect("Keystroke");
+                        //GD.Print($"Connected {btn.Name} to ui_buttons audio");
+                    }
+                    else if (node is TextureButton texBtn)
+                    {
+                        texBtn.Pressed += () => PlaySoundEffect("Keystroke");
+                        //GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.Print($"Error connecting ui_buttons audio: {ex.Message}");
             }
         }
     }

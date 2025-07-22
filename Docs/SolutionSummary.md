@@ -43,10 +43,10 @@ GameManager.cs - centralizes global actions and frequently called methods.
 UnitDatabase.cs - reads data fron csv parsers and constructs dictionaries.
 	GetAirUnitByName(string unit), GetAntiAircraftUnitByName(string unit), GetZoneByTargetName		(string targetName), GetAceByPilot(string pilot), GetEventByName(string name), 		GetZoneAsDictionary(string targetName), GetAirUnitAsDictionary(string unitName), 		GetEventAsDictionary(string name)
 	*/root/UnitDatabase*
-AudioManager.cs - instances AudioStreamPlayers to play music and effects; music may be played by (Player Nationality + AI Mood) or by use case.  Connects to busses (Music or Effects).
-	PlayMusicByNationMood(string nationality, string mood), PlayMusicByUseCase(string useCase),  		PlaySoundEffect(string key), StopMusic(), SetBusVolume(string busName, float linearVolume), 		GetBusVolume(string busName), SetEffectsVolume(float linearVolume) *For future Options UI; sets 	Planes and Effects bus volumes
-	*/root/MusicManager*: AudioManager singleton that plays music based on the current game state.
-	*/root/EffectsManager*: AudioManager singleton that plays impact effects based on input or events.
+AudioManager.cs - Defines audio behavior for two singleton nodes:
+- /root/MusicManager: AudioManager singleton that plays music based on game state (e.g., PlayMusicByNationMood, PlayMusicByUseCase).
+- /root/EffectsManager: AudioManager singleton that plays impact effects (e.g., PlaySoundEffect for button clicks, events).
+Methods: PlayMusicByNationMood(string nationality, string mood), PlayMusicByUseCase(string useCase), PlaySoundEffect(string key), StopMusic(), SetBusVolume(string busName, float linearVolume), GetBusVolume(string busName), SetEffectsVolume(float linearVolume).
 ##Scenes:
 
 Loading.tscn:  Current main scene. Displays "Loading..." text and WE Icon. Fades seamlessly into IntroAnim.  Detects and writes config.cfg, uses existing user edited setting if present.  Makes if necessary and writes to "%APPDATA%\Roaming\War Eagles\War Eagles"

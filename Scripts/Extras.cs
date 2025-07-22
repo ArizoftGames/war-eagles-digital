@@ -3,12 +3,11 @@ using System;
 using System.Collections.Generic;
 using WarEaglesDigital.Scripts;
 
-namespace WarEaglesDigital.Scripts //Handles the Extras menu
+namespace WarEaglesDigital.Scripts
 {
     /// <summary>
     /// The Extras class manages the Extras menu, including models, soundtrack, articles, and export functionality.
     /// </summary>
-
     public partial class Extras : Control
     {
         // Node references
@@ -33,8 +32,6 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
         private Dictionary<string, Dictionary<string, string>> _musicData = [];
         private string _currentExportPath;
 
-
-
         public override void _Ready()
         {
             try
@@ -56,20 +53,18 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                 _designersNotesText = GetNode<RichTextLabel>("OptionsContainer/Designer's Notes");
                 _backButton = GetNode<Button>("BackButton");
 
+                // Add back button to ui_buttons group
+                DisplayMenuPanel.AddButtonToUIGroup(_backButton, "BackButton");
+
                 // Initialize FileDialog
                 _exportDialog = new FileDialog
                 {
                     FileMode = FileDialog.FileModeEnum.SaveFile
                 };
-                //_exportDialog.AddFilter("*.zip;*.mp3;*.txt", "Supported Files");
                 _exportDialog.FileSelected += OnExportFileSelected;
                 _exportDialog.UseNativeDialog = true;
                 _exportDialog.SetTitle("Export to System");
                 string exportPath = GetExportPath();
-                //var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-                //_exportDialog.SetCurrentFile(toExport);
-                _exportDialog.Access = FileDialog.AccessEnum.Filesystem;
-                //_exportDialog.SetCurrentDir(documentsPath);
                 _exportDialog.SetCurrentDir(exportPath);
                 AddChild(_exportDialog);
 
@@ -97,6 +92,9 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
 
                 // Connect signals
                 _backButton.Pressed += OnBackButtonPressed;
+
+                // Notify EffectsManager to connect ui_buttons audio
+                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception e)
             {
@@ -118,6 +116,7 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
         {
             try
             {
+                List<Button> buttons = new List<Button>();
                 _modelsGrid.Set("theme_override_constants/h_separation", 256);
                 _modelsGrid.Set("theme_override_constants/v_separation", 5);
                 _modelsGrid.Columns = 5;
@@ -153,8 +152,15 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                     container.AddChild(thumbnail);
                     thumbnail.AddChild(exportButton);
                     _modelsGrid.AddChild(container);
+                    buttons.Add(exportButton);
                 }
 
+                // Add buttons to ui_buttons group
+                foreach (var button in buttons)
+                    DisplayMenuPanel.AddButtonToUIGroup(button, button.Name);
+
+                // Notify EffectsManager to connect ui_buttons audio
+                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception e)
             {
@@ -167,6 +173,7 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
         {
             try
             {
+                List<TextureButton> buttons = new List<TextureButton>();
                 _soundtrackList.Clear();
                 foreach (Node child in _soundtrackList.GetChildren())
                 {
@@ -177,7 +184,7 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                 _soundtrackList.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
                 _soundtrackList.SizeFlagsStretchRatio = 3.0f;
 
-                // Remove and recreate exportContainer if it exists (to avoid duplicate buttons)
+                // Remove and recreate exportContainer if it exists
                 var existingExportContainer = _soundtrackContainer.GetNodeOrNull<VBoxContainer>("ExportContainer");
                 existingExportContainer?.QueueFree();
 
@@ -198,14 +205,12 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                     _soundtrackList.SetItemTooltip(idx, trackEntry.GetValueOrDefault("Tooltip"));
 
                     var metadata = new Godot.Collections.Dictionary<string, string>
-                {
-                    { "Method", trackEntry.GetValueOrDefault("AudioManager Method") },
-                    { "Arguments", trackEntry.GetValueOrDefault("Arguments") },
-                    { "ExportFilename", trackEntry.GetValueOrDefault("Export Filename") }
-                };
+                    {
+                        { "Method", trackEntry.GetValueOrDefault("AudioManager Method") },
+                        { "Arguments", trackEntry.GetValueOrDefault("Arguments") },
+                        { "ExportFilename", trackEntry.GetValueOrDefault("Export Filename") }
+                    };
                     _soundtrackList.SetItemMetadata(idx, metadata);
-
-                    //GD.Print($"Setting metadata for track: {trackEntry.GetValueOrDefault("Button Text")}, Method: {metadata["Method"]}, Arguments: {metadata["Arguments"]}");
 
                     var exportButton = new TextureButton
                     {
@@ -216,18 +221,198 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
                     };
                     exportButton.Pressed += () => OnExportMusicPressed(trackEntry.GetValueOrDefault("Export Filename"));
                     exportContainer.AddChild(exportButton);
+                    buttons.Add(exportButton);
                 }
+
+                // Add buttons to ui_buttons group
+                foreach (var button in buttons)
+                    DisplayMenuPanel.AddButtonToUIGroup(button, button.Name);
+
+                // Notify EffectsManager to connect ui_buttons audio
+                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
 
                 _soundtrackList.ItemSelected += OnSoundtrackItemSelected;
                 _soundtrackList.Set("theme_override_constants/separation", 10);
-
-                // Optional: Debug print
-                GD.Print($"_soundtrackList SizeFlagsHorizontal: {_soundtrackList.SizeFlagsHorizontal}, SizeFlagsStretchRatio: {_soundtrackList.SizeFlagsStretchRatio}");
             }
             catch (Exception e)
             {
                 GD.PrintErr("Soundtrack population error: " + e.Message);
                 _soundtrackList.AddItem("Error: Music data unavailable");
+            }
+        }
+
+        private void PopulateArticleTabs()
+        {
+            try
+            {
+                _historyText.Text = LoadFileText("res://Extras/Articles/History Of Air Strategy.txt");
+                _designersNotesText.Text = LoadFileText("res://Extras/Articles/Design Notes.txt");
+
+                // --- Further Reading Tab Layout Fix ---
+                var furtherReadingParent = _furtherReadingText.GetParent();
+                if (furtherReadingParent is VBoxContainer furtherReadingVBox)
+                {
+                    foreach (var child in furtherReadingVBox.GetChildren())
+                        child.QueueFree();
+
+                    var readingText = new RichTextLabel
+                    {
+                        Name = "FurtherReadingText",
+                        BbcodeEnabled = true,
+                        Text = LoadFileText("res://Docs/FurtherReading.txt"),
+                        SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+                        SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                        SizeFlagsStretchRatio = 9.0f,
+                    };
+                    furtherReadingVBox.AddChild(readingText);
+
+                    var spacer = new Control
+                    {
+                        SizeFlagsVertical = Control.SizeFlags.Expand
+                    };
+                    furtherReadingVBox.AddChild(spacer);
+
+                    var furtherExport = new Button
+                    {
+                        Text = "Export List",
+                        Name = "ExportBibliographyButton",
+                        SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter,
+                        SizeFlagsVertical = Control.SizeFlags.ShrinkEnd,
+                        SizeFlagsStretchRatio = 1.0f,
+                    };
+                    furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.pdf");
+                    furtherExport.OffsetBottom = 10;
+                    furtherReadingVBox.AddChild(furtherExport);
+                    DisplayMenuPanel.AddButtonToUIGroup(furtherExport, "ExportBibliographyButton");
+
+                    // Notify EffectsManager to connect ui_buttons audio
+                    GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
+                }
+                else
+                {
+                    GD.PrintErr("Further Reading parent is not a VBoxContainer. Button placement may fail.");
+                }
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr("Article population error: " + e.Message);
+            }
+        }
+
+        private string GetExportPath()
+        {
+            string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string warEaglesPath = System.IO.Path.Combine(documentsPath, "War Eagles");
+            if (!System.IO.Directory.Exists(warEaglesPath))
+            {
+                try
+                {
+                    System.IO.Directory.CreateDirectory(warEaglesPath);
+                    GD.Print($"Created War Eagles directory at: {warEaglesPath}");
+                }
+                catch (Exception ex)
+                {
+                    GD.PrintErr($"Failed to create War Eagles directory: {ex.Message}");
+                }
+            }
+            return warEaglesPath;
+        }
+
+        private void OnExportModelPressed(string zipFile)
+        {
+            try
+            {
+                _exportDialog.SetCurrentFile(zipFile);
+                _currentExportPath = "res://Extras/Models/" + zipFile;
+                if (FileAccess.FileExists(_currentExportPath))
+                    _exportDialog.PopupCentered();
+                else
+                {
+                    GD.PrintErr("Model file not found: " + _currentExportPath);
+                    _modelsLabel.Text = $"Error: Export failed for {zipFile}";
+                }
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr("Model export error: " + e.Message);
+            }
+        }
+
+        private void OnExportMusicPressed(string filename)
+        {
+            try
+            {
+                var toExport = filename;
+                toExport = toExport.Replace("res://Extras/Music/", "");
+                GD.Print($"Exporting music: {toExport}");
+                _exportDialog.SetCurrentFile(toExport);
+                _currentExportPath = filename;
+                if (FileAccess.FileExists(_currentExportPath))
+                {
+                    _exportDialog.PopupCentered();
+                }
+                else
+                {
+                    GD.PrintErr($"Music file not found: {_currentExportPath}");
+                    _soundtrackList.AddChild(new Label { Text = $"Error: Export failed for {_currentExportPath}" });
+                }
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr("Music export error: " + e.Message);
+            }
+        }
+
+        private void OnExportArticlePressed(string filePath)
+        {
+            try
+            {
+                _exportDialog.SetCurrentFile("res://Docs/FurtherReading.pdf");
+                _currentExportPath = filePath;
+                if (FileAccess.FileExists(_currentExportPath))
+                    _exportDialog.PopupCentered();
+                else
+                {
+                    GD.PrintErr("Article file not found: " + _currentExportPath);
+                    _modelsLabel.Text = "Error: Export failed for article";
+                }
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr("Article export error: " + e.Message);
+            }
+        }
+
+        private void OnExportFileSelected(string savePath)
+        {
+            try
+            {
+                using var src = FileAccess.Open(_currentExportPath, FileAccess.ModeFlags.Read);
+                using var dst = FileAccess.Open(savePath, FileAccess.ModeFlags.Write);
+                if (src == null || dst == null)
+                    throw new Exception("File open failed for export.");
+
+                var buffer = src.GetBuffer((long)src.GetLength());
+                dst.StoreBuffer(buffer);
+                GD.Print("File exported to: " + savePath);
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr("File export error: " + e.Message);
+                _modelsLabel.Text = "Error: Export failed";
+            }
+        }
+
+        private void OnBackButtonPressed()
+        {
+            try
+            {
+                _musicManager?.StopMusic();
+                GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr("Navigation error: " + e.Message);
             }
         }
 
@@ -283,193 +468,6 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
             }
         }
 
-        // Populate article tabs
-        private void PopulateArticleTabs()
-        {
-            try
-            {
-                _historyText.Text = LoadFileText("res://Extras/Articles/History Of Air Strategy.txt");
-                _designersNotesText.Text = LoadFileText("res://Extras/Articles/Design Notes.txt");
-
-                // --- Further Reading Tab Layout Fix ---
-                // Remove all children from the parent container of _furtherReadingText
-                var furtherReadingParent = _furtherReadingText.GetParent();
-                if (furtherReadingParent is VBoxContainer furtherReadingVBox)
-                {
-                    foreach (var child in furtherReadingVBox.GetChildren())
-                        child.QueueFree();
-
-                    // Create and add RichTextLabel
-                    var readingText = new RichTextLabel
-                    {
-                        Name = "FurtherReadingText",
-                        BbcodeEnabled = true,
-                        Text = LoadFileText("res://Docs/FurtherReading.txt"),
-                        SizeFlagsVertical = Control.SizeFlags.ExpandFill,
-                        SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-                        SizeFlagsStretchRatio = 9.0f,
-
-                    };
-                    furtherReadingVBox.AddChild(readingText);
-
-                    // Add vertical spacer
-                    var spacer = new Control
-                    {
-                        SizeFlagsVertical = Control.SizeFlags.Expand
-                    };
-                    furtherReadingVBox.AddChild(spacer);
-
-                    // Add Export button at bottom center
-                    var furtherExport = new Button
-                    {
-                        Text = "Export List",
-                        Name = "ExportBibliographyButton",
-                        SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter,
-                        SizeFlagsVertical = Control.SizeFlags.ShrinkEnd,
-                        SizeFlagsStretchRatio = 1.0f,
-
-                    };
-                    furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.pdf");
-                    furtherExport.OffsetBottom = 10;
-                    furtherReadingVBox.AddChild(furtherExport);
-                }
-                else
-                {
-                    GD.PrintErr("Further Reading parent is not a VBoxContainer. Button placement may fail.");
-                }
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr("Article population error: " + e.Message);
-            }
-        }
-
-        private string GetExportPath()
-        {
-            string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            string warEaglesPath = System.IO.Path.Combine(documentsPath, "War Eagles");
-            if (!System.IO.Directory.Exists(warEaglesPath))
-            {
-                try
-                {
-                    System.IO.Directory.CreateDirectory(warEaglesPath);
-                    GD.Print($"Created War Eagles directory at: {warEaglesPath}");
-                }
-                catch (Exception ex)
-                {
-                    GD.PushError($"Failed to create War Eagles directory: {ex.Message}");
-                }
-            }
-            return warEaglesPath;
-        }
-
-        // Export model handler
-        private void OnExportModelPressed(string zipFile)
-        {
-            try
-            {
-                //var toExport = zipFile;
-                _exportDialog.SetCurrentFile(zipFile);
-                _currentExportPath = "res://Extras/Models/" + zipFile;
-                if (FileAccess.FileExists(_currentExportPath))
-                    _exportDialog.PopupCentered();
-
-                else
-                {
-                    GD.PrintErr("Model file not found: " + _currentExportPath);
-                    _modelsLabel.Text = $"Error: Export failed for {zipFile}";
-                }
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr("Model export error: " + e.Message);
-            }
-        }
-
-        // Export music handler
-        private void OnExportMusicPressed(string filename)
-        {
-            try
-            {
-
-                var toExport = filename;
-                toExport = toExport.Replace("res://Extras/Music/", "");
-                GD.Print($"Exporting music: {toExport}");
-                _exportDialog.SetCurrentFile(toExport);
-                _currentExportPath = filename;
-                if (FileAccess.FileExists(_currentExportPath))
-                {
-                    _exportDialog.PopupCentered();
-                }
-                else
-                {
-                    GD.PrintErr($"Music file not found: {_currentExportPath}");
-                    _soundtrackList.AddChild(new Label { Text = $"Error: Export failed for {_currentExportPath}" });
-                }
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr("Music export error: " + e.Message);
-            }
-        }
-
-        // Export article handler
-        private void OnExportArticlePressed(string filePath)
-        {
-            try
-            {
-                _exportDialog.SetCurrentFile("res://Docs/FurtherReading.pdf");
-                _currentExportPath = filePath;
-                if (FileAccess.FileExists(_currentExportPath))
-                    _exportDialog.PopupCentered();
-                else
-                {
-                    GD.PrintErr("Article file not found: " + _currentExportPath);
-                    _modelsLabel.Text = "Error: Export failed for article";
-                }
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr("Article export error: " + e.Message);
-            }
-        }
-
-        // FileDialog save handler
-        private void OnExportFileSelected(string savePath)
-        {
-            try
-            {
-                using var src = FileAccess.Open(_currentExportPath, FileAccess.ModeFlags.Read);
-                using var dst = FileAccess.Open(savePath, FileAccess.ModeFlags.Write);
-                if (src == null || dst == null)
-                    throw new Exception("File open failed for export.");
-
-                var buffer = src.GetBuffer((long)src.GetLength());
-                dst.StoreBuffer(buffer);
-                GD.Print("File exported to: " + savePath);
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr("File export error: " + e.Message);
-                _modelsLabel.Text = "Error: Export failed";
-            }
-        }
-
-        // Back button handler
-        private void OnBackButtonPressed()
-        {
-            try
-            {
-                _musicManager?.StopMusic();
-                GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr("Navigation error: " + e.Message);
-            }
-        }
-
-        // Helper: Load CSV
         private static Dictionary<string, Dictionary<string, string>> LoadCsv(string filePath)
         {
             var result = new Dictionary<string, Dictionary<string, string>>();
@@ -496,7 +494,6 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
             return result;
         }
 
-        // Helper: Load texture
         private static Texture2D LoadTexture(string path)
         {
             try
@@ -516,7 +513,6 @@ namespace WarEaglesDigital.Scripts //Handles the Extras menu
             }
         }
 
-        // Helper: Load file text
         private static string LoadFileText(string path)
         {
             try
