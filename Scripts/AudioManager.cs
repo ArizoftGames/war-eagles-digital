@@ -87,13 +87,13 @@ namespace WarEaglesDigital.Scripts
                     }
 
                     var dict = new Godot.Collections.Dictionary<string, string>
-                    {
-                        { "Nationality", values[0].Trim() },
-                        { "Mood", values[1].Trim() },
-                        { "Use Case", values[2].Trim() },
-                        { "Title", values[3].Trim() },
-                        { "Filename", values[4].Trim() }
-                    };
+            {
+                { "Nationality", values[0].Trim() },
+                { "Mood", values[1].Trim() },
+                { "Use Case", values[2].Trim() },
+                { "Title", values[3].Trim() },
+                { "Filename", values[4].Trim() }
+            };
 
                     string nationality = dict["Nationality"];
                     string mood = dict["Mood"];
@@ -108,7 +108,7 @@ namespace WarEaglesDigital.Scripts
                         Stream = GD.Load<AudioStream>($"res://Audio/Music/{filename}"),
                         Bus = "Music"
                     };
-                    player.Stream.Set("loop", true);
+                    player.Stream.Set("loop", useCase != "preview");
                     player.Name = key;
                     AddChild(player);
                     _musicPlayers[key] = player;
@@ -146,14 +146,14 @@ namespace WarEaglesDigital.Scripts
                     }
 
                     var dict = new Godot.Collections.Dictionary<string, string>
-                    {
-                        { "Motor", values[0].Trim() },
-                        { "Status", values[1].Trim() },
-                        { "Gun", values[2].Trim() },
-                        { "Sound", values[3].Trim() },
-                        { "Bomb", values[4].Trim() },
-                        { "Filename", values[5].Trim() }
-                    };
+            {
+                { "Motor", values[0].Trim() },
+                { "Status", values[1].Trim() },
+                { "Gun", values[2].Trim() },
+                { "Sound", values[3].Trim() },
+                { "Bomb", values[4].Trim() },
+                { "Filename", values[5].Trim() }
+            };
 
                     string motor = dict["Motor"];
                     string status = dict["Status"];
@@ -165,12 +165,11 @@ namespace WarEaglesDigital.Scripts
                     if (string.IsNullOrEmpty(filename)) continue;
 
                     string key = string.IsNullOrEmpty(motor) ? (string.IsNullOrEmpty(gun) ? (string.IsNullOrEmpty(sound) ? (string.IsNullOrEmpty(bomb) ? filename : bomb) : sound) : gun) : $"{motor}{status}";
-                    string bus = (!string.IsNullOrEmpty(motor) || !string.IsNullOrEmpty(gun)) ? "Planes" : "Effects";
                     var player = new AudioStreamPlayer
                     {
                         Stream = GD.Load<AudioStream>($"res://audio/effects/{filename}"),
                         Name = key,
-                        Bus = bus
+                        Bus = "Effects"
                     };
                     AddChild(player);
                     _effectPlayers[key] = player;

@@ -13,10 +13,8 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
         {
             try
             {
+                GD.Print("PauseMenu: _Ready called");
                 // Connect existing signals
-                var quitButton = GetNode<Button>("Pause_Menu/MainMenu/QuitButton");
-                quitButton.Pressed += OnQuitButtonPressed;
-
                 var creditsButton = GetNode<Button>("Pause_Menu/MainMenu/CreditsButton");
                 creditsButton.Pressed += OnCreditsButtonPressed;
 
@@ -37,7 +35,6 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                     optionsControl.Visible = false; // Hide by default
 
                 // Connect OptionsButton signal
-
                 var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
                 var popup = optionsButton.GetPopup();
                 optionsButton.GetPopup().IndexPressed += OnOptionsButtonItemSelected;
