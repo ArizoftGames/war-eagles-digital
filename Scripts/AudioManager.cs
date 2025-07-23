@@ -326,12 +326,12 @@ namespace WarEaglesDigital.Scripts
                     if (node is Button btn)
                     {
                         btn.Pressed += () => PlaySoundEffect("Keystroke");
-                        //GD.Print($"Connected {btn.Name} to ui_buttons audio");
+                        GD.Print($"Connected {btn.Name} to ui_buttons audio");
                     }
                     else if (node is TextureButton texBtn)
                     {
                         texBtn.Pressed += () => PlaySoundEffect("Keystroke");
-                        //GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
+                        GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
                     }
                 }
             }

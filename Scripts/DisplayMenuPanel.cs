@@ -593,7 +593,7 @@ namespace WarEaglesDigital.Scripts
                 if (button != null)
                 {
                     button.AddToGroup("ui_buttons");
-                    //GD.Print($"Added {buttonName} to ui_buttons group");
+                    GD.Print($"Added {buttonName} to ui_buttons group");
                 }
                 else
                 {
