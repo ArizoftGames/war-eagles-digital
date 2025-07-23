@@ -5,12 +5,8 @@ using WarEaglesDigital.Scripts;
 
 namespace WarEaglesDigital.Scripts
 {
-    [GlobalClass]
     public partial class AudioManager : Node
     {
-        [Signal]
-        public delegate void UIButtonsAddedEventHandler();
-
         private readonly Dictionary<string, AudioStreamPlayer> _musicPlayers = [];
         private readonly Dictionary<string, AudioStreamPlayer> _effectPlayers = [];
         private string _currentMusicKey;
@@ -37,10 +33,7 @@ namespace WarEaglesDigital.Scripts
                 InitializeAudioBuses();
                 LoadMusicTracks();
                 LoadSoundEffects();
-                CallDeferred(nameof(ConnectUIButtonAudio)); // Defer to ensure scene buttons are loaded
-
-                // Connect signal for dynamic button additions
-                Connect("UIButtonsAdded", Callable.From(() => ConnectUIButtonAudio()));
+                ConnectUIButtonAudio();
                 GD.Print("AudioManager initialized successfully.");
             }
             catch (Exception ex)
@@ -245,7 +238,7 @@ namespace WarEaglesDigital.Scripts
                 if (_effectPlayers.TryGetValue(key, out var player))
                 {
                     player.Play();
-                    //GD.Print($"Playing effect: {key} on bus {player.Bus}");
+                    GD.Print($"Playing effect: {key} on bus {player.Bus}");
                 }
                 else
                 {
@@ -309,6 +302,7 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
+        // Set combined volume for Planes and Effects buses (for future UI)
         public static void SetEffectsVolume(float linearVolume)
         {
             try
@@ -327,20 +321,15 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                var callable = Callable.From(() => PlaySoundEffect("Keystroke"));
                 foreach (var node in GetTree().GetNodesInGroup("ui_buttons"))
                 {
                     if (node is Button btn)
                     {
-                        if (btn.IsConnected("pressed", callable))
-                            btn.Disconnect("pressed", callable);
                         btn.Pressed += () => PlaySoundEffect("Keystroke");
                         //GD.Print($"Connected {btn.Name} to ui_buttons audio");
                     }
                     else if (node is TextureButton texBtn)
                     {
-                        if (texBtn.IsConnected("pressed", callable))
-                            texBtn.Disconnect("pressed", callable);
                         texBtn.Pressed += () => PlaySoundEffect("Keystroke");
                         //GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
                     }
