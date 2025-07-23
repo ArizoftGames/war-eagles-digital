@@ -2,8 +2,8 @@ using Godot;
 using System;
 using WarEaglesDigital.Scripts;
 
-namespace WarEaglesDigital.Scripts //Handles the pause menu
-{ 
+namespace WarEaglesDigital.Scripts
+{
     public partial class PauseMenu : Node3D
     {
         private const string CreditsMenuScene = "res://Scenes/CreditRoll.tscn";
@@ -63,17 +63,14 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
             {
                 GD.Print("Opening Credits Menu");
                 GetTree().ChangeSceneToFile(CreditsMenuScene);
-
             }
             catch (Exception)
             {
                 GD.PrintErr("Failed to open Credits Menu.");
             }
-
         }
 
-
-private void OnOptionsButtonItemSelected(long index)
+        private void OnOptionsButtonItemSelected(long index)
         {
             try
             {
@@ -96,7 +93,6 @@ private void OnOptionsButtonItemSelected(long index)
                 // Show the selected panel based on index
                 switch (index)
                 {
-                    
                     case 0: // Video and Display
                         var displayPanel = optionsNode.GetNode<Panel>("DisplayMenuPanel");
                         if (displayPanel != null)
@@ -138,12 +134,10 @@ private void OnOptionsButtonItemSelected(long index)
             }
         }
 
-
         public void OnExtrasButtonPressed()
         {
             try
             {
-                //Loads Extras.tscn
                 GD.Print("Opening Extras Menu");
                 GetTree().ChangeSceneToFile("res://Scenes/Extras.tscn");
             }
@@ -157,23 +151,18 @@ private void OnOptionsButtonItemSelected(long index)
         {
             try
             {
-
-                //GD.Print($"Memory before free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
-                // Godot's Array does not have ForEach, use a regular foreach loop
                 foreach (var node in GetTree().GetNodesInGroup("glb_models"))
                     (node as Node)?.QueueFree();
 
                 foreach (var node in GetTree().GetNodesInGroup("audio_players"))
                 {
                     node.Call("stop");
-                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                    node.Set("stream", (Godot.Resource)null);
                     (node as Node)?.QueueFree();
                 }
 
                 foreach (var node in GetTree().GetNodesInGroup("terrains"))
                     (node as Node)?.QueueFree();
-
-                //GD.Print($"Memory before quit: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
 
                 GD.Print("Closing Game.");
                 GetTree().Quit();
@@ -183,25 +172,5 @@ private void OnOptionsButtonItemSelected(long index)
                 GD.PrintErr($"Exception in OnQuitButtonPressed: {ex.Message}");
             }
         }
-
-       /* private void InitializeOptionsPopup()
-        {
-            try
-            {
-                var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
-                var popup = optionsButton.GetPopup();
-                popup.Clear();
-                popup.AddItem("Options", 4, true); // Separator label
-                popup.AddItem("Video and Display", 1);
-                popup.AddItem("Audio", 0);
-                popup.AddItem("Controls", 2);
-                popup.AddItem("Game Settings", 3);
-            }
-            catch (Exception ex)
-            {
-                GD.PrintErr($"Exception in InitializeOptionsPopup: {ex.Message}");
-            }
-        }*/
-
     }
 }

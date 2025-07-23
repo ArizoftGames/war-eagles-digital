@@ -93,8 +93,8 @@ namespace WarEaglesDigital.Scripts
                 // Connect signals
                 _backButton.Pressed += OnBackButtonPressed;
 
-                // Notify EffectsManager to connect ui_buttons audio
-                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
+                // Notify AudioManager of new ui_buttons
+                GetNode("/root/EffectsManager")?.EmitSignal("UIButtonsAdded");
             }
             catch (Exception e)
             {
@@ -116,7 +116,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                List<Button> buttons = new List<Button>();
+                List<BaseButton> buttons = new List<BaseButton>();
                 _modelsGrid.Set("theme_override_constants/h_separation", 256);
                 _modelsGrid.Set("theme_override_constants/v_separation", 5);
                 _modelsGrid.Columns = 5;
@@ -158,9 +158,6 @@ namespace WarEaglesDigital.Scripts
                 // Add buttons to ui_buttons group
                 foreach (var button in buttons)
                     DisplayMenuPanel.AddButtonToUIGroup(button, button.Name);
-
-                // Notify EffectsManager to connect ui_buttons audio
-                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception e)
             {
@@ -173,7 +170,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                List<TextureButton> buttons = new List<TextureButton>();
+                List<BaseButton> buttons = new List<BaseButton>();
                 _soundtrackList.Clear();
                 foreach (Node child in _soundtrackList.GetChildren())
                 {
@@ -227,10 +224,6 @@ namespace WarEaglesDigital.Scripts
                 // Add buttons to ui_buttons group
                 foreach (var button in buttons)
                     DisplayMenuPanel.AddButtonToUIGroup(button, button.Name);
-
-                // Notify EffectsManager to connect ui_buttons audio
-                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
-
                 _soundtrackList.ItemSelected += OnSoundtrackItemSelected;
                 _soundtrackList.Set("theme_override_constants/separation", 10);
             }
@@ -284,9 +277,6 @@ namespace WarEaglesDigital.Scripts
                     furtherExport.OffsetBottom = 10;
                     furtherReadingVBox.AddChild(furtherExport);
                     DisplayMenuPanel.AddButtonToUIGroup(furtherExport, "ExportBibliographyButton");
-
-                    // Notify EffectsManager to connect ui_buttons audio
-                    GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
                 }
                 else
                 {
