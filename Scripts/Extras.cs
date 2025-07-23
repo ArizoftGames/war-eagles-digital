@@ -24,7 +24,7 @@ namespace WarEaglesDigital.Scripts
         private Button _backButton;
         private FileDialog _exportDialog;
 
-        // AudioManager singleton
+        // AudioManager singleton for music
         private AudioManager _musicManager;
 
         // CSV data
@@ -36,7 +36,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                // Initialize AudioManager and play Open Extras music
+                // Initialize AudioManager for music and play Open Extras
                 _musicManager = GetNodeOrNull<AudioManager>("/root/MusicManager");
                 _musicManager?.PlayMusicByUseCase("Open Extras");
 
@@ -54,7 +54,8 @@ namespace WarEaglesDigital.Scripts
                 _backButton = GetNode<Button>("BackButton");
 
                 // Add back button to ui_buttons group
-                DisplayMenuPanel.AddButtonToUIGroup(_backButton, "BackButton");
+                _backButton.AddToGroup("ui_buttons");
+                // GD.Print($"Added {_backButton.Name} to ui_buttons group");
 
                 // Initialize FileDialog
                 _exportDialog = new FileDialog
@@ -93,7 +94,7 @@ namespace WarEaglesDigital.Scripts
                 // Connect signals
                 _backButton.Pressed += OnBackButtonPressed;
 
-                // Notify EffectsManager to connect ui_buttons audio
+                // Connect all ui_buttons audio
                 GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception e)
@@ -116,7 +117,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                List<Button> buttons = new List<Button>();
                 _modelsGrid.Set("theme_override_constants/h_separation", 256);
                 _modelsGrid.Set("theme_override_constants/v_separation", 5);
                 _modelsGrid.Columns = 5;
@@ -152,15 +152,9 @@ namespace WarEaglesDigital.Scripts
                     container.AddChild(thumbnail);
                     thumbnail.AddChild(exportButton);
                     _modelsGrid.AddChild(container);
-                    buttons.Add(exportButton);
+                    exportButton.AddToGroup("ui_buttons");
+                    // GD.Print($"Added {exportButton.Name} to ui_buttons group");
                 }
-
-                // Add buttons to ui_buttons group
-                foreach (var button in buttons)
-                    DisplayMenuPanel.AddButtonToUIGroup(button, button.Name);
-
-                // Notify EffectsManager to connect ui_buttons audio
-                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception e)
             {
@@ -173,7 +167,6 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                List<TextureButton> buttons = new List<TextureButton>();
                 _soundtrackList.Clear();
                 foreach (Node child in _soundtrackList.GetChildren())
                 {
@@ -221,15 +214,9 @@ namespace WarEaglesDigital.Scripts
                     };
                     exportButton.Pressed += () => OnExportMusicPressed(trackEntry.GetValueOrDefault("Export Filename"));
                     exportContainer.AddChild(exportButton);
-                    buttons.Add(exportButton);
+                    exportButton.AddToGroup("ui_buttons");
+                    // GD.Print($"Added {exportButton.Name} to ui_buttons group");
                 }
-
-                // Add buttons to ui_buttons group
-                foreach (var button in buttons)
-                    DisplayMenuPanel.AddButtonToUIGroup(button, button.Name);
-
-                // Notify EffectsManager to connect ui_buttons audio
-                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
 
                 _soundtrackList.ItemSelected += OnSoundtrackItemSelected;
                 _soundtrackList.Set("theme_override_constants/separation", 10);
@@ -281,12 +268,9 @@ namespace WarEaglesDigital.Scripts
                         SizeFlagsStretchRatio = 1.0f,
                     };
                     furtherExport.Pressed += () => OnExportArticlePressed("res://Docs/FurtherReading.pdf");
-                    furtherExport.OffsetBottom = 10;
                     furtherReadingVBox.AddChild(furtherExport);
-                    DisplayMenuPanel.AddButtonToUIGroup(furtherExport, "ExportBibliographyButton");
-
-                    // Notify EffectsManager to connect ui_buttons audio
-                    GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
+                    furtherExport.AddToGroup("ui_buttons");
+                    // GD.Print($"Added {furtherExport.Name} to ui_buttons group");
                 }
                 else
                 {
@@ -353,7 +337,7 @@ namespace WarEaglesDigital.Scripts
                 }
                 else
                 {
-                    GD.PrintErr($"Music file not found: {_currentExportPath}");
+                   GD.PrintErr($"Music file not found: {_currentExportPath}");
                     _soundtrackList.AddChild(new Label { Text = $"Error: Export failed for {_currentExportPath}" });
                 }
             }

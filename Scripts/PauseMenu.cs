@@ -3,17 +3,19 @@ using System;
 using WarEaglesDigital.Scripts;
 
 namespace WarEaglesDigital.Scripts //Handles the pause menu
-{ 
+{
     public partial class PauseMenu : Node3D
     {
         private const string CreditsMenuScene = "res://Scenes/CreditRoll.tscn";
         [Export] private Label _versionLabel;
+        private Control _optionsInstance;
 
         public override void _Ready()
         {
             try
             {
                 GD.Print("PauseMenu: _Ready called");
+
                 // Connect existing signals
                 var creditsButton = GetNode<Button>("Pause_Menu/MainMenu/CreditsButton");
                 creditsButton.Pressed += OnCreditsButtonPressed;
@@ -21,18 +23,30 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 var extrasButton = GetNode<Button>("Pause_Menu/MainMenu/ExtrasButton");
                 extrasButton.Pressed += OnExtrasButtonPressed;
 
-                // Preload Options.tscn
-                var optionsScene = GD.Load<PackedScene>("res://Scenes/Options.tscn");
-                if (optionsScene == null)
+                // Preload and cache Options.tscn
+                if (_optionsInstance == null)
                 {
-                    GD.PrintErr("Failed to preload Options.tscn.");
-                    return;
+                    var optionsScene = GD.Load<PackedScene>("res://Scenes/Options.tscn");
+                    if (optionsScene == null)
+                    {
+                        GD.PrintErr("Failed to preload Options.tscn.");
+                        return;
+                    }
+                    _optionsInstance = optionsScene.Instantiate() as Control;
+                    if (_optionsInstance == null)
+                    {
+                        GD.PrintErr("Failed to instantiate Options.tscn as Control.");
+                        return;
+                    }
+                    AddChild(_optionsInstance);
+                    _optionsInstance.Owner = this;
+                    _optionsInstance.Visible = false;
+                    GD.Print("Options instance cached: ", _optionsInstance);
                 }
-                var optionsInstance = optionsScene.Instantiate();
-                AddChild(optionsInstance);
-                GD.Print("Options children: ", optionsInstance.GetChildren());
-                if (optionsInstance is Control optionsControl)
-                    optionsControl.Visible = false; // Hide by default
+                else
+                {
+                    GD.Print("Options instance already cached: ", _optionsInstance);
+                }
 
                 // Connect OptionsButton signal
                 var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
@@ -50,6 +64,9 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                 {
                     GD.PrintErr("VersionLabel node not found in PauseMenu.tscn.");
                 }
+
+                // Connect static buttons' audio
+                GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
             }
             catch (Exception ex)
             {
@@ -63,65 +80,63 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
             {
                 GD.Print("Opening Credits Menu");
                 GetTree().ChangeSceneToFile(CreditsMenuScene);
-
             }
             catch (Exception)
             {
                 GD.PrintErr("Failed to open Credits Menu.");
             }
-
         }
 
-
-private void OnOptionsButtonItemSelected(long index)
+        private void OnOptionsButtonItemSelected(long index)
         {
             try
             {
-                var optionsNode = GetNode<Control>("Control");
-                if (optionsNode == null)
+                if (_optionsInstance == null)
                 {
-                    GD.PrintErr("Control node not found.");
+                    GD.PrintErr("Options instance not found.");
                     return;
                 }
-                GD.Print("Options node found: ", optionsNode);
-                optionsNode.Show(); // Ensure root is visible
+                GD.Print("Options node found: ", _optionsInstance);
+                _optionsInstance.Visible = true; // Show Options root
 
                 // Hide all panels initially
-                foreach (Node child in optionsNode.GetChildren())
+                foreach (Node child in _optionsInstance.GetChildren())
                 {
                     if (child is Panel panel)
                         panel.Visible = false;
                 }
                 GD.Print("Selected index: ", index);
+
                 // Show the selected panel based on index
                 switch (index)
                 {
-                    
                     case 0: // Video and Display
-                        var displayPanel = optionsNode.GetNode<Panel>("DisplayMenuPanel");
+                        var displayPanel = _optionsInstance.GetNode<Panel>("DisplayMenuPanel");
                         if (displayPanel != null)
                         {
                             GD.Print("DisplayPanel found: ", displayPanel);
-                            displayPanel.Show();
+                            displayPanel.Visible = true;
                             GD.Print("DisplayPanel visible: ", displayPanel.Visible);
                             if (displayPanel is DisplayMenuPanel displayMenu)
                                 displayMenu.InitializeDisplayMenu("Video and Display");
                             else
                                 GD.PrintErr("DisplayMenuPanel script not attached to DisplayMenuPanel node.");
+                            GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
                         }
                         break;
                     case 1: // Audio
-                        var audioPanel = optionsNode.GetNode<Panel>("AudioMenuPanel");
-                        GD.Print("audioPanel: ", optionsNode.GetNodeOrNull<Panel>("AudioMenuPanel"));
+                        var audioPanel = _optionsInstance.GetNode<Panel>("AudioMenuPanel");
+                        GD.Print("audioPanel: ", _optionsInstance.GetNodeOrNull<Panel>("AudioMenuPanel"));
                         if (audioPanel != null)
                         {
                             GD.Print("AudioPanel found: ", audioPanel);
-                            audioPanel.Show();
+                            audioPanel.Visible = true;
                             GD.Print("AudioPanel visible: ", audioPanel.Visible);
                             if (audioPanel is AudioMenuPanel audioMenu)
                                 audioMenu.InitializeAudioMenu("Audio");
                             else
                                 GD.PrintErr("AudioMenuPanel script not attached to AudioMenuPanel node.");
+                            GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
                         }
                         break;
                     case 2: // Controls
@@ -131,6 +146,13 @@ private void OnOptionsButtonItemSelected(long index)
                         GD.Print("Gameplay branch NYI: GameplayMenuPanel.cs not implemented.");
                         break;
                 }
+
+                // Restore focus to ContinueButton
+                var continueButton = GetNode<Button>("Pause_Menu/MainMenu/ContinueButton");
+                if (continueButton != null)
+                    continueButton.GrabFocus();
+                else
+                    GD.PrintErr("ContinueButton not found for focus restoration.");
             }
             catch (Exception ex)
             {
@@ -138,12 +160,10 @@ private void OnOptionsButtonItemSelected(long index)
             }
         }
 
-
         public void OnExtrasButtonPressed()
         {
             try
             {
-                //Loads Extras.tscn
                 GD.Print("Opening Extras Menu");
                 GetTree().ChangeSceneToFile("res://Scenes/Extras.tscn");
             }
@@ -157,23 +177,18 @@ private void OnOptionsButtonItemSelected(long index)
         {
             try
             {
-
-                //GD.Print($"Memory before free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
-                // Godot's Array does not have ForEach, use a regular foreach loop
                 foreach (var node in GetTree().GetNodesInGroup("glb_models"))
                     (node as Node)?.QueueFree();
 
                 foreach (var node in GetTree().GetNodesInGroup("audio_players"))
                 {
                     node.Call("stop");
-                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                    node.Set("stream", (Godot.Resource)null);
                     (node as Node)?.QueueFree();
                 }
 
                 foreach (var node in GetTree().GetNodesInGroup("terrains"))
                     (node as Node)?.QueueFree();
-
-                //GD.Print($"Memory before quit: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
 
                 GD.Print("Closing Game.");
                 GetTree().Quit();
@@ -183,25 +198,5 @@ private void OnOptionsButtonItemSelected(long index)
                 GD.PrintErr($"Exception in OnQuitButtonPressed: {ex.Message}");
             }
         }
-
-       /* private void InitializeOptionsPopup()
-        {
-            try
-            {
-                var optionsButton = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton");
-                var popup = optionsButton.GetPopup();
-                popup.Clear();
-                popup.AddItem("Options", 4, true); // Separator label
-                popup.AddItem("Video and Display", 1);
-                popup.AddItem("Audio", 0);
-                popup.AddItem("Controls", 2);
-                popup.AddItem("Game Settings", 3);
-            }
-            catch (Exception ex)
-            {
-                GD.PrintErr($"Exception in InitializeOptionsPopup: {ex.Message}");
-            }
-        }*/
-
     }
 }

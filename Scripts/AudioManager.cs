@@ -5,16 +5,25 @@ using WarEaglesDigital.Scripts;
 
 namespace WarEaglesDigital.Scripts
 {
+    [GlobalClass]
     public partial class AudioManager : Node
     {
         private readonly Dictionary<string, AudioStreamPlayer> _musicPlayers = [];
         private readonly Dictionary<string, AudioStreamPlayer> _effectPlayers = [];
         private string _currentMusicKey;
         private AudioStreamPlayer _currentMusicPlayer;
+        private readonly Callable _uiButtonCallable;
+        private bool _isConnectingButtons = false;
+        private readonly HashSet<string> _connectedButtons = [];
 
         private int _musicBusIndex = -1;
         private int _planesBusIndex = -1;
         private int _effectsBusIndex = -1;
+
+        public AudioManager()
+        {
+            _uiButtonCallable = Callable.From(() => PlaySoundEffect("Keystroke"));
+        }
 
         public override void _Ready()
         {
@@ -33,7 +42,6 @@ namespace WarEaglesDigital.Scripts
                 InitializeAudioBuses();
                 LoadMusicTracks();
                 LoadSoundEffects();
-                ConnectUIButtonAudio();
                 GD.Print("AudioManager initialized successfully.");
             }
             catch (Exception ex)
@@ -235,6 +243,22 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
+                // Check global sound toggle
+                var config = new ConfigFile();
+                var configPath = "user://War Eagles/config.cfg";
+                if (FileAccess.FileExists(configPath))
+                {
+                    var err = config.Load(configPath);
+                    if (err == Error.Ok && config.HasSectionKey("Audio", "UIEffectsEnabled"))
+                    {
+                        if (!config.GetValue("Audio", "UIEffectsEnabled").As<bool>())
+                        {
+                            GD.Print("AudioManager: UI sound effects disabled, skipping Keystroke");
+                            return;
+                        }
+                    }
+                }
+
                 if (_effectPlayers.TryGetValue(key, out var player))
                 {
                     player.Play();
@@ -302,7 +326,6 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        // Set combined volume for Planes and Effects buses (for future UI)
         public static void SetEffectsVolume(float linearVolume)
         {
             try
@@ -319,25 +342,42 @@ namespace WarEaglesDigital.Scripts
 
         public void ConnectUIButtonAudio()
         {
+            if (_isConnectingButtons)
+            {
+                GD.Print("AudioManager: Skipped ConnectUIButtonAudio due to concurrent call");
+                return;
+            }
+            _isConnectingButtons = true;
             try
             {
                 foreach (var node in GetTree().GetNodesInGroup("ui_buttons"))
                 {
-                    if (node is Button btn)
+                    if (node is Button btn && !_connectedButtons.Contains(btn.Name))
                     {
                         btn.Pressed += () => PlaySoundEffect("Keystroke");
+                        _connectedButtons.Add(btn.Name);
                         GD.Print($"Connected {btn.Name} to ui_buttons audio");
                     }
-                    else if (node is TextureButton texBtn)
+                    else if (node is TextureButton texBtn && !_connectedButtons.Contains(texBtn.Name))
                     {
                         texBtn.Pressed += () => PlaySoundEffect("Keystroke");
+                        _connectedButtons.Add(texBtn.Name);
                         GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
+                    }
+                    else
+                    {
+                        GD.Print($"AudioManager: {node.Name} already connected to ui_buttons audio");
                     }
                 }
             }
             catch (Exception ex)
             {
-                GD.Print($"Error connecting ui_buttons audio: {ex.Message}");
+                GD.PrintErr($"Error connecting ui_buttons audio: {ex.Message}");
+            }
+            finally
+            {
+                _isConnectingButtons = false;
+                GD.Print("AudioManager: ConnectUIButtonAudio completed");
             }
         }
     }
