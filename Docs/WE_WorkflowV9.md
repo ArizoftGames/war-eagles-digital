@@ -22,7 +22,7 @@
 
   Divided into 4 windows, each accessed by a selecting the corresponding Item in MainMenu.OptionsButton (SplashMenu.tscn or PauseMenu.tscn):
 	 Index 0. Video and Display: Completed. (Excursus:  Implement Loading.cs as main scene to load settings in config.cfg;  Options windows will read/write to user://War Eagles/config.cfg.  Completed.)
-	 Index 1. Audio: Completed. (Excursus: implement MusicManager and EffectsManager as autoloads vis single AudioManager, and UI button clicks via ui_buttons global group.) 
+	 Index 1. Audio: Completed. (Excursus: implement MusicManager and EffectsManager as autoloads vis single AudioManager, and UI button clicks via ui_buttons global group. Completed.) 
 	 Index 2. Controls – Create ControlsMenuPanel.cs to populate the ControlsMenu branch of Options.tscn.  This should provide a mechanism to enable X-Box controller support and a (so far) fixed input map for KBM and controller including camera controls. Address cost/benefit of implementing custom keybinding.(Excursus: Implement controller detection, integration, and activation.)
 	 Index 3. Gameplay Options – Create GameplayMenuPanel.cs to populate the GameplayMenu branch of Options.tscn.  Contains buttons to set persistent gameplay and UI options per player preference;  write to and read from config.cfg reference in Loading.cs and located in user://War Eagles/. 
 

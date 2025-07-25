@@ -34,6 +34,8 @@ ui_buttons*-button click implementation*
 Global function keys: ESC and Spacebar pause and open PauseMenu.
 X releases resources and quits immediately.
 
+Global button pressed audio feedback: /root/EffectsManager.PlaySoundEffect("Keystroke").  Implemented via inclusion in ui_buttons gruoup, set in editor for static nodes and included in code for dynamic nodes. Pressed signal connected using EffectsManager.ConnectUIButtonAudio().
+
 		    
 ##Autoloads:
 
@@ -44,9 +46,9 @@ UnitDatabase.cs - reads data fron csv parsers and constructs dictionaries.
 	GetAirUnitByName(string unit), GetAntiAircraftUnitByName(string unit), GetZoneByTargetName		(string targetName), GetAceByPilot(string pilot), GetEventByName(string name), 		GetZoneAsDictionary(string targetName), GetAirUnitAsDictionary(string unitName), 		GetEventAsDictionary(string name)
 	*/root/UnitDatabase*
 AudioManager.cs - Defines audio behavior for two singleton nodes:
-- /root/MusicManager: AudioManager singleton that plays music based on game state (e.g., PlayMusicByNationMood, PlayMusicByUseCase).
-- /root/EffectsManager: AudioManager singleton that plays impact effects (e.g., PlaySoundEffect for button clicks, events).
-Methods: PlayMusicByNationMood(string nationality, string mood), PlayMusicByUseCase(string useCase), PlaySoundEffect(string key), StopMusic(), SetBusVolume(string busName, float linearVolume), GetBusVolume(string busName), SetEffectsVolume(float linearVolume).
+- */root/MusicManager*: AudioManager singleton that plays music based on game state (e.g., PlayMusicByNationMood, PlayMusicByUseCase).
+- */root/EffectsManager*: AudioManager singleton that plays impact effects (e.g., PlaySoundEffect for button clicks, events).
+Methods: PlayMusicByNationMood(string nationality, string mood), PlayMusicByUseCase(string useCase), PlaySoundEffect(string key), StopMusic(), SetBusVolume(string busName, float linearVolume), GetBusVolume(string busName), SetEffectsVolume(float linearVolume),ConnectUIButtonAudio().
 ##Scenes:
 
 Loading.tscn:  Current main scene. Displays "Loading..." text and WE Icon. Fades seamlessly into IntroAnim.  Detects and writes config.cfg, uses existing user edited setting if present.  Makes if necessary and writes to "%APPDATA%\Roaming\War Eagles\War Eagles"
