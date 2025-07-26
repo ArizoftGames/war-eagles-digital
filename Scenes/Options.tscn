@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://brce3w3ns360d"]
+[gd_scene load_steps=5 format=3 uid="uid://brce3w3ns360d"]
 
 [ext_resource type="Theme" uid="uid://cw6t7lhrewpw5" path="res://Data/Resources/UI_Theme .tres" id="1_rou1w"]
 [ext_resource type="Script" uid="uid://bcujn4fnjqwd8" path="res://Scripts/DisplayMenuPanel.cs" id="2_hg628"]
 [ext_resource type="Script" uid="uid://clhmwdrhbhin4" path="res://Scripts/AudioMenuPanel.cs" id="3_5hy3q"]
+[ext_resource type="Script" uid="uid://030c2lvcxnmx" path="res://Scripts/ControlsMenuPanel.cs" id="4_cbhj7"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(2560, 0)
@@ -40,6 +41,7 @@ offset_right = 640.0
 offset_bottom = 58.0
 
 [node name="AudioMenuPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(768, 512)
 layout_mode = 1
 anchors_preset = 8
@@ -66,7 +68,6 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 
 [node name="ControlsMenuPanel" type="Panel" parent="."]
-visible = false
 custom_minimum_size = Vector2(1280, 1440)
 layout_mode = 1
 anchors_preset = 13
@@ -75,6 +76,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_cbhj7")
 
 [node name="ControlsMenu" type="VBoxContainer" parent="ControlsMenuPanel"]
 custom_minimum_size = Vector2(1280, 0)

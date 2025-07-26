@@ -14,7 +14,11 @@
 
 ##Coding Workflow
 
-1. Scene Planning: Collaborate with Grok to define scene goals, objectives, and solutions. Specify required assets. Grok drafts a Scene Plan with high-level pseudocode, outlining key logic, Node3D nodes, signals, and error-handling within the WarEaglesDigital.Scripts namespace.
+1. Scene Planning: Collaborate with Grok to define scene goals, objectives, and solutions. Specify required assets. Grok drafts a Scene Plan with high-level pseudocode, outlining key logic, Node3D nodes, signals, and error-handling within the WarEaglesDigital.Scripts namespace.  In collaboration, we determine data and inputs that fall into three categories:
+*must-Have*  Information without which the scene and script are impossible.  Might include filename and path, root node type, intended entry state and instancing case, purpose of the scene, a first approximation of end state, or the exit path/destination scene.
+*can-develop* Information that, if not available at the beginning of planning, can be developed during scene planning.  Might include a an outline of the scene tree, contents of text fields, themes or overrides to be applied, exit transition, signals, group memberships, resource management techniques, guaranteed dependencies, or autoload usages, in addition to other information.
+*can-defer* In general, almost any item that can for which a placeholder can be used without disabling function.  Most likely, dependencies with NYI functionality;  but may also include audio or visual presentations not yet developed or TBD for the specific application or other information.
+*In general,* even information in the "can defer" should be developed during the scene planning process as soon as it possoibly can, in order to limit backlogging and to provide as firm a code base as possible.
 2. Scene Creation: Create scene(s) in Godot 4.4 .NET editor, populating scene tree(s) with PascalCasing for node names. Source assets and create .tres files. Attach C# scripts in WarEaglesDigital.Scripts namespace.
 3. Copilot Prompt Development: Provide Grok with Scene Plan and raw .tscn text output from Godot. Upon consensus that the scene meets the Scene Plan, Grok generates a Copilot prompt in pseudocode, specifying WarEaglesDigital.Scripts namespace, node paths, signals, and error-handling. Ensure that prompts specify good resource amangement techniques where appropriate.
 *Include existing exemplar scripts with task requirements, per `Guidelines.md's Compatibility priority.*

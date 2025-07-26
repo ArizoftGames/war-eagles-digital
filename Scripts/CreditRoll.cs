@@ -63,6 +63,11 @@ namespace WarEaglesDigital.Scripts
             _backButton.Pressed += OnBackButtonPressed;
             _backButton.FocusMode = Control.FocusModeEnum.All;
             _backButton.GrabFocus();
+            _backButton.AddToGroup("ui_buttons");
+            GD.Print($"Added {_backButton.Name} to ui_buttons group");
+
+            // Connect all ui_buttons audio
+            GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
         }
 
         // Programmatically create and configure all required nodes

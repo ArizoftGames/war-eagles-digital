@@ -1,0 +1,102 @@
+[gd_resource type="Terrain3DAssets" load_steps=20 format=3 uid="uid://d2d6erac0phfl"]
+
+[ext_resource type="Texture2D" uid="uid://b3s64se24joa7" path="res://Data/Resources/Grass008_1_alb_1K.dds" id="1_miyso"]
+[ext_resource type="Texture2D" uid="uid://bxbu7eql2usii" path="res://Data/Resources/Grass008_norm_1K.dds" id="2_y28pc"]
+[ext_resource type="Texture2D" uid="uid://4veqs2q1otqw" path="res://Data/Terrain3DData2/Water002_alb.dds" id="3_f170n"]
+[ext_resource type="Texture2D" uid="uid://bkhucf6lnw5bp" path="res://Data/Terrain3DData2/Water001_normal_R1_1K.dds" id="4_xdiwf"]
+[ext_resource type="Texture2D" uid="uid://d332jgcky8iwr" path="res://Data/Resources/Grass008_dry_alb_1K.dds" id="5_37nf5"]
+[ext_resource type="Texture2D" uid="uid://bcatwga1tgqvv" path="res://Data/Resources/jungle_albedo_1k.dds" id="6_n6188"]
+[ext_resource type="Texture2D" uid="uid://c5p73ymcxbkm0" path="res://Data/Resources/jungle_normal_1K.dds" id="7_1y4io"]
+[ext_resource type="Texture2D" uid="uid://b4gdfbyeflftl" path="res://Data/Resources/Rock061_alb_1K.dds" id="8_fmo8l"]
+[ext_resource type="Texture2D" uid="uid://cm27af8llpx1q" path="res://Data/Resources/Rock061_norm_1K.dds" id="9_liadx"]
+[ext_resource type="Texture2D" uid="uid://3fkhw0n2brc8" path="res://Data/Resources/City3d_alb_1K.dds" id="10_fvvnn"]
+[ext_resource type="Texture2D" uid="uid://cmdsb0vkaj8s" path="res://Data/Resources/City3D_norm_1K.dds" id="11_hq4ea"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s6lk"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_m68pd"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_3s6lk")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uj40h"]
+name = "Grass2_2K_alb_1"
+albedo_color = Color(0.597958, 0.647107, 0.281082, 1)
+albedo_texture = ExtResource("1_miyso")
+normal_texture = ExtResource("2_y28pc")
+ao_strength = 0.75
+roughness = 0.45
+uv_scale = 0.03
+detiling_rotation = 0.4
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_dcgxo"]
+name = "Water001_albedo_1K"
+id = 1
+albedo_color = Color(0.985549, 0.996266, 0.994342, 1)
+albedo_texture = ExtResource("3_f170n")
+normal_texture = ExtResource("4_xdiwf")
+normal_depth = 0.082
+ao_strength = 0.591
+roughness = 0.378
+uv_scale = 0.075
+detiling_rotation = 0.25
+detiling_shift = 0.5
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_nplk7"]
+name = "Grass008_dry_alb_1K"
+id = 2
+albedo_color = Color(0.763681, 0.609287, 0.121036, 1)
+albedo_texture = ExtResource("5_37nf5")
+normal_texture = ExtResource("2_y28pc")
+detiling_rotation = 0.508
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_ufggi"]
+name = "jungle_albedo_1k"
+id = 3
+albedo_color = Color(0.572988, 0.572988, 0.572988, 1)
+albedo_texture = ExtResource("6_n6188")
+normal_texture = ExtResource("7_1y4io")
+normal_depth = 2.0
+ao_strength = 1.023
+roughness = 0.797
+uv_scale = 0.05
+detiling_rotation = 0.247
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_buo5u"]
+name = "Rock061_alb_1K"
+id = 4
+albedo_color = Color(0.531051, 0.531051, 0.531051, 1)
+albedo_texture = ExtResource("8_fmo8l")
+normal_texture = ExtResource("9_liadx")
+normal_depth = 1.0
+ao_strength = 0.977
+roughness = 0.884
+uv_scale = 0.05
+detiling_shift = 0.064
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_e0oh7"]
+name = "City3d_alb_1K"
+id = 5
+albedo_color = Color(0.905769, 0.905769, 0.905769, 1)
+albedo_texture = ExtResource("10_fvvnn")
+normal_texture = ExtResource("11_hq4ea")
+normal_depth = 1.247
+roughness = 0.158
+uv_scale = 0.05
+detiling_rotation = 0.05
+detiling_shift = 0.075
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_m68pd")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_uj40h"), SubResource("Terrain3DTextureAsset_dcgxo"), SubResource("Terrain3DTextureAsset_nplk7"), SubResource("Terrain3DTextureAsset_ufggi"), SubResource("Terrain3DTextureAsset_buo5u"), SubResource("Terrain3DTextureAsset_e0oh7")])

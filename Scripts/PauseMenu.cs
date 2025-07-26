@@ -139,8 +139,23 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                             GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
                         }
                         break;
-                    case 2: // Controls
-                        GD.Print("Controls branch NYI: ControlsMenuPanel.cs not implemented.");
+                    case 2:
+
+                        var controlsPanel = _optionsInstance.GetNode<Panel>("ControlsMenuPanel");
+                        GD.Print("controlsPanel: ", _optionsInstance.GetNodeOrNull<Panel>("ControlsMenuPanel"));
+                        if (controlsPanel != null)
+                        {
+                            GD.Print("controlsPanel found: ", controlsPanel);
+                            controlsPanel.Visible = true;
+                            GD.Print("controlsPanel visible: ", controlsPanel.Visible);
+                            if (controlsPanel is ControlsMenuPanel controlMenu)
+                                controlMenu.InitializeControlsMenu("Controls");
+                            else
+                                GD.PrintErr("ControlsMenuPanel script not attached to ControlsMenuPanel node.");
+                            GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
+                        }
+
+
                         break;
                     case 3: // Game Settings
                         GD.Print("Gameplay branch NYI: GameplayMenuPanel.cs not implemented.");

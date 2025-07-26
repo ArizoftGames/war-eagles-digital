@@ -223,6 +223,8 @@ namespace WarEaglesDigital.Scripts
                     SizeFlagsHorizontal = (SizeFlags)(int)Control.SizeFlags.ShrinkCenter
                 };
                 closeContainer.AddChild(_acceptButton);
+                _acceptButton.AddToGroup("ui_buttons");
+                GD.Print($"Added {_acceptButton.Name} to ui_buttons group");
 
                 _cancelButton = new Button
                 {
@@ -235,6 +237,8 @@ namespace WarEaglesDigital.Scripts
 
                 _acceptButton.Pressed += AcceptButtonPressed;
                 _cancelButton.Pressed += CancelPressed;
+                _cancelButton.AddToGroup("ui_buttons");
+                GD.Print($"Added {_cancelButton.Name} to ui_buttons group");
 
                 GD.Print("AudioMenuPanel: Populated successfully in PopulateAudioMenu");
             }
@@ -256,6 +260,8 @@ namespace WarEaglesDigital.Scripts
                 Alignment = HorizontalAlignment.Center
             };
             btn.AddThemeFontSizeOverride("font_size", 36);
+            btn.AddToGroup("ui_buttons");
+            GD.Print($"Added {btn.Name} to ui_buttons group");
             return btn;
         }
 

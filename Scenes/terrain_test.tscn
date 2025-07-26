@@ -1,6 +1,7 @@
-[gd_scene load_steps=84 format=3 uid="uid://dgm4uevrwfjvs"]
+[gd_scene load_steps=85 format=3 uid="uid://dgm4uevrwfjvs"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://ckvjcibc8fe1i" path="res://Data/Resources/Terrain_1.tres" id="1_n52oy"]
+[ext_resource type="Script" uid="uid://b4vvfwsnhprv5" path="res://Scripts/TerrainTest.cs" id="1_ricjs"]
 [ext_resource type="Texture2D" uid="uid://b3s64se24joa7" path="res://Data/Resources/Grass008_1_alb_1K.dds" id="2_ricjs"]
 [ext_resource type="Texture2D" uid="uid://4veqs2q1otqw" path="res://Data/Terrain3DData2/Water002_alb.dds" id="3_37pv8"]
 [ext_resource type="Texture2D" uid="uid://bkhucf6lnw5bp" path="res://Data/Terrain3DData2/Water001_normal_R1_1K.dds" id="4_e8dkk"]
@@ -310,6 +311,7 @@ _data = {
 }
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_ricjs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.75471, -0.253177, 0.605239, 0, 0.922538, 0.385906, -0.656059, 0.291247, -0.696248, 693, 163, -258)

@@ -192,7 +192,7 @@ namespace WarEaglesDigital.Scripts
                     return;
                 }
                 var joypads = Input.GetConnectedJoypads();
-                string bindings = "Keyboard";
+                string bindings = "KBM";
                 foreach (int device in joypads)
                 {
                     string joyName = Input.GetJoyName(device);

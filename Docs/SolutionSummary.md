@@ -70,3 +70,5 @@ Options.tscn:  Four options windows, selected by OptionButton Items in the menus
 Extras.tscn: Displays and certain game files and support assets, and  makes (if necessary) and exports them to %DOCUMENTS%\War Eagles by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
 
 Transition.tscn: instantiated by GameManager.TransitionTo(string NestSCenePath) to cover awkward scene transitions. Fades MenuBG.png in and out over 2 seconds.
+
+SandTable.tscn:  Currently stub. Will be the primary gameplay scene, displaying all Zones, Air Units, and Anti-Aircraft Units.  Will allow player to drag units to Zones and target Area3D nodes to designate for CAP, Raid, or Repair.  Includes flyable camera.
