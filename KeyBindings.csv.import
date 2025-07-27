@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dvljtd5afk281"
+valid=false
+
+[deps]
+
+source_file="res://KeyBindings.csv"
+
+[params]
+
+compress=true
+delimiter=0

@@ -13,18 +13,18 @@ namespace WarEaglesDigital.Scripts
         private readonly string _userConfigPath = "user://War Eagles/config.cfg";
         private readonly string _resConfigPath = "res://Data/War Eagles/config.cfg";
         private ConfigFile _config = new();
-        private Dictionary _settings = new Dictionary();
+        private Dictionary _settings = [];
         private string _activeConfigPath;
-        private readonly Vector2I[] _supportedResolutions = new[]
+        private readonly Vector2I[] _supportedResolutions =
 
 
-       {
+       [
             new Vector2I(1280, 720),
             new Vector2I(1920, 1080),
             new Vector2I(2560, 1440),
             new Vector2I(3840, 2160),
             new Vector2I(7680, 4320)
-        };
+        ];
         private Resource _introAnimScene; // Preloaded IntroAnim.tscn
         private const float _minimumLoadingTime = 3.0f; // Covers loading and grey screen
 

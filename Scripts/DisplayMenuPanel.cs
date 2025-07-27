@@ -377,7 +377,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                Vector2I screenSize = new Vector2I(1920, 1080); // Mock for testing
+                Vector2I screenSize = new(1920, 1080); // Mock for testing
                 int closest = 1; // Default to 1920x1080
                 double minDist = double.MaxValue;
                 for (int i = 0; i < _supported_resolutions.Length; i++)

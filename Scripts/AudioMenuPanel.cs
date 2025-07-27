@@ -29,7 +29,7 @@ namespace WarEaglesDigital.Scripts
         private ConfigFile _config;
 
         // Cache initial bus volumes
-        private Dictionary<string, float> _initialVolumes = new();
+        private readonly Dictionary<string, float> _initialVolumes = [];
 
         public override void _Ready()
         {

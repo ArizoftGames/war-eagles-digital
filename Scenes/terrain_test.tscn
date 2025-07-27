@@ -1,19 +1,9 @@
-[gd_scene load_steps=85 format=3 uid="uid://dgm4uevrwfjvs"]
+[gd_scene load_steps=66 format=3 uid="uid://dgm4uevrwfjvs"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://ckvjcibc8fe1i" path="res://Data/Resources/Terrain_1.tres" id="1_n52oy"]
 [ext_resource type="Script" uid="uid://b4vvfwsnhprv5" path="res://Scripts/TerrainTest.cs" id="1_ricjs"]
-[ext_resource type="Texture2D" uid="uid://b3s64se24joa7" path="res://Data/Resources/Grass008_1_alb_1K.dds" id="2_ricjs"]
-[ext_resource type="Texture2D" uid="uid://4veqs2q1otqw" path="res://Data/Terrain3DData2/Water002_alb.dds" id="3_37pv8"]
-[ext_resource type="Texture2D" uid="uid://bkhucf6lnw5bp" path="res://Data/Terrain3DData2/Water001_normal_R1_1K.dds" id="4_e8dkk"]
-[ext_resource type="Texture2D" uid="uid://d332jgcky8iwr" path="res://Data/Resources/Grass008_dry_alb_1K.dds" id="6_anvj1"]
+[ext_resource type="Terrain3DAssets" uid="uid://d2d6erac0phfl" path="res://Data/Resources/terrain_test.tres" id="3_pi83p"]
 [ext_resource type="Environment" uid="uid://dadgqdlk67v0q" path="res://Data/Resources/Environ_1.tres" id="6_n52oy"]
-[ext_resource type="Texture2D" uid="uid://bxbu7eql2usii" path="res://Data/Resources/Grass008_norm_1K.dds" id="7_e8dkk"]
-[ext_resource type="Texture2D" uid="uid://bcatwga1tgqvv" path="res://Data/Resources/jungle_albedo_1k.dds" id="8_dcgxo"]
-[ext_resource type="Texture2D" uid="uid://c5p73ymcxbkm0" path="res://Data/Resources/jungle_normal_1K.dds" id="9_37pv8"]
-[ext_resource type="Texture2D" uid="uid://b4gdfbyeflftl" path="res://Data/Resources/Rock061_alb_1K.dds" id="10_e0oh7"]
-[ext_resource type="Texture2D" uid="uid://cm27af8llpx1q" path="res://Data/Resources/Rock061_norm_1K.dds" id="11_1cq13"]
-[ext_resource type="Texture2D" uid="uid://3fkhw0n2brc8" path="res://Data/Resources/City3d_alb_1K.dds" id="12_dcgxo"]
-[ext_resource type="Texture2D" uid="uid://cmdsb0vkaj8s" path="res://Data/Resources/City3D_norm_1K.dds" id="13_37pv8"]
 [ext_resource type="PackedScene" uid="uid://gdirfb48b8wa" path="res://Assets/Models/Zones/Ploesti.glb" id="17_ppura"]
 [ext_resource type="Texture2D" uid="uid://b1cxnvx0e3g36" path="res://Assets/Sprites/StripBasic_1K.png" id="18_xno0d"]
 [ext_resource type="PackedScene" uid="uid://c5xmxwg3idbsd" path="res://Assets/Models/Zones/Truk.glb" id="19_aoy6h"]
@@ -71,95 +61,6 @@
 [ext_resource type="PackedScene" uid="uid://bj1ng88m0g83n" path="res://Assets/Models/Aircraft/B25LOD0.glb" id="71_3m24c"]
 [ext_resource type="PackedScene" uid="uid://drcsaxxg7ylkl" path="res://Assets/Models/Aircraft/B26LOD0.glb" id="72_lk1vy"]
 [ext_resource type="PackedScene" uid="uid://cfo6th2th7me2" path="res://Assets/Models/Aircraft/p51d.LOD0.glb" id="74_inylw"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s6lk"]
-transparency = 4
-cull_mode = 2
-vertex_color_use_as_albedo = true
-backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
-distance_fade_mode = 1
-distance_fade_min_distance = 128.0
-distance_fade_max_distance = 96.0
-
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_m68pd"]
-generated_type = 1
-height_offset = 0.5
-material_override = SubResource("StandardMaterial3D_3s6lk")
-last_lod = 0
-last_shadow_lod = 0
-lod0_range = 128.0
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uj40h"]
-name = "Grass2_2K_alb_1"
-albedo_color = Color(0.597958, 0.647107, 0.281082, 1)
-albedo_texture = ExtResource("2_ricjs")
-normal_texture = ExtResource("7_e8dkk")
-ao_strength = 0.75
-roughness = 0.45
-uv_scale = 0.03
-detiling_rotation = 0.4
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_dcgxo"]
-name = "Water001_albedo_1K"
-id = 1
-albedo_color = Color(0.985549, 0.996266, 0.994342, 1)
-albedo_texture = ExtResource("3_37pv8")
-normal_texture = ExtResource("4_e8dkk")
-normal_depth = 0.082
-ao_strength = 0.591
-roughness = 0.378
-uv_scale = 0.075
-detiling_rotation = 0.25
-detiling_shift = 0.5
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_nplk7"]
-name = "Grass008_dry_alb_1K"
-id = 2
-albedo_color = Color(0.763681, 0.609287, 0.121036, 1)
-albedo_texture = ExtResource("6_anvj1")
-normal_texture = ExtResource("7_e8dkk")
-detiling_rotation = 0.508
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_ufggi"]
-name = "jungle_albedo_1k"
-id = 3
-albedo_color = Color(0.572988, 0.572988, 0.572988, 1)
-albedo_texture = ExtResource("8_dcgxo")
-normal_texture = ExtResource("9_37pv8")
-normal_depth = 2.0
-ao_strength = 1.023
-roughness = 0.797
-uv_scale = 0.05
-detiling_rotation = 0.247
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_buo5u"]
-name = "Rock061_alb_1K"
-id = 4
-albedo_color = Color(0.531051, 0.531051, 0.531051, 1)
-albedo_texture = ExtResource("10_e0oh7")
-normal_texture = ExtResource("11_1cq13")
-normal_depth = 1.0
-ao_strength = 0.977
-roughness = 0.884
-uv_scale = 0.05
-detiling_shift = 0.064
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_e0oh7"]
-name = "City3d_alb_1K"
-id = 5
-albedo_color = Color(0.905769, 0.905769, 0.905769, 1)
-albedo_texture = ExtResource("12_dcgxo")
-normal_texture = ExtResource("13_37pv8")
-normal_depth = 1.247
-roughness = 0.158
-uv_scale = 0.05
-detiling_rotation = 0.05
-detiling_shift = 0.075
-
-[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_u5uaq"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_m68pd")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_uj40h"), SubResource("Terrain3DTextureAsset_dcgxo"), SubResource("Terrain3DTextureAsset_nplk7"), SubResource("Terrain3DTextureAsset_ufggi"), SubResource("Terrain3DTextureAsset_buo5u"), SubResource("Terrain3DTextureAsset_e0oh7")])
 
 [sub_resource type="Skin" id="Skin_t6pnr"]
 resource_local_to_scene = true
@@ -314,13 +215,13 @@ _data = {
 script = ExtResource("1_ricjs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.75471, -0.253177, 0.605239, 0, 0.922538, 0.385906, -0.656059, 0.291247, -0.696248, 693, 163, -258)
-fov = 9.8
+transform = Transform3D(-0.999884, 0.0152362, 4.65661e-10, 0.0142099, 0.932531, 0.36081, 0.00549738, 0.360769, -0.932638, -492.952, 61.001, 110.662)
+fov = 60.4
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 data_directory = "res://Data/Terrain3DData2"
 material = ExtResource("1_n52oy")
-assets = SubResource("Terrain3DAssets_u5uaq")
+assets = ExtResource("3_pi83p")
 collision_mode = 0
 mesh_lods = 3
 vertex_spacing = 10.0
@@ -361,10 +262,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8639, 0, 170.589)
 
 [node name="AC2" type="Node3D" parent="PZone0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Do335LOD0" parent="PZone0/AC2" instance=ExtResource("20_wusu0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7172, 0, 133.916)
 
 [node name="AC3" type="Node3D" parent="PZone0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -379,6 +278,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
 [node name="Truk" parent="PZone1/ZoneModel" instance=ExtResource("19_aoy6h")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PZone1/ZoneModel/Truk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255.964, 0.158859, 1.177)
 
 [node name="FacilitySprite" type="Sprite3D" parent="PZone1/ZoneModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

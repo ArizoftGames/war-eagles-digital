@@ -1,4 +1,4 @@
-#Current completed structure of War Eagles by scene:
+#War Eagles Solution Summary
 
 CSV's that provide data to autoloads:
 res://Data/RawData/Designations.csv (SquadronName,Nationality,Type,Special)
@@ -64,7 +64,7 @@ CreditRoll.tscn: Displays credits via Rich Text Label over a slideshow.  ESC, Sp
 Options.tscn:  Four options windows, selected by OptionButton Items in the menus: (in every case, AcceptButton calls a ConfirmationDialog to apply changes, CancelButton dismisses without changes)
 -Video and Display:  Allows user to change resolution, HUD [NYI] Theme and font, and turn display[NYI].
 -Audio:  Allows user to change music and sound effects volume, and set audio busses' (Master, Music, Effects) volumes. *Note: "Planes" bus is static and used for mixing in animations*
--Controls [NYI]:  Allows user to display key bindings for all actions, enable Xbox controller.
+-Controls:  Allows user to display key bindings for all actions, enable Xbox controller.
 -Gameplay  [NYI]:  Allows user to change gameplay settings, including game setup restrictions, enable/disable animations, disable vioceovers and button clicks.
 
 Extras.tscn: Displays and certain game files and support assets, and  makes (if necessary) and exports them to %DOCUMENTS%\War Eagles by request.  ESC, Spacebar, or internal Back button all return to PauseMenu.tscn.
