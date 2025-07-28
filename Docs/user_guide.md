@@ -60,7 +60,7 @@ OPTIONS:  [NYI] Opens the Options screen, which allows you to change your video 
 
 	Video and Display:  Allows you to set the resolution the game plays at (Standard, HD, 2K, 4K, or 8K).  The game automatically detects your video hardware;  but if you want to use a separate monitor, or cast the view, this lets you choose manually.  You can also choose to customize the way the user interface looks;  by default, it will present in colors that represent your nation, but you can use the War Eagles color palette, a high-contrast palette, or a system-style view.  If you like the national colors but find the font hard to read, you can adjust that here as well. The game also represents the phase and turn you’re in by a fictitious time and date;  you can set the dispaly to simple phase/turn here. 
 
-	Audio:  You can adjust the volume of the music, the sound effects, and the voiceovers;  or you can adjust them simultaneously using the master volume.  Preview buttons allow you to hear the music and sound effects at the current volume.
+	Audio:  You can adjust the volume of the music, the sound effects, and the voiceovers;  or you can adjust them simultaneously using the master volume.
 
 	Controls: Presents the actions available in the game and the keys, mouse clicks, or controller inputs to perform them.  You can also enable your controller here, though doing so will require you to restart the game.
 
@@ -76,15 +76,24 @@ OPTIONS:  [NYI] Opens the Options screen, which allows you to change your video 
 
 		Button Press Sound:  “Off” disables the keystroke sound when you press any button.
 
+		POV Pan Speed: Adjust the speed at which the game camera (your point of view) pans (looks around). (Mouse + MMB, arrow keys, or controller LS.)
+
+		POV Pan Speed: Adjust the speed at which the game camera (your point of view) moves. (Mouse + RMB, WASD, or controller Dpad.)
+
+		Cursor Speed: Adjust the speed at which the cursor moves across the screen. (Mouse or controller RS.)
+		
 		Movement:  “Normal” plays all unit movement animations; “Fast Player” disables animations when you move a unit; “Fast Opponent”  disables animations whe your opponent moves; “Fast Movement” disables all movement animations.
 
 		Combat: “Normal” plays all combat animations; “Fast Player” disables animations when your units attack or are damaged; “Fast Opponent”  disables animations when your opponent attacks or is damaged; “Fast Movement” disables all combat animations.
 
 		Transitions: “Normal” plays all phase and turn transition animations.  “Fast Phases” disables phase transitions;  “Fast Turns” disables turn transitions. “Fast Transitions” disables all transition effects.
 
-		Voiceovers:  “Normal” leaves all voiceovers in the game.  “Voice in Tutorial Only” disables all voiceovers in regular gameplay.  “Voice in Game Only” disables all the voiceovers in the Tutorial Scenario. “No Voiceovers” disables all voiceovers.
+		Voiceovers:  “Normal” leaves all voiceovers in the game.  “Voice in Tutorial Only” disables all vioceovers in regular gameplay.  “Voice in Game Only” disables all the voiceovers in the Tutorial Scenario. “No Voiceovers” disables all voiceovers.
 
-			
+	
+
+	 
+		
 
 EXTRAS:   
 MODELS tab: This tab contains selected models from the game that you can export to your computer for personal use. Models are bundled into .zip files.  Check the attached Modellicense.txt files for licensing requirement, especially before distributing the models or using them for commercial purposes. 

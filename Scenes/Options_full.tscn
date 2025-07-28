@@ -294,6 +294,7 @@ size_flags_vertical = 4
 text = "Cancel"
 
 [node name="ControlsMenuPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(1280, 1440)
 layout_mode = 1
 anchors_preset = 5
@@ -427,7 +428,6 @@ size_flags_vertical = 4
 text = "Cancel"
 
 [node name="GameplayMenuPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -574,22 +574,22 @@ popup/item_4/id = 4
 popup/item_5/text = "Free"
 popup/item_5/id = 5
 
-[node name="EffectsContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
+[node name="InterfaceContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
 custom_minimum_size = Vector2(560, 1120)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="EffectsLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
+[node name="InterfaceLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
 layout_mode = 2
-text = "Game Effects"
+text = "Interface Options"
 horizontal_alignment = 1
 
-[node name="ButtonPressLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
+[node name="ButtonPressLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Button Press Sound:"
 
-[node name="ButtonPressButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/EffectsContainer"]
+[node name="ButtonPressButton" type="OptionButton" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 selected = 0
@@ -598,6 +598,39 @@ popup/item_0/text = "On"
 popup/item_0/id = 0
 popup/item_1/text = "Off"
 popup/item_1/id = 1
+
+[node name="PanLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "POV Pan Speed:"
+
+[node name="PanSlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+tick_count = 10
+ticks_on_borders = true
+
+[node name="FlyLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "POV Move Speed:"
+
+[node name="FlySlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+tick_count = 9
+ticks_on_borders = true
+
+[node name="CursorLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cursor Speed:"
+
+[node name="CursorSlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+tick_count = 9
+ticks_on_borders = true
 
 [node name="GameSpeedContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
 custom_minimum_size = Vector2(560, 1120)

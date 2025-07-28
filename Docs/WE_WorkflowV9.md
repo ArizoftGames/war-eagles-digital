@@ -41,7 +41,8 @@
      - Phase/turn indicator (center)
      - Nationality indicator ([roundel].png)
      - Current VP tally
-     - Button links to player/opponent losses pools
+     - Button links to player/opponent losses pools (dropdown?)
+     - Units (Zones) dropdown?  Allow camera focus change?
      - Pause button - instantiates `PauseMenu.tscn` over the current scene.
      - Consider Save (Quicksave?) and Quit buttons (Quit already implemented via X key and on Pause Menu)
      - Hud will begin using HUD_**_Theme.tres as determined by nationality [NYI], but is customizable by player via Video and Display.  Placeholder with res://Data/Resources/HUD_WE_Theme.tres.

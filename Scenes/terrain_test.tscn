@@ -215,7 +215,7 @@ _data = {
 script = ExtResource("1_ricjs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.999884, 0.0152362, 4.65661e-10, 0.0142099, 0.932531, 0.36081, 0.00549738, 0.360769, -0.932638, -492.952, 61.001, 110.662)
+transform = Transform3D(-0.00959877, -0.499908, 0.866024, 0.0166255, 0.865866, 0.499999, -0.999816, 0.0191975, -3.78551e-08, 125, 50, 0)
 fov = 60.4
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
@@ -260,10 +260,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Ta152LOD0" parent="PZone0/AC1" instance=ExtResource("19_k8d18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8639, 0, 170.589)
-
-[node name="AC2" type="Node3D" parent="PZone0"]
-
-[node name="Do335LOD0" parent="PZone0/AC2" instance=ExtResource("20_wusu0")]
 
 [node name="AC3" type="Node3D" parent="PZone0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -624,3 +620,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_g0f4n")
 }
 movie_quit_on_finish = true
+
+[node name="AC2" type="Node3D" parent="."]
+
+[node name="Do335LOD0" parent="AC2" instance=ExtResource("20_wusu0")]

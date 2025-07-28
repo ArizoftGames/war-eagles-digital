@@ -19,7 +19,7 @@ namespace WarEaglesDigital.Scripts
         private float _moveSpeed = 35.0f; // Set for responsive movement
         private float _panSpeed = 0.5f;
         private float _zoomSpeed = 1.0f; // Multiplier for FOV changes
-        private float _pointerSpeed = 400.0f; // Pixels per second for RS pointer movement
+        private float _pointerSpeed = 600.0f; // Pixels per second for RS pointer movement
         private Node3D _ac2Node;
         private StaticBody3D _ac2Static;
         private GameManager _gameManager;
@@ -43,6 +43,13 @@ namespace WarEaglesDigital.Scripts
         private bool _isDragging;
         private Node3D _draggedNode;
         private bool _dragInitiated;
+        // Mouse input state
+        private bool _mouseRaycastRequested;
+        private Vector2 _mouseRaycastPosition;
+        private bool _mouseDragInitiated;
+        // Drag state
+        private Vector3 _dragStartPosition;
+        private Vector3 _initialIntersection;
 
         public override void _Ready()
         {
@@ -89,10 +96,6 @@ namespace WarEaglesDigital.Scripts
                 {
                     GD.Print("No controller selected. Fallback to KBM.");
                 }
-                /*if (_controllerId == -1)
-                {
-                    GD.Print("No EchtPower EP-01 detected. Fallback to KBM.");
-                }*/
 
                 // KeyBindings (hardcoded for now, can be loaded from CSV)
                 _buttonMap["MoveForward"] = 11; // DPad Up
@@ -118,13 +121,13 @@ namespace WarEaglesDigital.Scripts
                     GD.PrintErr("GameManager not found at /root/GameManager.");
 
                 // AC2 node and collider
-                _ac2Node = GetNodeOrNull<Node3D>("PZone0/AC2");
+                _ac2Node = GetNodeOrNull<Node3D>("PZone0/AC2") ?? GetNodeOrNull<Node3D>("AC2");
                 if (_ac2Node != null)
                 {
                     _ac2Static = new StaticBody3D
                     {
                         Name = "AC2Static",
-                        Transform = new Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+                        Transform = new Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0) // Matches Do335 Blender settings
                     };
                     var ac2Collision = new CollisionShape3D
                     {
@@ -135,11 +138,11 @@ namespace WarEaglesDigital.Scripts
                     _ac2Node.AddChild(_ac2Static);
                     _ac2Static.CollisionLayer = 1; // Ensure on layer 1
                     _ac2Static.CollisionMask = 1;
-                    GD.Print("AC2Static and AC2Collision added to PZone0/AC2.");
+                    GD.Print("AC2Static and AC2Collision added to AC2.");
                 }
                 else
                 {
-                    GD.PrintErr("AC2 node not found under PZone0.");
+                    GD.PrintErr("AC2 node not found at PZone0/AC2 or AC2.");
                 }
 
                 GD.Print("TerrainTest ready. Controller input initialized.");
@@ -174,7 +177,7 @@ namespace WarEaglesDigital.Scripts
                 _zoomOut = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomOut"]);
 
                 // Pointer movement (RS)
-                _pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
+                /*_pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
                 _pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
                 if (Math.Abs(_pointerX) > 0.2f || Math.Abs(_pointerY) > 0.2f)
                 {
@@ -183,8 +186,7 @@ namespace WarEaglesDigital.Scripts
                     // Clamp to viewport bounds
                     var viewportSize = GetViewport().GetVisibleRect().Size;
                     _pointer.Position = _pointer.Position.Clamp(Vector2.Zero, viewportSize);
-                    //GD.Print($"Pointer: Position={_pointer.Position}, DeltaX={_pointerX}, DeltaY={_pointerY}");
-                }
+                }*/
             }
             catch (Exception e)
             {
@@ -204,12 +206,11 @@ namespace WarEaglesDigital.Scripts
                 Vector3 movement = new Vector3(strafe, 0, forward) * _moveSpeed * (float)delta;
                 _camera.Translate(movement);
 
-                // Camera pan (LS)
+                // Camera pan (LS) with local rotations
                 if (Math.Abs(_panX) > 0.2f || Math.Abs(_panY) > 0.2f)
                 {
-                    _camera.RotateY(-_panX * _panSpeed * (float)delta); // Inverted for LS left=yaw left, right=yaw right
-                    _camera.RotateX(_panY * _panSpeed * (float)delta);  // Inverted for LS up=pitch down, down=pitch up
-                    //GD.Print($"Pan: panX={_panX}, panY={_panY}");
+                    _camera.RotateObjectLocal(Vector3.Up, -_panX * _panSpeed * (float)delta); // Local yaw for LS left/right
+                    _camera.RotateObjectLocal(Vector3.Right, _panY * _panSpeed * (float)delta); // Local pitch for LS up/down
                 }
 
                 // Camera zoom (LT/RT)
@@ -222,27 +223,40 @@ namespace WarEaglesDigital.Scripts
                     GD.Print($"Zoom: zoomIn={_zoomIn}, zoomOut={_zoomOut}, NewFov={newFov}");
                 }
 
-                // Dragging
-                if (_isDragging && _draggedNode != null)
+                // Update pointer position for controller
+                if (_controllerId != -1 && Input.GetConnectedJoypads().Contains(_controllerId))
                 {
-                    var plane = new Plane(Vector3.Up, 7.158859f); // Plane at Y=7.158859
-                    var from = _camera.ProjectRayOrigin(_pointer.Position);
-                    var to = from + _camera.ProjectRayNormal(_pointer.Position) * 500f;
-                    var intersection = plane.IntersectsRay(from, to);
-                    if (intersection.HasValue)
+                    _pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
+                    _pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
+                    if (Math.Abs(_pointerX) > 0.2f || Math.Abs(_pointerY) > 0.2f)
                     {
-                        // Smooth movement with Lerp
-                        var targetPos = intersection.Value;
-                        _draggedNode.GlobalPosition = _draggedNode.GlobalPosition.Lerp(targetPos, 10f * (float)delta);
-                        GD.Print($"Dragging: {_draggedNode.Name} to {_draggedNode.GlobalPosition}");
-                    }
-                    else
-                    {
-                        GD.Print("Dragging: No plane intersection.");
+                        Vector2 pointerDelta = new Vector2(_pointerX, _pointerY) * _pointerSpeed * (float)delta;
+                        _pointer.Position += pointerDelta;
+                        var viewportSize = GetViewport().GetVisibleRect().Size;
+                        _pointer.Position = _pointer.Position.Clamp(Vector2.Zero, viewportSize);
                     }
                 }
 
-                // Raycast if requested
+                // Controller dragging
+                if (_isDragging && _draggedNode != null && _raycastRequested)
+                {
+                    var plane = new Plane(Vector3.Up, 10f);
+                    var from = _camera.ProjectRayOrigin(_raycastPointerPosition);
+                    var to = from + _camera.ProjectRayNormal(_raycastPointerPosition) * 500f;
+                    var intersection = plane.IntersectsRay(from, to);
+                    if (intersection.HasValue)
+                    {
+                        var posdelta = intersection.Value - _initialIntersection;
+                        _draggedNode.GlobalPosition = _dragStartPosition + posdelta;
+                        GD.Print($"Controller Dragging: {_draggedNode.Name} to {_draggedNode.GlobalPosition}, RayFrom={from}, RayTo={to}, Intersection={intersection.Value}, Delta={posdelta}, DragStart={_dragStartPosition}");
+                    }
+                    else
+                    {
+                        GD.Print($"Controller Dragging: No plane intersection at {_raycastPointerPosition}, using last valid position");
+                    }
+                }
+
+                // Controller raycast for drag initiation
                 if (_raycastRequested)
                 {
                     _raycastRequested = false;
@@ -251,7 +265,66 @@ namespace WarEaglesDigital.Scripts
                     {
                         _isDragging = true;
                         _draggedNode = _ac2Node;
-                        GD.Print($"Dragging started: {_draggedNode.Name}");
+                        _dragStartPosition = _ac2Node.GlobalPosition;
+                        var from = _camera.ProjectRayOrigin(_raycastPointerPosition);
+                        var to = from + _camera.ProjectRayNormal(_raycastPointerPosition) * 500f;
+                        var plane = new Plane(Vector3.Up, 10f);
+                        var intersection = plane.IntersectsRay(from, to);
+                        _initialIntersection = intersection.HasValue ? intersection.Value : _dragStartPosition;
+                        GD.Print($"Controller Dragging started: {_draggedNode.Name}, DragStart={_dragStartPosition}, InitialIntersection={_initialIntersection}");
+                    }
+                }
+
+                // Mouse dragging
+                if (_isDragging && _draggedNode != null && _mouseRaycastRequested)
+                {
+                    var plane = new Plane(Vector3.Up, 10f);
+                    var from = _camera.ProjectRayOrigin(_mouseRaycastPosition);
+                    var to = from + _camera.ProjectRayNormal(_mouseRaycastPosition) * 500f;
+                    var intersection = plane.IntersectsRay(from, to);
+                    if (intersection.HasValue)
+                    {
+                        var posdelta = intersection.Value - _initialIntersection;
+                        _draggedNode.GlobalPosition = _dragStartPosition + posdelta;
+                        GD.Print($"Mouse Dragging: {_draggedNode.Name} to {_draggedNode.GlobalPosition}, RayFrom={from}, RayTo={to}, Intersection={intersection.Value}, Delta={posdelta}, DragStart={_dragStartPosition}");
+                    }
+                    else
+                    {
+                        GD.Print($"Mouse Dragging: No plane intersection at {_mouseRaycastPosition}, using last valid position");
+                    }
+                }
+
+                // Mouse raycast for drag initiation
+                if (_mouseRaycastRequested)
+                {
+                    _mouseRaycastRequested = false;
+                    var spaceState = GetWorld3D().DirectSpaceState;
+                    if (spaceState == null)
+                    {
+                        GD.PrintErr("DirectSpaceState is null in mouse raycast!");
+                        return;
+                    }
+                    var from = _camera.ProjectRayOrigin(_mouseRaycastPosition);
+                    var to = from + _camera.ProjectRayNormal(_mouseRaycastPosition) * 500f;
+                    var query = PhysicsRayQueryParameters3D.Create(from, to);
+                    query.CollisionMask = 1; // Layer 1
+                    var result = spaceState.IntersectRay(query);
+                    if (result.Count > 0 && result["collider"].AsGodotObject() == _ac2Static)
+                    {
+                        if (_mouseDragInitiated)
+                        {
+                            _isDragging = true;
+                            _draggedNode = _ac2Node;
+                            _dragStartPosition = _ac2Node.GlobalPosition;
+                            var plane = new Plane(Vector3.Up, 10f);
+                            var intersection = plane.IntersectsRay(from, to);
+                            _initialIntersection = intersection.HasValue ? intersection.Value : _dragStartPosition;
+                            GD.Print($"Mouse Dragging started: {_draggedNode.Name}, DragStart={_dragStartPosition}, InitialIntersection={_initialIntersection}");
+                        }
+                    }
+                    else
+                    {
+                        GD.Print($"Mouse Raycast: No hit at {_mouseRaycastPosition}, RayFrom={from}, RayTo={to}");
                     }
                 }
             }
@@ -265,10 +338,10 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
+                // Controller input handling
                 if (@event is InputEventJoypadButton btnEvent)
                 {
                     GD.Print($"Controller event: Button {btnEvent.ButtonIndex} Pressed={btnEvent.Pressed}");
-
                     if (btnEvent.Device == _controllerId)
                     {
                         if (btnEvent.ButtonIndex == (JoyButton)_buttonMap["SelectUnit"])
@@ -285,7 +358,7 @@ namespace WarEaglesDigital.Scripts
                                 _dragInitiated = false;
                                 if (_draggedNode != null)
                                 {
-                                    GD.Print($"Dragging stopped: {_draggedNode.Name}");
+                                    GD.Print($"Controller Dragging stopped: {_draggedNode.Name}");
                                     _draggedNode = null;
                                 }
                             }
@@ -314,9 +387,38 @@ namespace WarEaglesDigital.Scripts
                         }
                     }
                 }
-                else if (@event is InputEventJoypadMotion motionEvent)
+                else if (@event is InputEventJoypadMotion motionEvent && _isDragging)
                 {
-                    //GD.Print($"Controller axis: Axis {motionEvent.Axis} Value={motionEvent.AxisValue}");
+                    if (motionEvent.Axis == (JoyAxis)_axisMap["PointerX"] || motionEvent.Axis == (JoyAxis)_axisMap["PointerY"])
+                    {
+                        _raycastRequested = true;
+                        _raycastPointerPosition = _pointer.Position;
+                    }
+                }
+                // Mouse input handling
+                else if (@event is InputEventMouseButton mouseEvent && mouseEvent.ButtonIndex == MouseButton.Left)
+                {
+                    if (mouseEvent.IsPressed())
+                    {
+                        _mouseRaycastRequested = true;
+                        _mouseRaycastPosition = mouseEvent.Position;
+                        _mouseDragInitiated = true;
+                    }
+                    else
+                    {
+                        _isDragging = false;
+                        _mouseDragInitiated = false;
+                        if (_draggedNode != null)
+                        {
+                            GD.Print($"Mouse Dragging stopped: {_draggedNode.Name}");
+                            _draggedNode = null;
+                        }
+                    }
+                }
+                else if (@event is InputEventMouseMotion mouseMotion && _isDragging)
+                {
+                    _mouseRaycastRequested = true;
+                    _mouseRaycastPosition = mouseMotion.Position;
                 }
             }
             catch (Exception e)
