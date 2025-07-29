@@ -20,6 +20,7 @@ namespace WarEaglesDigital.Scripts
         private float _panSpeed = 0.5f;
         private float _zoomSpeed = 1.0f; // Multiplier for FOV changes
         private float _pointerSpeed = 600.0f; // Pixels per second for RS pointer movement
+        private float _mousePanSpeed = 0.3f; // Separate sensitivity for mouse pan (MMB), subordinate to _panSpeed
         private Node3D _ac2Node;
         private StaticBody3D _ac2Static;
         private GameManager _gameManager;
@@ -50,6 +51,21 @@ namespace WarEaglesDigital.Scripts
         // Drag state
         private Vector3 _dragStartPosition;
         private Vector3 _initialIntersection;
+        // KBM input state
+        private bool _kbmRmbHeld = false;
+        private bool _kbmMmbHeld = false;
+        private Vector2 _kbmLastMousePos = Vector2.Zero;
+        private Vector2 _kbmMouseDelta = Vector2.Zero;
+        private float _kbmMoveForward;
+        private float _kbmMoveBack;
+        private float _kbmStrafeLeft;
+        private float _kbmStrafeRight;
+        private float _kbmPanX;
+        private float _kbmPanY;
+        private float _kbmZoom;
+        private bool _levelCamera; // For camera leveling input
+        private float _kbmPitch; // For pitch clamping
+        private float _kbmYaw;
 
         public override void _Ready()
         {
@@ -99,21 +115,21 @@ namespace WarEaglesDigital.Scripts
 
                 // KeyBindings (hardcoded for now, can be loaded from CSV)
                 _buttonMap["MoveForward"] = 11; // DPad Up
-                _buttonMap["MoveBack"] = 12;    // DPad Down
-                _buttonMap["StrafeLeft"] = 13;  // DPad Left
+                _buttonMap["MoveBack"] = 12; // DPad Down
+                _buttonMap["StrafeLeft"] = 13; // DPad Left
                 _buttonMap["StrafeRight"] = 14; // DPad Right
-                _buttonMap["SelectUnit"] = 8;   // RS
-                _buttonMap["PauseGame"] = 4;    // Back
-                _buttonMap["QuitGame"] = 5;     // Home
-                _buttonMap["ScreenShot"] = 6;   // Start
-                _buttonMap["ResetCamera"] = 7;  // LS
+                _buttonMap["SelectUnit"] = 8; // RS
+                _buttonMap["PauseGame"] = 4; // Back
+                _buttonMap["QuitGame"] = 5; // Home
+                _buttonMap["ScreenShot"] = 6; // Start
+                _buttonMap["ResetCamera"] = 7; // LS
 
-                _axisMap["PanX"] = 0;           // LS X
-                _axisMap["PanY"] = 1;           // LS Y
-                _axisMap["ZoomIn"] = 5;         // RT
-                _axisMap["ZoomOut"] = 4;        // LT
-                _axisMap["PointerX"] = 2;       // RS X
-                _axisMap["PointerY"] = 3;       // RS Y
+                _axisMap["PanX"] = 0; // LS X
+                _axisMap["PanY"] = 1; // LS Y
+                _axisMap["ZoomIn"] = 5; // RT
+                _axisMap["ZoomOut"] = 4; // LT
+                _axisMap["PointerX"] = 2; // RS X
+                _axisMap["PointerY"] = 3; // RS Y
 
                 // GameManager
                 _gameManager = GetNodeOrNull<GameManager>("/root/GameManager");
@@ -145,6 +161,10 @@ namespace WarEaglesDigital.Scripts
                     GD.PrintErr("AC2 node not found at PZone0/AC2 or AC2.");
                 }
 
+                // Initialize KBM rotation states
+                _kbmYaw = 0f;
+                _kbmPitch = 0f;
+
                 GD.Print("TerrainTest ready. Controller input initialized.");
             }
             catch (Exception e)
@@ -159,25 +179,56 @@ namespace WarEaglesDigital.Scripts
             {
                 var joypads = Input.GetConnectedJoypads();
                 bool useController = _controllerId != -1 && joypads.Contains(_controllerId);
-                if (!useController)
+
+                // --- KBM Input Polling ---
+                // WASD for movement
+                _kbmMoveForward = Input.IsKeyPressed(Key.W) ? 1f : 0f;
+                _kbmMoveBack = Input.IsKeyPressed(Key.S) ? 1f : 0f;
+                _kbmStrafeLeft = Input.IsKeyPressed(Key.A) ? 1f : 0f;
+                _kbmStrafeRight = Input.IsKeyPressed(Key.D) ? 1f : 0f;
+
+                // Arrow keys for pan (yaw/pitch)
+                _kbmPanX = 0f;
+                _kbmPanY = 0f;
+                if (Input.IsKeyPressed(Key.Left))
+                    _kbmPanX -= 1f;
+                if (Input.IsKeyPressed(Key.Right))
+                    _kbmPanX += 1f;
+                if (Input.IsKeyPressed(Key.Up))
+                    _kbmPanY -= 1f;
+                if (Input.IsKeyPressed(Key.Down))
+                    _kbmPanY += 1f;
+
+                // +/- for zoom
+                _kbmZoom = 0f;
+                if (Input.IsKeyPressed(Key.Equal) || Input.IsKeyPressed(Key.KpAdd))
+                    _kbmZoom += 1f;
+                if (Input.IsKeyPressed(Key.Minus) || Input.IsKeyPressed(Key.KpSubtract))
+                    _kbmZoom -= 1f;
+
+                // Camera leveling input (Backslash or KpMultiply)
+                _levelCamera = Input.IsKeyPressed(Key.Backslash) || Input.IsKeyPressed(Key.KpMultiply);
+
+                // Mouse state: RMB/MMB hold for movement/pan, mouse wheel for zoom
+                // Mouse deltas are set in _Input
+
+                // Controller polling (existing logic, unchanged)
+                if (useController)
                 {
-                    return; // Fallback to KBM silently
+                    _moveForward = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["MoveForward"]) ? 1f : 0f;
+                    _moveBack = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["MoveBack"]) ? 1f : 0f;
+                    _strafeLeft = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["StrafeLeft"]) ? 1f : 0f;
+                    _strafeRight = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["StrafeRight"]) ? 1f : 0f;
+
+                    _panX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PanX"]);
+                    _panY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PanY"]);
+
+                    _zoomIn = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomIn"]);
+                    _zoomOut = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomOut"]);
                 }
 
-                // Poll inputs for physics process
-                _moveForward = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["MoveForward"]) ? 1f : 0f;
-                _moveBack = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["MoveBack"]) ? 1f : 0f;
-                _strafeLeft = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["StrafeLeft"]) ? 1f : 0f;
-                _strafeRight = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["StrafeRight"]) ? 1f : 0f;
-
-                _panX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PanX"]);
-                _panY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PanY"]);
-
-                _zoomIn = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomIn"]);
-                _zoomOut = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomOut"]);
-
                 // Pointer movement (RS)
-                /*_pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
+                _pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
                 _pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
                 if (Math.Abs(_pointerX) > 0.2f || Math.Abs(_pointerY) > 0.2f)
                 {
@@ -186,7 +237,7 @@ namespace WarEaglesDigital.Scripts
                     // Clamp to viewport bounds
                     var viewportSize = GetViewport().GetVisibleRect().Size;
                     _pointer.Position = _pointer.Position.Clamp(Vector2.Zero, viewportSize);
-                }*/
+                }
             }
             catch (Exception e)
             {
@@ -200,11 +251,92 @@ namespace WarEaglesDigital.Scripts
             {
                 if (_camera == null) return;
 
-                // Camera movement (DPad)
-                float forward = _moveBack - _moveForward; // Inverted for intuitive Up=forward, Down=back
-                float strafe = _strafeRight - _strafeLeft;
+                // --- KBM Camera Movement ---
+                // Prioritize mouse holds over keys
+                float moveForward = 0f, moveBack = 0f, strafeLeft = 0f, strafeRight = 0f;
+                float panX = 0f, panY = 0f, zoom = 0f;
+
+                if (_kbmRmbHeld)
+                {
+                    // RMB: WASD-like movement via mouse motion (horizontal = strafe, vertical = forward/back)
+                    moveForward = _kbmMouseDelta.Y < 0 ? Math.Abs(_kbmMouseDelta.Y) : 0f;
+                    moveBack = _kbmMouseDelta.Y > 0 ? Math.Abs(_kbmMouseDelta.Y) : 0f;
+                    strafeLeft = _kbmMouseDelta.X < 0 ? Math.Abs(_kbmMouseDelta.X) : 0f;
+                    strafeRight = _kbmMouseDelta.X > 0 ? Math.Abs(_kbmMouseDelta.X) : 0f;
+                    panX = 0f;
+                    panY = 0f;
+                }
+                else if (_kbmMmbHeld)
+                {
+                    // MMB: panning via mouse motion (horizontal = yaw, vertical = pitch) with separate sensitivity
+                    moveForward = moveBack = strafeLeft = strafeRight = 0f;
+                    panX = _kbmMouseDelta.X * _mousePanSpeed;
+                    panY = _kbmMouseDelta.Y * _mousePanSpeed;
+                }
+                else
+                {
+                    // Keyboard only
+                    moveForward = _kbmMoveForward;
+                    moveBack = _kbmMoveBack;
+                    strafeLeft = _kbmStrafeLeft;
+                    strafeRight = _kbmStrafeRight;
+                    panX = _kbmPanX;
+                    panY = _kbmPanY;
+                }
+                zoom = _kbmZoom;
+
+                // Movement
+                float forward = moveBack - moveForward; // Inverted for Up=forward, Down=back
+                float strafe = strafeRight - strafeLeft;
                 Vector3 movement = new Vector3(strafe, 0, forward) * _moveSpeed * (float)delta;
-                _camera.Translate(movement);
+                if (movement.Length() > 0.001f)
+                {
+                    _camera.Translate(movement);
+                    GD.Print($"KBM Move: {movement}");
+                }
+
+                // Pan (yaw/pitch) - all local
+                if (Math.Abs(panX) > 0.01f || Math.Abs(panY) > 0.01f)
+                {
+                    // Yaw (left/right) on Vector3.Up, Pitch (up/down) on Vector3.Right
+                    float yawDelta = -panX * _panSpeed * (float)delta;
+                    float pitchDelta = panY * _panSpeed * (float)delta;
+
+                    // Clamp pitch to -89 to 89 degrees
+                    _kbmYaw += yawDelta;
+                    _kbmPitch += pitchDelta;
+                    _kbmPitch = Mathf.Clamp(_kbmPitch, Mathf.DegToRad(-89f), Mathf.DegToRad(89f));
+
+                    // Apply yaw (local up)
+                    _camera.RotateObjectLocal(Vector3.Up, yawDelta);
+                    // Apply pitch (local right)
+                    _camera.RotateObjectLocal(Vector3.Right, pitchDelta);
+                    GD.Print($"KBM Pan: Yaw {yawDelta}, Pitch {pitchDelta}, PitchClamped {_kbmPitch}");
+                }
+
+                // Zoom (keyboard +/- and mouse wheel)
+                if (Math.Abs(zoom) > 0.01f)
+                {
+                    float newFov = _camera.Fov - zoom * _zoomSpeed * (float)delta * 20f;
+                    newFov = Mathf.Clamp(newFov, 30f, 100f);
+                    _camera.Fov = newFov;
+                    GD.Print($"KBM Zoom: {zoom}, NewFov={newFov}");
+                }
+
+                // Camera leveling
+                if (_levelCamera)
+                {
+                    _camera.Rotation = new Vector3(_camera.Rotation.X, _camera.Rotation.Y, 0);
+                    _kbmPitch = Mathf.Clamp(_kbmPitch, Mathf.DegToRad(-89f), Mathf.DegToRad(89f));
+                    GD.Print("Camera leveled.");
+                }
+
+                // Controller camera movement (existing logic, unchanged)
+                // Camera movement (DPad)
+                float dpForward = _moveBack - _moveForward; // Inverted for intuitive Up=forward, Down=back
+                float dpStrafe = _strafeRight - _strafeLeft;
+                Vector3 dpMovement = new Vector3(dpStrafe, 0, dpForward) * _moveSpeed * (float)delta;
+                _camera.Translate(dpMovement);
 
                 // Camera pan (LS) with local rotations
                 if (Math.Abs(_panX) > 0.2f || Math.Abs(_panY) > 0.2f)
@@ -216,28 +348,15 @@ namespace WarEaglesDigital.Scripts
                 // Camera zoom (LT/RT)
                 if (_zoomIn > 0.2f || _zoomOut > 0.2f)
                 {
-                    float zoom = _zoomIn - _zoomOut;
-                    float newFov = _camera.Fov - zoom * _zoomSpeed * (float)delta * 20f; // Tuned for ~10-15 deg/sec
+                    float triggerZoom = _zoomIn - _zoomOut;
+                    float newFov = _camera.Fov - triggerZoom * _zoomSpeed * (float)delta * 20f; // Tuned for ~10-15 deg/sec
                     newFov = Mathf.Clamp(newFov, 30f, 100f); // Limit FOV range
                     _camera.Fov = newFov;
                     GD.Print($"Zoom: zoomIn={_zoomIn}, zoomOut={_zoomOut}, NewFov={newFov}");
                 }
 
-                // Update pointer position for controller
-                if (_controllerId != -1 && Input.GetConnectedJoypads().Contains(_controllerId))
-                {
-                    _pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
-                    _pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
-                    if (Math.Abs(_pointerX) > 0.2f || Math.Abs(_pointerY) > 0.2f)
-                    {
-                        Vector2 pointerDelta = new Vector2(_pointerX, _pointerY) * _pointerSpeed * (float)delta;
-                        _pointer.Position += pointerDelta;
-                        var viewportSize = GetViewport().GetVisibleRect().Size;
-                        _pointer.Position = _pointer.Position.Clamp(Vector2.Zero, viewportSize);
-                    }
-                }
-
-                // Controller dragging
+                // --- Controller Dragging Logic (Commented Out) ---
+                /*
                 if (_isDragging && _draggedNode != null && _raycastRequested)
                 {
                     var plane = new Plane(Vector3.Up, 10f);
@@ -256,7 +375,6 @@ namespace WarEaglesDigital.Scripts
                     }
                 }
 
-                // Controller raycast for drag initiation
                 if (_raycastRequested)
                 {
                     _raycastRequested = false;
@@ -274,8 +392,9 @@ namespace WarEaglesDigital.Scripts
                         GD.Print($"Controller Dragging started: {_draggedNode.Name}, DragStart={_dragStartPosition}, InitialIntersection={_initialIntersection}");
                     }
                 }
+                */
 
-                // Mouse dragging
+                // --- Mouse Dragging Logic (Restored, as per prompt) ---
                 if (_isDragging && _draggedNode != null && _mouseRaycastRequested)
                 {
                     var plane = new Plane(Vector3.Up, 10f);
@@ -294,7 +413,6 @@ namespace WarEaglesDigital.Scripts
                     }
                 }
 
-                // Mouse raycast for drag initiation
                 if (_mouseRaycastRequested)
                 {
                     _mouseRaycastRequested = false;
@@ -338,7 +456,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                // Controller input handling
+                // --- Controller input handling (unchanged) ---
                 if (@event is InputEventJoypadButton btnEvent)
                 {
                     GD.Print($"Controller event: Button {btnEvent.ButtonIndex} Pressed={btnEvent.Pressed}");
@@ -348,19 +466,19 @@ namespace WarEaglesDigital.Scripts
                         {
                             if (btnEvent.Pressed)
                             {
-                                _raycastRequested = true;
-                                _raycastPointerPosition = _pointer.Position;
-                                _dragInitiated = true;
+                                // _raycastRequested = true;
+                                // _raycastPointerPosition = _pointer.Position;
+                                // _dragInitiated = true;
                             }
                             else
                             {
-                                _isDragging = false;
-                                _dragInitiated = false;
-                                if (_draggedNode != null)
-                                {
-                                    GD.Print($"Controller Dragging stopped: {_draggedNode.Name}");
-                                    _draggedNode = null;
-                                }
+                                // _isDragging = false;
+                                // _dragInitiated = false;
+                                // if (_draggedNode != null)
+                                // {
+                                //     GD.Print($"Controller Dragging stopped: {_draggedNode.Name}");
+                                //     _draggedNode = null;
+                                // }
                             }
                         }
                         else if (btnEvent.Pressed)
@@ -387,38 +505,97 @@ namespace WarEaglesDigital.Scripts
                         }
                     }
                 }
-                else if (@event is InputEventJoypadMotion motionEvent && _isDragging)
+                else if (@event is InputEventJoypadMotion motionEvent /*&& _isDragging*/)
                 {
                     if (motionEvent.Axis == (JoyAxis)_axisMap["PointerX"] || motionEvent.Axis == (JoyAxis)_axisMap["PointerY"])
                     {
-                        _raycastRequested = true;
-                        _raycastPointerPosition = _pointer.Position;
+                        // _raycastRequested = true;
+                        // _raycastPointerPosition = _pointer.Position;
                     }
                 }
-                // Mouse input handling
-                else if (@event is InputEventMouseButton mouseEvent && mouseEvent.ButtonIndex == MouseButton.Left)
+
+                // --- KBM Mouse input handling ---
+                else if (@event is InputEventMouseButton mouseEvent)
                 {
-                    if (mouseEvent.IsPressed())
+                    if (mouseEvent.ButtonIndex == MouseButton.Right)
                     {
-                        _mouseRaycastRequested = true;
-                        _mouseRaycastPosition = mouseEvent.Position;
-                        _mouseDragInitiated = true;
-                    }
-                    else
-                    {
-                        _isDragging = false;
-                        _mouseDragInitiated = false;
-                        if (_draggedNode != null)
+                        if (mouseEvent.Pressed)
                         {
-                            GD.Print($"Mouse Dragging stopped: {_draggedNode.Name}");
-                            _draggedNode = null;
+                            _kbmRmbHeld = true;
+                            _kbmLastMousePos = mouseEvent.Position;
+                            _kbmMouseDelta = Vector2.Zero;
+                            GD.Print("RMB held for KBM movement.");
+                        }
+                        else
+                        {
+                            _kbmRmbHeld = false;
+                            _kbmMouseDelta = Vector2.Zero;
+                            GD.Print("RMB released.");
+                        }
+                    }
+                    else if (mouseEvent.ButtonIndex == MouseButton.Middle)
+                    {
+                        if (mouseEvent.Pressed)
+                        {
+                            _kbmMmbHeld = true;
+                            _kbmLastMousePos = mouseEvent.Position;
+                            _kbmMouseDelta = Vector2.Zero;
+                            GD.Print("MMB held for KBM pan.");
+                        }
+                        else
+                        {
+                            _kbmMmbHeld = false;
+                            _kbmMouseDelta = Vector2.Zero;
+                            GD.Print("MMB released.");
+                        }
+                    }
+                    else if (mouseEvent.ButtonIndex == MouseButton.WheelUp)
+                    {
+                        _kbmZoom = 1f;
+                        GD.Print("Mouse wheel up (zoom in).");
+                    }
+                    else if (mouseEvent.ButtonIndex == MouseButton.WheelDown)
+                    {
+                        _kbmZoom = -1f;
+                        GD.Print("Mouse wheel down (zoom out).");
+                    }
+
+                    // --- Mouse Dragging Logic (Restored, as per prompt) ---
+                    else if (mouseEvent.ButtonIndex == MouseButton.Left)
+                    {
+                        if (mouseEvent.IsPressed())
+                        {
+                            _mouseRaycastRequested = true;
+                            _mouseRaycastPosition = mouseEvent.Position;
+                            _mouseDragInitiated = true;
+                        }
+                        else
+                        {
+                            _isDragging = false;
+                            _mouseDragInitiated = false;
+                            if (_draggedNode != null)
+                            {
+                                GD.Print($"Mouse Dragging stopped: {_draggedNode.Name}");
+                                _draggedNode = null;
+                            }
                         }
                     }
                 }
-                else if (@event is InputEventMouseMotion mouseMotion && _isDragging)
+                else if (@event is InputEventMouseMotion mouseMotion)
                 {
-                    _mouseRaycastRequested = true;
-                    _mouseRaycastPosition = mouseMotion.Position;
+                    if (_kbmRmbHeld || _kbmMmbHeld)
+                    {
+                        _kbmMouseDelta = mouseMotion.Position - _kbmLastMousePos;
+                        _kbmLastMousePos = mouseMotion.Position;
+                        GD.Print($"Mouse motion delta: {_kbmMouseDelta}");
+                    }
+
+                    // --- Mouse Dragging Logic (Restored, as per prompt) ---
+                    if (_isDragging)
+                    {
+                        _mouseRaycastRequested = true;
+                        _mouseRaycastPosition = mouseMotion.Position;
+                    }
                 }
             }
             catch (Exception e)
@@ -437,6 +614,7 @@ namespace WarEaglesDigital.Scripts
                     GD.PrintErr("DirectSpaceState is null in RaycastToAC2!");
                     return null;
                 }
+
                 // Project pointer position to 3D ray
                 var from = _camera.ProjectRayOrigin(pointerPosition);
                 var to = from + _camera.ProjectRayNormal(pointerPosition) * 500f; // Standardized ray length
