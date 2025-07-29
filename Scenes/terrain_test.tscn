@@ -622,5 +622,6 @@ libraries = {
 movie_quit_on_finish = true
 
 [node name="AC2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="Do335LOD0" parent="AC2" instance=ExtResource("20_wusu0")]
