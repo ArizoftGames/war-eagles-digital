@@ -12,7 +12,6 @@ namespace WarEaglesDigital.Scripts
         private Label _notificationLabel;
         private Timer _notificationTimer;
         private Panel _notificationPanel;
-        private System.Collections.Generic.Dictionary<Key, string> _keyBindings = [];
 
         public override void _Ready()
         {
@@ -107,107 +106,53 @@ namespace WarEaglesDigital.Scripts
              GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
              GD.Print($"Notification Panel size: {_notificationPanel.Size}");
              GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
-
-            try
-            {
-                // Load KeyBindings.csv
-                if (!FileAccess.FileExists("res://Docs/KeyBindings.csv")) { GD.PrintErr("CSV missing"); return; }
-                using var file = FileAccess.Open("res://Docs/KeyBindings.csv", FileAccess.ModeFlags.Read);
-                file.GetCsvLine(); // Skip header
-                while (!file.EofReached())
-                {
-                    var line = file.GetCsvLine();
-                    if (line.Length < 2) continue;
-                    string command = line[0]; // e.g., "Pause Game and Open Menu"
-                    string kb = line[1]; // e.g., "Esc or Spacebar"
-                                         // Parse kb to Key enums (split 'or', map "Esc" to Key.Escape, etc.)
-                    foreach (string keyStr in kb.Split(" or "))
-                    {
-                        Key keyEnum = keyStr.Trim() switch
-                        {
-                            "Esc" => Key.Escape,
-                            "Spacebar" => Key.Space,
-                            "X" => Key.X,
-                            "~" => Key.Asciitilde,
-                            "H" => Key.H,
-                            "Delete" => Key.Delete,
-                            "Z" => Key.Z,
-                            "Enter" => Key.Enter,
-                            "Backspace" => Key.Backspace,
-                            "L" => Key.L,
-                            "K" => Key.K,
-                            "G" => Key.G,
-                            "Q" => Key.Q,
-                            "E" => Key.E,
-                            "Tab" => Key.Tab,
-                            "+" => Key.Plus,
-                            "-" => Key.Minus,
-                            "Up Arrow" => Key.Up,
-                            "Down Arrow" => Key.Down,
-                            "Left Arrow" => Key.Left,
-                            "Rt Arrow" => Key.Right,
-                            "W" => Key.W,
-                            "S" => Key.S,
-                            "A" => Key.A,
-                            "D" => Key.D,
-                            "\\" => Key.Backslash,
-                            _ => Key.None
-                        };
-                        if (keyEnum != Key.None) _keyBindings[keyEnum] = command;
-                    }
-                }
-            }
-            catch (Exception ex) { GD.PrintErr($"CSV load error: {ex}"); }
         }
 
         public override void _Input(InputEvent @event)
         {
             if (@event is InputEventKey keyEvent && keyEvent.Pressed)
             {
-                try
+                if (keyEvent.Keycode == Key.Escape || keyEvent.Keycode == Key.Space)
                 {
-                    if (_keyBindings.TryGetValue(keyEvent.Keycode, out string command))
-                    {
-                        switch (command)
-                        {
-                            case "Pause Game and Open Menu": PauseGame(); break;
-                            case "Quit Game no save [NYI]":
-                                try
-                                {
-                                    // Godot's Array does not have ForEach, use a regular foreach loop
-                                    foreach (var node in GetTree().GetNodesInGroup("glb_models"))
-                                        (node as Node)?.QueueFree();
-                                    foreach (var node in GetTree().GetNodesInGroup("audio_players"))
-                                    {
-                                        node.Call("stop");
-                                        node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
-                                        (node as Node)?.QueueFree();
-                                    }
-                                    foreach (var node in GetTree().GetNodesInGroup("terrains"))
-                                        (node as Node)?.QueueFree();
-                                    GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
-                                }
-                                catch (Exception ex)
-                                {
-                                    GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
-                                }
-                                GetTree().Quit();
-                                break;
-                            case "Open Console [NYI]": AccessConsole(); break;
-                            case "Open Help Menu [NYI]": GD.Print("NYI: Help Menu"); break;
-                            case "Screenshot": ScreenShot(); break;
-                            case "End Phase [NYI]": GD.Print("NYI: End Phase"); break;
-                            case "End Turn [NYI]": GD.Print("NYI: End Turn"); break;
-                            case "Skip Voiceover": GD.Print("NYI: Skip Voiceover"); break;
-                            case "View Player Losses Pool [NYI]": GD.Print("NYI: Player Losses"); break;
-                            case "View Enemy Losses Pool [NYI]": GD.Print("NYI: Enemy Losses"); break;
-                            case "Game History [NYI]": GD.Print("NYI: Game History"); break;
-                            // Ignore mouse/controller-specific (handled in InputManager)
-                            default: break;
-                        }
-                    }
+                    PauseGame();
                 }
-                catch (Exception ex) { GD.PrintErr($"Input error: {ex}"); }
+                else if (keyEvent.Keycode == Key.Asciitilde)
+                {
+                    AccessConsole();
+                }
+                else if (keyEvent.Keycode == Key.Delete)
+                {
+                    ScreenShot();
+                }
+                else if (keyEvent.Keycode == Key.X)
+                {
+                    try
+                    {
+                        // Godot's Array does not have ForEach, use a regular foreach loop
+                        foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                            (node as Node)?.QueueFree();
+
+                        foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                        {
+                            node.Call("stop");
+                            node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                            (node as Node)?.QueueFree();
+                        }
+
+                        foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                            (node as Node)?.QueueFree();
+
+                        GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
+                    }
+
+                    GetTree().Quit();
+                }
+
             }
         }
 
@@ -311,9 +256,9 @@ namespace WarEaglesDigital.Scripts
                     _notificationLabel.Visible = true;
                     _notificationPanel.Visible = true;
                     _notificationTimer.Start();
-                   /* GD.Print($"Notification Label position: {_notificationLabel.GlobalPosition}");
-                    GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
-                    GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
+                    /* GD.Print($"Notification Label position: {_notificationLabel.GlobalPosition}");
+                     GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
+                     GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
                 }
                 else
                 {
@@ -330,8 +275,8 @@ namespace WarEaglesDigital.Scripts
         {
             GD.Print("SetGameSettings called.");
             //NYI
-            
-           
+
+
         }
 
         public void GetGameSettings()
@@ -345,7 +290,7 @@ namespace WarEaglesDigital.Scripts
             try
             {
                 GD.Print($"Transitioning to scene: {NextScenePath}");
-                          
+
                 var transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/Transition.tscn").Instantiate();
                 AddChild(transitionScene);
                 GD.Print("Transition scene instantiated successfully.");
