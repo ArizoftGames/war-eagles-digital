@@ -6,7 +6,7 @@ War Eagles Digital User Guide
 
 *[NYI] denotes Not Yet Implemented, throughout.*  
 
-Overview of War Eagles Digital, based on the 1995 tabletop game.
+Overview of War Eagles Digital, based on the 1995 tabletop game.  
 Objective: Build an air force, raid enemy zones, and earn Victory Points.  
 
 ## Setup[NYI]  
@@ -30,90 +30,52 @@ Combat Air Patrol Phase: Move aircraft to protect zones.
 ### Keyboard 
 
 **ESC key:** pauses the game and displays the Main Menu.
-
-**~ Key:** Opens the debugging console 
-
+**~ Key:** Opens the debugging console  
 **Spacebar:** pauses the game and displays the Main Menu. 
-**X:** Quits without saving.
-
+**X:** Quits without saving. 
 **Delete Key:** Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents.
-
 **H:** Opens the Help menu.
-
 **Z:** Ends the current phase.
-
 **Enter:** Ends the current turn.
-
 **Backspace:** Skips the current voiceover.
-
 **L:** Views your Losses Pool for this game 
-
 **K:** View Enemy Losses Pool for this game
-
 **G:** Presents your past games and statistics.
-
 **Q** Select Current Focus Item
-
 **E** Release or Cancel Focus
-
 **Tab:** Scroll Focus to Next Item
-
 **W,A,S,D** Move your point of view.
-
 **Arrow Keys** Rotate your view.
-
 **+, -** Zoom in or out.
-
-**"Backslash"** Levels your view with the horizon.
+**\** Levels your view with the horizon.
 
 ### Mouse
 
 **Move Mouse** Moves the mouse cursor.
-
 **Hover** View unit status and details.
-
 **Left-Click** Select unit or button.
-
 **Left-Hold** Drag selected unit; release button to drop.
-
 **Right-Hold and Move Mouse** Move your point of view.
-
 **Middle-Hold and Move Mouse** Rotate your view.
-
 **Mouse Wheel** Zoom in or out.
 
 ### Game Controller (Xbox)
 
 **Back:** pauses the game and displays the Main Menu.
-
 **Home:** Quits without saving. 
-
 **Start:** Takes a screenshot of the current camera view and saves it to the War Eagles folder in your Documents.
-
 **X:** Opens the Help menu.
-
 **LB:** Ends the current phase.
-
 **RB:** Ends the current turn.
-
 **Y:** Skips the current voiceover.
-
 **A:** Views your Losses Pool for this game 
-
 **B:** View Enemy Losses Pool for this game
-
 **RS** Moves the pointer.
-
 **Hover** View unit status and details.
-
 **RS Press** Select
-
 **Dpad** Move your point of view.
-
 **LS** Rotate your view.
-
 **LT,RT** Zoom in or out.
-
 **LS Press** Levels your view with the horizon.
 
  
@@ -154,48 +116,29 @@ You can access the Credit Screen from the Main Menu by clicking "Credits."  Pres
 **Gameplay Options:**  Provides the ability to customize your gaming experience:
 
 *Mode (requires restart):* Quality Mode presents the game as intended.  Performance mode removes the environmental effects, the gameboard terrain, the voiceovers, and reduces the quality of some models.  USING PERFORMANCE MODE WILL SIGNIFICANTLY REDUCE THE VISUAL EXPERIENCE!  You should only select this if your computer performs badly while playing on Quality Mode.
-
 *Game Year:*  “Historical” means you may only select “years” in Game Setup in which the Nation you started with was historically a belligerent.  “Free” lets you choose any game year.
-
 *Opponent Selection:*  “Historical”  mean you may only choose an opponent who was historically an enemy of your alliance (Allies: UK, US and Soviets;  or Axis, Germany or Japan) AND a belligerent in the year you’ve selected.  “Year Only means you can choose your opponent from any country, limited by the year;  “Alliance Only” means you can select your opponent from the enemy Alliance, but without being limited by the year.  “Free” means you can choose any country as an opponent in any year.
-
 *Zone Selection:*  “Nation” limits your Zone selections to your nationality only.  “Alliance allows you to select any Zones available to nations of your alliance, and “Free” allows you to select any Zones. *Changing the Zone selection limits may affect play balance!*
-
 *Unit, Ace, and Event Purchases:*  “Historical” limits you to purchasing units, aces, and events of your Nation, available in the game year you chose.  “Nation Only”  allows you to purchase any items available to your Nation, regardless of year;  “Year Only” allows you to purchase any items, of any Nation, available in that year.  “Alliance Only” allows you to purchase any units, aces, or events available to Nations in your Alliance; “Alliance and Year” further filters this selection by the year the item is available.
-
 *Button Press Sound:*  “Off” disables the keystroke sound when you press any button.
-
 *POV Pan Speed:* Adjust the speed at which the game camera (your point of view) pans (looks around). (Mouse + MMB, arrow keys, or controller LS.)
-
 *POV Move Speed:* Adjust the speed at which the game camera (your point of view) moves. (Mouse + RMB, WASD, or controller Dpad.)
-
 *Mouse Cursor Speed* Adjusts the speed the cursor moves across the screen while using the mouse.
-
 *Pointer speed* Adjusts the speed the pointer moves across the screen when using the controller.
-
 *Mouse Sensitivity* Adjusts the sensitivity of the mouse to your movements.
-
 *Movement:* “Normal” plays all unit movement animations; “Fast Player” disables animations when you move a unit; “Fast Opponent”  disables animations whe your opponent moves; “Fast Movement” disables all movement animations.
 
 *Combat:* “Normal” plays all combat animations; “Fast Player” disables animations when your units attack or are damaged; “Fast Opponent”  disables animations when your opponent attacks or is damaged; “Fast Movement” disables all combat animations.
-
 *Transitions:* “Normal” plays all phase and turn transition animations.  “Fast Phases” disables phase transitions;  “Fast Turns” disables turn transitions. “Fast Transitions” disables all transition effects.
-
 *Voiceovers:*  “Normal” leaves all voiceovers in the game.  “Voice in Tutorial Only” disables all vioceovers in regular gameplay.  “Voice in Game Only” disables all the voiceovers in the Tutorial Scenario. “No Voiceovers” disables all voiceovers.
 	
 ### EXTRAS:   
-
 **MODELS tab:** This tab contains selected models from the game that you can export to your computer for personal use. Models are bundled into .zip files.  Check the attached Modellicense.txt files for licensing requirements, especially before distributing the models or using them for commercial purposes. 
-
 **SOUNDTRACK Tab:**  Allows you to listen to the music used in War Eagles (by clicking on the titles) or export the songs by clicking the icon to the right [res://Assets/Sprites/MusicExport.png]. The last entry exports a .zip file containing selected songs used as the sources for the national soundtrack. Again, these are all free for your personal enjoyment, but check the enclosed licenses before distributing them or using them for commercial purposes. 
-
 **HISTORY OF AERIAL STRATEGY:** [NYI]  A brief article about the roots and development of the strategy of air power, from WWI through WWII. 
-
 **FURTHER READING:** A list of some of the books that inspired and informed the creating of War Eagles.  You can export this list as a PDF. 
-
 **DESIGNER’S NOTES:**  A brief discussion of the design process and history of War Eagles. 
 Clicking the "Back" button in the lower-right of the screen or pressing the Escape key or space bar will return you to the Main Menu (as if you had paused the game). 
-
 *Player's Note: Everything you save from the Extras screen will be stored in the War Eagles Folder in your Documents.* 
 
 ### HELP:

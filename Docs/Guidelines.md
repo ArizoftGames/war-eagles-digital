@@ -45,7 +45,8 @@ These rules ensure precise, efficient collaboration with Grok and Copilot for pr
 GLOBAL:  Frame ALL Copilot prompts in pseudocode.  Avoid using plain language in prompts;  Copilot can misinterpret plain language easily. 
 
 1. Prioritize Godot 4.4+ Sources: Always emphasize Godot 4.4-specific documentation and APIs in prompts. Copilot may default to outdated Godot 3.x or generic C# sources, which are incompatible. Specify `Godot 4.4 .NET` to avoid errors. 
-2. Where applicable, prompt Copilot to use this layering strategy for proper visibility: 
+2. Where applicable, prompt Copilot to use this layering strategy for proper visibility:
+Layer 0 = Controller Pointer 
 Layer 1 = Loading, Options, Transiton, [NYI]Results 
 Layer 2 = IntroAnim, SplashMenu, PauseMenu, [NYI]GameSetup 
 Layer 3 = [NYI]HUD 

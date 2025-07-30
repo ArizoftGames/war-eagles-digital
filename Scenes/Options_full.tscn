@@ -622,7 +622,7 @@ layout_mode = 2
 min_value = 1.0
 max_value = 10.0
 value = 1.0
-tick_count = 9
+tick_count = 10
 ticks_on_borders = true
 
 [node name="Pointer Speed" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
