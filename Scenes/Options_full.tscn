@@ -606,6 +606,9 @@ text = "POV Pan Speed:"
 
 [node name="PanSlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
 layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
 tick_count = 10
 ticks_on_borders = true
 
@@ -622,14 +625,43 @@ value = 1.0
 tick_count = 9
 ticks_on_borders = true
 
+[node name="Pointer Speed" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Pointer Speed"
+
+[node name="PointerSlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+
 [node name="CursorLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Cursor Speed:"
+text = "Mouse Cursor Speed:"
 
 [node name="CursorSlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
 layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
 tick_count = 9
+ticks_on_borders = true
+
+[node name="MouseLabel" type="Label" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Mouse Sensitivity"
+
+[node name="MouseSlider" type="HSlider" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer/InterfaceContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+tick_count = 10
 ticks_on_borders = true
 
 [node name="GameSpeedContainer" type="VBoxContainer" parent="GameplayMenuPanel/GamePlayMenu/GameplayContainer"]
