@@ -45,7 +45,7 @@ namespace WarEaglesDigital.Scripts
                 AutowrapMode = TextServer.AutowrapMode.WordSmart,
                 ClipText = false,
                 HorizontalAlignment = HorizontalAlignment.Left, // Align text left
-                                                                // Set Label to fill panel with padding
+                // Set Label to fill panel with padding
                 AnchorLeft = 0.0f,
                 AnchorTop = 0.0f,
                 AnchorRight = 1.0f,
@@ -100,59 +100,151 @@ namespace WarEaglesDigital.Scripts
             };
             canvasLayer.AddChild(_notificationTimer);
 
+            // Connect to InputManager.ControllerStateChanged
+            try
+            {
+                var inputManager = GetNodeOrNull<Node>("/root/InputManager");
+                if (inputManager != null)
+                {
+                    inputManager.Connect("ControllerStateChanged", new Callable(this, nameof(OnControllerStateChanged)));
+                    GD.Print("Connected to InputManager.ControllerStateChanged");
+                }
+                else
+                {
+                    GD.PrintErr("InputManager not found at /root/InputManager for signal connection");
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception connecting to InputManager.ControllerStateChanged: {ex.Message}");
+            }
+
             // Log viewport and panel info for debugging
             var viewportSize = GetViewport().GetVisibleRect().Size;
             /* GD.Print($"Viewport size: {viewportSize}");
              GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
              GD.Print($"Notification Panel size: {_notificationPanel.Size}");
-             GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
+             GD.Print($"Notification Label size: {_notificationLabel.Size}"); */
+        }
+
+        private void OnControllerStateChanged(bool active)
+        {
+            try
+            {
+                string message = active ? "Controller enabled" : "Controller disabled";
+                ShowNotification(message);
+                GD.Print($"Notification: {message}");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in OnControllerStateChanged: {ex.Message}");
+            }
         }
 
         public override void _Input(InputEvent @event)
         {
             if (@event is InputEventKey keyEvent && keyEvent.Pressed)
             {
-                if (keyEvent.Keycode == Key.Escape || keyEvent.Keycode == Key.Space)
+                try
                 {
-                    PauseGame();
-                }
-                else if (keyEvent.Keycode == Key.Asciitilde)
-                {
-                    AccessConsole();
-                }
-                else if (keyEvent.Keycode == Key.Delete)
-                {
-                    ScreenShot();
-                }
-                else if (keyEvent.Keycode == Key.X)
-                {
-                    try
+                    if (keyEvent.Keycode == Key.Escape || keyEvent.Keycode == Key.Space)
                     {
-                        // Godot's Array does not have ForEach, use a regular foreach loop
-                        foreach (var node in GetTree().GetNodesInGroup("glb_models"))
-                            (node as Node)?.QueueFree();
-
-                        foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                        GD.Print("Input: PauseGame triggered");
+                        PauseGame();
+                    }
+                    else if (keyEvent.Keycode == Key.Asciitilde)
+                    {
+                        GD.Print("Input: AccessConsole triggered");
+                        AccessConsole();
+                    }
+                    else if (keyEvent.Keycode == Key.Delete)
+                    {
+                        GD.Print("Input: ScreenShot triggered");
+                        ScreenShot();
+                    }
+                    else if (keyEvent.Keycode == Key.X)
+                    {
+                        GD.Print("Input: Quit game triggered");
+                        try
                         {
-                            node.Call("stop");
-                            node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
-                            (node as Node)?.QueueFree();
+                            // Godot's Array does not have ForEach, use a regular foreach loop
+                            foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                                (node as Node)?.QueueFree();
+
+                            foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                            {
+                                node.Call("stop");
+                                node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                                (node as Node)?.QueueFree();
+                            }
+
+                            foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                                (node as Node)?.QueueFree();
+
+                            GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+                        }
+                        catch (Exception ex)
+                        {
+                            GD.PrintErr($"Exception in ReleaseResources: {ex.Message}");
                         }
 
-                        foreach (var node in GetTree().GetNodesInGroup("terrains"))
-                            (node as Node)?.QueueFree();
-
-                        GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
-
+                        GetTree().Quit();
                     }
-                    catch (Exception ex)
+                    else if (keyEvent.Keycode == Key.H)
                     {
-                        GD.PrintErr($"Exception in ReleaseResources(): {ex.Message}");
+                        GD.Print("Input: OpenHelpMenu triggered");
+                        OpenHelpMenu();
                     }
-
-                    GetTree().Quit();
+                    else if (keyEvent.Keycode == Key.Z)
+                    {
+                        GD.Print("Input: EndPhase triggered");
+                        EndPhase();
+                    }
+                    else if (keyEvent.Keycode == Key.Enter)
+                    {
+                        GD.Print("Input: EndTurn triggered");
+                        EndTurn();
+                    }
+                    else if (keyEvent.Keycode == Key.Backspace)
+                    {
+                        GD.Print("Input: SkipVoiceover triggered");
+                        SkipVoiceover();
+                    }
+                    else if (keyEvent.Keycode == Key.L)
+                    {
+                        GD.Print("Input: ViewPlayerLossesPool triggered");
+                        ViewPlayerLossesPool();
+                    }
+                    else if (keyEvent.Keycode == Key.K)
+                    {
+                        GD.Print("Input: ViewEnemyLossesPool triggered");
+                        ViewEnemyLossesPool();
+                    }
+                    else if (keyEvent.Keycode == Key.G)
+                    {
+                        GD.Print("Input: GameHistory triggered");
+                        GameHistory();
+                    }
+                    else if (keyEvent.Keycode == Key.Q)
+                    {
+                        GD.Print("Input: SelectUnit triggered");
+                        SelectUnit();
+                    }
+                    else if (keyEvent.Keycode == Key.Tab)
+                    {
+                        GD.Print("Input: ScrollFocus triggered");
+                        ScrollFocus();
+                    }
+                    else if (keyEvent.Keycode == Key.Backslash)
+                    {
+                        GD.Print("Input: CameraLevel triggered");
+                        CameraLevel();
+                    }
                 }
-
+                catch (Exception ex)
+                {
+                    GD.PrintErr($"Exception in _Input: {ex.Message}");
+                }
             }
         }
 
@@ -210,7 +302,6 @@ namespace WarEaglesDigital.Scripts
                     return;
                 }
 
-                //string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 string exportPath = GetExportPath();
                 string fileName = System.IO.Path.Combine(exportPath, $"Screenshot_{DateTime.Now:yyyyMMdd_HHmmss}.png");
                 Error result = screenshot.SavePng(fileName);
@@ -258,7 +349,7 @@ namespace WarEaglesDigital.Scripts
                     _notificationTimer.Start();
                     /* GD.Print($"Notification Label position: {_notificationLabel.GlobalPosition}");
                      GD.Print($"Notification Panel position: {_notificationPanel.GlobalPosition}");
-                     GD.Print($"Notification Label size: {_notificationLabel.Size}");*/
+                     GD.Print($"Notification Label size: {_notificationLabel.Size}"); */
                 }
                 else
                 {
@@ -274,15 +365,12 @@ namespace WarEaglesDigital.Scripts
         public void SetGameSettings(Godot.Collections.Dictionary<string, Variant> settings)
         {
             GD.Print("SetGameSettings called.");
-            //NYI
-
-
+            // NYI
         }
 
         public void GetGameSettings()
         {
-            //NYI
-
+            // NYI
         }
 
         public async void TransitionTo(string NextScenePath)
@@ -290,7 +378,6 @@ namespace WarEaglesDigital.Scripts
             try
             {
                 GD.Print($"Transitioning to scene: {NextScenePath}");
-
                 var transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/Transition.tscn").Instantiate();
                 AddChild(transitionScene);
                 GD.Print("Transition scene instantiated successfully.");
@@ -303,13 +390,64 @@ namespace WarEaglesDigital.Scripts
                 animPlayer.Play("FadeOut");
                 await ToSignal(animPlayer, "animation_finished");
                 GD.Print("FadeOut animation finished, removing transition scene.");
-                //transitionScene.QueueFree();
+                // transitionScene.QueueFree();
                 GD.Print($"Transition to {NextScenePath} completed successfully.");
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
             }
+        }
+
+        // NYI method stubs for KeyBindings.csv
+        public void OpenHelpMenu()
+        {
+            GD.Print("OpenHelpMenu NYI");
+        }
+
+        public void EndPhase()
+        {
+            GD.Print("EndPhase NYI");
+        }
+
+        public void EndTurn()
+        {
+            GD.Print("EndTurn NYI");
+        }
+
+        public void SkipVoiceover()
+        {
+            GD.Print("SkipVoiceover NYI");
+        }
+
+        public void ViewPlayerLossesPool()
+        {
+            GD.Print("ViewPlayerLossesPool NYI");
+        }
+
+        public void ViewEnemyLossesPool()
+        {
+            GD.Print("ViewEnemyLossesPool NYI");
+        }
+
+        public void GameHistory()
+        {
+            GD.Print("GameHistory NYI");
+        }
+
+        public void SelectUnit()
+        {
+            GD.Print("SelectUnit NYI");
+        }
+
+        public void ScrollFocus()
+        {
+            GD.Print("ScrollFocus NYI");
+        }
+
+        public void CameraLevel()
+        {
+            GD.Print("CameraLevel NYI");
         }
     }
 }
