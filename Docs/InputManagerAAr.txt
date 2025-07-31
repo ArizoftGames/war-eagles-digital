@@ -1,0 +1,24 @@
+This excursus (Implement controller controller usage in Workflow v9)  was the most complex iteration of the coding workflow yet attempted.  It failed 3 times, requiring starting over at the completion of ControlsMenuPanel.  Our knowledge of the end state was EASILY to least we've had in any iteration, and mimics future evolutions in gameplay and and opponent behavior well.  All we knew going in is "user wants to make the controller act like the mouse, and fire selected hotkeys, when it's enabled),  NOTHING was known about the scene structure or script interaction required for execution.  The 
+
+PLANNING
+Challenges
+Imprecise phrasing in user requirements (emulate rather than look like/add to)
+Grok 4 loss of source files
+Pure token limits; updating and or/writing 3 scripts, with associated necessary clarification, user requirements, confirmation, Intellisense debugging and  minimal testing ran through XXXX tokens, pushing performance loss and extending read times despited very strict token conservation techniques
+
+
+
+Successes
+Planning the approach revealed several unanticipated methods of live installationa and developed the required sequencing/scene/script inteactions and order fairly quickly and accurately.
+Token limit effects on the workflow were identified, allowing robust adjustments to future iteration planning to prevent unanticiapeted issues.
+
+
+EXECUTION
+Challenges
+Adherence to query
+Over-reliance on context-based inference vs hard data (Loading.cs as autoload vs SolutionSummary specificity; GameManager methods vs use of ConfigFile methods already extant and very specific user guidance)
+Token Limits:  Strict attention must be paid to token usage, as the limitation prevented full implementation into all interacting scripts in a single session.
+
+
+Successes
+Prototyping beforehand in a test scene allowed robust development of specific code for implementation, revealing multiple blind alleys and needed adjustments to user requirements that the complexity of the live installation might have masked.

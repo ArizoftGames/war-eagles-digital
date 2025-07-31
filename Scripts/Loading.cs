@@ -9,16 +9,13 @@ namespace WarEaglesDigital.Scripts
 {
     public partial class Loading : Control
     {
-        //private AnimationPlayer Fadeout_Player;
         private readonly string _userConfigPath = "user://War Eagles/config.cfg";
         private readonly string _resConfigPath = "res://Data/War Eagles/config.cfg";
         private ConfigFile _config = new();
         private Dictionary _settings = [];
         private string _activeConfigPath;
         private readonly Vector2I[] _supportedResolutions =
-
-
-       [
+        [
             new Vector2I(1280, 720),
             new Vector2I(1920, 1080),
             new Vector2I(2560, 1440),
@@ -30,7 +27,7 @@ namespace WarEaglesDigital.Scripts
 
         public override void _Ready()
         {
-            //GD.Print("Loading scene initialized");
+            // GD.Print("Loading scene initialized");
             LoadGameSettings();
             WaitTimer(_minimumLoadingTime);
         }
@@ -84,20 +81,22 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                
-                //Fadeout_Player = GetNode<AnimationPlayer>("FadeoutPlayer");
-                
                 await ToSignal(GetTree().CreateTimer(delay), "timeout");
                 GD.Print("WaitTimer completed, calling TransitionTo()");
                 var gameManager = GetNodeOrNull<Node>("/root/GameManager");
-                gameManager.Call("TransitionTo", "res://Scenes/IntroAnim.tscn"); 
-                // TransitionToIntroAnim();
-                //Fadeout_Player.Play("Fadeout");
+                if (gameManager != null)
+                {
+                    gameManager.Call("TransitionTo", "res://Scenes/IntroAnim.tscn");
+                    GD.Print("Called GameManager.TransitionTo for IntroAnim.tscn");
+                }
+                else
+                {
+                    GD.PrintErr("GameManager not found at /root/GameManager");
+                }
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in WaitTimer: {ex.Message}");
-                //TransitionToIntroAnim(); // Proceed to transition on error
             }
         }
 
@@ -189,6 +188,7 @@ namespace WarEaglesDigital.Scripts
                 if (_config.HasSectionKey("Controller", "Bindings"))
                 {
                     _settings["Bindings"] = _config.GetValue("Controller", "Bindings");
+                    GD.Print($"Loaded Bindings from config: {_settings["Bindings"]}");
                     return;
                 }
                 var joypads = Input.GetConnectedJoypads();
@@ -199,8 +199,7 @@ namespace WarEaglesDigital.Scripts
                     string joyGUID = Input.GetJoyGuid(device);
                     if (joyName != null && (joyName.Contains("Xbox", StringComparison.OrdinalIgnoreCase) || joyName.Contains("XInput", StringComparison.OrdinalIgnoreCase)))
                     {
-                        GD.Print($"Detected Xbox controller: Name={joyName}");
-                        GD.Print($"GUID: {joyGUID}");
+                        GD.Print($"Detected Xbox controller: Name={joyName}, GUID={joyGUID}");
                         bindings = "Default";
                         break;
                     }
@@ -208,6 +207,7 @@ namespace WarEaglesDigital.Scripts
                 _settings["Bindings"] = bindings;
                 _config.SetValue("Controller", "Bindings", bindings);
                 _config.Save(_activeConfigPath);
+                GD.Print($"Wrote default Bindings to config: {bindings}");
             }
             catch (Exception ex)
             {
@@ -230,6 +230,12 @@ namespace WarEaglesDigital.Scripts
                     _settings["CombatSpeed"] = _config.GetValue("Gameplay", "CombatSpeed", "Normal");
                     _settings["TransitionSpeed"] = _config.GetValue("Gameplay", "TransitionSpeed", "Normal");
                     _settings["VoiceOver"] = _config.GetValue("Gameplay", "VoiceOver", "Normal");
+                    _settings["panspeed"] = _config.GetValue("Gameplay", "panspeed", 0.5f);
+                    _settings["movespeed"] = _config.GetValue("Gameplay", "movespeed", 35.0f);
+                    _settings["pointerspeed"] = _config.GetValue("Gameplay", "pointerspeed", 600.0f);
+                    _settings["mousepanspeed"] = _config.GetValue("Gameplay", "mousepanspeed", 0.3f);
+                    _settings["cursorspeed"] = _config.GetValue("Gameplay", "cursorspeed", 600.0f);
+                    GD.Print("Loaded Gameplay settings from config");
                     return;
                 }
                 _settings["Mode"] = "Quality";
@@ -241,6 +247,11 @@ namespace WarEaglesDigital.Scripts
                 _settings["CombatSpeed"] = "Normal";
                 _settings["TransitionSpeed"] = "Normal";
                 _settings["VoiceOver"] = "Normal";
+                _settings["panspeed"] = 0.5f;
+                _settings["movespeed"] = 35.0f;
+                _settings["pointerspeed"] = 600.0f;
+                _settings["mousepanspeed"] = 0.3f;
+                _settings["cursorspeed"] = 600.0f;
                 _config.SetValue("Gameplay", "Mode", "Quality");
                 _config.SetValue("Gameplay", "Year", "Historical");
                 _config.SetValue("Gameplay", "Opponent", "Historical");
@@ -250,7 +261,13 @@ namespace WarEaglesDigital.Scripts
                 _config.SetValue("Gameplay", "CombatSpeed", "Normal");
                 _config.SetValue("Gameplay", "TransitionSpeed", "Normal");
                 _config.SetValue("Gameplay", "VoiceOver", "Normal");
+                _config.SetValue("Gameplay", "panspeed", 0.5f);
+                _config.SetValue("Gameplay", "movespeed", 35.0f);
+                _config.SetValue("Gameplay", "pointerspeed", 600.0f);
+                _config.SetValue("Gameplay", "mousepanspeed", 0.3f);
+                _config.SetValue("Gameplay", "cursorspeed", 600.0f);
                 _config.Save(_activeConfigPath);
+                GD.Print("Wrote default Gameplay settings to config");
             }
             catch (Exception ex)
             {
@@ -281,19 +298,14 @@ namespace WarEaglesDigital.Scripts
                 if (gameManager != null)
                 {
                     gameManager.Call("SetGameSettings", _settings);
+                    GD.Print("Applied settings to GameManager");
                 }
                 else
                 {
                     GD.PushError("GameManager not found");
                 }
-                /* try
-                {
-                    UnitDatabase.GetControllerBindings(_settings["Bindings"].ToString());
-                }
-                catch (Exception ex)
-                {
-                    GD.PushError($"Error applying controller bindings: {ex.Message}");
-                } */
+                // InputManager settings will be applied when InputManager.cs is implemented
+                GD.Print("InputManager settings prepared in config for future use");
             }
             catch (Exception ex)
             {
@@ -305,26 +317,6 @@ namespace WarEaglesDigital.Scripts
         {
             GD.Print($"HUD theme application NYI for theme: {theme}");
         }
-
-      /*  private async void TransitionToIntroAnim()
-        {
-            try
-            {
-                var transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/Transition.tscn").Instantiate();
-                AddChild(transitionScene);
-                var animPlayer = transitionScene.GetNode<AnimationPlayer>("AnimationPlayer");
-                animPlayer.Play("FadeIn");
-                await ToSignal(animPlayer, "animation_finished");
-                GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn");
-                animPlayer.Play("FadeOut");
-                await ToSignal(animPlayer, "animation_finished");
-                transitionScene.QueueFree();
-            }
-            catch (Exception ex)
-            {
-                GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
-            }
-        }*/
 
         private void WriteDefaultConfig()
         {
@@ -348,40 +340,18 @@ namespace WarEaglesDigital.Scripts
                 _config.SetValue("Gameplay", "CombatSpeed", "Normal");
                 _config.SetValue("Gameplay", "TransitionSpeed", "Normal");
                 _config.SetValue("Gameplay", "VoiceOver", "Normal");
+                _config.SetValue("Gameplay", "panspeed", 0.5f);
+                _config.SetValue("Gameplay", "movespeed", 35.0f);
+                _config.SetValue("Gameplay", "pointerspeed", 600.0f);
+                _config.SetValue("Gameplay", "mousepanspeed", 0.3f);
+                _config.SetValue("Gameplay", "cursorspeed", 600.0f);
                 _config.Save(_activeConfigPath);
+                GD.Print("Wrote default config to: " + _activeConfigPath);
             }
             catch (Exception ex)
             {
                 GD.PushError($"Error in WriteDefaultConfig: {ex.Message}");
             }
         }
-
-        /*        private void TransitionToIntroAnim()
-                {
-                    try
-                    {
-                       // if (_introAnimScene is PackedScene packedScene && packedScene.CanInstantiate())
-                        //{
-                            //Fadeout_Player = GetNode<AnimationPlayer>("FadeoutPlayer");
-                            var startTime = Time.GetTicksMsec();
-                            GD.Print("Attempting scene transition to IntroAnim.tscn");
-                            //Fadeout_Player.Play("Fadeout");
-                            //GetTree().ChangeSceneToPacked(packedScene);
-                            GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn");
-
-                            GD.Print($"Scene transition took {Time.GetTicksMsec() - startTime} ms");
-                            // No QueueFree; Loading.tscn persists until IntroAnim cleanup
-                        //}
-                        //else
-                        //{
-                        //    GD.PushError("Preloaded IntroAnim.tscn is not valid or cannot be instantiated");
-                        //    GetTree().ChangeSceneToFile("res://Scenes/IntroAnim.tscn"); // Fallback
-                        //}
-                    }
-                    catch (Exception ex)
-                    {
-                        GD.PushError($"Error in TransitionToIntroAnim: {ex.Message}");
-                    }
-                }*/
     }
 }

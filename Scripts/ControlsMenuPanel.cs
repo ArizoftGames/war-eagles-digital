@@ -373,11 +373,11 @@ namespace WarEaglesDigital.Scripts
                     GD.Print($"ControlsMenuPanel: Config save error: {err}");
 
                 // Notify GameManager
-                var gameManager = GetNodeOrNull<Node>("/root/GameManager");
+               /* var gameManager = GetNodeOrNull<Node>("/root/GameManager");
                 if (gameManager != null)
                     gameManager.Call("SetGameSettings", _settings);
                 else
-                    GD.Print("GameManager not found for SetGameSettings.");
+                    GD.Print("GameManager not found for SetGameSettings.");*/
 
                 _confirmationDialog.QueueFree();
                 GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");

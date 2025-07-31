@@ -1,8 +1,396 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using WarEaglesDigital.Scripts;
 
 namespace WarEaglesDigital.Scripts
 {
-   
+    public partial class InputManager : Node
+    {
+        private int _controllerId = -1; // -1 for no controller, set to device ID
+        private string _controllerName = "";
+        private string _controllerGuid = "";
+        private bool _controllerActive = false; // Toggled by ControlsMenuPanel.cs
+        private Godot.Collections.Dictionary<string, int> _buttonMap = [];
+        private Godot.Collections.Dictionary<string, int> _axisMap = [];
+        private Sprite2D _pointer;
+        private float _panSpeed = 0.5f; // Default from TerrainTest.cs
+        private float _moveSpeed = 35.0f;
+        private float _pointerSpeed = 600.0f;
+        private float _mousePanSpeed = 0.3f;
+        private float _cursorSpeed = 600.0f;
+        private float _pointerX;
+        private float _pointerY;
+        private ConfirmationDialog _acceptDialog;
+        private int device;
+        private bool connected;
+
+        public override void _Ready()
+        {
+            try
+            {
+                // Initialize controller pointer
+                _pointer = new Sprite2D
+                {
+                    Name = "Pointer",
+                    Texture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png"),
+                    Position = GetViewport().GetVisibleRect().Size / 2, // Center initially
+                    ZIndex = 0 // Layer 0 per Guidelines.md
+                };
+                AddChild(_pointer);
+                GD.Print("InputManager: Pointer Sprite2D added to root");
+
+                // Detect controllers
+                var joypads = Input.GetConnectedJoypads();
+                GD.Print($"InputManager: Connected joypads: {string.Join(", ", joypads)}");
+                foreach (var id in joypads)
+                {
+                    var name = Input.GetJoyName(id);
+                    var guid = Input.GetJoyGuid(id);
+                    GD.Print($"InputManager: Device {id}: Name={name}, GUID={guid}");
+                    if (name != null && (name.Contains("Xbox", StringComparison.OrdinalIgnoreCase) || name.Contains("XInput", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        _controllerId = id;
+                        _controllerName = name;
+                        _controllerGuid = guid;
+                        _controllerActive = true;
+                        GD.Print($"InputManager: Controller selected: Device {id}, Name={name}, GUID={guid}");
+                        break;
+                    }
+                }
+                if (_controllerId == -1)
+                {
+                    GD.Print("InputManager: No controller selected. Using KBM");
+                }
+
+                // Initialize controller mappings (from KeyBindings.csv)
+                _buttonMap["MoveForward"] = 11; // DPad Up
+                _buttonMap["MoveBack"] = 12; // DPad Down
+                _buttonMap["StrafeLeft"] = 13; // DPad Left
+                _buttonMap["StrafeRight"] = 14; // DPad Right
+                _buttonMap["SelectUnit"] = 8; // RS
+                _buttonMap["PauseGame"] = 4; // Back
+                _buttonMap["QuitGame"] = 5; // Home
+                _buttonMap["ScreenShot"] = 6; // Start
+                _buttonMap["ResetCamera"] = 7; // LS
+                _buttonMap["EndPhase"] = 9; // LB
+                _buttonMap["EndTurn"] = 10; // RB
+                _buttonMap["SkipVoiceover"] = 3; // Y
+                _buttonMap["ViewPlayerLosses"] = 0; // A
+                _buttonMap["ViewEnemyLosses"] = 1; // B
+                _buttonMap["OpenHelpMenu"] = 2; // X
+
+                _axisMap["PanX"] = 0; // LS X
+                _axisMap["PanY"] = 1; // LS Y
+                _axisMap["ZoomIn"] = 5; // RT
+                _axisMap["ZoomOut"] = 4; // LT
+                _axisMap["PointerX"] = 2; // RS X
+                _axisMap["PointerY"] = 3; // RS Y
+
+                // Stub controller connection handling
+                //Input.JoyConnectionChanged += HandleJoyConnectionChanged; //commented out for archive
+                Input.JoyConnectionChanged += (device, connected) =>
+                {
+                    this.device = (int)device;
+                    this.connected = connected;
+                    HandleJoyConnectionChanged((int)device, connected);
+                };
+
+                // Load settings from config (set by Loading.cs)
+                var config = new ConfigFile();
+                var configPath = "user://War Eagles/config.cfg";
+                if (FileAccess.FileExists(configPath))
+                {
+                    Error err = config.Load(configPath);
+                    if (err == Error.Ok)
+                    {
+                        LoadControllerSettings(config.GetValue("Controller", "Bindings", "KBM"));
+                        LoadGameplaySettings(new Dictionary
+                        {
+                            ["panspeed"] = config.GetValue("Gameplay", "panspeed", 0.5f),
+                            ["movespeed"] = config.GetValue("Gameplay", "movespeed", 35.0f),
+                            ["pointerspeed"] = config.GetValue("Gameplay", "pointerspeed", 600.0f),
+                            ["mousepanspeed"] = config.GetValue("Gameplay", "mousepanspeed", 0.3f),
+                            ["cursorspeed"] = config.GetValue("Gameplay", "cursorspeed", 600.0f)
+                        });
+                        GD.Print("InputManager: Loaded settings from config");
+                    }
+                    else
+                    {
+                        GD.PrintErr($"InputManager: Failed to load config: {err}");
+                    }
+                }
+                else
+                {
+                    GD.Print("InputManager: Config file not found, using defaults");
+                }
+
+                // Connect to ControlsMenuPanel.Accept (NYI)
+                // TODO: Connect to ControlsMenuPanel.Accept signal when implemented
+                GD.Print("InputManager: Ready, awaiting ControlsMenuPanel signal connection");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in _Ready: {ex.Message}");
+            }
+        }
+
+        public override void _Process(double delta)
+        {
+            try
+            {
+                if (!_controllerActive || _controllerId == -1)
+                    return;
+
+                // Update controller pointer position (RS Axis 2/3)
+                _pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
+                _pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
+                if (Math.Abs(_pointerX) > 0.2f || Math.Abs(_pointerY) > 0.2f)
+                {
+                    Vector2 pointerDelta = new Vector2(_pointerX, _pointerY) * _pointerSpeed * (float)delta;
+                    _pointer.Position += pointerDelta;
+                    // Clamp to viewport bounds
+                    var viewportSize = GetViewport().GetVisibleRect().Size;
+                    _pointer.Position = _pointer.Position.Clamp(Vector2.Zero, viewportSize);
+                    GD.Print($"InputManager: Pointer moved to {_pointer.Position}");
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in _Process: {ex.Message}");
+            }
+        }
+
+        public override void _Input(InputEvent @event)
+        {
+            try
+            {
+                if (!_controllerActive || _controllerId == -1)
+                    return;
+
+                if (@event is InputEventJoypadButton btnEvent && btnEvent.Device == _controllerId)
+                {
+                    GD.Print($"InputManager: Controller button {btnEvent.ButtonIndex} Pressed={btnEvent.Pressed}");
+                    if (btnEvent.ButtonIndex == (JoyButton)_buttonMap["SelectUnit"] && btnEvent.Pressed)
+                    {
+                        // Emulate mouse click for UI
+                        var mouseEvent = new InputEventMouseButton
+                        {
+                            ButtonIndex = MouseButton.Left,
+                            Pressed = true,
+                            Position = _pointer.Position
+                        };
+                        Input.ParseInputEvent(mouseEvent);
+                        GD.Print($"InputManager: Emulated mouse click at {_pointer.Position}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in _Input: {ex.Message}");
+            }
+        }
+
+        public void GetCameraInputs(out Vector3 movement, out float yaw, out float pitch, out float zoom)
+        {
+            try
+            {
+                movement = Vector3.Zero;
+                yaw = 0f;
+                pitch = 0f;
+                zoom = 0f;
+
+                if (!_controllerActive || _controllerId == -1)
+                    return;
+
+                // Movement (DPad)
+                float moveForward = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["MoveForward"]) ? 1f : 0f;
+                float moveBack = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["MoveBack"]) ? 1f : 0f;
+                float strafeLeft = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["StrafeLeft"]) ? 1f : 0f;
+                float strafeRight = Input.IsJoyButtonPressed(_controllerId, (JoyButton)_buttonMap["StrafeRight"]) ? 1f : 0f;
+                movement = new Vector3(strafeRight - strafeLeft, 0, moveBack - moveForward); // Inverted for intuitive Up=forward
+
+                // Pan (LS)
+                yaw = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PanX"]);
+                pitch = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PanY"]);
+
+                // Zoom (LT/RT)
+                float zoomIn = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomIn"]);
+                float zoomOut = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["ZoomOut"]);
+                zoom = zoomIn - zoomOut;
+
+                GD.Print($"InputManager: Camera inputs - Movement: {movement}, Yaw: {yaw}, Pitch: {pitch}, Zoom: {zoom}");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in GetCameraInputs: {ex.Message}");
+                movement = Vector3.Zero;
+                yaw = 0f;
+                pitch = 0f;
+                zoom = 0f;
+            }
+        }
+
+        public void SetControllerActive(bool active)
+        {
+            try
+            {
+                _controllerActive = active;
+                var config = new ConfigFile();
+                var configPath = "user://War Eagles/config.cfg";
+                string bindings = active ? "Default" : "KBM";
+                config.SetValue("Controller", "Bindings", bindings);
+                Error err = config.Save(configPath);
+                if (err != Error.Ok)
+                {
+                    GD.PrintErr($"InputManager: Failed to save config: {err}");
+                }
+                else
+                {
+                    GD.Print($"InputManager: Updated config Bindings to {bindings}");
+                }
+                // Emit ControllerStateChanged for ControlsMenuPanel (NYI)
+                // TODO: Emit ControllerStateChanged when ControlsMenuPanel is implemented
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in SetControllerActive: {ex.Message}");
+            }
+        }
+
+        private void HandleJoyConnectionChanged(int device, bool connected)
+        {
+            try
+            {
+                if (connected)
+                {
+                    string joyName = Input.GetJoyName(device) ?? "Unknown Controller";
+                    _acceptDialog = new ConfirmationDialog
+                    {
+                        Title = "New Controller Detected",
+                        DialogText = $"Use {joyName}?",
+                        Theme = GD.Load<Theme>("res://Data/Resources/UI_Theme.tres"),
+                        InitialPosition = Window.WindowInitialPosition.CenterPrimaryScreen
+                    };
+
+                    AddChild(_acceptDialog);
+                    _acceptDialog.Confirmed += AcceptConfirmed;
+                    _acceptDialog.Canceled += AcceptCanceled;
+                    _acceptDialog.PopupCentered();
+                    GD.Print($"InputManager: Showing dialog for controller {joyName}");
+                }
+                else
+                {
+                    if (_controllerId == device)
+                    {
+                        _controllerActive = false;
+                        _controllerId = -1;
+                        _controllerName = "";
+                        _controllerGuid = "";
+                        GD.Print("InputManager: Controller connection lost");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in HandleJoyConnectionChanged: {ex.Message}");
+            }
+        }
+
+        private void AcceptConfirmed()
+        {
+            try
+            {
+                _controllerId = device;
+                _controllerName = Input.GetJoyName(device) ?? "Unknown Controller";
+                _controllerGuid = Input.GetJoyGuid(device) ?? "";
+                _controllerActive = true;
+
+                // Update mappings (same as _Ready, from KeyBindings.csv)
+                _buttonMap.Clear();
+                _buttonMap["MoveForward"] = 11; // DPad Up
+                _buttonMap["MoveBack"] = 12; // DPad Down
+                _buttonMap["StrafeLeft"] = 13; // DPad Left
+                _buttonMap["StrafeRight"] = 14; // DPad Right
+                _buttonMap["SelectUnit"] = 8; // RS
+                _buttonMap["PauseGame"] = 4; // Back
+                _buttonMap["QuitGame"] = 5; // Home
+                _buttonMap["ScreenShot"] = 6; // Start
+                _buttonMap["ResetCamera"] = 7; // LS
+                _buttonMap["EndPhase"] = 9; // LB
+                _buttonMap["EndTurn"] = 10; // RB
+                _buttonMap["SkipVoiceover"] = 3; // Y
+                _buttonMap["ViewPlayerLosses"] = 0; // A
+                _buttonMap["ViewEnemyLosses"] = 1; // B
+                _buttonMap["OpenHelpMenu"] = 2; // X
+
+                _axisMap.Clear();
+                _axisMap["PanX"] = 0; // LS X
+                _axisMap["PanY"] = 1; // LS Y
+                _axisMap["ZoomIn"] = 5; // RT
+                _axisMap["ZoomOut"] = 4; // LT
+                _axisMap["PointerX"] = 2; // RS X
+                _axisMap["PointerY"] = 3; // RS Y
+
+                GD.Print($"InputManager: Enabled controller: Device {device}, Name={_controllerName}, GUID={_controllerGuid}");
+               _acceptDialog.QueueFree();
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in OnControllerConfirm: {ex.Message}");
+                _acceptDialog.QueueFree();
+            }
+        }
+
+        private void AcceptCanceled()
+        {
+            try
+            {
+                GD.Print("InputManager: Controller dialog canceled, no changes made");
+                _acceptDialog.QueueFree();
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in OnControllerCancel: {ex.Message}");
+                _acceptDialog.QueueFree();
+            }
+        }
+
+        public void LoadControllerSettings(Variant bindings)
+        {
+            try
+            {
+                _controllerActive = bindings.As<string>() == "Default";
+                GD.Print($"InputManager: Loaded controller settings, active: {_controllerActive}");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in LoadControllerSettings: {ex.Message}");
+            }
+        }
+
+        public void LoadGameplaySettings(Dictionary settings)
+        {
+            try
+            {
+                if (settings.ContainsKey("panspeed"))
+                    _panSpeed = settings["panspeed"].As<float>();
+                if (settings.ContainsKey("movespeed"))
+                    _moveSpeed = settings["movespeed"].As<float>();
+                if (settings.ContainsKey("pointerspeed"))
+                    _pointerSpeed = settings["pointerspeed"].As<float>();
+                if (settings.ContainsKey("mousepanspeed"))
+                    _mousePanSpeed = settings["mousepanspeed"].As<float>();
+                if (settings.ContainsKey("cursorspeed"))
+                    _cursorSpeed = settings["cursorspeed"].As<float>();
+                GD.Print($"InputManager: Loaded gameplay settings - panSpeed: {_panSpeed}, moveSpeed: {_moveSpeed}, pointerSpeed: {_pointerSpeed}, mousePanSpeed: {_mousePanSpeed}, cursorSpeed: {_cursorSpeed}");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"InputManager: Error in LoadGameplaySettings: {ex.Message}");
+            }
+        }
+    }
 }

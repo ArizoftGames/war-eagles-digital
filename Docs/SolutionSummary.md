@@ -39,8 +39,10 @@ Global button pressed audio feedback: /root/EffectsManager.PlaySoundEffect("Keys
 		    
 ##Autoloads:
 
+***LOADING.CS IS NOT AN AUTOLOAD! Loading.tscn is released when IntroAnim.tscn is loaded. Scripts attempting to access Loading.cs methods during runtime will fail.***
+
 GameManager.cs - centralizes global actions and frequently called methods.
-	 _Input(Input Event @event) {detects explicitly defined input events and calls methods based on them}, PauseGame(), ScreenShot(), AccessConsole() {Not yet implemented}, TransitionTo(string NextScenePath)-covers awkward scene transitions (up to ~ 1 sec), SetGameSettings(){NYI}, GetGameSettings() {NYI}
+	 _Input(Input Event @event) {detects explicitly defined input events and calls methods based on them}, PauseGame(), ScreenShot(), AccessConsole() {Not yet implemented}, TransitionTo(string NextScenePath)-covers awkward scene transitions (up to ~ 1 sec)
 	*/root/GameManager*
 UnitDatabase.cs - reads data fron csv parsers and constructs dictionaries.
 	GetAirUnitByName(string unit), GetAntiAircraftUnitByName(string unit), GetZoneByTargetName		(string targetName), GetAceByPilot(string pilot), GetEventByName(string name), 		GetZoneAsDictionary(string targetName), GetAirUnitAsDictionary(string unitName), 		GetEventAsDictionary(string name)

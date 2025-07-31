@@ -362,7 +362,7 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        public void SetGameSettings(Godot.Collections.Dictionary<string, Variant> settings)
+       /* public void SetGameSettings(Godot.Collections.Dictionary<string, Variant> settings)
         {
             GD.Print("SetGameSettings called.");
             // NYI
@@ -371,7 +371,7 @@ namespace WarEaglesDigital.Scripts
         public void GetGameSettings()
         {
             // NYI
-        }
+        }*/
 
         public async void TransitionTo(string NextScenePath)
         {

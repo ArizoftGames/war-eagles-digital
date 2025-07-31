@@ -519,11 +519,11 @@ namespace WarEaglesDigital.Scripts
                 _config.Save("user://War Eagles/config.cfg");
 
                 // Notify GameManager
-                var gameManager = GetNodeOrNull<Node>("/root/GameManager");
+               /* var gameManager = GetNodeOrNull<Node>("/root/GameManager");
                 if (gameManager != null)
                     gameManager.Call("SetGameSettings", _settings);
                 else
-                    GD.Print("GameManager not found for SetGameSettings.");
+                    GD.Print("GameManager not found for SetGameSettings.");*/
 
                 _confirmation_dialog.QueueFree();
                 GetTree().ChangeSceneToFile("res://Scenes/PauseMenu.tscn");
