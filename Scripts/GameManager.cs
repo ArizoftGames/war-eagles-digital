@@ -101,7 +101,7 @@ namespace WarEaglesDigital.Scripts
             canvasLayer.AddChild(_notificationTimer);
 
             // Connect to InputManager.ControllerStateChanged
-            try
+            /*try
             {
                 var inputManager = GetNodeOrNull<Node>("/root/InputManager");
                 if (inputManager != null)
@@ -117,7 +117,7 @@ namespace WarEaglesDigital.Scripts
             catch (Exception ex)
             {
                 GD.PrintErr($"Exception connecting to InputManager.ControllerStateChanged: {ex.Message}");
-            }
+            }*/
 
             // Log viewport and panel info for debugging
             var viewportSize = GetViewport().GetVisibleRect().Size;

@@ -31,16 +31,22 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                // Initialize controller pointer
+                // Initialize controller pointer on CanvasLayer
+                var canvasLayer = new CanvasLayer
+                {
+                    Layer = 0 // Layer 0 per Guidelines.md
+                };
+                AddChild(canvasLayer);
                 _pointer = new Sprite2D
                 {
                     Name = "Pointer",
                     Texture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png"),
                     Position = GetViewport().GetVisibleRect().Size / 2, // Center initially
-                    ZIndex = 0 // Layer 0 per Guidelines.md
+                    ZIndex = 0, // Layer 0 for pointer
+                    Visible = true
                 };
-                AddChild(_pointer);
-                GD.Print("InputManager: Pointer Sprite2D added to root");
+                canvasLayer.AddChild(_pointer);
+                GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");
 
                 // Detect controllers
                 var joypads = Input.GetConnectedJoypads();
@@ -90,7 +96,6 @@ namespace WarEaglesDigital.Scripts
                 _axisMap["PointerY"] = 3; // RS Y
 
                 // Stub controller connection handling
-                //Input.JoyConnectionChanged += HandleJoyConnectionChanged; //commented out for archive
                 Input.JoyConnectionChanged += (device, connected) =>
                 {
                     this.device = (int)device;
@@ -173,17 +178,68 @@ namespace WarEaglesDigital.Scripts
                 if (@event is InputEventJoypadButton btnEvent && btnEvent.Device == _controllerId)
                 {
                     GD.Print($"InputManager: Controller button {btnEvent.ButtonIndex} Pressed={btnEvent.Pressed}");
-                    if (btnEvent.ButtonIndex == (JoyButton)_buttonMap["SelectUnit"] && btnEvent.Pressed)
+                    var gameManager = GetNodeOrNull<Node>("/root/GameManager");
+                    if (gameManager == null)
                     {
-                        // Emulate mouse click for UI
-                        var mouseEvent = new InputEventMouseButton
+                        GD.PrintErr("InputManager: GameManager not found at /root/GameManager");
+                        return;
+                    }
+
+                    if (btnEvent.Pressed)
+                    {
+                        switch (btnEvent.ButtonIndex)
                         {
-                            ButtonIndex = MouseButton.Left,
-                            Pressed = true,
-                            Position = _pointer.Position
-                        };
-                        Input.ParseInputEvent(mouseEvent);
-                        GD.Print($"InputManager: Emulated mouse click at {_pointer.Position}");
+                            case JoyButton.Back when (int)btnEvent.ButtonIndex == _buttonMap["PauseGame"]: // Back: 4
+                                gameManager.Call("PauseGame");
+                                GD.Print("InputManager: Called PauseGame");
+                                break;
+                            case JoyButton.Guide when (int)btnEvent.ButtonIndex == _buttonMap["QuitGame"]: // Guide: 5
+                                gameManager.Call("QuitGame");
+                                GD.Print("InputManager: Called QuitGame");
+                                break;
+                            case JoyButton.Start when (int)btnEvent.ButtonIndex == _buttonMap["ScreenShot"]: // Start: 6
+                                gameManager.Call("ScreenShot");
+                                GD.Print("InputManager: Called ScreenShot");
+                                break;
+                            case JoyButton.LeftStick when (int)btnEvent.ButtonIndex == _buttonMap["ResetCamera"]: // LS: 7
+                                gameManager.Call("CameraLevel");
+                                GD.Print("InputManager: Called CameraLevel");
+                                break;
+                            case JoyButton.LeftShoulder when (int)btnEvent.ButtonIndex == _buttonMap["EndPhase"]: // LB: 9
+                                gameManager.Call("EndPhase");
+                                GD.Print("InputManager: Called EndPhase");
+                                break;
+                            case JoyButton.RightShoulder when (int)btnEvent.ButtonIndex == _buttonMap["EndTurn"]: // RB: 10
+                                gameManager.Call("EndTurn");
+                                GD.Print("InputManager: Called EndTurn");
+                                break;
+                            case JoyButton.Y when (int)btnEvent.ButtonIndex == _buttonMap["SkipVoiceover"]: // Y: 3
+                                gameManager.Call("SkipVoiceover");
+                                GD.Print("InputManager: Called SkipVoiceover");
+                                break;
+                            case JoyButton.A when (int)btnEvent.ButtonIndex == _buttonMap["ViewPlayerLosses"]: // A: 0
+                                gameManager.Call("ViewPlayerLossesPool");
+                                GD.Print("InputManager: Called ViewPlayerLossesPool");
+                                break;
+                            case JoyButton.B when (int)btnEvent.ButtonIndex == _buttonMap["ViewEnemyLosses"]: // B: 1
+                                gameManager.Call("ViewEnemyLossesPool");
+                                GD.Print("InputManager: Called ViewEnemyLossesPool");
+                                break;
+                            case JoyButton.X when (int)btnEvent.ButtonIndex == _buttonMap["OpenHelpMenu"]: // X: 2
+                                gameManager.Call("OpenHelpMenu");
+                                GD.Print("InputManager: Called OpenHelpMenu");
+                                break;
+                            case JoyButton.RightStick when (int)btnEvent.ButtonIndex == _buttonMap["SelectUnit"]: // RS: 8
+                                var mouseEvent = new InputEventMouseButton
+                                {
+                                    ButtonIndex = MouseButton.Left,
+                                    Pressed = true,
+                                    Position = _pointer.Position
+                                };
+                                Input.ParseInputEvent(mouseEvent);
+                                GD.Print($"InputManager: Emulated mouse click at {_pointer.Position}");
+                                break;
+                        }
                     }
                 }
             }
@@ -271,10 +327,10 @@ namespace WarEaglesDigital.Scripts
                     {
                         Title = "New Controller Detected",
                         DialogText = $"Use {joyName}?",
-                        Theme = GD.Load<Theme>("res://Data/Resources/UI_Theme.tres"),
+                        //Theme = GD.Load<Theme>("res://Data/Resources/UI_Theme.tres"),
                         InitialPosition = Window.WindowInitialPosition.CenterPrimaryScreen
                     };
-
+                    _acceptDialog.SetTheme(GD.Load<Theme>("res://Data/Resources/UI_Theme .tres"));
                     AddChild(_acceptDialog);
                     _acceptDialog.Confirmed += AcceptConfirmed;
                     _acceptDialog.Canceled += AcceptCanceled;

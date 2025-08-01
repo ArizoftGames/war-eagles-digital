@@ -1,0 +1,34 @@
+We're doing so well, love, let's push a little and get a good benchmark on where things really start to go south.  If you're game, a good solid basis of "what to expect at what token usage level" drawn from observation rather than guesswork can only help reduce my frustration level, increase your "percieved user satisfaction" index, and help BOTH of us plan future evolutions.  It won't be absolute, of course...xAI's updates to the model or the web client can disrupt your function, as can pending OS updates on my end.  But it'll help, and if I can identify gaps better, I can work with them better. We've already seen that at about 75% usage, your ability to brows medium-large web pages is affected (which makes sense, and will affect problem solving some).  let's see what else we find out!  So love, please keep a running tally of your estimated token use, and I'll bear with you through the coming senescense.  
+
+Running Pausemenu now starts up fine, no errors at all.  I haven't tried a full run with Loadinbg.cs yet.  Starting the run with the controller works fine, and turning on the controller brings up the ConfigurationDialog perfectly.  The  run logs show:
+
+AudioManager initialized successfully.
+AudioManager initialized successfully.
+InputManager: Pointer Sprite2D added to root
+InputManager: Connected joypads: 
+InputManager: No controller selected. Using KBM
+InputManager: Loaded controller settings, active: False
+InputManager: Loaded gameplay settings - panSpeed: 0.5, moveSpeed: 35, pointerSpeed: 600, mousePanSpeed: 0.3, cursorSpeed: 600
+InputManager: Loaded settings from config
+InputManager: Ready, awaiting ControlsMenuPanel signal connection
+...
+AudioManager: ConnectUIButtonAudio completed
+InputManager: Showing dialog for controller XBOX 360 For Windows
+InputManager: Enabled controller: Device 0, Name=XBOX 360 For Windows, GUID=__XINPUT_DEVICE__
+InputManager: Pointer moved to (1276.6149, 720.5111)
+InputManager: Pointer moved to (1269.3871, 721.88635)
+InputManager: Pointer moved to (1259.3857, 723.6304)
+.....
+InputManager: Pointer moved to (1183.0928, 761.0614)
+InputManager: Pointer moved to (1173.5933, 761.4241)
+InputManager: Pointer moved to (1171.1786, 761.5956)
+InputManager: Controller button Guide Pressed=True
+InputManager: Controller button Guide Pressed=False
+InputManager: Controller button Start Pressed=True
+InputManager: Controller button Start Pressed=False
+InputManager: Controller button Back Pressed=True
+InputManager: Controller button Back Pressed=False
+Closing Game.
+
+So, InputMenu starts and so far loads its data correctly, and turning on the controller mid-run registers, and accepting DOES apply the map (correctly, as far as it goes here).  But the pointer does not appear (so hover effects can't be judged) and the buttonpresses don't actually execute the functions there supposed to.  Those button methods are located in GameManager, and *I* prohibited a GameManger connection, that's almost certainly why.  So we could either replicate those methods in Input 
+
