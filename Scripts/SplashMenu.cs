@@ -9,9 +9,12 @@ namespace WarEaglesDigital.Scripts
         [Export] private Label _versionLabel;
         private AudioManager _musicManager;
         private const string CreditsMenuScene = "res://Scenes/CreditRoll.tscn";
+        private GameManager _gameManager;
+        
 
         public override void _Ready()
         {
+            _gameManager = (GameManager)GetNodeOrNull<Node>("/root/GameManager");
             try
             {
                 _musicManager = GetNode<AudioManager>("/root/MusicManager");
@@ -40,7 +43,7 @@ namespace WarEaglesDigital.Scripts
                     GD.PrintErr("Failed to preload Options.tscn.");
                     return;
                 }
-                var optionsInstance = optionsScene.Instantiate();
+                var optionsInstance = (Control)optionsScene.Instantiate();
                 AddChild(optionsInstance);
                 if (optionsInstance is Control optionsControl)
                     optionsControl.Visible = false; // Hide by default
@@ -73,7 +76,7 @@ namespace WarEaglesDigital.Scripts
             }
         }
 
-        public void ReleaseResources()
+        /*public void ReleaseResources()
         {
             try
             {
@@ -94,16 +97,18 @@ namespace WarEaglesDigital.Scripts
             {
                 GD.PrintErr($"Exception in SplashMenu.ReleaseResources: {ex.Message}");
             }
-        }
+        }*/
 
         private void OnQuitButtonPressed()
         {
             try
             {
-                ReleaseResources();
+                _gameManager.Call("ReleaseResources");
+                _gameManager.Call("QuitGame");
+                /*ReleaseResources();
                 _musicManager?.StopMusic();
                 GD.Print("Closing Game.");
-                GetTree().Quit();
+                GetTree().Quit();*/
             }
             catch (Exception ex)
             {
@@ -115,7 +120,8 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                ReleaseResources();
+                _gameManager.ReleaseResources();
+                //ReleaseResources();
                 GD.Print("Opening Credits Menu");
                 GetTree().ChangeSceneToFile(CreditsMenuScene);
             }
@@ -127,6 +133,7 @@ namespace WarEaglesDigital.Scripts
 
         private void OnOptionsButtonItemSelected(long index)
         {
+            _gameManager?.ReleaseResources();
             try
             {
                 var optionsNode = GetNode<Control>("Control");
@@ -176,7 +183,21 @@ namespace WarEaglesDigital.Scripts
                         }
                         break;
                     case 2: // Controls
-                        GD.Print("Controls branch NYI: ControlsMenuPanel.cs not implemented.");
+
+                        var controlsPanel = optionsNode.GetNode<Panel>("ControlsMenuPanel");
+                        GD.Print("controlsPanel: ", optionsNode.GetNodeOrNull<Panel>("ControlsMenuPanel"));
+                        if (controlsPanel != null)
+                        {
+                            GD.Print("controlsPanel found: ", controlsPanel);
+                            controlsPanel.Visible = true;
+                            GD.Print("controlsPanel visible: ", controlsPanel.Visible);
+                            if (controlsPanel is ControlsMenuPanel controlMenu)
+                                controlMenu.InitializeControlsMenu("Controls");
+                            else
+                                GD.PrintErr("ControlsMenuPanel script not attached to ControlsMenuPanel node.");
+                            GetNode("/root/EffectsManager")?.Call("ConnectUIButtonAudio");
+                        }
+                        //GD.Print("Controls branch NYI: ControlsMenuPanel.cs not implemented.");
                         break;
                     case 3: // Game Settings
                         GD.Print("Gameplay branch NYI: GameplayMenuPanel.cs not implemented.");
@@ -193,7 +214,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                ReleaseResources();
+                _gameManager.ReleaseResources();
                 GD.Print("Opening Extras Menu");
                 GetTree().ChangeSceneToFile("res://Scenes/Extras.tscn");
             }

@@ -15,6 +15,7 @@ namespace WarEaglesDigital.Scripts
 
         public override void _Ready()
         {
+            ProcessMode = Node.ProcessModeEnum.Always;
             SetProcessInput(true);
 
             // Initialize notification UI
@@ -152,7 +153,7 @@ namespace WarEaglesDigital.Scripts
                         GD.Print("Input: PauseGame triggered");
                         PauseGame();
                     }
-                    else if (keyEvent.Keycode == Key.Asciitilde)
+                    else if (keyEvent.Keycode == Key.Quoteleft)
                     {
                         GD.Print("Input: AccessConsole triggered");
                         AccessConsole();
@@ -164,7 +165,8 @@ namespace WarEaglesDigital.Scripts
                     }
                     else if (keyEvent.Keycode == Key.X)
                     {
-                        GD.Print("Input: Quit game triggered");
+                        QuitGame();
+                        /*GD.Print("Input: Quit game triggered");
                         try
                         {
                             // Godot's Array does not have ForEach, use a regular foreach loop
@@ -188,7 +190,7 @@ namespace WarEaglesDigital.Scripts
                             GD.PrintErr($"Exception in ReleaseResources: {ex.Message}");
                         }
 
-                        GetTree().Quit();
+                        GetTree().Quit();*/
                     }
                     else if (keyEvent.Keycode == Key.H)
                     {
@@ -245,6 +247,45 @@ namespace WarEaglesDigital.Scripts
                 {
                     GD.PrintErr($"Exception in _Input: {ex.Message}");
                 }
+            }
+        }
+
+        public void ReleaseResources()
+        {
+            try
+            {
+                GD.Print("Releasing resources...");
+                // Clear all nodes in specific groups
+                foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                    (node as Node)?.QueueFree();
+                foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                {
+                    node.Call("stop");
+                    node.Set("stream", (Godot.Resource)null); // Correct way to clear the stream in Godot 4.x C#
+                    (node as Node)?.QueueFree();
+                }
+                foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                    (node as Node)?.QueueFree();
+                GD.Print($"Memory after free: {OS.GetStaticMemoryUsage() / 1024 / 1024} MB");
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in ReleaseResources: {ex.Message}");
+            }
+        }
+
+        public void QuitGame()
+        {
+            try
+            {
+                GD.Print("Quitting game...");
+                ReleaseResources();
+                GetTree().Quit();
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Exception in QuitGame: {ex.Message}");
+                ShowNotification($"Quit Error: {ex.Message}");
             }
         }
 

@@ -26,18 +26,21 @@ namespace WarEaglesDigital.Scripts
         private ConfirmationDialog _acceptDialog;
         private int device;
         private bool connected;
+        private CanvasLayer _canvasLayer;
 
         public override void _Ready()
         {
+            ProcessMode = Node.ProcessModeEnum.Always;
             try
             {
                 // Initialize controller pointer on CanvasLayer
-                var canvasLayer = new CanvasLayer
+               _canvasLayer = new CanvasLayer
                 {
-                    Layer = 0 // Layer 0 per Guidelines.md
-                };
-                AddChild(canvasLayer);
-                _pointer = new Sprite2D
+                    Layer = 0, // Layer 0 per Guidelines.md
+                    ProcessMode = CanvasLayer.ProcessModeEnum.Always,
+               };
+               AddChild(_canvasLayer);
+                /*_pointer = new Sprite2D
                 {
                     Name = "Pointer",
                     Texture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png"),
@@ -46,7 +49,7 @@ namespace WarEaglesDigital.Scripts
                     Visible = true
                 };
                 canvasLayer.AddChild(_pointer);
-                GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");
+                GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");*/
 
                 // Detect controllers
                 var joypads = Input.GetConnectedJoypads();
@@ -390,12 +393,24 @@ namespace WarEaglesDigital.Scripts
                 _axisMap["PointerX"] = 2; // RS X
                 _axisMap["PointerY"] = 3; // RS Y
 
+                //AddChild(_canvasLayer);
+                _pointer = new Sprite2D
+                {
+                    Name = "Pointer",
+                    Texture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png"),
+                    Position = GetViewport().GetVisibleRect().Size / 2, // Center initially
+                    ZIndex = 0, // Layer 0 for pointer
+                    Visible = true
+                };
+                _canvasLayer.AddChild(_pointer);
+                GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");
+
                 GD.Print($"InputManager: Enabled controller: Device {device}, Name={_controllerName}, GUID={_controllerGuid}");
                _acceptDialog.QueueFree();
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"InputManager: Error in OnControllerConfirm: {ex.Message}");
+                GD.PrintErr($"InputManager: Error in AcceptConfirmed: {ex.Message}");
                 _acceptDialog.QueueFree();
             }
         }
@@ -409,7 +424,7 @@ namespace WarEaglesDigital.Scripts
             }
             catch (Exception ex)
             {
-                GD.PrintErr($"InputManager: Error in OnControllerCancel: {ex.Message}");
+                GD.PrintErr($"InputManager: Error in AcceptCanceled: {ex.Message}");
                 _acceptDialog.QueueFree();
             }
         }

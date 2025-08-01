@@ -192,21 +192,25 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
         {
             try
             {
-                foreach (var node in GetTree().GetNodesInGroup("glb_models"))
-                    (node as Node)?.QueueFree();
 
-                foreach (var node in GetTree().GetNodesInGroup("audio_players"))
-                {
-                    node.Call("stop");
-                    node.Set("stream", (Godot.Resource)null);
-                    (node as Node)?.QueueFree();
-                }
+                var gameManager = GetNodeOrNull<Node>("/root/GameManager");
+                gameManager.Call("ReleaseResources");
+                gameManager.Call("QuitGame");
+                /* foreach (var node in GetTree().GetNodesInGroup("glb_models"))
+                     (node as Node)?.QueueFree();
 
-                foreach (var node in GetTree().GetNodesInGroup("terrains"))
-                    (node as Node)?.QueueFree();
+                 foreach (var node in GetTree().GetNodesInGroup("audio_players"))
+                 {
+                     node.Call("stop");
+                     node.Set("stream", (Godot.Resource)null);
+                     (node as Node)?.QueueFree();
+                 }
 
-                GD.Print("Closing Game.");
-                GetTree().Quit();
+                 foreach (var node in GetTree().GetNodesInGroup("terrains"))
+                     (node as Node)?.QueueFree();
+
+                 GD.Print("Closing Game.");
+                 GetTree().Quit();*/
             }
             catch (Exception ex)
             {
