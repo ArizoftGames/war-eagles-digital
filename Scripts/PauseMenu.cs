@@ -41,11 +41,11 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                     AddChild(_optionsInstance);
                     _optionsInstance.Owner = this;
                     _optionsInstance.Visible = false;
-                    GD.Print("Options instance cached: ", _optionsInstance);
+                    //GD.Print("Options instance cached: ", _optionsInstance);
                 }
                 else
                 {
-                    GD.Print("Options instance already cached: ", _optionsInstance);
+                    //GD.Print("Options instance already cached: ", _optionsInstance);
                 }
 
                 // Connect OptionsButton signal
@@ -105,7 +105,7 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                     if (child is Panel panel)
                         panel.Visible = false;
                 }
-                GD.Print("Selected index: ", index);
+                //GD.Print("Selected index: ", index);
 
                 // Show the selected panel based on index
                 switch (index)
@@ -114,9 +114,9 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                         var displayPanel = _optionsInstance.GetNode<Panel>("DisplayMenuPanel");
                         if (displayPanel != null)
                         {
-                            GD.Print("DisplayPanel found: ", displayPanel);
+                            //GD.Print("DisplayPanel found: ", displayPanel);
                             displayPanel.Visible = true;
-                            GD.Print("DisplayPanel visible: ", displayPanel.Visible);
+                            //GD.Print("DisplayPanel visible: ", displayPanel.Visible);
                             if (displayPanel is DisplayMenuPanel displayMenu)
                                 displayMenu.InitializeDisplayMenu("Video and Display");
                             else
@@ -126,12 +126,12 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                         break;
                     case 1: // Audio
                         var audioPanel = _optionsInstance.GetNode<Panel>("AudioMenuPanel");
-                        GD.Print("audioPanel: ", _optionsInstance.GetNodeOrNull<Panel>("AudioMenuPanel"));
+                        //GD.Print("audioPanel: ", _optionsInstance.GetNodeOrNull<Panel>("AudioMenuPanel"));
                         if (audioPanel != null)
                         {
-                            GD.Print("AudioPanel found: ", audioPanel);
+                            //GD.Print("AudioPanel found: ", audioPanel);
                             audioPanel.Visible = true;
-                            GD.Print("AudioPanel visible: ", audioPanel.Visible);
+                            //GD.Print("AudioPanel visible: ", audioPanel.Visible);
                             if (audioPanel is AudioMenuPanel audioMenu)
                                 audioMenu.InitializeAudioMenu("Audio");
                             else
@@ -142,12 +142,12 @@ namespace WarEaglesDigital.Scripts //Handles the pause menu
                     case 2:
 
                         var controlsPanel = _optionsInstance.GetNode<Panel>("ControlsMenuPanel");
-                        GD.Print("controlsPanel: ", _optionsInstance.GetNodeOrNull<Panel>("ControlsMenuPanel"));
+                        //GD.Print("controlsPanel: ", _optionsInstance.GetNodeOrNull<Panel>("ControlsMenuPanel"));
                         if (controlsPanel != null)
                         {
-                            GD.Print("controlsPanel found: ", controlsPanel);
+                            //GD.Print("controlsPanel found: ", controlsPanel);
                             controlsPanel.Visible = true;
-                            GD.Print("controlsPanel visible: ", controlsPanel.Visible);
+                            //GD.Print("controlsPanel visible: ", controlsPanel.Visible);
                             if (controlsPanel is ControlsMenuPanel controlMenu)
                                 controlMenu.InitializeControlsMenu("Controls");
                             else

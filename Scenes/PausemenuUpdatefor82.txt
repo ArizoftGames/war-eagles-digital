@@ -1,0 +1,20 @@
+public override void _Input(InputEvent @event)
+{
+    if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+    {
+        GD.Print($"PauseMenu: Received mouse click at Position={mouseEvent.Position}, GlobalPosition={mouseEvent.GlobalPosition}");
+        var popup = GetNode<MenuButton>("Pause_Menu/MainMenu/OptionsButton").GetPopup();
+        if (popup.Visible)
+        {
+            GD.Print($"PauseMenu: PopupMenu visible, checking focus: {popup.HasFocus()}");
+            if (popup.GetRect().HasPoint(mouseEvent.GlobalPosition))
+            {
+                GD.Print($"PauseMenu: Click at {mouseEvent.GlobalPosition} is over PopupMenu");
+            }
+        }
+    }
+    if (@event is InputEventMouseMotion motionEvent)
+    {
+        GD.Print($"PauseMenu: Received mouse motion at Position={motionEvent.Position}, GlobalPosition={motionEvent.GlobalPosition}");
+    }
+}

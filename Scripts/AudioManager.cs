@@ -356,17 +356,17 @@ namespace WarEaglesDigital.Scripts
                     {
                         btn.Pressed += () => PlaySoundEffect("Keystroke");
                         _connectedButtons.Add(btn.Name);
-                        GD.Print($"Connected {btn.Name} to ui_buttons audio");
+                        //GD.Print($"Connected {btn.Name} to ui_buttons audio");
                     }
                     else if (node is TextureButton texBtn && !_connectedButtons.Contains(texBtn.Name))
                     {
                         texBtn.Pressed += () => PlaySoundEffect("Keystroke");
                         _connectedButtons.Add(texBtn.Name);
-                        GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
+                        //GD.Print($"Connected {texBtn.Name} to ui_buttons audio");
                     }
                     else
                     {
-                        GD.Print($"AudioManager: {node.Name} already connected to ui_buttons audio");
+                        //GD.Print($"AudioManager: {node.Name} already connected to ui_buttons audio");
                     }
                 }
             }

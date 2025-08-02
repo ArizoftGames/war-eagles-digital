@@ -160,7 +160,7 @@ namespace WarEaglesDigital.Scripts
                 _video_button.ItemSelected += OnVideoButtonItemSelected;
                 _video_menu.AddChild(_video_button);
                 _video_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_video_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_video_button.Name} to ui_buttons group");
 
                 // AutoDetect Button
                 _auto_detect_button = new Button
@@ -172,7 +172,7 @@ namespace WarEaglesDigital.Scripts
                 _auto_detect_button.Pressed += OnAutoDetectButtonPressed;
                 _video_menu.AddChild(_auto_detect_button);
                 _auto_detect_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_auto_detect_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_auto_detect_button.Name} to ui_buttons group");
 
                 // --- HUD Menu ---
                 _hud_menu = new VBoxContainer();
@@ -211,7 +211,7 @@ namespace WarEaglesDigital.Scripts
                 _national_theme_button.Toggled += OnNationalThemeButtonToggled;
                 _hud_themes.AddChild(_national_theme_button);
                 _national_theme_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_national_theme_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_national_theme_button.Name} to ui_buttons group");
 
                 // War Eagles Theme Button
                 _we_theme_button = new CheckButton
@@ -224,7 +224,7 @@ namespace WarEaglesDigital.Scripts
                 _we_theme_button.Toggled += OnWEThemeButtonToggled;
                 _hud_themes.AddChild(_we_theme_button);
                 _we_theme_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_we_theme_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_we_theme_button.Name} to ui_buttons group");
 
                 // Contrast Theme Button
                 _hc_theme_button = new CheckButton
@@ -237,7 +237,7 @@ namespace WarEaglesDigital.Scripts
                 _hc_theme_button.Toggled += OnHCThemeButtonToggled;
                 _hud_themes.AddChild(_hc_theme_button);
                 _hc_theme_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_hc_theme_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_hc_theme_button.Name} to ui_buttons group");
 
                 // System Theme Button
                 _sy_theme_button = new CheckButton
@@ -250,7 +250,7 @@ namespace WarEaglesDigital.Scripts
                 _sy_theme_button.Toggled += OnSYThemeButtonToggled;
                 _hud_themes.AddChild(_sy_theme_button);
                 _sy_theme_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_sy_theme_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_sy_theme_button.Name} to ui_buttons group");
 
                 // Font National Button
                 _font_nat_button = new Button
@@ -263,7 +263,7 @@ namespace WarEaglesDigital.Scripts
                 _font_nat_button.Pressed += OnFontNatButtonPressed;
                 _hud_themes.AddChild(_font_nat_button);
                 _font_nat_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_font_nat_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_font_nat_button.Name} to ui_buttons group");
 
                 // Font System Button
                 _font_sys_button = new Button
@@ -285,7 +285,7 @@ namespace WarEaglesDigital.Scripts
                 _font_sys_button.Pressed += OnFontSysButtonPressed;
                 _hud_themes.AddChild(_font_sys_button);
                 _font_sys_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_font_sys_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_font_sys_button.Name} to ui_buttons group");
 
                 // Format Label
                 _format_label = new Label
@@ -309,7 +309,7 @@ namespace WarEaglesDigital.Scripts
                 _format_button.ItemSelected += OnFormatButtonItemSelected;
                 _display_menu.AddChild(_format_button);
                 _format_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_format_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_format_button.Name} to ui_buttons group");
 
                 // Close Container
                 _close_container = new HBoxContainer
@@ -331,7 +331,7 @@ namespace WarEaglesDigital.Scripts
                 _accept_button.Pressed += OnAcceptButtonPressed;
                 _close_container.AddChild(_accept_button);
                 _accept_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_accept_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_accept_button.Name} to ui_buttons group");
 
                 // Cancel Button
                 _cancel_button = new Button
@@ -344,7 +344,7 @@ namespace WarEaglesDigital.Scripts
                 _cancel_button.Pressed += OnCancelButtonPressed;
                 _close_container.AddChild(_cancel_button);
                 _cancel_button.AddToGroup("ui_buttons");
-                GD.Print($"Added {_cancel_button.Name} to ui_buttons group");
+                //GD.Print($"Added {_cancel_button.Name} to ui_buttons group");
             }
             catch (Exception ex)
             {

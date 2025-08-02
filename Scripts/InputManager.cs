@@ -34,12 +34,12 @@ namespace WarEaglesDigital.Scripts
             try
             {
                 // Initialize controller pointer on CanvasLayer
-               _canvasLayer = new CanvasLayer
+                _canvasLayer = new CanvasLayer
                 {
                     Layer = 0, // Layer 0 per Guidelines.md
                     ProcessMode = CanvasLayer.ProcessModeEnum.Always,
-               };
-               AddChild(_canvasLayer);
+                };
+                AddChild(_canvasLayer);
                 /*_pointer = new Sprite2D
                 {
                     Name = "Pointer",
@@ -226,21 +226,53 @@ namespace WarEaglesDigital.Scripts
                                 break;
                             case JoyButton.B when (int)btnEvent.ButtonIndex == _buttonMap["ViewEnemyLosses"]: // B: 1
                                 gameManager.Call("ViewEnemyLossesPool");
-                                GD.Print("InputManager: Called ViewEnemyLossesPool");
+                                GD.Print("InputManager: Called ViewPlayerLossesPool");
                                 break;
                             case JoyButton.X when (int)btnEvent.ButtonIndex == _buttonMap["OpenHelpMenu"]: // X: 2
                                 gameManager.Call("OpenHelpMenu");
                                 GD.Print("InputManager: Called OpenHelpMenu");
                                 break;
                             case JoyButton.RightStick when (int)btnEvent.ButtonIndex == _buttonMap["SelectUnit"]: // RS: 8
+                                                                                                                  // Emulate mouse motion for hover
+                                var motionEvent = new InputEventMouseMotion
+                                {
+                                    Position = _pointer.Position,
+                                    GlobalPosition = _pointer.GlobalPosition
+                                };
+                                Input.ParseInputEvent(motionEvent);
+                                GD.Print($"InputManager: Emulated mouse motion at Position={_pointer.Position}, GlobalPosition={_pointer.GlobalPosition}");
+
+                                // Emulate mouse click
                                 var mouseEvent = new InputEventMouseButton
                                 {
                                     ButtonIndex = MouseButton.Left,
                                     Pressed = true,
-                                    Position = _pointer.Position
+                                    Position = _pointer.Position,
+                                    GlobalPosition = _pointer.GlobalPosition
                                 };
                                 Input.ParseInputEvent(mouseEvent);
-                                GD.Print($"InputManager: Emulated mouse click at {_pointer.Position}");
+                                GD.Print($"InputManager: Emulated mouse click at Position={_pointer.Position}, GlobalPosition={_pointer.GlobalPosition}");
+
+                                // // Debug: Check if button under pointer is hit
+                                // var control = GetViewport().GuiGetFocusOwner() ?? GetViewport().GetNodeOrNull<Control>("PauseMenu/Pause_Menu");
+                                // if (control != null)
+                                // {
+                                //     GD.Print($"InputManager: Focus owner or PauseMenu found: {control.Name}");
+                                //     var localPos = control.GetGlobalRect().HasPoint(_pointer.GlobalPosition);
+                                //     //if (control.GetRect().HasPoint(localPos)) //archive; localPos is bool not Vector2
+                                //     if (localPos)
+                                //     {
+                                //         GD.Print($"InputManager: Pointer at {_pointer.GlobalPosition} is over {control.Name}");
+                                //     }
+                                //     else
+                                //     {
+                                //         GD.Print($"InputManager: Pointer at {_pointer.GlobalPosition} is NOT over {control.Name}");
+                                //     }
+                                // }
+                                // else
+                                // {
+                                //     GD.PrintErr("InputManager: No focus owner or PauseMenu found for emulated click");
+                                // }
                                 break;
                         }
                     }
@@ -406,7 +438,7 @@ namespace WarEaglesDigital.Scripts
                 GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");
 
                 GD.Print($"InputManager: Enabled controller: Device {device}, Name={_controllerName}, GUID={_controllerGuid}");
-               _acceptDialog.QueueFree();
+                _acceptDialog.QueueFree();
             }
             catch (Exception ex)
             {
