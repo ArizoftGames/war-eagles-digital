@@ -478,7 +478,7 @@ namespace WarEaglesDigital.Scripts
         {
             try
             {
-                _controllerId = device;
+                _controllerId = (int)device;
                 _controllerName = Input.GetJoyName(device) ?? "Unknown Controller";
                 _controllerGuid = Input.GetJoyGuid(device) ?? "";
                 _controllerActive = true;
