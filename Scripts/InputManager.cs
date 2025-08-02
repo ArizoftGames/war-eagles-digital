@@ -33,23 +33,10 @@ namespace WarEaglesDigital.Scripts
             ProcessMode = Node.ProcessModeEnum.Always;
             try
             {
-                // Initialize controller pointer on CanvasLayer
-                _canvasLayer = new CanvasLayer
-                {
-                    Layer = 0, // Layer 0 per Guidelines.md
-                    ProcessMode = CanvasLayer.ProcessModeEnum.Always,
-                };
-                AddChild(_canvasLayer);
-                /*_pointer = new Sprite2D
-                {
-                    Name = "Pointer",
-                    Texture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png"),
-                    Position = GetViewport().GetVisibleRect().Size / 2, // Center initially
-                    ZIndex = 0, // Layer 0 for pointer
-                    Visible = true
-                };
-                canvasLayer.AddChild(_pointer);
-                GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");*/
+                // Set custom mouse cursor for controller
+                var cursorTexture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png");
+                Input.SetCustomMouseCursor(cursorTexture, Input.CursorShape.Arrow, new Vector2(32, 32)); // Center hotspot at 32x32 for 64x64 crosshair
+                GD.Print("InputManager: Set custom mouse cursor to crosshair1_64.png");
 
                 // Detect controllers
                 var joypads = Input.GetConnectedJoypads();
@@ -119,7 +106,7 @@ namespace WarEaglesDigital.Scripts
                         {
                             ["panspeed"] = config.GetValue("Gameplay", "panspeed", 0.5f),
                             ["movespeed"] = config.GetValue("Gameplay", "movespeed", 35.0f),
-                            ["pointerspeed"] = config.GetValue("Gameplay", "pointerspeed", 600.0f),
+                            ["pointerspeed"] = config.GetValue("Gameplay", "pointerspeed", 800.0f), // Median speed for WarpMouse, adjustable
                             ["mousepanspeed"] = config.GetValue("Gameplay", "mousepanspeed", 0.3f),
                             ["cursorspeed"] = config.GetValue("Gameplay", "cursorspeed", 600.0f)
                         });
@@ -138,6 +125,27 @@ namespace WarEaglesDigital.Scripts
                 // Connect to ControlsMenuPanel.Accept (NYI)
                 // TODO: Connect to ControlsMenuPanel.Accept signal when implemented
                 GD.Print("InputManager: Ready, awaiting ControlsMenuPanel signal connection");
+
+                // Archived CanvasLayer/Sprite2D logic
+                /*
+                // Initialize controller pointer on CanvasLayer
+                _canvasLayer = new CanvasLayer
+                {
+                    Layer = 0, // Layer 0 per Guidelines.md
+                    ProcessMode = CanvasLayer.ProcessModeEnum.Always,
+                };
+                AddChild(_canvasLayer);
+                _pointer = new Sprite2D
+                {
+                    Name = "Pointer",
+                    Texture = GD.Load<Texture2D>("res://Assets/Sprites/UI_Elements/crosshair1_64.png"),
+                    Position = GetViewport().GetVisibleRect().Size / 2, // Center initially
+                    ZIndex = 0, // Layer 0 for pointer
+                    Visible = true
+                };
+                _canvasLayer.AddChild(_pointer);
+                GD.Print("InputManager: Pointer Sprite2D added to CanvasLayer at Layer 0");
+                */
             }
             catch (Exception ex)
             {
@@ -152,6 +160,37 @@ namespace WarEaglesDigital.Scripts
                 if (!_controllerActive || _controllerId == -1)
                     return;
 
+                // Update cursor position using RS inputs (Axis 2/3)
+                float pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
+                float pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
+
+                // Apply deadzone to prevent drift
+                if (Math.Abs(pointerX) < 0.2f) pointerX = 0f;
+                if (Math.Abs(pointerY) < 0.2f) pointerY = 0f;
+
+                if (Math.Abs(pointerX) > 0f || Math.Abs(pointerY) > 0f)
+                {
+                    // Median pointer speed for WarpMouse, adjustable for OS mouse sensitivity
+                    const float pointerSpeed = 800.0f; // Tuned for WarpMouse, tweak as needed
+                    const float smoothingFactor = 0.1f; // Smoothing to reduce jitter, tweak as needed
+                    Vector2 currentPos = GetViewport().GetMousePosition();
+                    Vector2 deltaPos = new Vector2(pointerX, pointerY) * pointerSpeed * (float)delta;
+
+                    // Apply smoothing
+                    Vector2 smoothedDelta = deltaPos.Lerp(Vector2.Zero, smoothingFactor);
+                    Vector2 newPos = currentPos + smoothedDelta;
+
+                    // Clamp to viewport bounds
+                    var viewportSize = GetViewport().GetVisibleRect().Size;
+                    newPos = newPos.Clamp(Vector2.Zero, viewportSize);
+
+                    // Move cursor
+                    Input.WarpMouse(newPos);
+                    GD.Print($"InputManager: Warped mouse to {newPos}, Delta: {smoothedDelta}, Raw Input: ({pointerX}, {pointerY})");
+                }
+
+                // Archived Sprite2D/CanvasLayer logic
+                /*
                 // Update controller pointer position (RS Axis 2/3)
                 _pointerX = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerX"]);
                 _pointerY = Input.GetJoyAxis(_controllerId, (JoyAxis)_axisMap["PointerY"]);
@@ -164,6 +203,7 @@ namespace WarEaglesDigital.Scripts
                     _pointer.Position = _pointer.Position.Clamp(Vector2.Zero, viewportSize);
                     GD.Print($"InputManager: Pointer moved to {_pointer.Position}");
                 }
+                */
             }
             catch (Exception ex)
             {
@@ -226,14 +266,58 @@ namespace WarEaglesDigital.Scripts
                                 break;
                             case JoyButton.B when (int)btnEvent.ButtonIndex == _buttonMap["ViewEnemyLosses"]: // B: 1
                                 gameManager.Call("ViewEnemyLossesPool");
-                                GD.Print("InputManager: Called ViewPlayerLossesPool");
+                                GD.Print("InputManager: Called ViewEnemyLossesPool");
                                 break;
                             case JoyButton.X when (int)btnEvent.ButtonIndex == _buttonMap["OpenHelpMenu"]: // X: 2
                                 gameManager.Call("OpenHelpMenu");
                                 GD.Print("InputManager: Called OpenHelpMenu");
                                 break;
                             case JoyButton.RightStick when (int)btnEvent.ButtonIndex == _buttonMap["SelectUnit"]: // RS: 8
-                                                                                                                  // Emulate mouse motion for hover
+                                                                                                                  // Emulate LMB click at current mouse position
+                                var mousePos = GetViewport().GetMousePosition();
+                                var mouseEvent = new InputEventMouseButton
+                                {
+                                    ButtonIndex = MouseButton.Left,
+                                    Pressed = true,
+                                    Position = mousePos,
+                                    GlobalPosition = GetViewport().GetWindow().GetPosition() + mousePos
+                                };
+                                Input.ParseInputEvent(mouseEvent);
+                                GD.Print($"InputManager: Emulated LMB click at Position={mousePos}, GlobalPosition={mouseEvent.GlobalPosition}");
+
+                                // Release event to complete click
+                                mouseEvent = new InputEventMouseButton
+                                {
+                                    ButtonIndex = MouseButton.Left,
+                                    Pressed = false,
+                                    Position = mousePos,
+                                    GlobalPosition = GetViewport().GetWindow().GetPosition() + mousePos
+                                };
+                                Input.ParseInputEvent(mouseEvent);
+                                GD.Print($"InputManager: Emulated LMB release at Position={mousePos}, GlobalPosition={mouseEvent.GlobalPosition}");
+                                break;
+                        }
+                    }
+                }
+
+                // Archived Sprite2D/CanvasLayer logic
+                /*
+                if (@event is InputEventJoypadButton btnEvent && btnEvent.Device == _controllerId)
+                {
+                    GD.Print($"InputManager: Controller button {btnEvent.ButtonIndex} Pressed={btnEvent.Pressed}");
+                    var gameManager = GetNodeOrNull<Node>("/root/GameManager");
+                    if (gameManager == null)
+                    {
+                        GD.PrintErr("InputManager: GameManager not found at /root/GameManager");
+                        return;
+                    }
+
+                    if (btnEvent.Pressed)
+                    {
+                        switch (btnEvent.ButtonIndex)
+                        {
+                            case JoyButton.RightStick when (int)btnEvent.ButtonIndex == _buttonMap["SelectUnit"]: // RS: 8
+                                // Emulate mouse motion for hover
                                 var motionEvent = new InputEventMouseMotion
                                 {
                                     Position = _pointer.Position,
@@ -253,13 +337,12 @@ namespace WarEaglesDigital.Scripts
                                 Input.ParseInputEvent(mouseEvent);
                                 GD.Print($"InputManager: Emulated mouse click at Position={_pointer.Position}, GlobalPosition={_pointer.GlobalPosition}");
 
-                                // // Debug: Check if button under pointer is hit
+                                // Debug: Check if button under pointer is hit
                                 // var control = GetViewport().GuiGetFocusOwner() ?? GetViewport().GetNodeOrNull<Control>("PauseMenu/Pause_Menu");
                                 // if (control != null)
                                 // {
                                 //     GD.Print($"InputManager: Focus owner or PauseMenu found: {control.Name}");
                                 //     var localPos = control.GetGlobalRect().HasPoint(_pointer.GlobalPosition);
-                                //     //if (control.GetRect().HasPoint(localPos)) //archive; localPos is bool not Vector2
                                 //     if (localPos)
                                 //     {
                                 //         GD.Print($"InputManager: Pointer at {_pointer.GlobalPosition} is over {control.Name}");
@@ -277,6 +360,7 @@ namespace WarEaglesDigital.Scripts
                         }
                     }
                 }
+                */
             }
             catch (Exception ex)
             {
